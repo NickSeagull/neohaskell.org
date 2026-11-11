@@ -1,3 +1,9 @@
+# Unslop quality standard
+
+Apply `$unslop` to every task in this repository. Read `.agents/skills/unslop/SKILL.md` at the start of each task, reusing it when already loaded, and check the result against its relevant guidance before delivery. Use its visual workflow for interface work and its clarity, restraint, and consistency principles for code, documentation, copy, and responses.
+
+Explicit user direction and the accepted NeoHaskell product and design records take precedence over generic style prescriptions. Continue already-authorized work through the workflow below; Unslop's direction step does not require another approval when the user has authorized implementation.
+
 # Compare and build workflow
 
 When the user asks to compare this site with a reference, requests a design critique, or suggests a possible improvement (such as “perhaps missing some code snippets”), carry the work through implementation and presentation. Treat the request as authorization to choose sensible changes within that scope, including when the comparison is delegated to a subagent. An explicit request for review only overrides this default.

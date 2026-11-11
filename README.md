@@ -43,3 +43,7 @@ The original NeoHaskell logo is preserved in `public/logo.svg`. Sansation, Manro
 `GLOSSARY.md` defines canonical vocabulary. The approved scope and direction contract are in `.impeccable/surfaces/src-pages-index-astro.md`. Earlier studies under `.impeccable/diagrams/` are review artifacts, not website features.
 
 See [the design artifact policy](.impeccable/README.md) for what is committed from `.impeccable/`. Shared design records and approved references are versioned; generated captures, caches, logs, and unused explorations stay local.
+
+## Agent quality standard
+
+`AGENTS.md` applies the project-local [Unslop skill](.agents/skills/unslop/SKILL.md) to every task. Unslop is by [Damir Sokolovsky (@heydamir)](https://github.com/heydamir/unslop), licensed under CC BY 4.0. Its [installation record](.agents/skills/unslop/UPSTREAM.md) pins the source revision and documents browser tooling. After `npm ci`, run `npx playwright install chromium` to enable its snapshots.
