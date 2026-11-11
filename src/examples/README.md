@@ -11,7 +11,7 @@ Paths below are relative to `neo/starter/src/Starter/Counter/` at that revision.
 | `counter-event.hs` | `Events/CounterIncremented.hs` | Rename the payload datatype and constructor to `CounterIncremented`; preserve its fields and omit deriving and the separate `CounterEvent` sum. |
 | `counter-entity.hs` | `Core.hs` | Show only the identity and value fields, omitting the unrelated label. |
 | `counter-update.hs` | `Entity.hs` | Accept the increment record directly as `event`, with current state named `counter`. Creation and decrement cases are outside this increment example. |
-| `counter-query.hs` | `Queries/CounterView.hs` | Show the view datatype and its `queryId` and `combine` definitions. Omit the label field, access functions, derivation and `QueryOf` instance wrapper. |
+| `counter-query.hs` | `Queries/CounterView.hs` | Show the view datatype and `combine` definition. Omit `queryId` at the owner's request, plus the label field, access functions, derivation and `QueryOf` instance wrapper. |
 
 The owner supplied the revised body on 11 November 2026: ignore the entity and context arguments, reject non-positive amounts, and use `cmd.counterId` for the event. The accepted event is bound with a `let` statement inside `else do`, then passed to `Decider.acceptExisting`. Follow the repository convention of `do` blocks with `let` statements instead of `let ... in` expressions. The example no longer checks whether the counter exists.
 

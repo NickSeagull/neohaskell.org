@@ -3,8 +3,6 @@ data CounterView = CounterView
   , value :: Int
   }
 
-queryId counter = counter.counterId
-
 combine counter _ =
   Update
     CounterView
