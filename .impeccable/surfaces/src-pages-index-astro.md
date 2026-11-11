@@ -19,7 +19,7 @@ OWN-WORLD: Deep violet and electric cyan in dark mode; daylight and violet ink i
 
 STORY: NeoHaskell is an AI-first language. Build with an agent while keeping intended behavior understandable and recorded changes traceable. Inspect the published workflow, starter, and focused tests; learn the model in documentation before agent setup.
 
-FIRST VIEWPORT: Slim navigation above expansive two-line typography and a clear documentation CTA. A broad violet model field follows: command, decision, event ledger, query. One opening sequence settles into a still composition. The field contains only the model; accessible names describe its example context.
+FIRST VIEWPORT: Slim navigation above expansive two-line typography and a clear documentation CTA. A full-width model follows on the page ground: command, decision, event ledger, query. Violet belongs to the recorded event. One opening sequence settles into a still composition. The field contains only the model; accessible names describe its example context.
 
 FORM: Assembly Guide / developer workshop refinement, seed 17e1b5de, assigned index 6. Dark authority: r2-violet-workshop.png; light authority: r2-daylight-workshop.png. The approved Event ledger study governs diagram shapes and motion.
 
@@ -71,3 +71,10 @@ The audit found light visual clutter in repeated accent links, a decorative navi
 The owner rejected the remaining supporting text: “We don't write footnotes, ever.” This includes reassurance under actions, captions around the code and model, language labels, metadata bars, and descriptions that repeat a link’s destination. Middle dots (U+00B7), em dashes (U+2014), and emojis are forbidden. `AGENTS.md` holds the repository-wide rule.
 
 Checkpoint `e727d07e01f26e0966ad069060b17c5003f9d007` preserves the previous pass. Remove auxiliary text while retaining main prose, meaningful domain labels, direct actions, accessible names, and exact source. Evidence links belong inline in the paragraphs they support. The code has native horizontal scrolling instead of an instruction sentence. This correction supersedes earlier instructions for visible provenance labels, illustrative captions, action helpers, and version/date rows. Previous reviewer approval is not owner acceptance.
+
+
+## Stronger Unslop pass, 11 November 2026
+
+The owner accepted the auxiliary-text correction with “good” and requested “now $unslop harder”. Checkpoint `9e5be672627c55c0a1cb2e0c2dc777105161861d` records the accepted baseline. Preserve the strict copy rule and the established brand while removing repeated visual scaffolding.
+
+The model now sits directly on the page, with vivid violet inside the recorded event. Domain labels use sentence case. The source loses its rounded frame and uses a quiet desktop separator, which disappears on phones. The hero action fits its label. Single coherent headings replace the repeated two-tone pairs. The tools section pairs its introduction with stacked articles, and community actions name their destinations directly. All substantive claims, source evidence, section order, domain distinctions, and animation behavior remain. This supersedes the previous enclosing violet field, fixed-width action, rounded source frame, and repeated equal-column tools layout.
