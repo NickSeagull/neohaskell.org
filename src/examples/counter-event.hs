@@ -1,4 +1,4 @@
-data Event = Event
+data CounterIncremented = CounterIncremented
   { entityId :: Uuid
   , amount :: Int
   }

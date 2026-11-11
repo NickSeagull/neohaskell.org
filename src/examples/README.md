@@ -8,14 +8,16 @@ Paths below are relative to `neo/starter/src/Starter/Counter/` at that revision.
 | --- | --- | --- |
 | `counter-command.hs` | `Commands/IncrementCounter.hs` | Rename the command's `entityId` field to the owner-approved `counterId`; omit deriving, instances, entity routing and registration. |
 | `counter-decision.hs` | `Commands/IncrementCounter.hs` | Use the owner-supplied decision described below. |
-| `counter-event.hs` | `Events/CounterIncremented.hs` | Preserve the payload's `Event` datatype and fields; omit deriving and the separate `CounterEvent` sum. |
+| `counter-event.hs` | `Events/CounterIncremented.hs` | Rename the payload datatype and constructor to `CounterIncremented`; preserve its fields and omit deriving and the separate `CounterEvent` sum. |
 | `counter-entity.hs` | `Core.hs` | Show only the identity and value fields, omitting the unrelated label. |
-| `counter-update.hs` | `Entity.hs` | Show only the increment case as a function pattern; rename the local values to `event` and `counter`. Creation and decrement cases are outside this increment example. |
+| `counter-update.hs` | `Entity.hs` | Accept the increment record directly as `event`, with current state named `counter`. Creation and decrement cases are outside this increment example. |
 | `counter-query.hs` | `Queries/CounterView.hs` | Show the view datatype and its `queryId` and `combine` definitions. Omit the label field, access functions, derivation and `QueryOf` instance wrapper. |
 
 The owner supplied the revised body on 11 November 2026: ignore the entity and context arguments, reject non-positive amounts, and use `cmd.counterId` for the event. The accepted event is bound with a `let` statement inside `else do`, then passed to `Decider.acceptExisting`. Follow the repository convention of `do` blocks with `let` statements instead of `let ... in` expressions. The example no longer checks whether the counter exists.
 
-The omitted command routing must read `cmd.counterId` to match the renamed field. The event payload remains `CounterIncremented.Event` inside the separate `CounterIncremented` sum constructor, whose declaration the owner explicitly asked to omit. The omitted query instance associates `CounterEntity` with `CounterView`. The starter supplies the create-counter flow, initial state, module imports, registrations, access configuration and HTTP server in `src/App.hs` and `Feature.hs`.
+The owner then requested a single `CounterIncremented` datatype and constructor, replacing the qualified payload and outer sum wrapper. The decision now constructs that record directly, and `update event counter` reads its amount without unwrapping it. This intentionally simplifies the starter's event representation; it is not its unchanged API.
+
+The omitted command routing must read `cmd.counterId` to match the renamed field. The omitted query instance associates `CounterEntity` with `CounterView`. The starter supplies the create-counter flow, initial state, module imports, registrations, access configuration and HTTP server in `src/App.hs` and `Feature.hs`.
 
 The starter's `tests/integration/counter-flow.hurl` exercises `POST /commands/increment-counter` and `GET /queries/counter-view`. The latter returns a paginated collection of projected views. The homepage names these routes in its main prose and links the upstream starter and query source inline. It does not show an invented response envelope or claim that an increment creates a counter.
 

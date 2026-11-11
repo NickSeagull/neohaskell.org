@@ -4,8 +4,7 @@ decide cmd _ _ =
   else do
     let event =
           CounterIncremented
-            CounterIncremented.Event
-              { entityId = cmd.counterId
-              , amount = cmd.amount
-              }
+            { entityId = cmd.counterId
+            , amount = cmd.amount
+            }
     Decider.acceptExisting [event]
