@@ -85,3 +85,5 @@ The model now sits directly on the page, with vivid violet inside the recorded e
 The owner supplied a replacement `decide cmd _ _` example and requested the event be extracted into a `let` binding inside `else`. Use `cmd.counterId`, reject non-positive amounts, and pass the bound event to `Decider.acceptExisting`. The displayed example and outcomes no longer test whether the counter exists.
 
 This supersedes the earlier exact-upstream-excerpt requirement for this example. Describe it as a simplified Counter decision in the main prose and retain the upstream basis as an inline link. Record adaptation details in `src/examples/README.md`; do not add captions or footnotes. Keep the existing composition, highlighting, readable type, and keyboard scrolling.
+
+The owner clarified the binding syntax: always use a `do` block with a `let` statement, never a `let ... in` expression. The homepage uses `else do`, followed by the event binding and `Decider.acceptExisting [event]`. This reusable convention is recorded in `AGENTS.md`.

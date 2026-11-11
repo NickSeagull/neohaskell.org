@@ -33,6 +33,8 @@ For NeoHaskell documentation pages, examples, navigation, or styling, load `$neo
 
 # Teaching examples
 
+In NeoHaskell examples, bind local values with `let` statements inside `do` blocks. Do not use `let ... in` expressions. Use `else do` when an else branch needs a local binding.
+
 Whenever creating or materially changing a teaching example, use `$learning-example-review` from the active Codex skills directory. Read its `SKILL.md` and complete its fresh-subagent visual review and simplification loop before finishing. If discovery has not refreshed, resolve it at `${CODEX_HOME:-$HOME/.codex}/skills/learning-example-review/SKILL.md`.
 
 Keep examples focused on the concept being taught, with readable text and a visible cue when scrolling changes their state. Preserve the approved NeoHaskell identity and the terminology in `GLOSSARY.md`.
