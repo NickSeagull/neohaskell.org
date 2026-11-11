@@ -19,7 +19,7 @@ OWN-WORLD: Deep violet and electric cyan in dark mode; daylight and violet ink i
 
 STORY: NeoHaskell is an AI-first language. Build with an agent while keeping intended behavior understandable and recorded changes traceable. Inspect the published workflow, starter, and focused tests; learn the model in documentation before agent setup.
 
-FIRST VIEWPORT: Slim navigation above expansive two-line typography and a clear documentation CTA. A broad violet model field follows: command, decision, event ledger, query. One opening sequence settles into a still composition. A concise product statement closes the field.
+FIRST VIEWPORT: Slim navigation above expansive two-line typography and a clear documentation CTA. A broad violet model field follows: command, decision, event ledger, query. One opening sequence settles into a still composition. The field contains only the model; accessible names describe its example context.
 
 FORM: Assembly Guide / developer workshop refinement, seed 17e1b5de, assigned index 6. Dark authority: r2-violet-workshop.png; light authority: r2-daylight-workshop.png. The approved Event ledger study governs diagram shapes and motion.
 
@@ -43,7 +43,7 @@ The owner accepted the layout (“much better now”) but requested the missing 
 
 ## Source excerpt, 11 November 2026
 
-The owner identified missing code snippets, accepted the checkpoint → compare → build → show workflow, and requested implementation after committing the current project. This extends the earlier animation-only homepage scope with one static source excerpt. Keep the opening unchanged. In “Your intent,” pair a plain-language Counter rule and two outcomes with the exact decision body from the published source revision. Label its provenance, link the full file, and preserve 16px code in both themes. The code frame scrolls horizontally on narrow phones with a visible cue and keyboard access. This is source evidence within the existing product section, not an interactive lesson or another animation.
+The owner identified missing code snippets, accepted the checkpoint → compare → build → show workflow, and requested implementation after committing the current project. This extends the earlier animation-only homepage scope with one static source excerpt. Keep the opening unchanged. In “Your intent,” pair a plain-language Counter rule and two outcomes with the exact decision body from the published source revision. Identify and link the Counter source in the main paragraph, and preserve 16px code in both themes. The code frame scrolls horizontally on narrow phones with a visible cue and keyboard access. This is source evidence within the existing product section, not an interactive lesson or another animation.
 
 ## Scope correction and handoff, 11 November 2026
 
@@ -64,3 +64,10 @@ This supersedes earlier homepage measurements for model overhang, equal product 
 The owner's next request was “please $unslop the homepage”. Checkpoint `b0a168263ed6bf913d427d76bcaa72b3df71bf80` preserves the preceding implementation. This is polish within the same world: an AI-first language for building understandable applications; precise, calm, approachable; a developer workshop; model and source as the detailed moments; existing domain shapes and pixel lettering as the signature.
 
 The audit found light visual clutter in repeated accent links, a decorative navigation marker, inconsistent and redundant action arrows, supporting-heading punctuation, and uneven community-row padding. The implementation quiets these elements, keeps “you build” together on phones, and uses the existing off-white ink for the dark primary button. Light mode retains its violet action. Secondary links remain underlined, while main onward links keep the accent. This supersedes earlier documentation of a cyan dark primary action, navigation square, and moving hover arrows. Source, model geometry, animation, section order, factual content, and the accepted palette remain intact.
+
+
+## Auxiliary text correction, 11 November 2026
+
+The owner rejected the remaining supporting text: “We don't write footnotes, ever.” This includes reassurance under actions, captions around the code and model, language labels, metadata bars, and descriptions that repeat a link’s destination. Middle dots (U+00B7), em dashes (U+2014), and emojis are forbidden. `AGENTS.md` holds the repository-wide rule.
+
+Checkpoint `e727d07e01f26e0966ad069060b17c5003f9d007` preserves the previous pass. Remove auxiliary text while retaining main prose, meaningful domain labels, direct actions, accessible names, and exact source. Evidence links belong inline in the paragraphs they support. The code has native horizontal scrolling instead of an instruction sentence. This correction supersedes earlier instructions for visible provenance labels, illustrative captions, action helpers, and version/date rows. Previous reviewer approval is not owner acceptance.

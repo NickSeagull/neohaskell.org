@@ -1,3 +1,13 @@
+# Copy and auxiliary text
+
+Write primary content, necessary labels, and direct actions. Keep substantive explanations in the main prose and place source links inline where they support a claim.
+
+Do not add footnotes, caption bars, widget identity labels, language badges, or explanatory rows around examples and actions. Remove redundant reassurance beneath buttons and text that merely describes the component beside it. Use standard visual affordances for scrolling instead of instruction sentences. Keep accessible control names and meaningful domain labels.
+
+Middle dots (U+00B7), em dashes (U+2014), and emojis are forbidden in authored interface text, metadata, documentation, and agent responses. Use ordinary sentence punctuation. An ASCII hyphen is sufficient when a separator is necessary.
+
+Before delivery, inspect the rendered page for auxiliary text and remove anything that does not help the visitor understand the main content or take a necessary action. A passing design review does not override this rule. Run the repository copy check with the normal build; it rejects forbidden characters and explicit footnote markup in authored source.
+
 # Unslop quality standard
 
 Apply `$unslop` to every task in this repository. Read `.agents/skills/unslop/SKILL.md` at the start of each task, reusing it when already loaded, and check the result against its relevant guidance before delivery. Use its visual workflow for interface work and its clarity, restraint, and consistency principles for code, documentation, copy, and responses.

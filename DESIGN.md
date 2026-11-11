@@ -203,12 +203,12 @@ components:
     backgroundColor: "{colors.dark-model}"
     textColor: "{colors.dark-model-ink}"
     rounded: "{rounded.model}"
-    padding: "24px 28px 0"
+    padding: "24px 28px"
   event-model-light:
     backgroundColor: "{colors.light-model}"
     textColor: "{colors.light-model-ink}"
     rounded: "{rounded.model}"
-    padding: "24px 28px 0"
+    padding: "24px 28px"
   query:
     backgroundColor: "{colors.dark-query}"
     textColor: "{colors.dark-model-ink}"
@@ -285,7 +285,7 @@ All three authored families are self-hosted WOFF2 files with `font-display: swap
 | Display | Homepage title; `clamp(40px, 8vw, 58px)` with line height `1.08` below 760px. The final phrase “you build” stays together on mobile rather than leaving “build” isolated. |
 | Headline | Product heading; `clamp(34px, 6vw, 42px)` below 760px and 32px below 390px. Community heading is a smaller supporting display role. |
 | Title / body | Supporting headings use 24px desktop / 22px mobile at weight 500; reading text remains 18px in both layouts. |
-| Lead / action | Mobile lead is 19px at line height `1.65`, becoming 18px below 390px. Mobile primary action is 20px; its supporting prerequisite text remains 16px. |
+| Lead / action | Mobile lead is 19px at line height `1.65`, becoming 18px below 390px. Mobile primary action is 20px. |
 | Diagram label / event / query | Semantic labels, recorded event identifiers, and the numeric answer. SVG values are viewBox units: desktop query value is 55, compact 50; event identifier is 26, rising to 28 in the compact desktop strip. |
 
 The hero explanation has a 44ch maximum, reduced to 43ch on mobile. Supporting product copy uses 43–48ch measures. Documentation uses the `docs-title`, `docs-heading`, `docs-subheading`, `docs-body`, and `docs-lead` roles. Prose and list text use 18px type with 1.8 line height; code and tables use 16px. The native code font remains Starlight/Expressive Code’s monospace font. Below 49.99rem, page titles become 2rem, second-level headings 1.5rem, and lead copy 1.125rem. Topic links use 16px text; the local contents outline uses .9375rem. Keep essential article and example text readable rather than reducing it to fit.
@@ -294,20 +294,20 @@ The hero explanation has a 44ch maximum, reduced to 43ch on mobile. Supporting p
 
 ## Layout
 
-The homepage’s centered shell stops at 1536px and uses the fluid gutter token. The masthead has an 80px minimum height, a quiet bottom rule, and navigation aligned to the right; mobile retains 72px. The opening starts 56px below it (40px on mobile). A supporting row follows the title after 32px: the explanation on the left, a 360px action group on the right. The no-installation note and code anchor share a row below the primary action. At 760px the support row stacks with a 24px gap. The full-width model aligns with the shell edges in both themes.
+The homepage’s centered shell stops at 1536px and uses the fluid gutter token. The masthead has an 80px minimum height, a quiet bottom rule, and navigation aligned to the right; mobile retains 72px. The opening starts 56px below it (40px on mobile). A supporting row follows the title after 32px: the explanation on the left, a 360px primary action on the right. At 760px the support row stacks with a 24px gap. The full-width model aligns with the shell edges in both themes.
 
 Major sections use 80px of closing space, reducing to 56px on mobile. The model-to-code separation is 80px without an extra rule. The product introduction uses a 5:7 text/code proportion with a 48px gap; the source gets the wider column. At 1100px the code moves below the explanation, whose heading and supporting text form two columns until 760px. The two outcomes have quiet horizontal separators. The benefit pair follows a rule after 48px (32px on mobile).
 
-The evidence section places its heading and introduction above two open columns of tools, with 40px between the rows. Each tool begins with a quiet rule; no card surrounds it. Community links use 26px Sansation (24px on mobile) in page ink, distinct from the 18px reading copy. Their rows share 24px vertical padding and quiet rules. Supporting grids stack at 760px. Metadata uses inline version/date pairs where space permits. Page rules mix the existing construction-line color at 55% opacity; semantic diagram lines retain their own stronger contrast.
+The evidence section places its heading and introduction above two open columns of tools, with 40px between the rows. Each tool begins with a quiet rule; no card surrounds it. Community links use 26px Sansation (24px on mobile) in page ink, distinct from the 18px reading copy. Their rows share 24px vertical padding and quiet rules. Supporting grids stack at 760px. Page rules mix the existing construction-line color at 55% opacity; semantic diagram lines retain their own stronger contrast.
 
-The product introduction pairs the intent and expected outcomes with one real source excerpt. The code frame uses the existing hover ground, construction line, ink, accent, and violet tokens. Build-time Astro highlighting follows the active theme through CSS variables. Code remains 16px with 25.6px line height, a 12px frame radius, and 24px desktop / 20px mobile insets. Native horizontal scrolling, a narrow-screen cue, and an inset keyboard focus ring preserve inspection on phones. The excerpt is static, with a named source link and no execution controls.
+The product introduction pairs the intent and expected outcomes with one real source excerpt. The code frame uses the existing hover ground, construction line, ink, accent, and violet tokens. Build-time Astro highlighting follows the active theme through CSS variables. Code remains 16px with 25.6px line height, a 12px frame radius, and 24px desktop / 20px mobile insets. Native horizontal scrolling with a native scrollbar and an inset keyboard focus ring preserve inspection on phones. The excerpt is static. Its source link lives in the adjacent Counter paragraph. The frame contains only code.
 
 | Breakpoint | Implemented adaptation |
 | --- | --- |
 | At most 1200px | Shared column gap becomes 40px; diagram role/detail labels become 24 viewBox units to compensate for scaling. |
 | At most 1000px | Diagram switches to the compact SVG, capped at 380px wide and centered. The field retains full content width with 24px side insets and no overhang. |
-| At most 760px | Page gutters become 24px, content columns stack, headline phrases occupy separate lines, and action reassurance moves below the button. Navigation uses the familiar Docs label; GitHub remains in the community section and footer. |
-| At most 390px | Page gutters become 18px and diagram insets 12px. Theme and navigation controls retain 44px hit areas. |
+| At most 760px | Page gutters become 24px, content columns stack and headline phrases occupy separate lines. Navigation uses the familiar Docs label; GitHub remains in the community section and footer. |
+| At most 390px | Page gutters become 20px and diagram insets 12px. Theme and navigation controls retain 44px hit areas. |
 
 The spacing scale uses 8, 16, 24, 32, 48 and 96px. The diagram uses authored geometry; its compact text remains at least 16px rendered at the supported 320px minimum width. Do not restore tiny text to fit a shape.
 
@@ -335,7 +335,7 @@ Documentation uses the inline-code radius for short identifiers and the code-fra
 
 ### Actions and theme control
 
-Primary actions are solid, high-contrast links with the action radius and recorded padding. Their minimum height is 56px, with 24px horizontal padding on desktop and 20px on mobile. The dark primary action uses the existing off-white ink with dark text; light mode keeps the violet action. Hover mixes the face with 8% of its ink over 160ms. Arrows remain still, at 18px with a 1.5-unit stroke. Primary onward text links use the accent and an underline on hover. Secondary source links stay underlined in supporting ink, with accent on hover. All retain a 44px minimum height.
+Primary actions are solid, high-contrast links with the action radius and recorded padding. Their minimum height is 56px, with 24px horizontal padding on desktop and 20px on mobile. The dark primary action uses the existing off-white ink with dark text; light mode keeps the violet action. Hover mixes the face with 8% of its ink over 160ms. Arrows remain still, at 18px with a 1.5-unit stroke. Primary onward text links use the accent and an underline on hover. Source links sit inline in the main prose, with a persistent underline and accent on hover. Standalone actions retain a 44px minimum height.
 
 The theme control is transparent at rest and gains the hover field on pointer hover. It is 44px square at every viewport. Its SVG icon and accessible label announce the target theme. The homepage and Starlight share the saved `starlight-theme` preference.
 
@@ -347,15 +347,15 @@ The ruled masthead pairs the original logo and NeoHaskell name with simple text 
 
 ### Evidence, community, and next steps
 
-The hero and metadata introduce NeoHaskell as an AI-first language. “Build with AI. Know what you build.” preserves the display treatment while connecting building with understandable behavior. The lower learning link repeats “Learn the concepts” and reaches the same `/learn/` introduction. The primary action explains that no installation is required to begin.
+The hero and metadata introduce NeoHaskell as an AI-first language. “Build with AI. Know what you build.” preserves the display treatment while connecting building with understandable behavior. The lower learning link repeats “Learn the concepts” and reaches the same `/learn/` introduction. The primary action stands alone, without a supporting reassurance row.
 
-Benefit paragraphs link directly to acceptance/rejection and history-replay tests at an inspected source revision. Source links use 16px supporting ink, an underline, and a 44px minimum target height. Their redundant arrows are omitted; major onward actions retain an 18px arrow. The evidence section presents the agent workflow and application starter with 18px body text and named destinations. Version/date details use quieter 16px text and name the artifact explicitly. These are dated published releases, not automatically maintained “latest” badges. `PRODUCT.md` records source evidence and verification limits.
+Benefit paragraphs link directly to acceptance/rejection and history-replay tests at an inspected source revision. Source links inherit the paragraph size and color, with a persistent underline. Major onward actions retain an 18px arrow. The evidence section presents the agent workflow and application starter with 18px body text and named destinations. A verified release change appears in ordinary prose with an inline artifact link. `PRODUCT.md` records source evidence and verification limits.
 
 A compact community section states that NeoHaskell is under active development, links its dated CLI/framework release, and offers the public repository and verified Discord invite. This status and the release were verified on 10 November 2026. Product principles live in `$neohaskell-positioning`; this design record governs their presentation.
 
 ### Event ledger
 
-The signature model is native SVG inside a semantic figure, with a title and description for each responsive drawing. Its darker recorded row, ordered index, `OrderPlaced` identifier, and check mark remain separate from the query’s numeric stock result. Repeated definitions and ledger metadata have been removed so larger role names and content carry the example. The query says “mugs in stock” in every stage; it does not describe the initial stock as an after-order result. The figure includes an illustrative-model label and a ruled product statement. The light-theme container uses a quiet page rule; the model shapes retain their distinct colors and outlines. Uppercase model labels identify semantic roles; they are not decorative page labels.
+The signature model is native SVG inside a semantic figure, with a title and description for each responsive drawing. Its darker recorded row, ordered index, `OrderPlaced` identifier, and check mark remain separate from the query’s numeric stock result. Repeated definitions and ledger metadata have been removed so larger role names and content carry the example. The query says “mugs in stock” in every stage; it does not describe the initial stock as an after-order result. The figure has an accessible name and each SVG describes an example. Visible labels name the model parts; the field has no caption or surrounding explanatory bars. The light-theme container uses a quiet page rule; the model shapes retain their distinct colors and outlines. Uppercase model labels identify semantic roles; they are not decorative page labels.
 
 The homepage plays one 3800ms opening sequence: command, decision, recorded event, then the current query answer. Stage boundaries are 500, 1450, 2350, and 3200ms. Stock starts at three during animation and settles at two. The source HTML already contains the completed state. Reduced motion starts there, and enabling reduced motion or hiding the page settles an active sequence immediately. There are no scenario, step, or replay controls. This timing belongs to the homepage component, not every future diagram.
 
@@ -387,7 +387,7 @@ The documentation relies on native links, search, contents navigation, and copyi
 - Don't extend the pixel accent into body copy or event identifiers; retain the established type roles.
 - Don't bring retired teaching widgets, scroll snapping, or full-screen lesson spacing into the article layout.
 
-## Homepage finish review — 10 November 2026
+## Homepage finish review : 10 November 2026
 
 Fresh learning-example and homepage review: **keep**, after one correction pass. Compact shape/text collisions, connector/label clearance and opening-stock wording were resolved. Both themes were checked at 320, 390, 768, 1024, 1440 and 1600px; essential diagram text was at least 16.62px in those captures. Build, 12 existing tests, normal/reduced/no-JavaScript animation states, theme persistence and the main documentation path passed. Evidence and the exact review scope are stored in `.impeccable/reviews/homepage-2026-11-10/review.md`. This records the review verdict separately from user acceptance.
 
@@ -395,16 +395,23 @@ The subsequent AI-first positioning and concrete-evidence pass also received **k
 
 On 11 November, one real decision excerpt was added after checkpoint `52614df`, resolving the next Ruby comparison's missing-source finding. A fresh combined visual and learning-example reviewer returned **keep**. Both themes, 320–1600px layouts, exact rendered source, no-JavaScript output, keyboard scrolling, and token contrast passed. The code remains 16px, with a visible sideways-scroll cue on phones. See `.impeccable/reviews/homepage-code-2026-11-11/review.md` for the checked scope and provenance.
 
-## Resource discovery — 11 November 2026
+## Resource discovery : 11 November 2026
 
-The subsequent Ruby gap review preserves the accepted visual world and section order. A quiet “See the code” anchor sits beside the existing concepts action, below its no-installation note. The source section remains unchanged. Resources joins the wide masthead above 1000px and the footer at all widths; the native docs menu exposes the same destination on phones. The evidence section links directly to agent setup, retaining its published workflow source as a secondary link. The dated framework release gains a short, verified description and a release-history link.
+The subsequent Ruby gap review preserves the accepted visual world and section order. The original pass added an auxiliary code link and reassurance below the concepts action. The later content-restraint correction removes both; the code section keeps its fragment ID. Resources joins the wide masthead above 1000px and the footer at all widths; the native docs menu exposes the same destination on phones. The evidence section links directly to agent setup, with its published workflow source linked inline in the main paragraph. The dated framework release gains a short, verified description and a release-history link.
 
 The new `/resources/` article extends the existing guide format, typography, themes, sidebar, search, and contents outline. Four sections organize starting, reference, application constraints, and releases/help. It links to verified material instead of presenting an untested first-run sequence. Existing illustrative examples, actual source, and the initial animation remain unchanged. See `.impeccable/reviews/ruby-gaps-2026-11-11/` for the independent baseline assessments and implementation limits.
 
-## Homepage visual review — 11 November 2026
+## Homepage visual review : 11 November 2026
 
 The visual-only refinement after checkpoint `784ffa55` received **ship** from a fresh combined homepage and learning-example reviewer; both examples received **keep**. It updates the opening support row, page alignment, code proportions, section density, and quiet rules while preserving the brand, actual source, copy, and model behavior. The model's narrower desktop labels increase through 1280px to keep them readable at breakpoint edges. Tests, build, 32 viewport/theme/motion cases, 22 breakpoint-edge checks, and focused interactions pass. See `.impeccable/reviews/homepage-visual-2026-11-11/review.md` for scope and evidence. Owner acceptance remains separate.
 
-## Explicit Unslop finish — 11 November 2026
+## Explicit Unslop finish : 11 November 2026
 
 After checkpoint `b0a1682`, the owner's explicit Unslop request received **ship** from a fresh visual reviewer, with no material findings. The pass quiets secondary links and the dark primary action, removes decorative marking and redundant arrows, simplifies short-heading punctuation, balances the phone headline, and normalizes community rows. It preserves the accepted palette, composition, factual content, source, and model. Build, 12 tests, 54 responsive checks, and focused interactions pass. See `.impeccable/reviews/homepage-unslop-2026-11-11/review.md` for the nine-pass audit and inspected scope; this is review evidence, not owner acceptance.
+
+
+## Content restraint: 11 November 2026
+
+The owner rejected auxiliary explanatory text after the previous finish review. Follow the copy rule in `AGENTS.md`: primary content, meaningful domain labels, and direct actions. Remove button reassurance, code and model captions, language badges, metadata bars, and repeated link descriptions. Keep evidence links in the main prose. A native scrollbar supplies the code overflow affordance. This correction supersedes older descriptions of widget labels and supporting rows, regardless of prior reviewer verdicts.
+
+The homepage retains its original palette, source excerpt, model geometry, and one-time sequence. The code frame now contains only code, the model field contains only the model, and community links contain only their destinations. Verification is recorded in `.impeccable/reviews/homepage-content-restraint-2026-11-11/review.md`.

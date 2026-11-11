@@ -69,7 +69,7 @@ Preserve the name **NeoHaskell**, the domain **neohaskell.org**, and the existin
 4. Reduce avoidable technical decisions and opportunities for accidental mistakes.
 5. Make claims concrete and distinguish intended benefits from demonstrated capabilities.
 
-## Homepage evidence and positioning update — 10 November 2026
+## Homepage evidence and positioning update : 10 November 2026
 
 The owner authorized implementing the Ruby comparison's spacing, content, and readability recommendations. The homepage keeps the existing concepts-first journey and one ecommerce animation, with clearer prerequisite text and a compact development/community section. The current upstream README explicitly states that NeoHaskell is under active development; the public GitHub repository is not archived. The existing public site's Discord invite `wDj3UYzec8` was checked through Discord's invite endpoint and resolves to the NeoHaskell community. These support the homepage's status and contact routes, not production-readiness claims.
 
@@ -84,14 +84,14 @@ Primary sources checked on 2026-11-10:
 
 No testimonials, adoption counts, or productivity benchmarks have been verified. Keep proof specific to the capability and artifact it supports.
 
-## Homepage source evidence — 11 November 2026
+## Homepage source evidence : 11 November 2026
 
-Following the Ruby comparison, the owner requested a checkpoint commit and implementation. The homepage now displays the unchanged 14-line Counter decision body from the inspected `cacc806` revision, with its rule and accepted/rejected outcomes in plain language. It is labeled as a function-body excerpt from the Counter starter, distinct from the illustrative shop diagram. Imports, types, and registration remain in the linked full source. The example is static source evidence; it is not a live execution or a claim that its upstream tests ran here. Source provenance and the distributed Apache 2.0 license are recorded in `src/examples/README.md`.
+Following the Ruby comparison, the owner requested a checkpoint commit and implementation. The homepage now displays the unchanged 14-line Counter decision body from the inspected `cacc806` revision, with its rule and accepted/rejected outcomes in plain language. The adjacent paragraph identifies and links the Counter starter. The code frame has no caption or language badge. The shop diagram remains an illustrative example. Imports, types, and registration remain in the linked full source. The example is static source evidence; it is not a live execution or a claim that its upstream tests ran here. Source provenance and the distributed Apache 2.0 license are recorded in `src/examples/README.md`.
 
-## Resource discovery — 11 November 2026
+## Resource discovery : 11 November 2026
 
 A fresh Ruby comparison at checkpoint `68a9493` found an incomplete first-run journey and useful resources missing from local navigation. `/resources/` now links to the actual CLI prerequisites, project creation guidance, syntax, application topics, testing, storage, authorization, releases, license, and contribution guidance. These destinations were read at the same `cacc806` source revision. The general upstream README contains no setup instructions, so the setup guide now links to the specific CLI and starter instructions and distinguishes agent skills from the application toolchain.
 
 The pinned starter's `src/App.hs` configures `SimpleEventStore` with `persistent = False`; its storage guide confirms events disappear at process exit and distinguishes event and query persistence. The resources page explains these actual defaults. The GitHub release API for `neo-v0.17.1` confirms the 6 November release adds owned file storage for generated documents. The new homepage summary describes that scoped change without claiming a production guarantee.
 
-The homepage now offers a code anchor, a direct agent-setup link, and resource discovery. The docs introduction and metadata use AI-first positioning. A verified empty-machine-to-running-app walkthrough, newcomer explanation of the decision syntax, and executed intent-to-agent-to-result demonstration remain gaps. No runtime installation, generated application, adoption claim, or support commitment was verified in this website pass.
+The homepage retains the source section fragment ID, a direct agent-setup link, and resource discovery. The owner’s later content-restraint correction removed the auxiliary hero link to the source section. The docs introduction and metadata use AI-first positioning. A verified empty-machine-to-running-app walkthrough, newcomer explanation of the decision syntax, and executed intent-to-agent-to-result demonstration remain gaps. No runtime installation, generated application, adoption claim, or support commitment was verified in this website pass.
