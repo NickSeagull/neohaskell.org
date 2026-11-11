@@ -44,3 +44,9 @@ The owner accepted the layout (“much better now”) but requested the missing 
 ## Source excerpt, 11 November 2026
 
 The owner identified missing code snippets, accepted the checkpoint → compare → build → show workflow, and requested implementation after committing the current project. This extends the earlier animation-only homepage scope with one static source excerpt. Keep the opening unchanged. In “Your intent,” pair a plain-language Counter rule and two outcomes with the exact decision body from the published source revision. Label its provenance, link the full file, and preserve 16px code in both themes. The code frame scrolls horizontally on narrow phones with a visible cue and keyboard access. This is source evidence within the existing product section, not an interactive lesson or another animation.
+
+## Scope correction and handoff, 11 November 2026
+
+The owner clarified: “i actually meant the design of the homepage, not all of that, but okay, leave it there. I want u to check the homepages and improve the design, applying unslop too. Actually start a new agent tab in orca and we will continue there”.
+
+Keep the resource, setup, and navigation additions committed in `62acd43`. The next task compares the rendered NeoHaskell and Ruby homepages and implements visual design improvements with Unslop: spacing, hierarchy, typography, proportions, alignment, content density, and desktop/mobile composition. Preserve the established color identity, original logo, AI-first positioning, and factual source evidence. This correction supersedes the previous comparison's emphasis on documentation coverage, onboarding completeness, ecosystem maturity, and support policies; those gaps do not define this visual task. Continue in the new Orca agent tab under the existing checkpoint → compare → build → show workflow.
