@@ -20,7 +20,7 @@ Prior Haskell expertise is not an established audience requirement. Do not assum
 
 neohaskell.org introduces NeoHaskell as an **AI-first programming language**. It should help people build applications with AI agents while keeping the intended behavior understandable, changes traceable, and technical checks available. The language's framework and tooling supply a common technical structure.
 
-The homepage introduces NeoHaskell and leads visitors into documentation. It has one initial animation using the selected Event ledger visual language and an ecommerce example, followed by one short source excerpt that makes the language inspectable. Full concept explanations and learning material belong on documentation pages; the homepage does not contain an interactive explainer or step-by-step lesson.
+The homepage introduces NeoHaskell and leads visitors into documentation. It has one initial animation using the selected Event ledger visual language and an ecommerce example, followed by two static Counter sections that show the developer-defined parts of an HTTP service. Full concept explanations and learning material belong on documentation pages; the homepage does not contain an interactive explainer or step-by-step lesson.
 
 In the documentation, visitors learn commands, decisions, events, and queries before proceeding to installation, agent setup, and building with an AI agent. Keep the introduction approachable and grounded in a small online shop; do not require installation, agent access, or prior Haskell knowledge to begin learning. The eventual outcome remains building an application with an AI agent, guided by a model the visitor understands.
 
@@ -86,7 +86,9 @@ No testimonials, adoption counts, or productivity benchmarks have been verified.
 
 ## Homepage source evidence : 11 November 2026
 
-The homepage initially displayed the unchanged Counter decision body from the inspected `cacc806` revision. The owner subsequently supplied a simplified body: ignore entity and context, reject non-positive amounts, and use `cmd.counterId`. Bind the accepted event inside the `else` branch before passing it to `Decider.acceptExisting`. The example therefore demonstrates amount validation, without an existence check. The main paragraph identifies it as simplified and links the upstream basis. No caption or language badge is added. The shop diagram remains illustrative. This is a static adapted example, not an unchanged source quotation or a runtime execution. Provenance and the original Apache 2.0 license are recorded in `src/examples/README.md`.
+The homepage initially displayed the unchanged Counter decision body from the inspected `cacc806` revision. The owner subsequently supplied a simplified body: ignore entity and context, reject non-positive amounts, and use `cmd.counterId`. Bind the accepted event with a `let` statement inside `else do` before passing it to `Decider.acceptExisting`. The example therefore demonstrates amount validation, without an existence check.
+
+The owner's next request expands the example into two static sections: command, decision and event payload; then entity, update and query. Omit deriving clauses, type instances, the event sum and setup boilerplate. Main prose establishes the Counter starter's HTTP server and the existing-counter precondition, names the command and query routes, and links the source inline. The simplified query shows its projection functions without the instance wrapper. These adapted excerpts are not a complete standalone program or runtime execution. The shop diagram remains illustrative. Provenance, omitted wiring and the original Apache 2.0 license are recorded in `src/examples/README.md`.
 
 ## Resource discovery : 11 November 2026
 

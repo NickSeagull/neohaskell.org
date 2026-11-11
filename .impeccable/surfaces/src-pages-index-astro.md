@@ -2,7 +2,7 @@
 version: 1
 slug: "src-pages-index-astro"
 primary_target: "src/pages/index.astro"
-related_targets: ["src/components/EventLedger.astro","src/components/DecisionExample.astro","src/styles/home.css"]
+related_targets: ["src/components/EventLedger.astro","src/components/CounterCode.astro","src/styles/home.css"]
 ---
 
 # Homepage
@@ -87,3 +87,9 @@ The owner supplied a replacement `decide cmd _ _` example and requested the even
 This supersedes the earlier exact-upstream-excerpt requirement for this example. Describe it as a simplified Counter decision in the main prose and retain the upstream basis as an inline link. Record adaptation details in `src/examples/README.md`; do not add captions or footnotes. Keep the existing composition, highlighting, readable type, and keyboard scrolling.
 
 The owner clarified the binding syntax: always use a `do` block with a `let` statement, never a `let ... in` expression. The homepage uses `else do`, followed by the event binding and `Decider.acceptExisting [event]`. This reusable convention is recorded in `AGENTS.md`.
+
+## Counter HTTP service examples, 11 November 2026
+
+The owner requested the minimum developer-defined code for the Counter HTTP service in a couple of sections: command datatype, decision, event payload datatype, entity, update and query. Omit deriving, type instances, the event sum and other boilerplate. This supersedes the earlier single-excerpt scope while preserving the accepted decision and the restriction on auxiliary text.
+
+Checkpoint `47f35b3a26cfccf23367b1374e002b72b2b8fad6` preserves the approved decision syntax. The first section pairs the command and event payload with `decide`; the second pairs the entity and increment update with the query projection. Both start with a heading and main prose, including actual HTTP routes and inline source links. The examples cover incrementing an existing counter in the starter, with omitted wiring and adaptations recorded in `src/examples/README.md`. Code retains 16px type, native scrolling and keyboard access. There are no snippet captions, language badges, setup instructions or extra interactions. The hero and model retain their accepted design.

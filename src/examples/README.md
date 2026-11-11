@@ -1,9 +1,24 @@
-# Homepage decision example
+# Homepage Counter examples
 
-`counter-decision.hs` is an owner-requested simplification of the `decide` function from `neo/starter/src/Starter/Counter/Commands/IncrementCounter.hs` in [NeoHaskell revision cacc8069070721539ae0aac53286ce9492e906a5](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter/src/Starter/Counter/Commands/IncrementCounter.hs#L30-L43), checked 11 November 2026.
+The six snippets are owner-requested simplifications of the [Counter starter at NeoHaskell revision cacc8069070721539ae0aac53286ce9492e906a5](https://github.com/neohaskell/NeoHaskell/tree/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter), checked 11 November 2026. They show the increment flow for an existing counter inside that starter's HTTP service.
+
+Paths below are relative to `neo/starter/src/Starter/Counter/` at that revision.
+
+| Homepage file | Upstream basis | Adaptation |
+| --- | --- | --- |
+| `counter-command.hs` | `Commands/IncrementCounter.hs` | Rename the command's `entityId` field to the owner-approved `counterId`; omit deriving, instances, entity routing and registration. |
+| `counter-decision.hs` | `Commands/IncrementCounter.hs` | Use the owner-supplied decision described below. |
+| `counter-event.hs` | `Events/CounterIncremented.hs` | Preserve the payload's `Event` datatype and fields; omit deriving and the separate `CounterEvent` sum. |
+| `counter-entity.hs` | `Core.hs` | Show only the identity and value fields, omitting the unrelated label. |
+| `counter-update.hs` | `Entity.hs` | Show only the increment case as a function pattern; rename the local values to `event` and `counter`. Creation and decrement cases are outside this increment example. |
+| `counter-query.hs` | `Queries/CounterView.hs` | Show the view datatype and its `queryId` and `combine` definitions. Omit the label field, access functions, derivation and `QueryOf` instance wrapper. |
 
 The owner supplied the revised body on 11 November 2026: ignore the entity and context arguments, reject non-positive amounts, and use `cmd.counterId` for the event. The accepted event is bound with a `let` statement inside `else do`, then passed to `Decider.acceptExisting`. Follow the repository convention of `do` blocks with `let` statements instead of `let ... in` expressions. The example no longer checks whether the counter exists.
 
-The homepage describes this as a simplified decision and links its upstream basis inline in the main paragraph. Astro provides build-time syntax highlighting. There are no captions or metadata bars. This is a static example, not an unchanged upstream quotation, standalone program, or interactive execution. It has not been compiled against the NeoHaskell runtime in this website task.
+The omitted command routing must read `cmd.counterId` to match the renamed field. The event payload remains `CounterIncremented.Event` inside the separate `CounterIncremented` sum constructor, whose declaration the owner explicitly asked to omit. The omitted query instance associates `CounterEntity` with `CounterView`. The starter supplies the create-counter flow, initial state, module imports, registrations, access configuration and HTTP server in `src/App.hs` and `Feature.hs`.
+
+The starter's `tests/integration/counter-flow.hurl` exercises `POST /commands/increment-counter` and `GET /queries/counter-view`. The latter returns a paginated collection of projected views. The homepage names these routes in its main prose and links the upstream starter and query source inline. It does not show an invented response envelope or claim that an increment creates a counter.
+
+Astro provides build-time syntax highlighting. There are no captions or metadata bars. These static, adapted snippets omit wiring and are not a standalone program or interactive execution. They have not been compiled against the NeoHaskell runtime in this website task.
 
 The original repository distributes this source under Apache License 2.0; a copy ships at [`public/licenses/neohaskell-apache-2.0.txt`](../../public/licenses/neohaskell-apache-2.0.txt). Preserve the source link, license, and this provenance when changing or replacing the excerpt.
