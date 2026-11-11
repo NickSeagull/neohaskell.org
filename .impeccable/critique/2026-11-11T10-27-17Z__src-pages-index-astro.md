@@ -10,6 +10,7 @@ target_fingerprint: "sha256:938a22ffeb487c525e65317635002174b08f19c506b720f7876b
 target_path: /Users/nick/Work/neohaskell.org/src/pages/index.astro
 timestamp: 2026-11-11T10-27-17Z
 slug: src-pages-index-astro
+closed: true
 ---
 Method: dual-agent (A: ruby_comparison_fresh · B: ruby_comparison_evidence)
 

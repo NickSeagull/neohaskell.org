@@ -1,5 +1,6 @@
 ---
 import EventLedger from '../components/EventLedger.astro';
+import DecisionExample from '../components/DecisionExample.astro';
 import Arrow from '../components/Arrow.astro';
 import VisitorContext from '../components/VisitorContext.astro';
 import '../styles/home.css';
@@ -52,8 +53,19 @@ import '../styles/home.css';
           <div class="hero-action"><a href="/learn/" class="primary-link">Learn the concepts<Arrow /></a><span class="action-context">Start with the model.<br />No installation needed.</span></div>
           <EventLedger />
         </section>
-        <section class="product-section" aria-labelledby="product-title">
-          <div class="product-intro"><h2 id="product-title">Your intent.<br /><span>Visible in the software.</span></h2><p>Describe what a change should do, what it should refuse, and what people need to see. Give your agent that model to build from, then use it to review the result.</p></div>
+        <section class="product-section" id="see-the-code" aria-labelledby="product-title">
+          <div class="product-intro">
+            <div class="product-story">
+              <h2 id="product-title">Your intent.<br /><span>Visible in the software.</span></h2>
+              <p>Give your agent the behavior you want. Then review the code against that intent.</p>
+              <p>In the Counter starter, the rule is simple: <strong>only increase an existing counter by a positive amount.</strong></p>
+              <dl class="decision-outcomes">
+                <div><dt>Missing counter or amount ≤ 0</dt><dd>Reject the command.</dd></div>
+                <div><dt>Existing counter, positive amount</dt><dd>Accept a <code>CounterIncremented</code> event.</dd></div>
+              </dl>
+            </div>
+            <DecisionExample />
+          </div>
           <div class="product-details">
             <div><h3>Make the rules explicit.</h3><p>A decision accepts or rejects a command before events are recorded. Your rules have a place to live, and tests can check the cases you care about.</p><a class="source-link" href="https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter/tests/Decider/Counter/IncrementCounterSpec.hs">Read the acceptance and rejection tests<Arrow /></a></div>
             <div><h3>Keep the story behind the state.</h3><p>Build current answers from recorded events. When a value changes, follow the history your app captures to understand how it became today’s state.</p><a class="source-link" href="https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter/tests/Property/CounterReplaySpec.hs">See the history replay test<Arrow /></a></div>

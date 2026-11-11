@@ -2,7 +2,7 @@
 version: 1
 slug: "src-pages-index-astro"
 primary_target: "src/pages/index.astro"
-related_targets: ["src/components/EventLedger.astro","src/styles/home.css"]
+related_targets: ["src/components/EventLedger.astro","src/components/DecisionExample.astro","src/styles/home.css"]
 ---
 
 # Homepage
@@ -40,3 +40,7 @@ The owner authorized implementing the Ruby comparison recommendations and choosi
 ## Positioning correction, 10 November 2026
 
 The owner accepted the layout (“much better now”) but requested the missing evidence and said: “I do not want to sell NeoHaskell as a dialect of Haskell, but rather to be an AI-first language.” Preserve the accepted design while making that identity explicit in the hero and metadata. The opening promise is “Build with AI. Know what you build.” Product benefits carry direct links to decision and replay tests. A separate evidence section presents the published agent workflow and application starter; dated, artifact-specific releases support the development section. Source inspection supports available artifacts, not executed benchmarks or production claims. `PRODUCT.md` records the checked sources and limits; `$neohaskell-positioning` owns the reusable principles.
+
+## Source excerpt, 11 November 2026
+
+The owner identified missing code snippets, accepted the checkpoint → compare → build → show workflow, and requested implementation after committing the current project. This extends the earlier animation-only homepage scope with one static source excerpt. Keep the opening unchanged. In “Your intent,” pair a plain-language Counter rule and two outcomes with the exact decision body from the published source revision. Label its provenance, link the full file, and preserve 16px code in both themes. The code frame scrolls horizontally on narrow phones with a visible cue and keyboard access. This is source evidence within the existing product section, not an interactive lesson or another animation.

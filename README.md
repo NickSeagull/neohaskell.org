@@ -17,6 +17,7 @@ npm run dev
 
 - `src/pages/index.astro`: homepage, navigation, and theme control.
 - `src/components/EventLedger.astro`: one 3.8-second ecommerce animation; reduced motion and no JavaScript show the completed model.
+- `src/components/DecisionExample.astro` and `src/examples/`: a real Counter decision excerpt with build-time highlighting, source attribution, and readable native scrolling on phones.
 - `src/styles/home.css`: selected workshop identity in both themes.
 - `src/content/docs/`: MDX guides for core concepts and installation/agent setup.
 - `src/scripts/attribution.ts`: optional, screened five-field UTM context; same-origin navigation only, per-tab storage with a 30-minute expiry. No analytics service or durable backend events.

@@ -1,0 +1,14 @@
+---
+import { Code } from 'astro:components';
+import Arrow from './Arrow.astro';
+import decision from '../examples/counter-decision.hs?raw';
+
+const source = 'https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter/src/Starter/Counter/Commands/IncrementCounter.hs#L30-L43';
+---
+
+<figure class="decision-example" aria-labelledby="decision-caption">
+  <figcaption id="decision-caption">A decision from the Counter starter</figcaption>
+  <p class="code-scroll-hint" id="code-scroll-hint">Scroll sideways to read the full lines.</p>
+  <Code code={decision.trimEnd()} lang="haskell" theme="css-variables" class="decision-code" tabindex="0" role="region" aria-label="Counter decision source code" />
+  <div class="code-source"><span>Function body · NeoHaskell</span><a href={source}>View full source<Arrow /></a></div>
+</figure>

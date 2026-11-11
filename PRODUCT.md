@@ -20,7 +20,7 @@ Prior Haskell expertise is not an established audience requirement. Do not assum
 
 neohaskell.org introduces NeoHaskell as an **AI-first programming language**. It should help people build applications with AI agents while keeping the intended behavior understandable, changes traceable, and technical checks available. The language's framework and tooling supply a common technical structure.
 
-The homepage introduces NeoHaskell and leads visitors into documentation. It has one initial animation using the selected Event ledger visual language and an ecommerce example. Concept explanations and learning material belong on documentation pages; the homepage does not contain an interactive explainer or step-by-step lesson.
+The homepage introduces NeoHaskell and leads visitors into documentation. It has one initial animation using the selected Event ledger visual language and an ecommerce example, followed by one short source excerpt that makes the language inspectable. Full concept explanations and learning material belong on documentation pages; the homepage does not contain an interactive explainer or step-by-step lesson.
 
 In the documentation, visitors learn commands, decisions, events, and queries before proceeding to installation, agent setup, and building with an AI agent. Keep the introduction approachable and grounded in a small online shop; do not require installation, agent access, or prior Haskell knowledge to begin learning. The eventual outcome remains building an application with an AI agent, guided by a model the visitor understands.
 
@@ -83,3 +83,7 @@ Primary sources checked on 2026-11-10:
 - [Neo CLI and framework 0.17.1](https://github.com/neohaskell/NeoHaskell/releases/tag/neo-v0.17.1), published 2026-11-06, confirms a dated release and links its change. GitHub's release API reports it as published, non-draft, and not a prerelease. It is distinct from the agent-skills version and is not a production-readiness assertion.
 
 No testimonials, adoption counts, or productivity benchmarks have been verified. Keep proof specific to the capability and artifact it supports.
+
+## Homepage source evidence — 11 November 2026
+
+Following the Ruby comparison, the owner requested a checkpoint commit and implementation. The homepage now displays the unchanged 14-line Counter decision body from the inspected `cacc806` revision, with its rule and accepted/rejected outcomes in plain language. It is labeled as a function-body excerpt from the Counter starter, distinct from the illustrative shop diagram. Imports, types, and registration remain in the linked full source. The example is static source evidence; it is not a live execution or a claim that its upstream tests ran here. Source provenance and the distributed Apache 2.0 license are recorded in `src/examples/README.md`.

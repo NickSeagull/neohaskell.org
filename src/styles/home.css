@@ -87,7 +87,22 @@ h1 { font-family: Sansation, Manrope, sans-serif; font-size: clamp(60px, 6.32vw,
 .product-intro, .product-details, .evidence-section, .community-section { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--section-grid-gap); align-items: start; }
 h2 { font-family: Sansation, Manrope, sans-serif; font-size: clamp(38px, 3.85vw, 58px); font-weight: 400; line-height: 1.12; letter-spacing: -.03em; text-wrap: balance; }
 h2 span { color: var(--muted); }
-.product-intro > p { font-size: 21px; line-height: 1.65; color: var(--muted); max-width: 46ch; padding-top: 4px; }
+.product-story > p { color: var(--muted); max-width: 46ch; margin-top: 24px; }
+.product-story strong { color: var(--ink); font-weight: 600; }
+.decision-outcomes { margin: 24px 0 0; font-size: 16px; line-height: 1.6; }
+.decision-outcomes > div + div { margin-top: 16px; }
+.decision-outcomes dt { color: var(--muted); }
+.decision-outcomes dd { margin: 4px 0 0; }
+.decision-outcomes code { font-size: 16px; overflow-wrap: anywhere; }
+.decision-example { min-width: 0; border: 1px solid var(--line); border-radius: 12px; background: var(--hover); overflow: hidden; }
+.decision-example figcaption { padding: 20px 24px; border-bottom: 1px solid var(--line); font-size: 16px; font-weight: 600; }
+.decision-code { --astro-code-foreground: var(--ink); --astro-code-background: var(--hover); --astro-code-token-comment: var(--muted); --astro-code-token-keyword: var(--violet); --astro-code-token-string: var(--accent); --astro-code-token-constant: var(--ink); --astro-code-token-function: var(--accent); --astro-code-token-parameter: var(--ink); --astro-code-token-punctuation: var(--muted); --astro-code-token-string-expression: var(--accent); --astro-code-token-link: var(--accent); margin: 0; padding: 24px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 16px; line-height: 1.6; tab-size: 2; scrollbar-width: thin; }
+.decision-code code { font-family: inherit; }
+.decision-code:focus-visible { outline-offset: -3px; }
+.code-scroll-hint { display: none; color: var(--muted); font-size: 16px; padding: 16px 20px 0; }
+.code-source { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; border-top: 1px solid var(--line); padding: 12px 24px; font-size: 16px; color: var(--muted); }
+.code-source a { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; color: var(--accent); }
+.code-source svg { width: 20px; height: 20px; }
 .product-details { margin: 48px 0 24px; }
 .product-details h3, .evidence-items h3 { font-size: 23px; font-weight: 600; letter-spacing: -.025em; margin-bottom: 12px; line-height: 1.4; }
 .product-details p, .evidence-items p { color: var(--muted); max-width: 48ch; }
@@ -119,9 +134,9 @@ h2 span { color: var(--muted); }
 
 @media (max-width: 1200px) {
   :root { --section-grid-gap: 40px; }
+  .product-intro { grid-template-columns: 1fr; }
   .node-label, .node-detail, .event-index { font-size: 24px; }
   .event-name { font-size: 28px; }
-  .product-intro > p { font-size: 20px; }
   .footer-identity { display: block; }
   .footer-identity > span { display: block; }
 }
@@ -170,7 +185,9 @@ h2 span { color: var(--muted); }
   .product-section { margin-top: 32px; padding-top: 32px; }
   .product-intro, .product-details, .evidence-section, .community-section { grid-template-columns: 1fr; }
   h2 { font-size: clamp(34px, 6vw, 42px); }
-  .product-intro > p { padding: 0; font-size: 19px; }
+  .decision-example figcaption { padding: 16px 20px; }
+  .decision-code { padding: 20px; }
+  .code-source { padding: 12px 20px; }
   .product-details { margin-top: 32px; gap: 32px; }
   .product-details h3, .evidence-items h3 { font-size: 22px; }
   .product-details p { font-size: 18px; }
@@ -182,6 +199,9 @@ h2 span { color: var(--muted); }
   .site-footer { display: block; padding-block: 24px; }
   .footer-identity { display: block; }
   .site-footer nav { gap: 24px; flex-wrap: wrap; margin-top: 16px; }
+}
+@media (max-width: 600px) {
+  .code-scroll-hint { display: block; }
 }
 @media (max-width: 390px) {
   .site-shell { padding-inline: 18px; }
