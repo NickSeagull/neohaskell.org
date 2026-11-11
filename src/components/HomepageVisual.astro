@@ -1,0 +1,45 @@
+---
+import FeatureIcon from './FeatureIcon.astro';
+interface Props { kind: 'application' | 'history' | 'pure' | 'transport'; }
+const { kind } = Astro.props;
+---
+{kind === 'application' && (
+  <figure class="application-scene" aria-label="Web applications and AI agents share the same NeoHaskell business rules and event history, connected to storage and services">
+    <div class="app-entrances"><span><FeatureIcon name="web" />Web &amp; mobile</span><span><FeatureIcon name="agent" />AI agents</span></div>
+    <div class="app-inlets" aria-hidden="true"><i></i><i></i></div>
+    <div class="application-core">
+      <div class="app-brand"><img src="/logo.svg" alt="" width="44" height="44" /><span>NeoHaskell</span></div>
+      <div class="app-rule"><span>Your business rules</span><FeatureIcon name="shield" /></div>
+      <div class="app-records"><span>Every change recorded</span><div class="record-slips"><div>Order placed</div><div>Payment received</div><div>Order shipped<FeatureIcon name="check" /></div></div></div>
+    </div>
+    <div class="app-outlets" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="app-services"><span><FeatureIcon name="database" />Database</span><span><FeatureIcon name="upload" />Files</span><span><FeatureIcon name="branch" />APIs</span></div>
+  </figure>
+)}
+{kind === 'history' && (
+  <figure class="history-scene" aria-label="Example shop history: twelve mugs added, one ordered, then the order cancelled. All three events remain recorded and the stock returns to twelve mugs.">
+    <div class="history-ledger">
+      <div class="history-entry"><span class="history-point" aria-hidden="true"></span><span>Stock added</span><span class="history-amount">+12</span></div>
+      <div class="history-entry"><span class="history-point" aria-hidden="true"></span><span>Order placed</span><span class="history-amount">-1</span></div>
+      <div class="history-entry history-correction"><span class="history-point" aria-hidden="true"></span><span>Order cancelled</span><span class="history-amount">+1</span></div>
+    </div>
+    <div class="history-result"><svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M9 11h23v22a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5V11Zm23 4h4a6 6 0 0 1 0 12h-4M15 4v2m6-2v2m6-2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg><div><strong>12</strong><span>mugs available</span></div></div>
+  </figure>
+)}
+{kind === 'pure' && (
+  <figure class="pure-scene" aria-label="Pure business decisions are isolated from database, network and file effects, which the framework handles separately">
+    <div class="pure-boundary">
+      <div class="pure-input"><span>Same input</span><svg width="32" height="20" viewBox="0 0 32 20" fill="none" aria-hidden="true"><path d="M0 10h28m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" /></svg></div>
+      <div class="pure-decision"><svg class="decision-outline" viewBox="0 0 140 140" fill="none" aria-hidden="true"><path d="m70 2 68 68-68 68L2 70 70 2Z" /></svg><FeatureIcon name="shield" /><span>Pure<br />decisions</span></div>
+      <div class="pure-output"><svg width="32" height="20" viewBox="0 0 32 20" fill="none" aria-hidden="true"><path d="M0 10h28m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" /></svg><span>Same result</span></div>
+    </div>
+    <div class="effect-ports"><span><FeatureIcon name="database" />Database</span><span><FeatureIcon name="web" />Network</span><span><FeatureIcon name="upload" />Files</span></div>
+  </figure>
+)}
+{kind === 'transport' && (
+  <figure class="transport-scene" aria-label="HTTP for web and mobile clients and MCP for AI tools connect to the same application logic">
+    <div class="transport-core"><img src="/logo.svg" width="32" height="32" alt="" /><span>Your application</span></div>
+    <svg class="transport-routes" viewBox="0 0 440 72" fill="none" preserveAspectRatio="none" aria-hidden="true"><path class="route-alternative" d="M220 20h112q12 0 12 12v40" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 5"/><path d="M220 0v20H108q-12 0-12 12v40" stroke="currentColor" stroke-width="1.5" /><circle cx="220" cy="20" r="4" fill="currentColor" /></svg>
+    <div class="transport-ports"><div class="port-active"><FeatureIcon name="web" /><strong>HTTP</strong><span>Web &amp; mobile</span></div><div class="port-alternative"><FeatureIcon name="branch" /><strong>MCP</strong><span>AI tools</span></div></div>
+  </figure>
+)}

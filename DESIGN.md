@@ -1,10 +1,9 @@
 ---
 name: "NeoHaskell"
-description: "An open developer workshop with explicit behavior, lasting event history, and clear current answers."
+description: "A violet developer workshop with clear application boundaries, lasting records, and native product illustrations."
 colors:
   record: "#7816a9"
   record-ink: "#fff"
-  record-muted: "#e9d1f6"
   record-accent: "#7df9ff"
   dark-ground: "#1c062d"
   dark-ink: "#fcf9ff"
@@ -13,8 +12,9 @@ colors:
   dark-accent: "#7df9ff"
   dark-accent-ink: "#1c062d"
   dark-violet: "#c989e7"
-  dark-model-active: "#7df9ff"
   dark-hover: "#2c173c"
+  dark-field: "#301244"
+  dark-scene: "#250c37"
   light-ground: "#fafafc"
   light-ink: "#20132b"
   light-muted: "#5c416f"
@@ -22,8 +22,9 @@ colors:
   light-accent: "#8a16ba"
   light-accent-ink: "#fff"
   light-violet: "#9723c9"
-  light-model-active: "#007580"
   light-hover: "#f0e4f7"
+  light-field: "#eee2f5"
+  light-scene: "#f7f0fb"
   docs-dark-accent-low: "#30203f"
   docs-dark-accent: "#7df9ff"
   docs-dark-accent-high: "#a7faff"
@@ -60,22 +61,57 @@ colors:
 typography:
   display:
     fontFamily: "Sansation, Manrope, sans-serif"
-    fontSize: "clamp(60px, 6.8vw, 96px)"
+    fontSize: "clamp(56px, 5.55vw, 80px)"
     fontWeight: 400
-    lineHeight: 1.03
+    lineHeight: 1.06
     letterSpacing: "-.035em"
+  display-compact:
+    fontFamily: "Sansation, Manrope, sans-serif"
+    fontSize: "clamp(48px, 6vw, 60px)"
+    fontWeight: 400
+    lineHeight: 1.06
+  display-mobile:
+    fontFamily: "Sansation, Manrope, sans-serif"
+    fontSize: "clamp(48px, 11.8vw, 72px)"
+    fontWeight: 400
+    lineHeight: 1.06
   headline:
     fontFamily: "Sansation, Manrope, sans-serif"
-    fontSize: "clamp(36px, 3.4vw, 48px)"
+    fontSize: "clamp(36px, 3.7vw, 52px)"
     fontWeight: 400
     lineHeight: 1.12
-    letterSpacing: "-.03em"
+    letterSpacing: "-.035em"
+  headline-history:
+    fontFamily: "Sansation, Manrope, sans-serif"
+    fontSize: "clamp(40px, 4vw, 56px)"
+    fontWeight: 400
+    lineHeight: 1.12
+  headline-benefit:
+    fontFamily: "Sansation, Manrope, sans-serif"
+    fontSize: "clamp(32px, 3.1vw, 44px)"
+    fontWeight: 400
+    lineHeight: 1.12
+  headline-benefit-compact:
+    fontFamily: "Sansation, Manrope, sans-serif"
+    fontSize: "34px"
+    fontWeight: 400
+    lineHeight: 1.12
+  headline-panel-mobile:
+    fontFamily: "Sansation, Manrope, sans-serif"
+    fontSize: "42px"
+    fontWeight: 400
+    lineHeight: 1.12
+  headline-closing:
+    fontFamily: "Sansation, Manrope, sans-serif"
+    fontSize: "clamp(40px, 4.5vw, 64px)"
+    fontWeight: 400
+    lineHeight: 1.12
   title:
     fontFamily: "Manrope, sans-serif"
-    fontSize: "24px"
-    fontWeight: 500
-    lineHeight: 1.4
-    letterSpacing: "-.015em"
+    fontSize: "21px"
+    fontWeight: 600
+    lineHeight: 1.35
+    letterSpacing: "-.02em"
   body:
     fontFamily: "Manrope, sans-serif"
     fontSize: "18px"
@@ -83,28 +119,53 @@ typography:
     lineHeight: 1.65
   lead:
     fontFamily: "Manrope, sans-serif"
-    fontSize: "22px"
+    fontSize: "20px"
     fontWeight: 400
-    lineHeight: 1.6
+    lineHeight: 1.65
+  compact-body:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "17px"
+    fontWeight: 400
+    lineHeight: 1.7
+  label:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "16px"
+    fontWeight: 400
   action:
     fontFamily: "Manrope, sans-serif"
     fontSize: "18px"
     fontWeight: 500
     lineHeight: 1.5
-  diagram-label:
-    fontFamily: "Manrope, sans-serif"
-    fontSize: "20px"
-    fontWeight: 500
-    letterSpacing: "0"
-  event-name:
-    fontFamily: "ui-monospace, SFMono-Regular, Consolas, monospace"
-    fontSize: "26px"
+  application-name:
+    fontFamily: "Sansation, sans-serif"
+    fontSize: "32px"
     fontWeight: 400
-    letterSpacing: "0"
-  query-value:
+  application-name-compact:
+    fontFamily: "Sansation, sans-serif"
+    fontSize: "28px"
+    fontWeight: 400
+  brand:
     fontFamily: "Manrope, sans-serif"
-    fontSize: "55px"
+    fontSize: "29px"
     fontWeight: 500
+    letterSpacing: "-.035em"
+  brand-compact:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "26px"
+    fontWeight: 500
+  brand-mobile:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "23px"
+    fontWeight: 500
+  transport-name:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "24px"
+    fontWeight: 500
+  query-value:
+    fontFamily: "Sansation, sans-serif"
+    fontSize: "60px"
+    fontWeight: 400
+    lineHeight: 1
   pixel-accent:
     fontFamily: "Pixelify, monospace"
     fontWeight: 400
@@ -145,17 +206,22 @@ typography:
     lineHeight: 1.5
 rounded:
   focus: "2px"
-  control: "6px"
+  record-slip: "4px"
+  control: "8px"
   action: "8px"
+  boundary: "12px"
+  panel: "16px"
   docs-inline-code: "4px"
   docs-code-frame: ".65rem"
 spacing:
-  page-gutter: "clamp(20px, 4.5vw, 70px)"
+  page-gutter: "clamp(24px, 4.5vw, 72px)"
   page-gutter-mobile: "24px"
   page-gutter-small: "20px"
   inline-small: "12px"
-  section-start: "64px"
+  scene-padding: "28px"
+  panel-padding: "64px"
   column-gap: "64px"
+  section-start: "80px"
   section-space: "96px"
   section-space-mobile: "64px"
   docs-page-gutter: "clamp(1.25rem, 4vw, 4rem)"
@@ -188,23 +254,35 @@ components:
     textColor: "{colors.dark-ink}"
   navigation:
     textColor: "{colors.dark-ink}"
-  event-model:
-    backgroundColor: "transparent"
+    typography: "{typography.label}"
+  application-core:
+    backgroundColor: "{colors.dark-scene}"
     textColor: "{colors.dark-ink}"
-    padding: "16px 0"
-  event-model-light:
-    backgroundColor: "transparent"
-    textColor: "{colors.light-ink}"
-    padding: "16px 0"
+    rounded: "{rounded.panel}"
+    padding: "{spacing.scene-padding}"
+  history-panel:
+    backgroundColor: "{colors.dark-field}"
+    textColor: "{colors.dark-ink}"
+    rounded: "{rounded.panel}"
+    padding: "{spacing.panel-padding}"
   recorded-event:
     backgroundColor: "{colors.record}"
     textColor: "{colors.record-ink}"
-  query:
-    backgroundColor: "{colors.dark-hover}"
+    rounded: "{rounded.control}"
+  pure-boundary:
+    backgroundColor: "{colors.dark-scene}"
     textColor: "{colors.dark-ink}"
-  query-light:
-    backgroundColor: "{colors.light-hover}"
-    textColor: "{colors.light-ink}"
+    rounded: "{rounded.boundary}"
+    padding: "28px 16px"
+  transport-port:
+    backgroundColor: "{colors.dark-scene}"
+    textColor: "{colors.dark-ink}"
+    rounded: "{rounded.control}"
+    padding: "20px 12px"
+  agent-intent:
+    backgroundColor: "{colors.dark-field}"
+    textColor: "{colors.dark-ink}"
+    padding: "20px 24px"
   docs-table:
     typography: "{typography.docs-table}"
     width: "100%"
@@ -226,128 +304,132 @@ components:
 
 **Creative North Star: "The Developer Workshop"**
 
-NeoHaskell makes application behavior visible through open geometric lettering, precise construction lines, and distinct model shapes. The original name and logo anchor the identity. Deep violet with electric cyan gives the dark theme its energy; the light theme uses a cool daylight ground and violet ink.
+NeoHaskell makes application boundaries and lasting records visible through open geometric lettering, precise construction lines, and native illustrations. The original name and logo anchor the identity. Deep violet with electric cyan gives the dark theme its energy; the light theme uses a cool daylight ground and violet ink.
 
-The system is spacious and direct. Large headings establish intent; Manrope carries the explanatory work; pixel lettering supplies a small expressive accent. Tonal fields and ruled boundaries organize information. The same identity becomes quieter in documentation: a conventional guide pairs topic navigation, a wide article, and a local contents outline. Manrope prose, restrained code frames, and comparison tables carry the explanation. Starlight supplies the title, navigation, search, theme control, and mobile menu.
+The system is spacious and direct. Large headings establish intent; Manrope carries the explanatory work; pixel lettering supplies one expressive accent. Tonal panels and distinct diagram geometry give the homepage a varied reading rhythm. The same identity becomes quieter in documentation: a conventional guide pairs topic navigation, a wide article, and a local contents outline. Manrope prose, restrained code frames, and comparison tables carry the explanation. Starlight supplies the title, navigation, search, theme control, and mobile menu.
 
 **Key Characteristics:**
 
-- Original NeoHaskell identity within a fresh workshop palette.
+- Original NeoHaskell logo, violet and cyan palette, and established type families.
 - Open display typography with a focused pixel accent.
-- Fine construction lines and separate command, decision, event-history, and query shapes.
-- Flat tonal fields, readable themes, and motion that reaches a stable result.
-- Continuous reading with native navigation, inline examples, and comparison tables.
+- Layered application outlines, permanent event slips, and distinct business boundaries.
+- Flat tonal fields, readable themes, and complete static illustrations.
+- Continuous documentation reading with native navigation, inline examples, and comparison tables.
 
-This record describes the implemented homepage and conventional MDX documentation. Source authority is `src/styles/home.css`, `src/components/EventLedger.astro`, `src/styles/docs.css`, the two articles in `src/content/docs/`, and `astro.config.mjs`. The documentation contract remains at `.impeccable/surfaces/src-components-learn-guidedlesson-astro.md`; its stable filename now targets the MDX article. The homepage composition and one-time sequence belong to `.impeccable/surfaces/src-pages-index-astro.md`, not every surface. Earlier lesson components are no longer imported by these routes and are not current documentation canon.
+Source authority is `src/styles/home.css`, `src/pages/index.astro`, `src/components/HomepageVisual.astro`, `src/components/FeatureIcon.astro`, `src/styles/docs.css`, the articles in `src/content/docs/`, and `astro.config.mjs`. The documentation contract remains at `.impeccable/surfaces/src-components-learn-guidedlesson-astro.md`; its stable filename targets the MDX article. Homepage composition belongs to `.impeccable/surfaces/src-pages-index-astro.md`.
+
+The owner's full homepage redesign on 11 November 2026 supersedes the old active full-width event model, homepage source examples, and single opening animation. The current page leads with benefits and uses static HTML and SVG illustrations. Historical decisions after the canonical sections below remain a record of earlier states. They do not override the current homepage contract or change documentation design.
 
 ## Colors
 
-The palette is violet throughout, with different action and reading emphasis in each theme. Frontmatter names pair the source CSS variable with its theme: `dark-ground` maps to `--ground` in the dark root; `light-ground` maps to the light override. `docs-*` keys map to Starlight’s `--sl-color-*` overrides.
+The palette is violet throughout, with different action and reading emphasis in each theme. Frontmatter names pair the source CSS variable with its theme: `dark-ground` maps to `--ground` in the dark root; `light-ground` maps to the light override. `docs-*` keys map to Starlight's `--sl-color-*` overrides.
 
 ### Primary
 
-Use **Action accent** for the light-theme primary action, main onward text actions, focus, and selected text. The dark-theme primary action uses page ink on page ground; secondary source links use supporting ink with persistent underlines and reveal the accent on hover. Its paired **Action ink** supplies the foreground. Documentation uses its own **accent-low**, **accent**, and **accent-high** roles so links and selected navigation remain part of Starlight’s reading hierarchy.
+Use **Action accent** for the light primary action, onward links, keyboard focus, and active transport. The dark primary action uses page ink on page ground. Its paired **Action ink** supplies the foreground. Inline source links and the secondary hero action use supporting ink with persistent underlines. Documentation retains its own **accent-low**, **accent**, and **accent-high** reading roles.
 
 ### Secondary
 
-Use **Pixel violet** for the display accent. The model sits directly on the page. **Recorded event** violet and its white ink identify the lasting fact; the query uses the existing hover ground and **Model active accent** for its value and outline. This accent has its own light-theme teal. Connectors use supporting ink.
+Use **Pixel violet** for the selected display word, feature icons, and pure-decision boundary. **Recorded event** violet, white ink, and cyan detail identify the highlighted lasting fact in both themes. The history answer and active transport use the theme's action accent. The alternate transport uses a muted dashed route and frame, so its distinction does not depend on color alone.
 
 ### Neutral
 
-Use **Page ink**, **Supporting ink**, **Construction line**, and **Control hover** on the page ground. The model shares these page roles. Only the recorded event has a separate violet surface, white ink, pale supporting ink, and cyan check mark. Starlight’s gray roles handle reading text, borders, and nested surfaces; its `white` and `black` names are semantic aliases and reverse visually in light mode.
+Use **Page ink**, **Supporting ink**, **Construction line**, and **Control hover** on page ground. **Section field** (`--field`) groups the history and closing panels and the agent's intent. **Illustration scene** (`--scene`) fills the layered application and pure boundary. These paired surfaces add depth within the existing palette. Page rules mix the construction line at 48% opacity; meaningful illustration boundaries retain the full line color.
 
-Documentation has its own paired reading grounds and gray ramp. Dark articles use violet ground with cyan links; light articles use a near-white ground with violet links. The docs surface fills table headings, and the docs line supplies table and pagination separators. These roles preserve the homepage palette without reusing its stronger model field.
+Documentation has its own paired reading grounds and gray ramp. Dark articles use violet ground with cyan links; light articles use a near-white ground with violet links. The docs surface fills table headings, and the docs line supplies table and pagination separators. Starlight's `white` and `black` names remain semantic aliases that reverse visually in light mode.
 
-**The Theme Pair Rule.** Apply dark and light roles as matched sets. The page action and the model active accent are separate roles: the light model uses readable teal while the light page action remains violet.
+**The Theme Pair Rule.** Apply each theme's page, field, scene, and action roles together. Recorded facts retain their violet surface, white text, and cyan detail in both themes.
 
-The sidecar’s eight-step tonal ramps are generated swatch previews. They are not additional implementation colors; the frontmatter records the actual source values.
+The sidecar's eight-step tonal ramps are generated swatch previews. They are not additional implementation colors; the frontmatter records the actual source values.
 
 ## Typography
 
-**Display Font:** Sansation, with Manrope and sans-serif fallbacks. **Body Font:** Manrope, with sans-serif fallback. **Accent Font:** Pixelify, with monospace fallback. **Event Font:** the native monospace stack recorded in `event-name`.
+**Display Font:** Sansation, with Manrope and sans-serif fallbacks. **Body Font:** Manrope, with sans-serif fallback. **Accent Font:** Pixelify, with monospace fallback.
 
-All three authored families are self-hosted WOFF2 files with `font-display: swap`. Sansation’s light visual weight gives broad headings space; Manrope handles body copy and navigation. Pixelify appears on the hero’s “build” word, while event identifiers retain code-like clarity.
+All three authored families are self-hosted WOFF2 files with `font-display: swap`. Sansation gives headings an open geometric voice. Manrope handles explanations, navigation, and ordinary-language illustration labels. Pixelify appears only on the hero's "control." word. Homepage illustrations contain no source syntax.
 
 ### Hierarchy
 
 | Role | Use and responsive behavior |
 | --- | --- |
-| Display | Homepage title; `clamp(40px, 11.5vw, 64px)` with line height `1.08` below 760px. The final phrase “you build” stays together on mobile rather than leaving “build” isolated. |
-| Headline | Product heading; `clamp(34px, 6vw, 42px)` below 760px and 32px below 390px. Tools use a 40px heading, 34px on phones; the community heading uses 48px, 34px on phones. |
-| Title / body | Supporting headings use 24px desktop / 22px mobile at weight 500; reading text remains 18px in both layouts. |
-| Lead / action | Mobile lead and primary action use 18px. Lead line height is `1.65`. |
-| Diagram label / event / query | Semantic labels, recorded event identifiers, and the numeric answer. SVG values are viewBox units: desktop query value is 55, compact 50; event identifier is 26, rising to 28 in the compact desktop strip. |
+| Display | Two-line hero promise. At 1200px and below it is 64px; below 1000px it uses the compact role; below 760px it uses the mobile role; at 390px and below it is 48px. |
+| Headline | Main section headings use the default role. History, paired benefits, and closing panels have their own documented scales. Benefits become 34px at 1000px and 36px on phones. History and closing become 42px on phones; closing becomes 36px at 390px. |
+| Title / body / lead | Capability and workflow headings use 21px at weight 600. Main prose stays 18px. The hero lead becomes 18px below 1000px. Capability and workflow prose use 17px; capability line height is 1.7 and workflow inherits 1.65. |
+| Labels and application names | Illustration labels stay at least 16px. The application name reduces from 32px to 28px below 1000px. Transport names use 24px. The masthead brand steps through 29, 26, 23, and 21px. |
+| Query value | The current stock uses tabular figures at 60px, 48px below 1000px, and 52px on phones. Event amounts also use tabular figures. |
 
-The hero explanation has a 46ch maximum, reduced to 40ch on mobile. Supporting product copy uses 43–48ch measures. Documentation uses the `docs-title`, `docs-heading`, `docs-subheading`, `docs-body`, and `docs-lead` roles. Prose and list text use 18px type with 1.8 line height; code and tables use 16px. The native code font remains Starlight/Expressive Code’s monospace font. Below 49.99rem, page titles become 2rem, second-level headings 1.5rem, and lead copy 1.125rem. Topic links use 16px text; the local contents outline uses .9375rem. Keep essential article and example text readable rather than reducing it to fit.
+The hero explanation has a 43ch maximum, becoming 46ch on phones. Benefit paragraphs use 47ch; framework and agent introductions use 44ch and 43ch. Documentation uses the `docs-title`, `docs-heading`, `docs-subheading`, `docs-body`, and `docs-lead` roles. Prose and list text use 18px type with 1.8 line height; code and tables use 16px. The native code font remains Starlight/Expressive Code’s monospace font. Below 49.99rem, page titles become 2rem, second-level headings 1.5rem, and lead copy 1.125rem. Topic links use 16px text; the local contents outline uses .9375rem. Keep essential article and example text readable rather than reducing it to fit.
 
-**The Geometric Voice Rule.** Use Sansation for expansive homepage headings, Manrope for explanation and controls, Pixelify for the selected display accent, and monospace for event identifiers.
+**The Geometric Voice Rule.** Use Sansation for expansive homepage headings, Manrope for explanations and diagram labels, and Pixelify for the single selected display accent. Keep source typography in documentation.
 
 ## Layout
 
-The homepage’s centered shell stops at 1536px and uses the fluid gutter token. The masthead has an 80px minimum height, a quiet bottom rule, and navigation aligned to the right; mobile retains 72px. The opening starts 72px below it (40px on mobile). A supporting row follows the title after 32px: the explanation on the left, a content-width primary action on the right. At 760px the support row stacks with a 24px gap. The full-width model aligns with the shell edges in both themes.
+The homepage's centered shell stops at 1536px and uses the fluid gutter token. The ruled masthead has an 88px minimum height, reducing to 72px on phones. The split hero uses a 1:1.08 grid with a 64px gap and 80px top / 96px bottom padding. The copy is vertically centered beside an application scene capped at 640px. The scene reserves 24px on the right for its layered outlines. The action group follows the explanation with 32px of space.
 
-Major sections use 96px of closing space, reducing to 64px on mobile. The model-to-code separation is 96px without an extra rule. Two Counter sections show the write and read flows. Each introduction pairs a heading and main prose in a 5:7 grid with a 48px gap. Code follows after 40px: short definitions on the left and the decision or query on the wider right. At 1100px the snippets stack in source order; the introduction stacks at 760px. On phones, code follows the introduction after 32px. The read section begins after a quiet rule with 64px of top space, reduced to 32px on phones.
+The wide history panel uses a 1:1.05 grid, 80px gap, and 64px padding. The pure-boundary and transport benefits follow in a 1.08:1 pair, separated by a quiet rule with 64px of space on either side. Their illustrations sit below the prose, aligned by the flex layout. The framework section uses a split heading row above six compact capabilities in three columns; capabilities have no individual card surfaces. The agent section pairs its introduction with a three-step vertical workflow in a 1:1.1 grid and 112px gap. A broad closing field contains the heading, repeated documentation action, and original logo.
 
-The evidence section pairs a compact introduction with two stacked tool articles in a 4:7 proportion and a 96px gap. The second article has a separating rule with 32px space on each side. Community links use 32px Sansation (28px on mobile) in page ink, distinct from the 18px reading copy. Their rows share 24px vertical padding and quiet rules. Supporting grids stack at 760px. Page rules mix the existing construction-line color at 55% opacity; semantic diagram lines retain their own stronger contrast.
-
-The Counter examples show six developer definitions without setup boilerplate: command, decision, event payload, entity, update and query. The source sits directly on the page, with a quiet left separator and 32px inset on the wider desktop code column. At 1100px the separator and inset disappear. Build-time Astro highlighting follows the active theme through CSS variables. Code remains 16px with 25.6px line height. Native horizontal scrolling and an inset keyboard focus ring preserve inspection on phones. Each source region has an accessible name and contains only code. Main prose carries the HTTP routes, existing-counter context and inline source links.
+The main sections use 80px opening and 96px closing intervals. Mobile groups use 48px and 64px, with 24px or 32px between prose and illustration. History entries are at least 72px tall on desktop and 64px on phones. Event slips are at least 40px tall. Main body and illustration labels remain real HTML text; SVG supplies line icons, the decision outline, and connectors.
 
 | Breakpoint | Implemented adaptation |
 | --- | --- |
-| At most 1200px | Shared column gap becomes 40px. Diagram role/detail labels increase to 26 viewBox units below 1280px to compensate for scaling. |
-| At most 1000px | Diagram switches to the compact SVG, capped at 380px wide and centered. The model uses the available content width without side insets or overhang. |
-| At most 760px | Page gutters become 24px, content columns stack and headline phrases occupy separate lines. Navigation uses the familiar Docs label; GitHub remains in the community section and footer. |
-| At most 390px | Page gutters become 20px; the model has no additional inset. Theme and navigation controls retain 44px hit areas. |
-
-Spacing follows a 4px base with 16, 24, 32, 48, 64, 72 and 96px grouping intervals. The diagram uses authored geometry; its compact text remains at least 16px rendered at the supported 320px minimum width. Do not restore tiny text to fit a shape.
+| At most 1200px | Hero gap becomes 40px; history padding and gap become 48px; benefit insets become 40px; agent gap becomes 64px. |
+| At most 1000px | Resources leaves the masthead. Hero and history gaps become 32px; history padding becomes 40px. The benefit divider disappears, and capabilities form two columns. |
+| At most 760px | Hero and major sections stack. Gutters become 24px; the application and benefit scenes cap at 440px. History and closing fields extend 8px into the gutter. GitHub leaves the masthead, Docs remains, and the closing logo is hidden. |
+| At most 480px | Capabilities become one column with icons beside titles. Pure-decision geometry becomes 120px square, and the history answer loses its long connector. |
+| At most 390px | Gutters become 20px. Application and history padding tighten, the decision becomes 104px square, and effects stack icon above label. Controls retain their hit areas. |
 
 Documentation uses Starlight’s native topic sidebar, page title, article, and right-hand local contents outline. The topic rail is 16rem, the header 4.5rem, and the article width 48rem; at 100rem viewport width, the article expands to 50rem. Content gutters use the recorded fluid docs token. The title starts with 3rem top padding, reducing to 1.75rem below 49.99rem. Article headings use content-driven spacing rather than full-screen sections.
 
 The two routes use ordinary browser scrolling. There is no snapping, persistent teaching widget, section-height reservation, or scroll-driven example state. On phones, native Starlight navigation and contents controls frame a full-width article. Tables scroll horizontally within their own content when needed. The installer and example task wrap visually while preserving the exact copied text. Print removes panel padding and uses black article text.
 
+
 ## Elevation & Depth
 
-The homepage is flat: the recorded event carries the violet surface, the query has a quiet fill, and fine construction lines separate the model parts. Page dividers use a 1px stroke. SVG model boundaries use 1.6 units; internal ledger rules use 0.7 units; connectors use 1.5 units. These values scale with the SVG.
+The homepage uses tonal depth without shadows. The application has two offset outlines, displaced by 12px and 24px, behind the primary scene. Its event slips stagger horizontally by 12px. The history and closing sections use a stronger field; the pure boundary uses the quieter scene. Page and illustration borders are 1px; line icons and route strokes use 1.5 SVG units. These are complete static compositions.
 
-**The Flat Field Rule.** Use tonal contrast and fine strokes to establish homepage depth. The implemented homepage adds no box shadows to its controls, model field, or product sections.
+**The Flat Field Rule.** Use tonal contrast, offset outlines, and fine strokes for homepage depth. Do not add shadows, glows, or raster decoration to these native illustrations.
 
 Documentation uses subtle tonal table headings, fine separators, and restrained code frames. Expressive Code frames and pagination links have no box shadow. Starlight retains its surrounding search and navigation behavior.
 
+
 ## Shapes
 
-Controls use gently rounded corners with separate action and theme-control radius tokens. The model and source have no outer rounded containers. Straight page rules supply crisp structure; navigation has no decorative square.
+The form language uses rounded rectangles for application layers and wide panels, tighter rectangles for rules and event rows, and a diamond for pure decisions. The documented panel, boundary, control, and record-slip radii keep these scales distinct. The agent's quotation has one square corner and three boundary-radius corners. Small circles mark history and workflow position; the build step uses a square and the final step uses a check.
 
-The model’s shapes carry meaning: a slanted command parallelogram, a decision diamond, a nearly square ledger frame, and a rounded query result. Ledger frame and event row corners use SVG radii of 4 and 2 units; the query uses 14 units on desktop and 12 on mobile. Preserve these distinctions when reusing the model vocabulary. The original logo keeps its outline and geometry.
+The active HTTP transport has a solid border and continuous route. The alternate MCP transport has a dashed border and route. This expresses an interchangeable choice without implying a live switch. The original logo retains its outline and geometry.
 
 Documentation uses the inline-code radius for short identifiers and the code-frame radius for fenced examples. Tables use simple horizontal separators and tonal headings. The homepage model shapes remain specific to its illustration.
+
 
 ## Components
 
 ### Actions and theme control
 
-Primary actions are solid, high-contrast links with the action radius and recorded padding. Their minimum height is 52px, with 20px horizontal padding and a 24px label/arrow gap. They fit their content at every viewport. The dark primary action uses the existing off-white ink with dark text; light mode keeps the violet action. Hover mixes the face with 8% of its ink over 160ms. Arrows remain still, at 18px with a 1.5-unit stroke. Primary onward text links use the accent and an underline on hover. Source links sit inline in the main prose, with a persistent underline and accent on hover. Standalone actions retain a 44px minimum height.
+Primary actions are solid links with a 52px minimum height, the action radius, and 12px by 20px padding. The 18px label and arrow are separated by 24px. Dark mode uses off-white ink with dark text; light mode uses the violet action with white text. Hover mixes the face at 90% with its ink over 160ms using `cubic-bezier(.22, 1, .36, 1)`. Arrows remain still. The hero's secondary action is a quiet underlined link; onward links use the accent with an underline on hover. Secondary and standalone actions retain a 44px minimum height.
 
-The theme control is transparent at rest and gains the hover field on pointer hover. It is 44px square at every viewport. Its SVG icon and accessible label announce the target theme. The homepage and Starlight share the saved `starlight-theme` preference.
+The theme control is transparent at rest, 44px square, and uses the control radius. Hover reveals the hover field and page ink. Its icon and accessible label announce the target theme. The homepage and Starlight share the saved `starlight-theme` preference.
 
-Homepage keyboard focus is a 3px accent outline with 6px offset; documentation uses a 2px Starlight-accent outline with 4px offset. The homepage skip link becomes visible on focus. Preserve these treatments alongside pointer states.
+Homepage keyboard focus is a 3px accent outline with 6px offset; documentation uses a 2px Starlight-accent outline with 4px offset. The homepage skip link becomes visible on focus. Reduced motion removes smooth scrolling and transitions. All homepage illustrations are already complete without animation or JavaScript.
 
 ### Navigation
 
-The ruled masthead pairs the original logo and NeoHaskell name with simple text destinations. Documentation uses a plain text label; GitHub uses an authored external-link SVG. The footer names Documentation, GitHub, and Discord directly, with 44px-tall links. The mobile masthead uses Docs and keeps theme access; GitHub is available in the community section and footer. Documentation uses native Starlight topic links with a filled accent-low field for the current page, plus a right-hand contents outline for second-level headings. Search, mobile navigation, and pagination remain native components.
+The masthead pairs the original logo and name with Documentation, Resources, GitHub, and the theme control. Desktop destinations use 16px text and 32px gaps; GitHub has an external-link SVG. The footer names Documentation, Resources, GitHub, and Discord with 44px-tall links. Mobile navigation keeps Docs and theme access; all destinations remain available through the footer or native documentation navigation. Documentation retains Starlight's topic links, selected accent-low field, contents outline, search, mobile navigation, and pagination.
 
-### Evidence, community, and next steps
+### Application and history illustrations
 
-The hero and metadata introduce NeoHaskell as an AI-first language. “Build with AI. Know what you build.” preserves the display treatment while connecting building with understandable behavior. The lower learning link repeats “Learn the concepts” and reaches the same `/learn/` introduction. The primary action stands alone, without a supporting reassurance row.
+`HomepageVisual` renders four semantic figures using HTML text and authored SVG. The application figure connects web/mobile and AI-agent entrances to one NeoHaskell application, business rules, recorded changes, and database/file/API services. Layered outlines and staggered event slips provide depth. Its newest visible event uses the record palette.
 
-Benefit paragraphs link directly to acceptance/rejection and history-replay tests at an inspected source revision. Source links inherit the paragraph size and color, with a persistent underline. Major onward actions retain an 18px arrow. The evidence section presents the agent workflow and application starter with 18px body text and named destinations. A verified release change appears in ordinary prose with an inline artifact link. `PRODUCT.md` records source evidence and verification limits.
+The history figure keeps all three events visible: stock added (+12), order placed (-1), and order cancelled (+1). The corrected record remains in the ledger and the resulting 12 mugs sit outside it. The figure's accessible name explains the sequence. These are illustrative product benefits, not interactive controls or an execution trace.
 
-A compact community section states that NeoHaskell is under active development, links its dated CLI/framework release, and offers the public repository and verified Discord invite. This status and the release were verified on 10 November 2026. Product principles live in `$neohaskell-positioning`; this design record governs their presentation.
+### Pure boundary and transport choice
 
-### Event ledger
+The pure-decision diamond sits between "Same input" and "Same result" inside a quiet rectangular boundary. Database, network, and file effects stay outside that boundary. The transport figure connects the same application to an active HTTP route and a dashed alternate MCP route. Each figure has its own accessible description. Preserve the separate geometry, readable labels, and solid-versus-dashed distinction.
 
-The signature model is native SVG inside a semantic figure, with a title and description for each responsive drawing. Its violet recorded row, ordered index, `OrderPlaced` identifier, and check mark remain separate from the query’s numeric stock result. Repeated definitions and ledger metadata have been removed so larger role names and content carry the example. The query says “mugs in stock” in every stage; it does not describe the initial stock as an after-order result. The figure has an accessible name and each SVG describes an example. Visible labels name the model parts; the field has no caption or surrounding explanatory bars. The model shapes retain their distinct outlines and sit directly on the page in both themes. Sentence-case model labels identify semantic roles.
+### Capabilities, agent workflow, and closing action
 
-The homepage plays one 3800ms opening sequence: command, decision, recorded event, then the current query answer. Stage boundaries are 500, 1450, 2350, and 3200ms. Stock starts at three during animation and settles at two. The source HTML already contains the completed state. Reduced motion starts there, and enabling reduced motion or hiding the page settles an active sequence immediately. There are no scenario, step, or replay controls. This timing belongs to the homepage component, not every future diagram.
+`FeatureIcon` supplies one 24px line-icon vocabulary with 1.5-unit strokes, scaled to 18px or 20px where controls or compact illustrations require it. Six capabilities use simple icon/title/prose groups without six competing backgrounds. The agent workflow has three ruled steps with a concrete order-cancellation intent in a quiet quotation field. Its prose links to published agent skills. Product claims and evidence remain in `PRODUCT.md`.
+
+The hero and closing use the same "Explore the docs" action to `/learn/`. The closing contains only a headline, action, and decorative original logo. No reassurance paragraph, captions, language badges, metadata bars, or repeated explanatory footers surround these components. Main prose carries substantive explanation and inline sources.
 
 ### Documentation
 
@@ -359,23 +441,31 @@ Inline code has a small rounded background and may wrap long identifiers. Fenced
 
 The documentation relies on native links, search, contents navigation, and copying. It adds no simulation controls, editable task field, code-inspection hotspots, or instructional animation. Reduced motion uses immediate browser scrolling.
 
+
 ## Do's and Don'ts
 
 ### Do:
 
-- Do preserve the original NeoHaskell logo and name.
-- Do apply each theme’s semantic roles together, including the model’s separate active accent.
-- Do keep commands, decisions, recorded events, and query results visually distinguishable and use GLOSSARY.md for their meaning.
-- Do retain keyboard focus, descriptive SVG text, and the completed composition for reduced motion or unavailable JavaScript.
+- Do preserve the original NeoHaskell logo, violet and cyan palette, and established type families.
+- Do apply each theme's page, field, scene, and action roles together.
+- Do keep recorded events, current answers, pure boundaries, and transport choices visually distinct.
+- Do retain keyboard focus, semantic figure descriptions, readable HTML labels, and complete static illustrations.
 - Do keep documentation prose and inline examples in normal article flow, with visible Copy controls on narrow or hoverless devices.
 
 ### Don't:
 
-- Don't replace the original logo with a generated interpretation.
-- Don't use color as the only distinction between the event record and the query result; keep their separate shapes and labels.
-- Don't promote diagram role labels into decorative marketing eyebrows; their uppercase treatment identifies model parts.
-- Don't extend the pixel accent into body copy or event identifiers; retain the established type roles.
+- Don't replace the original logo with a generated interpretation or add raster decoration to the native illustrations.
+- Don't rely on color alone to distinguish transport choice, recorded history, or the current result.
+- Don't restore source lessons, a full-width opening model, or an initial animation to this homepage without a new scope decision.
+- Don't extend Pixelify into body copy or add auxiliary captions, badges, or reassurance beneath actions.
 - Don't bring retired teaching widgets, scroll snapping, or full-screen lesson spacing into the article layout.
+
+
+## Homepage redesign record: 11 November 2026
+
+The owner authorized a full homepage redesign while retaining the existing violet/cyan palette, original logo, and type families. The current canonical sections document the implemented benefits-first page. This supersedes the historical homepage composition, source-example requirements, and opening animation below without revising the documentation design.
+
+The initial saved design check at `/tmp/neohaskell-sales-design-check.json` compared the new CSS with the previous record. Its type-size and 12px/16px radius advisories correspond to intentional roles now captured above. The earlier `#d5a8ef` color advisory no longer exists in the implemented CSS; it is not added to the palette. The new field and scene tokens come directly from the current stylesheet. The independent finish review returned **ship**, and the learning examples received **keep**, after removing the redundant closing paragraph. Build and copy checks passed with zero diagnostics, all 12 existing tests passed, and dark/light views were reviewed at 320, 390, 820, and 1440px. Review evidence belongs in `.impeccable/reviews/homepage-sales-2026-11-11/`; review verdict and owner acceptance remain separate.
 
 ## Homepage finish review: 10 November 2026
 

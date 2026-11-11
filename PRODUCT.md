@@ -20,7 +20,7 @@ Prior Haskell expertise is not an established audience requirement. Do not assum
 
 neohaskell.org introduces NeoHaskell as an **AI-first programming language**. It should help people build applications with AI agents while keeping the intended behavior understandable, changes traceable, and technical checks available. The language's framework and tooling supply a common technical structure.
 
-The homepage introduces NeoHaskell and leads visitors into documentation. It has one initial animation using the selected Event ledger visual language and an ecommerce example, followed by two static Counter sections that show the developer-defined parts of an HTTP service. Full concept explanations and learning material belong on documentation pages; the homepage does not contain an interactive explainer or step-by-step lesson.
+The homepage is a benefits-led sales page for NeoHaskell as an AI-first language and framework. The owner replaced the earlier code-first homepage on 11 November 2026: no source syntax or concept lesson on the homepage. Show the advantages of event history and recovery, pure logic and type checks, convention over configuration, interchangeable HTTP/MCP transports, generated OpenAPI, OAuth provider connections, PostgreSQL and file storage. Motivate visitors to enter documentation, where concepts and syntax belong. The owner explicitly requested final-state product content for a future publication, rather than a release-readiness report. Keep claims concrete without invented benchmarks or universal error-free guarantees.
 
 In the documentation, visitors learn commands, decisions, events, and queries before proceeding to installation, agent setup, and building with an AI agent. Keep the introduction approachable and grounded in a small online shop; do not require installation, agent access, or prior Haskell knowledge to begin learning. The eventual outcome remains building an application with an AI agent, guided by a model the visitor understands.
 
@@ -46,13 +46,13 @@ The existing public site offers paths to the GitHub organization and Discord com
 
 - Introduce NeoHaskell as an AI-first language; describe its Event Modeling-centered framework and tooling as supporting mechanisms.
 - Treat pure application logic and preselected technical decisions as central to the product's intended ease of use.
-- Describe implemented capabilities using verified examples or documentation; the owner's product direction alone does not establish release readiness.
+- The homepage may present the owner-authorized final product direction for future publication. Keep current source evidence and final-state intent distinct in this internal record; no release-readiness caveats are required in the sales copy.
 - The current site distinguishes technical checks from determining whether application behavior matches the business's intent. Preserve that distinction when explaining error prevention.
 - No website scaffold, deployment configuration, or local asset library existed when this product record was initialized. Inspect any subsequently supplied implementation before making design or migration decisions.
 
 ## Brand Commitments
 
-Preserve the name **NeoHaskell**, the domain **neohaskell.org**, and the existing [NeoHaskell logo](https://neohaskell.org/img/logo.svg). Preserve the accepted workshop palette, typography, spacing, and single opening diagram. Write approachable, specific product copy that connects AI-assisted building with understandable behavior and inspectable evidence.
+Preserve the name **NeoHaskell**, the domain **neohaskell.org**, and the existing [NeoHaskell logo](https://neohaskell.org/img/logo.svg). Preserve the accepted workshop palette, typography and logo. The 11 November 2026 sales-page request supersedes the single opening diagram and prior homepage composition; use varied benefit illustrations within that identity. Write approachable, specific product copy that connects AI-assisted building with understandable behavior and inspectable evidence.
 
 ## Evidence on Hand
 
@@ -97,3 +97,16 @@ A fresh Ruby comparison at checkpoint `68a9493` found an incomplete first-run jo
 The pinned starter's `src/App.hs` configures `SimpleEventStore` with `persistent = False`; its storage guide confirms events disappear at process exit and distinguishes event and query persistence. The resources page explains these actual defaults. The GitHub release API for `neo-v0.17.1` confirms the 6 November release adds owned file storage for generated documents. The new homepage summary describes that scoped change without claiming a production guarantee.
 
 The homepage retains the source section fragment ID, a direct agent-setup link, and resource discovery. The owner’s later content-restraint correction removed the auxiliary hero link to the source section. The docs introduction and metadata use AI-first positioning. A verified empty-machine-to-running-app walkthrough, newcomer explanation of the decision syntax, and executed intent-to-agent-to-result demonstration remain gaps. No runtime installation, generated application, adoption claim, or support commitment was verified in this website pass.
+
+
+## Benefits-led homepage direction and evidence: 11 November 2026
+
+The owner rejected the homepage's flat lower sections and source-first persuasion, requested a complete sales landing, and supplied Ruby, Phoenix and Laravel screenshots as design references. Preserve the palette, typography and original logo. Present NeoHaskell as both an AI-first language and framework, lead with benefits, and motivate documentation as the place to learn concepts and syntax. The owner explicitly authorized final-state content for future publication, including capabilities still being completed. This supersedes the earlier homepage source-excerpt, single-diagram, teaching-first and readiness-report requirements. It does not change the documentation experience.
+
+Checkpoint `801f592ba063bab31de01f5fdc75da5383632815` preserves the prior project state. Three agents researched graphical direction, responsive composition and technical content. The implementation leads with "Build with AI. Keep control.", then recorded history and recovery, pure business logic, HTTP/MCP reuse, six integrated framework capabilities, agent workflow and a documentation invitation. The history illustration appends a cancellation and restores the available stock; it does not delete events or promise to reverse external effects. The page has no source code or example controls.
+
+Technical research checked clean local checkouts against remote main at framework revision `cacc8069070721539ae0aac53286ce9492e906a5` and agent-skills revision `0ff0872d554e79d955f4c92f9b905056b908e9ae`. The [research record](.impeccable/reviews/homepage-sales-2026-11-11/research.md) links the exact primary sources for pure decisions, outbound effects, replay, conventions, HTTP/MCP/CLI transports, OpenAPI, PostgreSQL, OIDC authorization, external OAuth, uploads, retained documents and agent workflows. Source inspection supports these mechanisms; no upstream runtime suite or productivity benchmark was executed. OAuth token storage is implemented in `Auth/OAuth2/Routes.hs`, and refresh/retry/storage in `Auth/OAuth2/TokenRefresh.hs`.
+
+The one-line transport claim expresses the owner-authorized final product direction. Current transport registration is one line for a command set already permitting the selected transport; the source also has command-level `TransportsOf` declarations. The private evidence record retains that distinction without turning the sales page into a configuration guide. "99% pure" and an infallible AI were not used as unmeasured or universal claims; the copy instead names the enforced separation of pure decisions from effects and recoverable derived data.
+
+Graphic, layout and content reviews were satisfied after one correction batch. Independent finish and example-review evidence is recorded beside the research. Reviewer verdicts concern the inspected implementation, and do not constitute owner acceptance or publication approval. This task builds a local preview; it does not deploy the site.

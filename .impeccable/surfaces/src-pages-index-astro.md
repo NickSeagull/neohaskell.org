@@ -2,28 +2,42 @@
 version: 1
 slug: "src-pages-index-astro"
 primary_target: "src/pages/index.astro"
-related_targets: ["src/components/EventLedger.astro","src/components/CounterCode.astro","src/styles/home.css"]
+related_targets: ["src/components/HomepageVisual.astro","src/components/FeatureIcon.astro","src/styles/home.css"]
 ---
 
 # Homepage
 
 Mode: Persuade. Target: `src/pages/index.astro`.
 
-Approved for implementation by the owner's “good, lets go” after the corrected homepage brief. Keep the selected workshop visual direction and both themes. One initial ecommerce animation only; concept explanations live in Starlight documentation before AI-agent setup. Primary action: Learn the concepts, linking to a concise documentation introduction. No tutorial widget, stepping controls, scenario selector, or learning-path module on the homepage.
+The owner's 11 November 2026 request replaces the former code-led homepage with a benefits-led sales page for NeoHaskell as an AI-first language and framework. Preserve the existing palette, type and logo. The supplied Ruby, Phoenix and Laravel screenshots govern the requested craft, visual variety and feature coverage. Documentation remains unchanged. This latest request supersedes historical homepage composition and source-example requirements below.
 
 ## Direction contract
 
-THESIS: Make an application's behavior tangible in one confident opening composition, then invite the visitor into documentation. A full-width model, not a split hero or marketing-card grid.
+THESIS: Build with AI. Keep control. Show the advantages of recorded history, pure business logic, interchangeable transports and an integrated framework before asking visitors to learn syntax.
 
-OWN-WORLD: Deep violet and electric cyan in dark mode; daylight and violet ink in light mode. Open Sansation display lettering with Manrope body/UI and Pixelify Sans emphasis, crisp construction lines, original NeoHaskell logo, and the selected Event ledger shapes.
+OWN-WORLD: The accepted violet workshop, with Sansation, Manrope, one Pixelify emphasis and the original logo. Crisp native geometry, permanent records and cyan connections carry meaning. Both themes remain supported.
 
-STORY: NeoHaskell is an AI-first language. Build with an agent while keeping intended behavior understandable and recorded changes traceable. Inspect the published workflow, starter, and focused tests; learn the model in documentation before agent setup.
+STORY: Understand the language and framework promise, see recovery and safeguards, recognize the included infrastructure, then open documentation to learn and build.
 
-FIRST VIEWPORT: Slim navigation above expansive two-line typography and a clear documentation CTA. A full-width model follows on the page ground: command, decision, event ledger, query. Violet belongs to the recorded event. One opening sequence settles into a still composition. The field contains only the model; accessible names describe its example context.
+FIRST VIEWPORT: Left-aligned two-line promise with language-and-framework description and documentation action. A large application cutaway on the right connects web and agents to pure business rules, recorded history and infrastructure. The next wide history panel enters the first scroll.
 
-FORM: Assembly Guide / developer workshop refinement, seed 17e1b5de, assigned index 6. Dark authority: r2-violet-workshop.png; light authority: r2-daylight-workshop.png. The approved Event ledger study governs diagram shapes and motion.
+FORM: User-directed continuation of the accepted workshop identity. Implementation in native SVG and HTML for responsive, accessible product diagrams. The supplied references and explicit instruction to implement supersede the former comp layout and extra direction approval. Wide history scene, unequal benefit panels, compact capability field, agent workflow and large documentation close create the scroll rhythm.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+
+## Current implementation, 11 November 2026
+
+The completed redesign uses a split hero and layered application illustration, one wide history panel, paired pure-boundary and transport benefits, six compact framework capabilities, a three-step agent workflow, and a closing documentation action. The headline is "Build with AI. Keep control." Pixelify emphasizes "control." The hero and close both link "Explore the docs" to `/learn/`; the hero also offers a quiet anchor to the framework section. The close contains only its headline, action, and original logo.
+
+`HomepageVisual.astro` provides four static figures with accessible descriptions. The application uses overlapping outlines and staggered event slips. The history retains stock added, order placed, and order cancelled while showing the resulting stock outside the ledger. Pure decisions stay inside a boundary with database, network, and file effects outside. The transport scene uses a solid active HTTP route and dashed alternate MCP route to express a configuration choice. `FeatureIcon.astro` supplies the shared SVG icon vocabulary. There are no homepage source examples, raster illustrations, or opening animation.
+
+The 1536px shell and 1:1.08 hero preserve roomy desktop proportions. At 760px major sections stack; the capability grid shifts from three columns to two at 1000px and one at 480px. History and closing panels use the new paired `--field` colors, while application and pure-boundary illustrations use `--scene`. Type, radii, spacing, and theme values are recorded from the implementation in `DESIGN.md`. The new 12px and 16px radii and varied section-heading scales are intentional additions, not a change of identity.
+
+Graphic, layout, and content reviewers were satisfied after corrections. The independent finish review returned **ship**, and the learning examples received **keep**, after the redundant closing paragraph was removed and visually checked. The build and copy check passed with zero diagnostics; all 12 existing tests passed. Dark and light views were reviewed at 320, 390, 820, and 1440px. Evidence belongs in `.impeccable/reviews/homepage-sales-2026-11-11/`. Review status remains separate from owner acceptance.
+
+## Historical direction and decisions
+
+The records below preserve prior decisions and their context. The full redesign above supersedes their active homepage full-width model, Counter/source-example, and single-animation requirements. Documentation decisions and reusable copy, accessibility, identity, and terminology constraints remain in force.
 
 ## Explicit authority corrections
 
