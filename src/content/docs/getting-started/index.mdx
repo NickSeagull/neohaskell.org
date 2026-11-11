@@ -12,7 +12,11 @@ Start with the [core concepts](/learn/) if commands, decisions, events, and quer
 
 ## Prepare your environment
 
-Follow the [NeoHaskell project's environment instructions](https://github.com/neohaskell/NeoHaskell#readme) for the framework version you intend to use. The agent-skills installer also requires **Node.js 22.20 or newer**.
+The **Neo CLI** creates, builds, runs, and tests an application. Its [prerequisites and installation instructions](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites) name Nix and Git; the documented source installation also uses Rust's Cargo. Follow the [project creation and run guide](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md#create-and-run-an-application) to create your application repository before installing agent skills.
+
+To inspect the Counter application first, read the [starter's requirements and quickstart](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter/README.md#requirements). Its default event store is in memory: recorded events disappear when the process ends. The [storage guide](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/storage.md) explains persistent storage options.
+
+These links describe the inspected framework revision. Use the instructions that match the version your application pins. The agent-skills installer separately requires **Node.js 22.20 or newer**.
 
 Before continuing, have your application repository open and your coding agent ready to work in it. The current skills collection supports **Claude Code** and **Codex**.
 
@@ -58,3 +62,5 @@ Ask the agent to demonstrate both an accepted order and a rejected order. For ea
 Also check that zero or negative quantities are rejected. Technical checks help you catch implementation mistakes; you still decide whether the behavior matches what your application should do.
 
 If a result is unexpected, describe the difference to the agent using the same vocabulary: the command, the decision, the event, and the query. That gives you a concrete behavior to correct.
+
+For syntax, testing guidance, release notes, or help, use [Resources and project status](/resources/).

@@ -28,6 +28,8 @@ The homepage has no tutorial widget, replay control, scenario switcher, or conce
 
 Open `/learn/` for core concepts or `/getting-started/` for agent setup. The pages use Starlight's native topic sidebar, title, search, contents outline, anchor navigation, and code copying. The article scrolls normally. Examples and outcome tables sit inline with the relevant explanation. The owner requested the Stripe Docs guide-page direction after rejecting the earlier snapping/shared-widget format.
 
+`/resources/` collects verified setup, language/framework guidance, project status, releases, and community destinations. The setup guide distinguishes application preparation from agent-skills installation; it is not a verified zero-to-running-app walkthrough.
+
 Author content directly in `src/content/docs/learn/index.mdx` and `src/content/docs/getting-started/index.mdx`. Reading styles live in `src/styles/docs.css`; prose is 18px and code/table examples are 16px. Concept snippets are explicitly illustrative plain text, not executable NeoHaskell or API payloads. Use `learning-example-review` as required by `AGENTS.md` when creating or materially changing examples. The earlier components in `src/components/learn/` and their scroll scripts are retired and are not imported by the pages.
 
 ## Deployment

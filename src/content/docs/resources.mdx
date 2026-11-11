@@ -1,0 +1,45 @@
+---
+title: Resources and project status
+description: Find NeoHaskell setup instructions, language guidance, release notes, and places to get help.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+---
+
+<p class="docs-lead">Find the next step for your application, and see what you can inspect today.</p>
+
+NeoHaskell is an AI-first programming language under active development. Start with a small behavior you can describe and check. The Counter starter gives you a concrete application to inspect before extending it with your agent.
+
+## Start building
+
+Learn the [core concepts](/learn/) before following [Set up your agent](/getting-started/). You can read the concepts without installing anything.
+
+- [CLI prerequisites and installation](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites): the tools needed to create and run an application.
+- [Create and run a project](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md): the project creation, build, and run sequence.
+- [Counter starter quickstart](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter/README.md#quickstart): the application behind the homepage's code excerpt, with an HTTP workflow and test instructions.
+
+## Language and framework
+
+The following guidance is published in the NeoHaskell repository for application builders and coding agents. It describes an inspected source revision; use the corresponding revision when your project pins a different version.
+
+- [Syntax and Core](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/syntax-and-core.md): a complete module, types, operators, and application conventions.
+- [Application guidance by task](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/index.md): commands, events, queries, configuration, transports, and integrations.
+- [Testing](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/testing.md): decision tests, HTTP scenarios, and checking a change.
+- [Storage](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/storage.md): event history, query storage, and persistence.
+
+## Before relying on an application
+
+The starter uses an in-memory event store by default. Its recorded events disappear when that process ends. Persistent event history and persistent query storage are separate configuration choices; follow the storage guide above when you need data to survive a restart.
+
+Your application also owns its access rules. Read the [authorization guidance](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/authorization.md) and test the allowed and rejected cases. An AI agent helps implement these rules; it does not decide your application's policies at runtime.
+
+Published source and releases let you inspect what is available. They do not by themselves establish production readiness for your application.
+
+The [framework source license](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/LICENSE) is available alongside the code. Check each tool's own license when choosing dependencies.
+
+## Follow changes and get help
+
+- [CLI and framework release history](https://github.com/neohaskell/NeoHaskell/releases): changes to the application tooling and framework. [Version 0.17.1](https://github.com/neohaskell/NeoHaskell/releases/tag/neo-v0.17.1), published 6 November 2026, adds owned file storage for generated documents.
+- [Agent-skills releases](https://github.com/neohaskell/skills/releases): changes to the separate instructions collection for Claude Code and Codex.
+- [Ask the community on Discord](https://discord.com/invite/wDj3UYzec8): share what you are trying to build and where you got stuck.
+- [Browse reported issues](https://github.com/neohaskell/NeoHaskell/issues) or [read the contribution guide](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/CONTRIBUTING.md): follow known problems and find the project's contribution workflow.

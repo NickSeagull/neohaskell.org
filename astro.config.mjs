@@ -8,7 +8,7 @@ export default defineConfig({
   devToolbar: { enabled: false },
   integrations: [starlight({
     title: 'NeoHaskell',
-    description: 'A Haskell-based language and framework for building applications with clear, explicit behavior.',
+    description: 'An AI-first programming language for applications with clear behavior and recorded history.',
     logo: { src: './public/logo.svg', replacesTitle: false },
     favicon: '/logo.svg',
     social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/neohaskell/NeoHaskell' }],
@@ -17,6 +17,7 @@ export default defineConfig({
     sidebar: [
       { label: 'Learn NeoHaskell', items: [{ label: 'Core concepts', slug: 'learn' }] },
       { label: 'Build an application', items: [{ label: 'Set up your agent', slug: 'getting-started' }] },
+      { label: 'Explore the project', items: [{ label: 'Resources and project status', slug: 'resources' }] },
     ],
     editLink: undefined,
   })],

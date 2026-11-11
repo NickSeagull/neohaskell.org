@@ -2,7 +2,7 @@
 version: 1
 slug: "src-components-learn-guidedlesson-astro"
 primary_target: "src/content/docs/learn/index.mdx"
-related_targets: ["src/content/docs/getting-started/index.mdx", "src/styles/docs.css", "astro.config.mjs"]
+related_targets: ["src/content/docs/getting-started/index.mdx", "src/content/docs/resources.mdx", "src/styles/docs.css", "astro.config.mjs"]
 ---
 
 # NeoHaskell documentation guides
@@ -20,3 +20,7 @@ FIRST VIEWPORT: Site header and search, left topic navigation, a clear title and
 FORM: Continuous MDX prose and native scrolling, ordinary content-driven spacing, inline code and comparison tables. No snapping, full-screen sections, fixed/shared teaching widget, or scroll-driven state. 18px prose and 16px code/tables; horizontal scrolling stays inside code/table content when necessary. Original homepage and screened UTM handling are unchanged. Concept examples explicitly use illustrative plain text, while the setup command is source-verified. Scope is the existing two docs routes; no fabricated navigation destinations. The 2026-11-09 user rejection supersedes all former widget and slide-like layout requirements.
 
 FINISH: Build, desktop/phone/light/dark/wide captures, navigation/search/copy checks, and one fresh combined visual and learning-example review. No image comp is required for this Read surface. Update DESIGN.md after review; preserve homepage canon.
+
+## Resource discovery extension, 11 November 2026
+
+The owner's comparison-and-build workflow extends the guide set with `/resources/`. Keep the same continuous reading surface and native navigation. Expose verified CLI, syntax, framework, testing, storage, authorization, release, and contribution destinations. Correct the setup guide's generic README handoff and align its introductory positioning with the AI-first language. This extends the earlier two-route scope; it does not replace the accepted guide format or create an interactive lesson. A complete first-run walkthrough remains unverified.

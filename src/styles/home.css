@@ -45,6 +45,9 @@ h1 { font-family: Sansation, Manrope, sans-serif; font-size: clamp(60px, 6.32vw,
 .primary-link:hover svg, .text-link:hover svg, .community-links a:hover svg { transform: translateX(4px); }
 .primary-link:hover { filter: brightness(1.06); }
 .action-context { color: var(--muted); font-size: 17px; line-height: 1.6; max-width: 29ch; }
+.hero-code-link { display: flex; align-items: center; gap: 12px; min-height: 44px; color: var(--accent); text-decoration: none; }
+.hero-code-link:hover { text-decoration: underline; }
+.hero-code-link svg { width: 20px; height: 20px; }
 
 /* The model keeps its four distinct domain shapes and one opening sequence. */
 .event-model { background: var(--model); color: var(--model-ink); margin: 0 -20px; border-radius: 16px; overflow: hidden; padding: 24px 28px 0; border: 1px solid transparent; }
@@ -115,11 +118,13 @@ h2 span { color: var(--muted); }
 .evidence-intro > p { margin-top: 24px; max-width: 43ch; color: var(--muted); }
 .evidence-items article + article { border-top: 1px solid var(--line); margin-top: 32px; padding-top: 32px; }
 .evidence-items .text-link { margin-top: 16px; }
+.evidence-items .source-link { display: flex; width: fit-content; margin-top: 8px; }
 .artifact-meta, .community-intro .release-note { font-size: 16px; line-height: 1.6; margin-top: 16px; }
 .artifact-meta a, .release-note a { display: inline-flex; align-items: center; min-height: 44px; }
 .artifact-meta span, .release-note span { display: block; }
 .community-intro h2 { font-size: clamp(34px, 3.2vw, 48px); }
 .community-intro p { margin-top: 24px; max-width: 43ch; color: var(--muted); }
+.community-intro .release-summary { margin-top: 16px; font-size: 16px; }
 .community-links a { display: flex; align-items: center; justify-content: space-between; gap: 24px; text-decoration: none; padding: 24px 0; min-height: 44px; border-bottom: 1px solid var(--line); }
 .community-links a:first-child { padding-top: 4px; }
 .community-links strong { display: block; color: var(--accent); font-size: 20px; font-weight: 600; line-height: 1.5; }
@@ -141,6 +146,7 @@ h2 span { color: var(--muted); }
   .footer-identity > span { display: block; }
 }
 @media (max-width: 1000px) {
+  .nav-resources { display: none !important; }
   .site-header { gap: 32px; }
   .main-nav { gap: 24px; font-size: 16px; }
   .brand { font-size: 26px; }
