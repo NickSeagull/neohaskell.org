@@ -1,0 +1,93 @@
+---
+title: Core concepts
+description: Understand commands, decisions, events, and queries by following an order through a small online shop.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+---
+
+<p class="docs-lead">Understand how an application decides what can happen, records what happened, and answers questions about its state.</p>
+
+NeoHaskell combines a Haskell-based programming language with an event-sourcing framework centered on Event Modeling. You describe the behavior of your application using **commands, decisions, events, and queries**.
+
+This guide follows a small shop with three ceramic mugs in stock. A customer orders one mug. You can understand the model before installing NeoHaskell or using an AI agent.
+
+| Concept | Purpose | Shop example |
+| --- | --- | --- |
+| [Command](#commands) | Express an intention | Place an order |
+| [Decision](#decisions) | Accept or reject it | Check available stock |
+| [Event](#events) | Record what happened | Order placed |
+| [Query](#queries) | Read the current state | Two mugs remaining |
+
+## Commands
+
+A **command** expresses something a person or process wants the application to do. It describes an intention; it does not mean the action has happened yet.
+
+To order a mug, the customer supplies the product and quantity. The application still needs to decide whether it can fulfill that intention.
+
+```text title="Example command"
+PlaceOrder
+  product: ceramic mug
+  quantity: 1
+```
+
+The examples in this guide describe the model in plain text. They are not executable NeoHaskell code or API payloads.
+
+## Decisions
+
+A **decision** evaluates a command against the current state and the conditions your application must enforce. It determines whether the command is accepted or rejected.
+
+For this shop, the quantity must be positive and enough stock must be available. With three mugs in stock, an order for one can be accepted. An order for four cannot.
+
+| Command | Available stock | Decision |
+| --- | --- | --- |
+| Order 1 mug | 3 mugs | Accept |
+| Order 4 mugs | 3 mugs | Reject |
+
+These conditions are part of the application's behavior. An AI agent can help you implement them, but it is not the runtime decision maker.
+
+## Events
+
+An **event** records a fact about something that happened. When the shop accepts the order, it records an `OrderPlaced` event.
+
+```text title="Recorded event"
+OrderPlaced
+  product: ceramic mug
+  quantity: 1
+```
+
+Notice the change in the name: `PlaceOrder` expresses an intention; `OrderPlaced` describes an accepted fact. The event becomes part of the application's history.
+
+In this example, accepting the order consumes one mug. The event records the order, while the remaining stock is state derived from that history. A command may produce different numbers of events in other applications; this example follows one order and one event.
+
+## Queries
+
+A **query** reads application state without changing it. It answers a question using state derived from recorded events.
+
+After the accepted order, a query for stock returns two mugs: the initial three, minus the one ordered.
+
+```text title="Query and result"
+Remaining stock for ceramic mug
+2
+```
+
+The event and the query result serve different purposes. `OrderPlaced` remains in the history as a record of the order. A stock query gives the current answer, which can change as more orders are accepted.
+
+## Rejected commands
+
+A command can be valid as an intention and still be rejected. If the shop has no mugs left, an order for one fails the stock condition.
+
+No `OrderPlaced` event is recorded for that rejected order. A query still returns zero mugs. The attempt has not become an accepted order, and stock has not changed.
+
+| Starting stock | Command | Recorded event | Stock afterward |
+| --- | --- | --- | --- |
+| 3 mugs | Order 1 mug | `OrderPlaced` | 2 mugs |
+| 0 mugs | Order 1 mug | None | 0 mugs |
+
+This model covers ordering and stock. Payments, shipping, and concurrent orders are outside this first example.
+
+## Start building
+
+Before asking an agent to build a feature, describe the command, the conditions for accepting it, the events it should record, and the questions the application needs to answer. Include a case that should be rejected.
+
+When you can explain both outcomes for this shop, continue to [set up your agent](/getting-started/).

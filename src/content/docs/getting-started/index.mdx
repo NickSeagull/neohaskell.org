@@ -1,0 +1,60 @@
+---
+title: Set up your agent
+description: Prepare your development environment, install the NeoHaskell agent skills, and build a first behavior you can check.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+---
+
+<p class="docs-lead">Prepare your environment and give your AI agent a small, well-defined first task.</p>
+
+Start with the [core concepts](/learn/) if commands, decisions, events, and queries are new to you. This guide uses the same shop example: accept an order when stock is available, and reject it when the shop is sold out.
+
+## Prepare your environment
+
+Follow the [NeoHaskell project's environment instructions](https://github.com/neohaskell/NeoHaskell#readme) for the framework version you intend to use. The agent-skills installer also requires **Node.js 22.20 or newer**.
+
+Before continuing, have your application repository open and your coding agent ready to work in it. The current skills collection supports **Claude Code** and **Codex**.
+
+## Install agent skills
+
+The NeoHaskell skills give your coding agent project-specific guidance. Run this command from your application's Git root:
+
+```sh title="Terminal" wrap
+npx skills add neohaskell/skills --skill '*'
+```
+
+The installer asks which agent and installation scope to use. Select the complete collection so related skills and resources are available together. Keep the installed files and lockfile with your project.
+
+The command and installer requirements come from the [NeoHaskell skills README](https://github.com/neohaskell/skills/blob/0ff0872d554e79d955f4c92f9b905056b908e9ae/README.md), checked on 9 November 2026. Consult the [current installation instructions](https://github.com/neohaskell/skills#readme) for updates.
+
+## Describe a first task
+
+Give the agent the behavior you want, including what should happen when the command cannot be accepted. You can use this task for the shop example:
+
+```text title="Example task for your agent" wrap
+Let a customer order one ceramic mug.
+
+Accept the order only when the quantity is positive and enough stock is available.
+
+Record an accepted order as OrderPlaced, and provide a query for remaining stock.
+
+If there is not enough stock, reject the command without recording an accepted-order event.
+
+Check both accepted and rejected outcomes.
+```
+
+Start with this one behavior. Add payments, shipping, and other conditions as separate changes once you can check the first result.
+
+## Check the result
+
+Ask the agent to demonstrate both an accepted order and a rejected order. For each case, start from the stock shown below and compare the result with the model.
+
+| Starting stock | Command | Expected event | Stock afterward |
+| --- | --- | --- | --- |
+| 3 mugs | Order 1 mug | `OrderPlaced` | 2 mugs |
+| 0 mugs | Order 1 mug | No accepted-order event | 0 mugs |
+
+Also check that zero or negative quantities are rejected. Technical checks help you catch implementation mistakes; you still decide whether the behavior matches what your application should do.
+
+If a result is unexpected, describe the difference to the agent using the same vocabulary: the command, the decision, the event, and the query. That gives you a concrete behavior to correct.

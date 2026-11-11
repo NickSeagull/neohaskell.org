@@ -1,0 +1,55 @@
+# Dependencies and generated site output
+node_modules/
+dist/
+.astro/
+coverage/
+playwright-report/
+test-results/
+
+# Local environment, editor files, and logs
+.DS_Store
+.env
+.env.*
+!.env.example
+*.log
+*.tsbuildinfo
+*.swp
+*.swo
+
+# Impeccable: retain durable design decisions; generated work stays local.
+# See .impeccable/README.md for the ownership of each retained artifact.
+/.impeccable/*
+!/.impeccable/README.md
+!/.impeccable/config.json
+!/.impeccable/design.json
+!/.impeccable/surfaces/
+!/.impeccable/critique/
+!/.impeccable/retrospectives/
+
+!/.impeccable/questions/
+/.impeccable/questions/*
+!/.impeccable/questions/*.md
+!/.impeccable/questions/*direction*.json
+
+!/.impeccable/review/
+/.impeccable/review/**
+!/.impeccable/review/**/
+!/.impeccable/review/**/*.md
+!/.impeccable/reviews/
+/.impeccable/reviews/**
+!/.impeccable/reviews/**/
+!/.impeccable/reviews/**/*.md
+
+!/.impeccable/diagrams/
+/.impeccable/diagrams/*
+!/.impeccable/diagrams/README.md
+!/.impeccable/diagrams/diagram-language.html
+!/.impeccable/diagrams/diagram-language.template.html
+!/.impeccable/diagrams/manrope.woff2
+
+!/.impeccable/mocks/
+/.impeccable/mocks/*
+!/.impeccable/mocks/decision/
+/.impeccable/mocks/decision/*
+!/.impeccable/mocks/decision/r2-violet-workshop.*
+!/.impeccable/mocks/decision/r2-daylight-workshop.*
