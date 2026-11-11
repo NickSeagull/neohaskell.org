@@ -36,3 +36,8 @@ The example review uses the learning-example-review skill. Its central goals are
 The design detector ran once. Its 23 findings were advisory differences from the old design scale, with no hard violation. The former `#d5a8ef` capsule color was removed in the graphic correction; the resulting type, field and radius choices belong in the updated design record. No runtime or deployment verification of NeoHaskell itself was claimed.
 
 Raw current screenshots, browser measurements and capture commands are retained locally in `artifacts/`. Generated captures and build output are not source assets and are excluded from the Git change. The homepage ships no new raster artwork and no added dependencies.
+
+
+## Owner acceptance
+
+On 11 November 2026 the owner explicitly accepted the homepage and general pitch, requested a commit, and asked to preserve the direction as a skill. The implementation was already committed as `49d3206a6cd21d0057e1da34899d42308b4a0f55`. The installed `neohaskell-positioning` skill was updated with the approved language-and-framework pitch and a scoped homepage reference. The repository's product and homepage records now distinguish this owner approval from the preceding reviewer verdicts. No website implementation changed in this approval-recording step.

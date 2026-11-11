@@ -18,7 +18,7 @@ Prior Haskell expertise is not an established audience requirement. Do not assum
 
 ## Product Purpose
 
-neohaskell.org introduces NeoHaskell as an **AI-first programming language**. It should help people build applications with AI agents while keeping the intended behavior understandable, changes traceable, and technical checks available. The language's framework and tooling supply a common technical structure.
+neohaskell.org introduces NeoHaskell as an **AI-first language and framework**. It should help people build applications with AI agents while keeping the intended behavior understandable, changes traceable, and technical checks available. The language's framework and tooling supply a common technical structure.
 
 The homepage is a benefits-led sales page for NeoHaskell as an AI-first language and framework. The owner replaced the earlier code-first homepage on 11 November 2026: no source syntax or concept lesson on the homepage. Show the advantages of event history and recovery, pure logic and type checks, convention over configuration, interchangeable HTTP/MCP transports, generated OpenAPI, OAuth provider connections, PostgreSQL and file storage. Motivate visitors to enter documentation, where concepts and syntax belong. The owner explicitly requested final-state product content for a future publication, rather than a release-readiness report. Keep claims concrete without invented benchmarks or universal error-free guarantees.
 
@@ -44,7 +44,7 @@ The existing public site offers paths to the GitHub organization and Discord com
 
 ## Capabilities and Constraints
 
-- Introduce NeoHaskell as an AI-first language; describe its Event Modeling-centered framework and tooling as supporting mechanisms.
+- Introduce NeoHaskell as an AI-first language and framework, with integrated capabilities and a shared structure for humans and agents.
 - Treat pure application logic and preselected technical decisions as central to the product's intended ease of use.
 - The homepage may present the owner-authorized final product direction for future publication. Keep current source evidence and final-state intent distinct in this internal record; no release-readiness caveats are required in the sales copy.
 - The current site distinguishes technical checks from determining whether application behavior matches the business's intent. Preserve that distinction when explaining error prevention.
@@ -63,7 +63,7 @@ Preserve the name **NeoHaskell**, the domain **neohaskell.org**, and the existin
 
 ## Product Principles
 
-1. Help the person understand and model application behavior before building with AI agents.
+1. Motivate visitors with benefits on the homepage; teach application behavior and building with agents in documentation.
 2. Make useful application development accessible without requiring senior architectural or infrastructure expertise.
 3. Keep Event Modeling and pure domain behavior central to explaining the product.
 4. Reduce avoidable technical decisions and opportunities for accidental mistakes.
@@ -109,4 +109,4 @@ Technical research checked clean local checkouts against remote main at framewor
 
 The one-line transport claim expresses the owner-authorized final product direction. Current transport registration is one line for a command set already permitting the selected transport; the source also has command-level `TransportsOf` declarations. The private evidence record retains that distinction without turning the sales page into a configuration guide. "99% pure" and an infallible AI were not used as unmeasured or universal claims; the copy instead names the enforced separation of pure decisions from effects and recoverable derived data.
 
-Graphic, layout and content reviews were satisfied after one correction batch. Independent finish and example-review evidence is recorded beside the research. Reviewer verdicts concern the inspected implementation, and do not constitute owner acceptance or publication approval. This task builds a local preview; it does not deploy the site.
+Graphic, layout and content reviews were satisfied after one correction batch. Independent finish and example-review evidence is recorded beside the research. The owner subsequently accepted the completed homepage and its general pitch on 11 November 2026, asked to commit it, and requested a reusable skill for this direction. The approved implementation is `49d3206a6cd21d0057e1da34899d42308b4a0f55`. The installed `$neohaskell-positioning` skill now preserves the language-and-framework pitch and benefits-first homepage principles. This is acceptance of the product/design direction, not authorization to deploy; the site remains a local preview.

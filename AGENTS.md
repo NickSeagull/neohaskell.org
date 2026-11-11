@@ -25,7 +25,7 @@ When the user asks to compare this site with a reference, requests a design crit
 
 # Product positioning
 
-For NeoHaskell homepage copy, product explanations, metadata, or capability evidence, load `$neohaskell-positioning`. It owns the AI-first language positioning principles. If discovery has not refreshed, read `${CODEX_HOME:-$HOME/.codex}/skills/neohaskell-positioning/SKILL.md`; use `PRODUCT.md` for repository-specific facts and `GLOSSARY.md` for terminology.
+For NeoHaskell homepage work, product explanations, metadata, or capability evidence, load `$neohaskell-positioning`. It owns the approved benefits-first pitch for NeoHaskell as an AI-first language and framework, including the accepted homepage direction. If discovery has not refreshed, read `${CODEX_HOME:-$HOME/.codex}/skills/neohaskell-positioning/SKILL.md`; use `PRODUCT.md` for repository-specific facts and `GLOSSARY.md` for terminology.
 
 # Documentation direction
 

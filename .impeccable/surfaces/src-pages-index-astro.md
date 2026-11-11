@@ -9,6 +9,8 @@ related_targets: ["src/components/HomepageVisual.astro","src/components/FeatureI
 
 Mode: Persuade. Target: `src/pages/index.astro`.
 
+Owner accepted this homepage and its general pitch on 11 November 2026, at implementation commit `49d3206a6cd21d0057e1da34899d42308b4a0f55`, and requested that the direction be retained as a skill. Continue from this approved baseline. `$neohaskell-positioning` owns the reusable pitch and homepage principles.
+
 The owner's 11 November 2026 request replaces the former code-led homepage with a benefits-led sales page for NeoHaskell as an AI-first language and framework. Preserve the existing palette, type and logo. The supplied Ruby, Phoenix and Laravel screenshots govern the requested craft, visual variety and feature coverage. Documentation remains unchanged. This latest request supersedes historical homepage composition and source-example requirements below.
 
 ## Direction contract
@@ -33,7 +35,7 @@ The completed redesign uses a split hero and layered application illustration, o
 
 The 1536px shell and 1:1.08 hero preserve roomy desktop proportions. At 760px major sections stack; the capability grid shifts from three columns to two at 1000px and one at 480px. History and closing panels use the new paired `--field` colors, while application and pure-boundary illustrations use `--scene`. Type, radii, spacing, and theme values are recorded from the implementation in `DESIGN.md`. The new 12px and 16px radii and varied section-heading scales are intentional additions, not a change of identity.
 
-Graphic, layout, and content reviewers were satisfied after corrections. The independent finish review returned **ship**, and the learning examples received **keep**, after the redundant closing paragraph was removed and visually checked. The build and copy check passed with zero diagnostics; all 12 existing tests passed. Dark and light views were reviewed at 320, 390, 820, and 1440px. Evidence belongs in `.impeccable/reviews/homepage-sales-2026-11-11/`. Review status remains separate from owner acceptance.
+Graphic, layout, and content reviewers were satisfied after corrections. The independent finish review returned **ship**, and the learning examples received **keep**, after the redundant closing paragraph was removed and visually checked. The build and copy check passed with zero diagnostics; all 12 existing tests passed. Dark and light views were reviewed at 320, 390, 820, and 1440px. Evidence belongs in `.impeccable/reviews/homepage-sales-2026-11-11/`. Owner acceptance of this reviewed implementation is recorded above.
 
 ## Historical direction and decisions
 
