@@ -74,7 +74,7 @@ typography:
     letterSpacing: "-.035em"
   headline:
     fontFamily: "Sansation, Manrope, sans-serif"
-    fontSize: "clamp(38px, 3.85vw, 58px)"
+    fontSize: "clamp(36px, 3.6vw, 52px)"
     fontWeight: 400
     lineHeight: 1.12
     letterSpacing: "-.03em"
@@ -91,14 +91,14 @@ typography:
     lineHeight: 1.65
   lead:
     fontFamily: "Manrope, sans-serif"
-    fontSize: "clamp(22px, 1.95vw, 28px)"
+    fontSize: "clamp(20px, 1.7vw, 24px)"
     fontWeight: 400
-    lineHeight: 1.5
-    letterSpacing: "-.02em"
+    lineHeight: 1.55
+    letterSpacing: "-.015em"
   action:
     fontFamily: "Manrope, sans-serif"
-    fontSize: "clamp(20px, 1.7vw, 24px)"
-    fontWeight: 700
+    fontSize: "20px"
+    fontWeight: 600
     lineHeight: 1.3
   diagram-label:
     fontFamily: "Manrope, sans-serif"
@@ -155,7 +155,7 @@ typography:
 rounded:
   focus: "2px"
   control: "6px"
-  action: "9px"
+  action: "8px"
   model-mobile: "12px"
   model: "16px"
   docs-inline-code: "4px"
@@ -163,11 +163,11 @@ rounded:
 spacing:
   page-gutter: "clamp(20px, 4.5vw, 70px)"
   page-gutter-mobile: "24px"
-  page-gutter-small: "18px"
+  page-gutter-small: "20px"
   inline-small: "12px"
   section-start: "48px"
   column-gap: "64px"
-  section-space: "96px"
+  section-space: "80px"
   section-space-mobile: "56px"
   docs-page-gutter: "clamp(1.25rem, 4vw, 4rem)"
   docs-table-cell: ".9rem .75rem"
@@ -288,17 +288,19 @@ All three authored families are self-hosted WOFF2 files with `font-display: swap
 | Lead / action | Mobile lead is 19px at line height `1.65`, becoming 18px below 390px. Mobile primary action is 20px; its supporting prerequisite text remains 16px. |
 | Diagram label / event / query | Semantic labels, recorded event identifiers, and the numeric answer. SVG values are viewBox units: desktop query value is 55, compact 50; event identifier is 26, rising to 28 in the compact desktop strip. |
 
-The hero explanation has a 65ch maximum, reduced to 43ch on mobile. Supporting product copy uses 43–48ch measures. Documentation uses the `docs-title`, `docs-heading`, `docs-subheading`, `docs-body`, and `docs-lead` roles. Prose and list text use 18px type with 1.8 line height; code and tables use 16px. The native code font remains Starlight/Expressive Code’s monospace font. Below 49.99rem, page titles become 2rem, second-level headings 1.5rem, and lead copy 1.125rem. Topic links use 16px text; the local contents outline uses .9375rem. Keep essential article and example text readable rather than reducing it to fit.
+The hero explanation has a 44ch maximum, reduced to 43ch on mobile. Supporting product copy uses 43–48ch measures. Documentation uses the `docs-title`, `docs-heading`, `docs-subheading`, `docs-body`, and `docs-lead` roles. Prose and list text use 18px type with 1.8 line height; code and tables use 16px. The native code font remains Starlight/Expressive Code’s monospace font. Below 49.99rem, page titles become 2rem, second-level headings 1.5rem, and lead copy 1.125rem. Topic links use 16px text; the local contents outline uses .9375rem. Keep essential article and example text readable rather than reducing it to fit.
 
 **The Geometric Voice Rule.** Use Sansation for expansive homepage headings, Manrope for explanation and controls, Pixelify for the selected display accent, and monospace for event identifiers.
 
 ## Layout
 
-The homepage’s centered shell stops at 1536px and uses the fluid gutter token. The masthead has a 72px minimum height and a bottom rule. The opening starts 48px below it, with 24px between title and description and 32px before the action. The model begins 48px after that action. The full-width model overhangs content by 20px above 1000px.
+The homepage’s centered shell stops at 1536px and uses the fluid gutter token. The masthead has an 80px minimum height, a quiet bottom rule, and navigation aligned to the right; mobile retains 72px. The opening starts 56px below it (40px on mobile). A supporting row follows the title after 32px: the explanation on the left, a 360px action group on the right. The no-installation note and code anchor share a row below the primary action. At 760px the support row stacks with a 24px gap. The full-width model aligns with the shell edges in both themes.
 
-The product introduction, benefit pair, evidence section, and community section share equal columns and a 64px gap, reducing to 40px below 1200px. The model-to-next-heading separation is 96px (48px margin, rule, 48px padding). Major sections close with 96px of space, reducing to 56px on mobile. Related blocks use 16–32px gaps; the product intro and benefits are separated by 48px on desktop and 32px on mobile. Evidence uses plain entries separated by a rule, keeping sources readable without introducing a card grid.
+Major sections use 80px of closing space, reducing to 56px on mobile. The model-to-code separation is 80px without an extra rule. The product introduction uses a 5:7 text/code proportion with a 48px gap; the source gets the wider column. At 1100px the code moves below the explanation, whose heading and supporting text form two columns until 760px. The two outcomes have quiet horizontal separators. The benefit pair follows a rule after 48px (32px on mobile).
 
-The product introduction pairs the intent and expected outcomes with one real source excerpt. This pair stacks at 1200px to preserve readable code; the other supporting grids retain their 760px stacking breakpoint. The code frame uses the existing hover ground, construction line, ink, accent, and violet tokens. Build-time Astro highlighting follows the active theme through CSS variables. Code remains 16px with 25.6px line height, a 12px frame radius, and 24px desktop / 20px mobile insets. Native horizontal scrolling, a narrow-screen cue, and an inset keyboard focus ring preserve inspection on phones. The excerpt is static, with a named source link and no execution controls.
+The evidence section places its heading and introduction above two open columns of tools, with 40px between the rows. Each tool begins with a quiet rule; no card surrounds it. Community links use 26px Sansation (24px on mobile), distinct from the 18px reading copy. Supporting grids stack at 760px. Metadata uses inline version/date pairs where space permits. Page rules mix the existing construction-line color at 55% opacity; semantic diagram lines retain their own stronger contrast.
+
+The product introduction pairs the intent and expected outcomes with one real source excerpt. The code frame uses the existing hover ground, construction line, ink, accent, and violet tokens. Build-time Astro highlighting follows the active theme through CSS variables. Code remains 16px with 25.6px line height, a 12px frame radius, and 24px desktop / 20px mobile insets. Native horizontal scrolling, a narrow-screen cue, and an inset keyboard focus ring preserve inspection on phones. The excerpt is static, with a named source link and no execution controls.
 
 | Breakpoint | Implemented adaptation |
 | --- | --- |
@@ -333,9 +335,9 @@ Documentation uses the inline-code radius for short identifiers and the code-fra
 
 ### Actions and theme control
 
-Primary actions are solid, high-contrast links with the action radius and recorded padding. Their minimum height is 62px, reducing to 56px on mobile with 20px horizontal padding. Hover brightens the primary action by `1.06` and moves the arrow 4px right over 180ms. Text actions use the accent, a 44px minimum height, an underline on hover, and the same arrow movement.
+Primary actions are solid, high-contrast links with the action radius and recorded padding. Their minimum height is 56px, with 24px horizontal padding on desktop and 20px on mobile. Hover brightens the primary action by `1.06` and moves the arrow 4px right over 180ms. Text actions use the accent, a 44px minimum height, an underline on hover, and the same arrow movement.
 
-The theme control is transparent at rest and gains the hover field on pointer hover. It is 44px square on desktop, 34×40px on mobile, and 30×40px at the smallest breakpoint. Its SVG icon and accessible label announce the target theme. The homepage and Starlight share the saved `starlight-theme` preference.
+The theme control is transparent at rest and gains the hover field on pointer hover. It is 44px square at every viewport. Its SVG icon and accessible label announce the target theme. The homepage and Starlight share the saved `starlight-theme` preference.
 
 Homepage keyboard focus is a 3px accent outline with 6px offset; documentation uses a 2px Starlight-accent outline with 4px offset. The homepage skip link becomes visible on focus. Preserve these treatments alongside pointer states.
 
@@ -353,7 +355,7 @@ A compact community section states that NeoHaskell is under active development, 
 
 ### Event ledger
 
-The signature model is native SVG inside a semantic figure, with a title and description for each responsive drawing. Its darker recorded row, ordered index, `OrderPlaced` identifier, and check mark remain separate from the query’s numeric stock result. Repeated definitions and ledger metadata have been removed so larger role names and content carry the example. The query says “mugs in stock” in every stage; it does not describe the initial stock as an after-order result. The figure includes an illustrative-model label and a ruled product statement. Uppercase model labels identify semantic roles; they are not decorative page labels.
+The signature model is native SVG inside a semantic figure, with a title and description for each responsive drawing. Its darker recorded row, ordered index, `OrderPlaced` identifier, and check mark remain separate from the query’s numeric stock result. Repeated definitions and ledger metadata have been removed so larger role names and content carry the example. The query says “mugs in stock” in every stage; it does not describe the initial stock as an after-order result. The figure includes an illustrative-model label and a ruled product statement. The light-theme container uses a quiet page rule; the model shapes retain their distinct colors and outlines. Uppercase model labels identify semantic roles; they are not decorative page labels.
 
 The homepage plays one 3800ms opening sequence: command, decision, recorded event, then the current query answer. Stage boundaries are 500, 1450, 2350, and 3200ms. Stock starts at three during animation and settles at two. The source HTML already contains the completed state. Reduced motion starts there, and enabling reduced motion or hiding the page settles an active sequence immediately. There are no scenario, step, or replay controls. This timing belongs to the homepage component, not every future diagram.
 
@@ -398,3 +400,7 @@ On 11 November, one real decision excerpt was added after checkpoint `52614df`, 
 The subsequent Ruby gap review preserves the accepted visual world and section order. A quiet “See the code” anchor sits beside the existing concepts action, below its no-installation note. The source section remains unchanged. Resources joins the wide masthead above 1000px and the footer at all widths; the native docs menu exposes the same destination on phones. The evidence section links directly to agent setup, retaining its published workflow source as a secondary link. The dated framework release gains a short, verified description and a release-history link.
 
 The new `/resources/` article extends the existing guide format, typography, themes, sidebar, search, and contents outline. Four sections organize starting, reference, application constraints, and releases/help. It links to verified material instead of presenting an untested first-run sequence. Existing illustrative examples, actual source, and the initial animation remain unchanged. See `.impeccable/reviews/ruby-gaps-2026-11-11/` for the independent baseline assessments and implementation limits.
+
+## Homepage visual review — 11 November 2026
+
+The visual-only refinement after checkpoint `784ffa55` received **ship** from a fresh combined homepage and learning-example reviewer; both examples received **keep**. It updates the opening support row, page alignment, code proportions, section density, and quiet rules while preserving the brand, actual source, copy, and model behavior. The model's narrower desktop labels increase through 1280px to keep them readable at breakpoint edges. Tests, build, 32 viewport/theme/motion cases, 22 breakpoint-edge checks, and focused interactions pass. See `.impeccable/reviews/homepage-visual-2026-11-11/review.md` for scope and evidence. Owner acceptance remains separate.
