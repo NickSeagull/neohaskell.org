@@ -63,10 +63,10 @@ const counterSource = 'https://github.com/neohaskell/NeoHaskell/blob/cacc8069070
             <div class="product-story">
               <h2 id="product-title">Rules you can read</h2>
               <p>Describe the behavior to your agent. Review the code against it.</p>
-              <p>In the <a href={counterSource}>Counter starter</a>, the rule is simple: <strong>only increase an existing counter by a positive amount.</strong></p>
+              <p>A simplified <a href={counterSource}>Counter</a> decision checks one rule: <strong>the amount must be positive.</strong></p>
               <dl class="decision-outcomes">
-                <div><dt>Missing counter or amount ≤ 0</dt><dd>Reject the command.</dd></div>
-                <div><dt>Existing counter, positive amount</dt><dd>Accept a <code>CounterIncremented</code> event.</dd></div>
+                <div><dt>Amount ≤ 0</dt><dd>Reject the command.</dd></div>
+                <div><dt>Positive amount</dt><dd>Accept a <code>CounterIncremented</code> event.</dd></div>
               </dl>
             </div>
             <DecisionExample />

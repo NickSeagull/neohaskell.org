@@ -86,7 +86,7 @@ No testimonials, adoption counts, or productivity benchmarks have been verified.
 
 ## Homepage source evidence : 11 November 2026
 
-Following the Ruby comparison, the owner requested a checkpoint commit and implementation. The homepage now displays the unchanged 14-line Counter decision body from the inspected `cacc806` revision, with its rule and accepted/rejected outcomes in plain language. The adjacent paragraph identifies and links the Counter starter. The code frame has no caption or language badge. The shop diagram remains an illustrative example. Imports, types, and registration remain in the linked full source. The example is static source evidence; it is not a live execution or a claim that its upstream tests ran here. Source provenance and the distributed Apache 2.0 license are recorded in `src/examples/README.md`.
+The homepage initially displayed the unchanged Counter decision body from the inspected `cacc806` revision. The owner subsequently supplied a simplified body: ignore entity and context, reject non-positive amounts, and use `cmd.counterId`. Bind the accepted event inside the `else` branch before passing it to `Decider.acceptExisting`. The example therefore demonstrates amount validation, without an existence check. The main paragraph identifies it as simplified and links the upstream basis. No caption or language badge is added. The shop diagram remains illustrative. This is a static adapted example, not an unchanged source quotation or a runtime execution. Provenance and the original Apache 2.0 license are recorded in `src/examples/README.md`.
 
 ## Resource discovery : 11 November 2026
 

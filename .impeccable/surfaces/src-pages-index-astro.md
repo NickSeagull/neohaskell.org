@@ -78,3 +78,10 @@ Checkpoint `e727d07e01f26e0966ad069060b17c5003f9d007` preserves the previous pas
 The owner accepted the auxiliary-text correction with “good” and requested “now $unslop harder”. Checkpoint `9e5be672627c55c0a1cb2e0c2dc777105161861d` records the accepted baseline. Preserve the strict copy rule and the established brand while removing repeated visual scaffolding.
 
 The model now sits directly on the page, with vivid violet inside the recorded event. Domain labels use sentence case. The source loses its rounded frame and uses a quiet desktop separator, which disappears on phones. The hero action fits its label. Single coherent headings replace the repeated two-tone pairs. The tools section pairs its introduction with stacked articles, and community actions name their destinations directly. All substantive claims, source evidence, section order, domain distinctions, and animation behavior remain. This supersedes the previous enclosing violet field, fixed-width action, rounded source frame, and repeated equal-column tools layout.
+
+
+## Decision example correction, 11 November 2026
+
+The owner supplied a replacement `decide cmd _ _` example and requested the event be extracted into a `let` binding inside `else`. Use `cmd.counterId`, reject non-positive amounts, and pass the bound event to `Decider.acceptExisting`. The displayed example and outcomes no longer test whether the counter exists.
+
+This supersedes the earlier exact-upstream-excerpt requirement for this example. Describe it as a simplified Counter decision in the main prose and retain the upstream basis as an inline link. Record adaptation details in `src/examples/README.md`; do not add captions or footnotes. Keep the existing composition, highlighting, readable type, and keyboard scrolling.
