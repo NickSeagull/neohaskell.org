@@ -80,10 +80,10 @@ typography:
     letterSpacing: "-.03em"
   title:
     fontFamily: "Manrope, sans-serif"
-    fontSize: "23px"
-    fontWeight: 600
+    fontSize: "24px"
+    fontWeight: 500
     lineHeight: 1.4
-    letterSpacing: "-.025em"
+    letterSpacing: "-.015em"
   body:
     fontFamily: "Manrope, sans-serif"
     fontSize: "18px"
@@ -173,8 +173,8 @@ spacing:
   docs-table-cell: ".9rem .75rem"
 components:
   button-primary:
-    backgroundColor: "{colors.dark-accent}"
-    textColor: "{colors.dark-accent-ink}"
+    backgroundColor: "{colors.dark-ink}"
+    textColor: "{colors.dark-ground}"
     typography: "{typography.action}"
     rounded: "{rounded.action}"
     padding: "12px 24px"
@@ -256,7 +256,7 @@ The palette is violet throughout, with different action and reading emphasis in 
 
 ### Primary
 
-Use **Action accent** for the primary action, text actions, focus, and selected text. Its paired **Action ink** supplies the foreground. Documentation uses its own **accent-low**, **accent**, and **accent-high** roles so links and selected navigation remain part of Starlight’s reading hierarchy.
+Use **Action accent** for the light-theme primary action, main onward text actions, focus, and selected text. The dark-theme primary action uses page ink on page ground; secondary source links use supporting ink with persistent underlines and reveal the accent on hover. Its paired **Action ink** supplies the foreground. Documentation uses its own **accent-low**, **accent**, and **accent-high** roles so links and selected navigation remain part of Starlight’s reading hierarchy.
 
 ### Secondary
 
@@ -282,9 +282,9 @@ All three authored families are self-hosted WOFF2 files with `font-display: swap
 
 | Role | Use and responsive behavior |
 | --- | --- |
-| Display | Homepage title; `clamp(40px, 8vw, 58px)` with line height `1.08` below 760px. Each opening phrase occupies its own line on mobile. |
+| Display | Homepage title; `clamp(40px, 8vw, 58px)` with line height `1.08` below 760px. The final phrase “you build” stays together on mobile rather than leaving “build” isolated. |
 | Headline | Product heading; `clamp(34px, 6vw, 42px)` below 760px and 32px below 390px. Community heading is a smaller supporting display role. |
-| Title / body | Supporting headings use 23px desktop / 22px mobile; reading text remains 18px in both layouts. |
+| Title / body | Supporting headings use 24px desktop / 22px mobile at weight 500; reading text remains 18px in both layouts. |
 | Lead / action | Mobile lead is 19px at line height `1.65`, becoming 18px below 390px. Mobile primary action is 20px; its supporting prerequisite text remains 16px. |
 | Diagram label / event / query | Semantic labels, recorded event identifiers, and the numeric answer. SVG values are viewBox units: desktop query value is 55, compact 50; event identifier is 26, rising to 28 in the compact desktop strip. |
 
@@ -298,7 +298,7 @@ The homepage’s centered shell stops at 1536px and uses the fluid gutter token.
 
 Major sections use 80px of closing space, reducing to 56px on mobile. The model-to-code separation is 80px without an extra rule. The product introduction uses a 5:7 text/code proportion with a 48px gap; the source gets the wider column. At 1100px the code moves below the explanation, whose heading and supporting text form two columns until 760px. The two outcomes have quiet horizontal separators. The benefit pair follows a rule after 48px (32px on mobile).
 
-The evidence section places its heading and introduction above two open columns of tools, with 40px between the rows. Each tool begins with a quiet rule; no card surrounds it. Community links use 26px Sansation (24px on mobile), distinct from the 18px reading copy. Supporting grids stack at 760px. Metadata uses inline version/date pairs where space permits. Page rules mix the existing construction-line color at 55% opacity; semantic diagram lines retain their own stronger contrast.
+The evidence section places its heading and introduction above two open columns of tools, with 40px between the rows. Each tool begins with a quiet rule; no card surrounds it. Community links use 26px Sansation (24px on mobile) in page ink, distinct from the 18px reading copy. Their rows share 24px vertical padding and quiet rules. Supporting grids stack at 760px. Metadata uses inline version/date pairs where space permits. Page rules mix the existing construction-line color at 55% opacity; semantic diagram lines retain their own stronger contrast.
 
 The product introduction pairs the intent and expected outcomes with one real source excerpt. The code frame uses the existing hover ground, construction line, ink, accent, and violet tokens. Build-time Astro highlighting follows the active theme through CSS variables. Code remains 16px with 25.6px line height, a 12px frame radius, and 24px desktop / 20px mobile insets. Native horizontal scrolling, a narrow-screen cue, and an inset keyboard focus ring preserve inspection on phones. The excerpt is static, with a named source link and no execution controls.
 
@@ -325,7 +325,7 @@ Documentation uses subtle tonal table headings, fine separators, and restrained 
 
 ## Shapes
 
-Controls use gently rounded corners: the action, theme control, and model container have separate radius tokens. On mobile the model takes its smaller recorded radius. Straight page rules and an eight-pixel navigation square supply crisp structure.
+Controls use gently rounded corners: the action, theme control, and model container have separate radius tokens. On mobile the model takes its smaller recorded radius. Straight page rules supply crisp structure; navigation has no decorative square.
 
 The model’s shapes carry meaning: a slanted command parallelogram, a decision diamond, a nearly square ledger frame, and a rounded query result. Ledger frame and event row corners use SVG radii of 4 and 2 units; the query uses 14 units on desktop and 12 on mobile. Preserve these distinctions when reusing the model vocabulary. The original logo keeps its outline and geometry.
 
@@ -335,7 +335,7 @@ Documentation uses the inline-code radius for short identifiers and the code-fra
 
 ### Actions and theme control
 
-Primary actions are solid, high-contrast links with the action radius and recorded padding. Their minimum height is 56px, with 24px horizontal padding on desktop and 20px on mobile. Hover brightens the primary action by `1.06` and moves the arrow 4px right over 180ms. Text actions use the accent, a 44px minimum height, an underline on hover, and the same arrow movement.
+Primary actions are solid, high-contrast links with the action radius and recorded padding. Their minimum height is 56px, with 24px horizontal padding on desktop and 20px on mobile. The dark primary action uses the existing off-white ink with dark text; light mode keeps the violet action. Hover mixes the face with 8% of its ink over 160ms. Arrows remain still, at 18px with a 1.5-unit stroke. Primary onward text links use the accent and an underline on hover. Secondary source links stay underlined in supporting ink, with accent on hover. All retain a 44px minimum height.
 
 The theme control is transparent at rest and gains the hover field on pointer hover. It is 44px square at every viewport. Its SVG icon and accessible label announce the target theme. The homepage and Starlight share the saved `starlight-theme` preference.
 
@@ -343,13 +343,13 @@ Homepage keyboard focus is a 3px accent outline with 6px offset; documentation u
 
 ### Navigation
 
-The ruled masthead pairs the original logo and NeoHaskell name with simple text destinations. Documentation has a small accent square on desktop; GitHub uses an authored external-link SVG. The footer names Documentation, GitHub, and Discord directly, with 44px-tall links. The mobile masthead uses Docs and keeps theme access; GitHub is available in the community section and footer. Documentation uses native Starlight topic links with a filled accent-low field for the current page, plus a right-hand contents outline for second-level headings. Search, mobile navigation, and pagination remain native components.
+The ruled masthead pairs the original logo and NeoHaskell name with simple text destinations. Documentation uses a plain text label; GitHub uses an authored external-link SVG. The footer names Documentation, GitHub, and Discord directly, with 44px-tall links. The mobile masthead uses Docs and keeps theme access; GitHub is available in the community section and footer. Documentation uses native Starlight topic links with a filled accent-low field for the current page, plus a right-hand contents outline for second-level headings. Search, mobile navigation, and pagination remain native components.
 
 ### Evidence, community, and next steps
 
 The hero and metadata introduce NeoHaskell as an AI-first language. “Build with AI. Know what you build.” preserves the display treatment while connecting building with understandable behavior. The lower learning link repeats “Learn the concepts” and reaches the same `/learn/` introduction. The primary action explains that no installation is required to begin.
 
-Benefit paragraphs link directly to acceptance/rejection and history-replay tests at an inspected source revision. Source links use 16px text, an underline, and a 44px minimum target height. The evidence section presents the agent workflow and application starter with 18px body text and named destinations. Version/date details use quieter 16px text and name the artifact explicitly. These are dated published releases, not automatically maintained “latest” badges. `PRODUCT.md` records source evidence and verification limits.
+Benefit paragraphs link directly to acceptance/rejection and history-replay tests at an inspected source revision. Source links use 16px supporting ink, an underline, and a 44px minimum target height. Their redundant arrows are omitted; major onward actions retain an 18px arrow. The evidence section presents the agent workflow and application starter with 18px body text and named destinations. Version/date details use quieter 16px text and name the artifact explicitly. These are dated published releases, not automatically maintained “latest” badges. `PRODUCT.md` records source evidence and verification limits.
 
 A compact community section states that NeoHaskell is under active development, links its dated CLI/framework release, and offers the public repository and verified Discord invite. This status and the release were verified on 10 November 2026. Product principles live in `$neohaskell-positioning`; this design record governs their presentation.
 
@@ -404,3 +404,7 @@ The new `/resources/` article extends the existing guide format, typography, the
 ## Homepage visual review — 11 November 2026
 
 The visual-only refinement after checkpoint `784ffa55` received **ship** from a fresh combined homepage and learning-example reviewer; both examples received **keep**. It updates the opening support row, page alignment, code proportions, section density, and quiet rules while preserving the brand, actual source, copy, and model behavior. The model's narrower desktop labels increase through 1280px to keep them readable at breakpoint edges. Tests, build, 32 viewport/theme/motion cases, 22 breakpoint-edge checks, and focused interactions pass. See `.impeccable/reviews/homepage-visual-2026-11-11/review.md` for scope and evidence. Owner acceptance remains separate.
+
+## Explicit Unslop finish — 11 November 2026
+
+After checkpoint `b0a1682`, the owner's explicit Unslop request received **ship** from a fresh visual reviewer, with no material findings. The pass quiets secondary links and the dark primary action, removes decorative marking and redundant arrows, simplifies short-heading punctuation, balances the phone headline, and normalizes community rows. It preserves the accepted palette, composition, factual content, source, and model. Build, 12 tests, 54 responsive checks, and focused interactions pass. See `.impeccable/reviews/homepage-unslop-2026-11-11/review.md` for the nine-pass audit and inspected scope; this is review evidence, not owner acceptance.
