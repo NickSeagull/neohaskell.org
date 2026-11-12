@@ -1,0 +1,66 @@
+---
+title: Richte deinen Agenten ein
+description: Bereite deine Entwicklungsumgebung vor, installiere die NeoHaskell-Agent-Skills und erstelle ein erstes Verhalten, das du überprüfen kannst.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+---
+
+<p class="docs-lead">Bereite deine Umgebung vor und gib deinem KI-Agenten eine kleine, klar abgegrenzte erste Aufgabe.</p>
+
+Beginne mit den [Grundkonzepten](/learn/), wenn Befehle, Entscheidungen, Ereignisse und Abfragen neu für dich sind. Diese Anleitung verwendet dasselbe Shop-Beispiel: Nimm eine Bestellung an, wenn Bestand verfügbar ist, und lehne sie ab, wenn der Shop ausverkauft ist.
+
+## Umgebung vorbereiten
+
+Mit der **Neo CLI** erstellst, baust, startest und testest du eine Anwendung. Die [Voraussetzungen und Installationsanleitung](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites) nennen Nix und Git. Die dokumentierte Installation aus dem Quellcode verwendet außerdem Rusts Cargo. Folge der [Anleitung zum Erstellen und Starten eines Projekts](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md#create-and-run-an-application), um dein Anwendungsrepository zu erstellen, bevor du Agent-Skills installierst.
+
+Wenn du dir zuerst die Counter-Anwendung ansehen möchtest, lies die [Anforderungen und den Schnellstart des Starters](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter/README.md#requirements). Der standardmäßige Ereignisspeicher befindet sich im Arbeitsspeicher: Erfasste Ereignisse gehen verloren, wenn der Prozess endet. Die [Anleitung zur Speicherung](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/storage.md) erklärt die Möglichkeiten für dauerhafte Speicherung.
+
+Diese Links beschreiben die geprüfte Version des Frameworks. Verwende die Anweisungen, die zur Version passen, auf die dein Projekt festgelegt ist. Für das Installationsprogramm der Agent-Skills wird separat **Node.js 22.20 oder neuer** benötigt.
+
+Bevor du fortfährst, öffne dein Anwendungsrepository und starte deinen Coding-Agenten darin. Die aktuelle Skill-Sammlung unterstützt **Claude Code** und **Codex**.
+
+## Agent-Skills installieren
+
+Die NeoHaskell-Skills geben deinem Coding-Agenten projektspezifische Anleitungen. Führe diesen Befehl im Git-Stammverzeichnis deiner Anwendung aus:
+
+```sh title="Terminal" wrap
+npx skills add neohaskell/skills --skill '*'
+```
+
+Das Installationsprogramm fragt, welchen Agenten und Installationsumfang du verwenden möchtest. Wähle die vollständige Sammlung, damit zugehörige Skills und Ressourcen gemeinsam verfügbar sind. Bewahre die installierten Dateien und das Lockfile in deinem Projekt auf.
+
+Der Befehl und die Installationsvoraussetzungen stammen aus der [NeoHaskell-Skills-README](https://github.com/neohaskell/skills/blob/0ff0872d554e79d955f4c92f9b905056b908e9ae/README.md), geprüft am 9. November 2026. Beachte die [aktuellen Installationsanweisungen](https://github.com/neohaskell/skills#readme), falls es Aktualisierungen gibt.
+
+## Eine erste Aufgabe beschreiben
+
+Beschreibe dem Agenten das gewünschte Verhalten und auch, was passieren soll, wenn der Befehl nicht angenommen werden kann. Für das Shop-Beispiel kannst du diese Aufgabe verwenden:
+
+```text title="Beispielaufgabe für deinen Agenten" wrap
+Lass einen Kunden eine Keramiktasse bestellen.
+
+Nimm die Bestellung nur an, wenn die Menge positiv und genug Bestand verfügbar ist.
+
+Erfasse eine angenommene Bestellung als OrderPlaced und stelle eine Abfrage für den verbleibenden Bestand bereit.
+
+Wenn der Bestand nicht ausreicht, lehne den Befehl ab, ohne ein Ereignis für eine angenommene Bestellung zu erfassen.
+
+Prüfe sowohl angenommene als auch abgelehnte Ergebnisse.
+```
+
+Beginne mit diesem einen Verhalten. Ergänze Zahlungen, Versand und weitere Bedingungen als separate Änderungen, sobald du das erste Ergebnis überprüfen kannst.
+
+## Ergebnis überprüfen
+
+Bitte den Agenten, sowohl eine angenommene als auch eine abgelehnte Bestellung zu zeigen. Beginne in beiden Fällen mit dem unten angegebenen Bestand und vergleiche das Ergebnis mit dem Modell.
+
+| Anfangsbestand | Befehl | Erwartetes Ereignis | Bestand danach |
+| --- | --- | --- | --- |
+| 3 Tassen | 1 Tasse bestellen | `OrderPlaced` | 2 Tassen |
+| 0 Tassen | 1 Tasse bestellen | Kein Ereignis für eine angenommene Bestellung | 0 Tassen |
+
+Prüfe außerdem, dass Mengen von null oder darunter abgelehnt werden. Technische Prüfungen helfen dir, Implementierungsfehler zu erkennen. Du entscheidest weiterhin, ob das Verhalten dem entspricht, was deine Anwendung tun soll.
+
+Wenn ein Ergebnis unerwartet ist, beschreibe dem Agenten den Unterschied mit denselben Begriffen: Befehl, Entscheidung, Ereignis und Abfrage. So kannst du das konkrete Verhalten korrigieren.
+
+Syntax, Hinweise zum Testen, Versionshinweise und Hilfe findest du unter [Ressourcen und Projektstatus](/resources/).

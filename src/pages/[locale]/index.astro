@@ -1,0 +1,8 @@
+---
+import Home from '../../components/Home.astro';
+import { targetLocales } from '../../i18n/locales.mjs';
+export function getStaticPaths() {
+  return targetLocales.map(({ code }) => ({ params: { locale: code } }));
+}
+---
+<Home locale={Astro.params.locale} />

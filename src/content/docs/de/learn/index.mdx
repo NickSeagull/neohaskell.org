@@ -1,0 +1,93 @@
+---
+title: Grundkonzepte
+description: Lerne Befehle, Entscheidungen, Ereignisse und Abfragen kennen, indem du eine Bestellung in einem kleinen Onlineshop verfolgst.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+---
+
+<p class="docs-lead">Verstehe, wie eine Anwendung entscheidet, was geschehen kann, festhält, was geschehen ist, und Fragen zu ihrem Zustand beantwortet.</p>
+
+NeoHaskell ist eine KI-orientierte Programmiersprache und ein Framework, mit denen du Anwendungen mithilfe eines KI-Agenten entwickeln und ihr Verhalten nachvollziehen kannst. Du beschreibst dieses Verhalten mit **Befehlen, Entscheidungen, Ereignissen und Abfragen**. Die Sprache und das Framework geben diesen Konzepten eine gemeinsame Struktur.
+
+Diese Anleitung beschreibt einen kleinen Shop mit drei Keramiktassen auf Lager. Ein Kunde bestellt eine Tasse. Du kannst das Modell verstehen, bevor du NeoHaskell installierst oder einen KI-Agenten verwendest.
+
+| Konzept | Zweck | Beispiel aus dem Shop |
+| --- | --- | --- |
+| [Befehl](#commands) | Drückt eine Absicht aus | Eine Bestellung aufgeben |
+| [Entscheidung](#decisions) | Nimmt an oder lehnt ab | Verfügbaren Bestand prüfen |
+| [Ereignis](#events) | Hält fest, was geschehen ist | Bestellung aufgegeben |
+| [Abfrage](#queries) | Liest den aktuellen Zustand | Zwei Tassen übrig |
+
+## Befehle
+
+Ein **Befehl** beschreibt, was eine Person oder ein Prozess von der Anwendung erwartet. Er drückt eine Absicht aus. Das bedeutet noch nicht, dass die Aktion bereits ausgeführt wurde.
+
+Um eine Tasse zu bestellen, gibt der Kunde Produkt und Menge an. Die Anwendung muss noch entscheiden, ob sie diese Absicht erfüllen kann.
+
+```text title="Beispielbefehl"
+PlaceOrder
+  product: Keramiktasse
+  quantity: 1
+```
+
+Die Beispiele in dieser Anleitung beschreiben das Modell in einfacher Textform. Sie sind weder ausführbarer NeoHaskell-Code noch API-Nutzdaten.
+
+## Entscheidungen
+
+Eine **Entscheidung** prüft einen Befehl anhand des aktuellen Zustands und der Bedingungen, die deine Anwendung durchsetzen muss. Sie bestimmt, ob der Befehl angenommen oder abgelehnt wird.
+
+In diesem Shop muss die Menge positiv sein und genug Bestand verfügbar sein. Bei drei Tassen auf Lager kann eine Bestellung über eine Tasse angenommen werden. Eine Bestellung über vier Tassen kann nicht angenommen werden.
+
+| Befehl | Verfügbarer Bestand | Entscheidung |
+| --- | --- | --- |
+| 1 Tasse bestellen | 3 Tassen | Annehmen |
+| 4 Tassen bestellen | 3 Tassen | Ablehnen |
+
+Diese Bedingungen gehören zum Verhalten der Anwendung. Ein KI-Agent kann dir bei ihrer Implementierung helfen, trifft aber zur Laufzeit nicht die Entscheidungen.
+
+## Ereignisse
+
+Ein **Ereignis** hält eine Tatsache über etwas fest, das geschehen ist. Wenn der Shop die Bestellung annimmt, erfasst er ein Ereignis `OrderPlaced`.
+
+```text title="Erfasstes Ereignis"
+OrderPlaced
+  product: Keramiktasse
+  quantity: 1
+```
+
+Achte auf den Unterschied im Namen: `PlaceOrder` drückt eine Absicht aus, `OrderPlaced` beschreibt eine angenommene Tatsache. Das Ereignis wird Teil der Historie der Anwendung.
+
+In diesem Beispiel wird durch die angenommene Bestellung eine Tasse aus dem Bestand entnommen. Das Ereignis hält die Bestellung fest. Der verbleibende Bestand ist ein Zustand, der aus dieser Historie abgeleitet wird. In anderen Anwendungen kann ein Befehl unterschiedlich viele Ereignisse erzeugen. Dieses Beispiel beschreibt eine Bestellung und ein Ereignis.
+
+## Abfragen
+
+Eine **Abfrage** liest den Zustand der Anwendung, ohne ihn zu ändern. Sie beantwortet eine Frage anhand des Zustands, der aus erfassten Ereignissen abgeleitet wird.
+
+Nach der angenommenen Bestellung liefert eine Abfrage des Bestands zwei Tassen zurück: die drei Tassen zu Beginn minus die bestellte Tasse.
+
+```text title="Abfrage und Ergebnis"
+Verbleibender Bestand an Keramiktassen
+2
+```
+
+Das Ereignis und das Abfrageergebnis erfüllen unterschiedliche Zwecke. `OrderPlaced` bleibt als Aufzeichnung der Bestellung in der Historie. Eine Bestandsabfrage liefert die aktuelle Antwort, die sich ändern kann, wenn weitere Bestellungen angenommen werden.
+
+## Abgelehnte Befehle
+
+Ein Befehl kann als Absicht gültig sein und dennoch abgelehnt werden. Wenn im Shop keine Tassen mehr vorrätig sind, erfüllt eine Bestellung über eine Tasse die Bestandsbedingung nicht.
+
+Für diese abgelehnte Bestellung wird kein Ereignis `OrderPlaced` erfasst. Eine Abfrage liefert weiterhin null Tassen zurück. Der Versuch wurde nicht zu einer angenommenen Bestellung und der Bestand hat sich nicht geändert.
+
+| Anfangsbestand | Befehl | Erfasstes Ereignis | Bestand danach |
+| --- | --- | --- | --- |
+| 3 Tassen | 1 Tasse bestellen | `OrderPlaced` | 2 Tassen |
+| 0 Tassen | 1 Tasse bestellen | Keines | 0 Tassen |
+
+Dieses Modell umfasst Bestellungen und Bestand. Zahlungen, Versand und gleichzeitige Bestellungen gehören nicht zu diesem ersten Beispiel.
+
+## Mit dem Entwickeln beginnen
+
+Bevor du einen Agenten bittest, eine Funktion zu entwickeln, beschreibe den Befehl, die Bedingungen für seine Annahme, die zu erfassenden Ereignisse und die Fragen, die die Anwendung beantworten soll. Füge auch einen Fall hinzu, der abgelehnt werden sollte.
+
+Wenn du beide Ergebnisse für diesen Shop erklären kannst, fahre mit [Agent einrichten](/getting-started/) fort.

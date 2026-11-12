@@ -53,3 +53,6 @@ test-results/
 /.impeccable/mocks/decision/*
 !/.impeccable/mocks/decision/r2-violet-workshop.*
 !/.impeccable/mocks/decision/r2-daylight-workshop.*
+
+# Translation prompts, responses, diagnostics, and process lock
+.i18n/

@@ -1,0 +1,7 @@
+---
+import { locales, localePath } from '../i18n/locales.mjs';
+interface Props { locale?: string; path?: string; }
+const { path = Astro.url.pathname } = Astro.props;
+---
+{locales.map(({ code, lang }) => <link rel="alternate" hreflang={lang} href={new URL(localePath(code, path), Astro.site)} />)}
+<link rel="alternate" hreflang="x-default" href={new URL(localePath('en', path), Astro.site)} />

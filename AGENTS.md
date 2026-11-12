@@ -1,3 +1,11 @@
+# Written language
+
+Write file contents, code comments, documentation, Git commit messages, and other repository artifacts in English, regardless of the conversation language. Translated prose files and localized message catalogs use their target language. Keep conversation replies in the user's language.
+
+# Task completion
+
+Finish each task by committing its completed changes and pushing the commit to the current branch's remote. Run the applicable checks first, write the commit message in English, and verify that the push succeeded. If the remote or credentials are missing, preserve the local commit and report the exact blocker.
+
 # Copy and auxiliary text
 
 Write primary content, necessary labels, and direct actions. Keep substantive explanations in the main prose and place source links inline where they support a claim.

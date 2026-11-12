@@ -1,0 +1,301 @@
+{
+  "version": 1,
+  "locales": {
+    "es": {
+      "src/content/docs/getting-started/index.mdx": {
+        "sourceHash": "7f95cfc4d369ce0d9f5845c03330c536e88f7b446fb15756450550f6519319d3",
+        "targetHash": "a4439516c6c8180f60ae8f3a98900cdb80f0bcc739bc3ca91d2d6caf89a76552",
+        "translatedAt": "2026-11-12T10:31:02.440Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/learn/index.mdx": {
+        "sourceHash": "10bd6fb6ff4cc620bff716b5f14ba33579a2a34b5f7cbcc70cdde5c7c420946c",
+        "targetHash": "ea673e0a6c01f0e4409be02f610bc5853bba2cd263098a3a8104e8392636369e",
+        "translatedAt": "2026-11-12T10:31:02.440Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/resources.mdx": {
+        "sourceHash": "c5e6f573d02d48cafaf743a972e0c6d41703c4869ae59107121f52909177916c",
+        "targetHash": "8df532a48feac8a78f65dd3afded4861f63133ab062ba531e87ff3e411566603",
+        "translatedAt": "2026-11-12T10:31:02.440Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/i18n/en.json": {
+        "sourceHash": "94445569b19bb6122cb314c818e05c3c01769105e75c245fd2c288cc8ca4c319",
+        "targetHash": "42e92647ead0c363a3347eae52f31d0793f00d940f48904e3d861916d03250db",
+        "translatedAt": "2026-11-12T10:31:02.440Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/i18n/en/site.json": {
+        "sourceHash": "4ad6f7174fc258fc6b401444315d4c3e4d3ed1ee690e1e26de8e1ffaa0c1be59",
+        "targetHash": "ae7995b502b681faf5d9de0f183776cd784192aaa34e41397a2914ddf62685f1",
+        "translatedAt": "2026-11-12T10:31:02.440Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      }
+    },
+    "zh-cn": {
+      "src/content/docs/getting-started/index.mdx": {
+        "sourceHash": "7f95cfc4d369ce0d9f5845c03330c536e88f7b446fb15756450550f6519319d3",
+        "targetHash": "33b15fe9dfe2fafc34464cddcc8a7727c794ee28542e136473dd819e11372b54",
+        "translatedAt": "2026-11-12T10:35:02.565Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/learn/index.mdx": {
+        "sourceHash": "10bd6fb6ff4cc620bff716b5f14ba33579a2a34b5f7cbcc70cdde5c7c420946c",
+        "targetHash": "c1c795764550f70bb56be3498115a8639f912c21656f7cbbb6071bf1b23195a0",
+        "translatedAt": "2026-11-12T10:35:02.565Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/resources.mdx": {
+        "sourceHash": "c5e6f573d02d48cafaf743a972e0c6d41703c4869ae59107121f52909177916c",
+        "targetHash": "c952184cf4e95c9be43cb01d52451e85bf1cc4e1ed6f71282b84191a511ffeec",
+        "translatedAt": "2026-11-12T10:35:02.565Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/i18n/en.json": {
+        "sourceHash": "94445569b19bb6122cb314c818e05c3c01769105e75c245fd2c288cc8ca4c319",
+        "targetHash": "00b394d510aa65be214f7915affd1a1841d649d6a99c39a670ad9805941a8c45",
+        "translatedAt": "2026-11-12T10:35:02.565Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/i18n/en/site.json": {
+        "sourceHash": "4ad6f7174fc258fc6b401444315d4c3e4d3ed1ee690e1e26de8e1ffaa0c1be59",
+        "targetHash": "229b7ae4c67139fe7dec53fe5fdb1339fd8c23adc8f09b3f4416bbed49364525",
+        "translatedAt": "2026-11-12T10:35:02.565Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      }
+    },
+    "ru": {
+      "src/content/docs/getting-started/index.mdx": {
+        "sourceHash": "7f95cfc4d369ce0d9f5845c03330c536e88f7b446fb15756450550f6519319d3",
+        "targetHash": "3f9e7c27d8fed8c1c298a6d4940312b709879ef1a73681babec9e449f4b056d7",
+        "translatedAt": "2026-11-12T10:37:54.280Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/learn/index.mdx": {
+        "sourceHash": "10bd6fb6ff4cc620bff716b5f14ba33579a2a34b5f7cbcc70cdde5c7c420946c",
+        "targetHash": "dcbf29badc3a36c8ad6f37cb8f0904bac2c05fa7eb2da656d20c532eaaa936a6",
+        "translatedAt": "2026-11-12T10:37:54.280Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/resources.mdx": {
+        "sourceHash": "c5e6f573d02d48cafaf743a972e0c6d41703c4869ae59107121f52909177916c",
+        "targetHash": "9ac4d0d68201f06e5fd2156b2613174928b660fd6470209c66fcff76029396de",
+        "translatedAt": "2026-11-12T10:37:54.280Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/i18n/en.json": {
+        "sourceHash": "94445569b19bb6122cb314c818e05c3c01769105e75c245fd2c288cc8ca4c319",
+        "targetHash": "57ec7fa4d26bd91a4a4e80282b62e101b0a958707e69888a591750439248192b",
+        "translatedAt": "2026-11-12T10:37:54.280Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/i18n/en/site.json": {
+        "sourceHash": "4ad6f7174fc258fc6b401444315d4c3e4d3ed1ee690e1e26de8e1ffaa0c1be59",
+        "targetHash": "448e96b74d767f611f09762f2291324319d3917ba04b16108c45d5631a53df54",
+        "translatedAt": "2026-11-12T10:37:54.280Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      }
+    },
+    "hy": {
+      "src/content/docs/getting-started/index.mdx": {
+        "sourceHash": "7f95cfc4d369ce0d9f5845c03330c536e88f7b446fb15756450550f6519319d3",
+        "targetHash": "5c0e603ef3351972fb06dd443bfa13b39c8925b21e67dd438aa3b0fb1cf3b584",
+        "translatedAt": "2026-11-12T10:41:30.786Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/learn/index.mdx": {
+        "sourceHash": "10bd6fb6ff4cc620bff716b5f14ba33579a2a34b5f7cbcc70cdde5c7c420946c",
+        "targetHash": "b372e90bd19cb68348180d37e1760d2ff730ec9431cef24b7283ca1c0e542179",
+        "translatedAt": "2026-11-12T10:41:30.786Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/resources.mdx": {
+        "sourceHash": "c5e6f573d02d48cafaf743a972e0c6d41703c4869ae59107121f52909177916c",
+        "targetHash": "2c688702126e35e2ff3c7d891091b424bffbef69802098d2383588611934bef8",
+        "translatedAt": "2026-11-12T10:41:30.786Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/i18n/en.json": {
+        "sourceHash": "94445569b19bb6122cb314c818e05c3c01769105e75c245fd2c288cc8ca4c319",
+        "targetHash": "00b6335e5b207dda5f48488681ffa80e484e38bd19b6caf6b7c9f28c1bff9ce8",
+        "translatedAt": "2026-11-12T10:41:30.786Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/i18n/en/site.json": {
+        "sourceHash": "4ad6f7174fc258fc6b401444315d4c3e4d3ed1ee690e1e26de8e1ffaa0c1be59",
+        "targetHash": "7695094e2623f636dab965f8601253b31cb597b676df7c05cc820cddaa76494a",
+        "translatedAt": "2026-11-12T10:41:30.786Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      }
+    },
+    "ja": {
+      "src/content/docs/getting-started/index.mdx": {
+        "sourceHash": "7f95cfc4d369ce0d9f5845c03330c536e88f7b446fb15756450550f6519319d3",
+        "targetHash": "dd432cfa7b1da66c097bf6bc5fc26419a16776cdc53fed155392b5fb0c6ab1ed",
+        "translatedAt": "2026-11-12T10:44:17.518Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/learn/index.mdx": {
+        "sourceHash": "10bd6fb6ff4cc620bff716b5f14ba33579a2a34b5f7cbcc70cdde5c7c420946c",
+        "targetHash": "294cb17e5a9c8e5bc8cfe27a8d835a5819630a30234aa7f1ddb21e95ce406086",
+        "translatedAt": "2026-11-12T10:44:17.518Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/resources.mdx": {
+        "sourceHash": "c5e6f573d02d48cafaf743a972e0c6d41703c4869ae59107121f52909177916c",
+        "targetHash": "c4e441f8b7e77ce1a3f683eacfb55695ced67b656392076c2bade636072f8dec",
+        "translatedAt": "2026-11-12T10:44:17.518Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/i18n/en.json": {
+        "sourceHash": "94445569b19bb6122cb314c818e05c3c01769105e75c245fd2c288cc8ca4c319",
+        "targetHash": "8c7ca6bb2d59aa3990dbbbe600c360edc6b6a57a4a1f640d8c69f7386927288a",
+        "translatedAt": "2026-11-12T10:44:17.518Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/i18n/en/site.json": {
+        "sourceHash": "4ad6f7174fc258fc6b401444315d4c3e4d3ed1ee690e1e26de8e1ffaa0c1be59",
+        "targetHash": "af8e66c04146d514e7e12a43b3553d932be7e1b23531ad92bf5dda5a0e7163c4",
+        "translatedAt": "2026-11-12T10:44:17.518Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      }
+    },
+    "de": {
+      "src/content/docs/getting-started/index.mdx": {
+        "sourceHash": "7f95cfc4d369ce0d9f5845c03330c536e88f7b446fb15756450550f6519319d3",
+        "targetHash": "7244d24a548b6910f171b353cd974fe7e47baef30e5a325b1a5f995ea67d30cb",
+        "translatedAt": "2026-11-12T10:48:53.861Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/learn/index.mdx": {
+        "sourceHash": "10bd6fb6ff4cc620bff716b5f14ba33579a2a34b5f7cbcc70cdde5c7c420946c",
+        "targetHash": "7f9a852a5605697878df2384489cfb13edd521d0778770f7c1e9653e84d00a3a",
+        "translatedAt": "2026-11-12T10:48:53.861Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/resources.mdx": {
+        "sourceHash": "c5e6f573d02d48cafaf743a972e0c6d41703c4869ae59107121f52909177916c",
+        "targetHash": "8481def0b381d993694f01ad45ff085483946a5fae61721cf088390bb484bf66",
+        "translatedAt": "2026-11-12T10:48:53.861Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/i18n/en.json": {
+        "sourceHash": "94445569b19bb6122cb314c818e05c3c01769105e75c245fd2c288cc8ca4c319",
+        "targetHash": "6547db11529eacde099edc6322cf2d7e793410be3db7f141ac1ae617d358638e",
+        "translatedAt": "2026-11-12T10:48:53.861Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/i18n/en/site.json": {
+        "sourceHash": "4ad6f7174fc258fc6b401444315d4c3e4d3ed1ee690e1e26de8e1ffaa0c1be59",
+        "targetHash": "3acad61d89be4f40fc08ebfb8c3263cd635266b54b17b3a8e4516402e402de27",
+        "translatedAt": "2026-11-12T10:48:53.861Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      }
+    },
+    "fr": {
+      "src/content/docs/getting-started/index.mdx": {
+        "sourceHash": "7f95cfc4d369ce0d9f5845c03330c536e88f7b446fb15756450550f6519319d3",
+        "targetHash": "16c47d447eef24124c260abdbabcd875ac18d27abc6d3709cf27033374ee3128",
+        "translatedAt": "2026-11-12T10:51:47.044Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/learn/index.mdx": {
+        "sourceHash": "10bd6fb6ff4cc620bff716b5f14ba33579a2a34b5f7cbcc70cdde5c7c420946c",
+        "targetHash": "4123b81660236b693081e40b7e5336ad5450eab9f215a4a1cd39235e474bc2ea",
+        "translatedAt": "2026-11-12T10:51:47.044Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/resources.mdx": {
+        "sourceHash": "c5e6f573d02d48cafaf743a972e0c6d41703c4869ae59107121f52909177916c",
+        "targetHash": "264eb24aa8483532013a8c9b8eea07c29d78087eeb8205104e9f51009a13e1dd",
+        "translatedAt": "2026-11-12T10:51:47.044Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/i18n/en.json": {
+        "sourceHash": "94445569b19bb6122cb314c818e05c3c01769105e75c245fd2c288cc8ca4c319",
+        "targetHash": "8cb23118135289b6ad3c60ddbf7ff8127bfc45149484904b846de8d1287398a2",
+        "translatedAt": "2026-11-12T10:51:47.044Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/i18n/en/site.json": {
+        "sourceHash": "4ad6f7174fc258fc6b401444315d4c3e4d3ed1ee690e1e26de8e1ffaa0c1be59",
+        "targetHash": "374620c2843565f118084e7c6cafd1794a5cdad844d7d2071c4695170e3b7687",
+        "translatedAt": "2026-11-12T10:51:47.044Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      }
+    },
+    "pt": {
+      "src/content/docs/getting-started/index.mdx": {
+        "sourceHash": "7f95cfc4d369ce0d9f5845c03330c536e88f7b446fb15756450550f6519319d3",
+        "targetHash": "7527846ca60014db4d0a385736b081f9b691a53e584a69412b63f92ed300e55f",
+        "translatedAt": "2026-11-12T10:55:20.222Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/learn/index.mdx": {
+        "sourceHash": "10bd6fb6ff4cc620bff716b5f14ba33579a2a34b5f7cbcc70cdde5c7c420946c",
+        "targetHash": "26eff7460c4d77a7f4b9b4eb24a655f3f22b97efb64c1c5e4ea482de263a1f2f",
+        "translatedAt": "2026-11-12T10:55:20.222Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/docs/resources.mdx": {
+        "sourceHash": "c5e6f573d02d48cafaf743a972e0c6d41703c4869ae59107121f52909177916c",
+        "targetHash": "4be1539b4bc430d8b083f6b09b4dbd24966c3b70212257683c1b6841c996e7f3",
+        "translatedAt": "2026-11-12T10:55:20.222Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/content/i18n/en.json": {
+        "sourceHash": "94445569b19bb6122cb314c818e05c3c01769105e75c245fd2c288cc8ca4c319",
+        "targetHash": "c25d48a075a3bb750b7c1c6b817870f5a1325fd575c428b4962adc4e757e9ec1",
+        "translatedAt": "2026-11-12T10:55:20.222Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      },
+      "src/i18n/en/site.json": {
+        "sourceHash": "4ad6f7174fc258fc6b401444315d4c3e4d3ed1ee690e1e26de8e1ffaa0c1be59",
+        "targetHash": "f2a788162e15a881a79201a6b66ffcb7834f4a387a7c36a729e482b12403d8a3",
+        "translatedAt": "2026-11-12T10:55:20.222Z",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "max"
+      }
+    }
+  }
+}

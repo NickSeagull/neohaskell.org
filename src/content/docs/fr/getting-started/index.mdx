@@ -1,0 +1,66 @@
+---
+title: Configurez votre agent
+description: Préparez votre environnement de développement, installez les compétences NeoHaskell pour agents et créez un premier comportement que vous pouvez vérifier.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+---
+
+<p class="docs-lead">Préparez votre environnement et confiez à votre agent d'IA une première tâche simple et bien définie.</p>
+
+Commencez par les [concepts fondamentaux](/learn/) si les commandes, les décisions, les événements et les requêtes ne vous sont pas familiers. Ce guide reprend le même exemple de boutique : accepter une commande si le stock est suffisant et la rejeter si la boutique est en rupture de stock.
+
+## Préparez votre environnement
+
+La **Neo CLI** crée, compile, exécute et teste une application. Ses [prérequis et instructions d'installation](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites) mentionnent Nix et Git. L'installation depuis les sources documentée utilise aussi Cargo, l'outil de Rust. Suivez le [guide de création et d'exécution d'un projet](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md#create-and-run-an-application) pour créer le dépôt de votre application avant d'installer les compétences pour agents.
+
+Pour commencer par examiner l'application Counter, lisez les [prérequis et le guide de démarrage rapide du starter](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter/README.md#requirements). Son stockage d'événements par défaut est en mémoire : les événements enregistrés disparaissent à la fin du processus. Le [guide sur le stockage](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/storage.md) présente les options de stockage persistant.
+
+Ces liens décrivent la version du framework examinée. Suivez les instructions correspondant à la version utilisée par votre application. Le programme d'installation des compétences pour agents nécessite séparément **Node.js 22.20 ou une version ultérieure**.
+
+Avant de continuer, ouvrez le dépôt de votre application et préparez votre agent de programmation à y travailler. La collection actuelle de compétences prend en charge **Claude Code** et **Codex**.
+
+## Installez les compétences pour agents
+
+Les compétences NeoHaskell donnent à votre agent de programmation des conseils adaptés au projet. Exécutez cette commande depuis la racine Git de votre application :
+
+```sh title="Terminal" wrap
+npx skills add neohaskell/skills --skill '*'
+```
+
+Le programme d'installation vous demande quel agent et quelle portée d'installation utiliser. Sélectionnez la collection complète pour disposer ensemble des compétences et des ressources associées. Conservez les fichiers installés et le fichier de verrouillage dans votre projet.
+
+La commande et les prérequis du programme d'installation sont indiqués dans le [README des compétences NeoHaskell](https://github.com/neohaskell/skills/blob/0ff0872d554e79d955f4c92f9b905056b908e9ae/README.md), consulté le 9 novembre 2026. Consultez les [instructions d'installation actuelles](https://github.com/neohaskell/skills#readme) pour connaître les mises à jour.
+
+## Décrivez une première tâche
+
+Décrivez à l'agent le comportement voulu, y compris ce qui doit se passer si la commande ne peut pas être acceptée. Pour l'exemple de la boutique, vous pouvez lui confier cette tâche :
+
+```text title="Exemple de tâche pour votre agent" wrap
+Permettez à un client de commander une tasse en céramique.
+
+Acceptez la commande uniquement si la quantité est positive et le stock suffisant.
+
+Enregistrez une commande acceptée sous la forme OrderPlaced et fournissez une requête pour connaître le stock restant.
+
+Si le stock est insuffisant, rejetez la commande sans enregistrer d'événement de commande acceptée.
+
+Vérifiez les résultats pour les commandes acceptées et rejetées.
+```
+
+Commencez par ce seul comportement. Ajoutez les paiements, l'expédition et d'autres conditions dans des modifications distinctes, une fois que vous pouvez vérifier le premier résultat.
+
+## Vérifiez le résultat
+
+Demandez à l'agent de présenter une commande acceptée et une commande rejetée. Dans chaque cas, partez du stock indiqué ci-dessous et comparez le résultat au modèle.
+
+| Stock de départ | Commande | Événement attendu | Stock restant |
+| --- | --- | --- | --- |
+| 3 tasses | Commander 1 tasse | `OrderPlaced` | 2 tasses |
+| 0 tasse | Commander 1 tasse | Aucun événement de commande acceptée | 0 tasse |
+
+Vérifiez aussi que les quantités nulles ou négatives sont rejetées. Les vérifications techniques vous aident à repérer les erreurs d'implémentation. C'est à vous de décider si le comportement correspond à celui attendu de votre application.
+
+Si le résultat vous surprend, décrivez la différence à l'agent en utilisant le même vocabulaire : la commande, la décision, l'événement et la requête. Vous indiquerez ainsi précisément quel comportement corriger.
+
+Pour la syntaxe, les conseils de test, les notes de version ou de l'aide, consultez [Ressources et état du projet](/resources/).

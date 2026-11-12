@@ -1,11 +1,27 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import { unified } from '@astrojs/markdown-remark';
+import { readFileSync, existsSync } from 'node:fs';
+import { locales, targetLocales } from './src/i18n/locales.mjs';
+import { remarkLocales } from './scripts/i18n-lib.mjs';
+import english from './src/i18n/en/site.json' with { type: 'json' };
+
+const catalogs = Object.fromEntries(targetLocales.map(({ code }) => {
+  const path = new URL(`./src/i18n/${code}/site.json`, import.meta.url);
+  return [code, existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')) : english];
+}));
+const group = (key, slug) => ({
+  label: english[key],
+  translations: Object.fromEntries(targetLocales.map(({ code, lang }) => [lang, catalogs[code][key]])),
+  items: [{ slug }],
+});
 
 export default defineConfig({
   site: 'https://neohaskell.org',
   output: 'static',
   trailingSlash: 'always',
   devToolbar: { enabled: false },
+  markdown: { processor: unified({ remarkPlugins: [remarkLocales] }) },
   integrations: [starlight({
     title: 'NeoHaskell',
     description: 'An AI-first programming language for applications with clear behavior and recorded history.',
@@ -13,11 +29,13 @@ export default defineConfig({
     favicon: '/logo.svg',
     social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/neohaskell/NeoHaskell' }],
     customCss: ['./src/styles/docs.css'],
-    components: { Head: './src/components/DocsHead.astro' },
+    defaultLocale: 'root',
+    locales: Object.fromEntries(locales.map(({ code, label, lang }) => [code === 'en' ? 'root' : code, { label, lang }])),
+    components: { Head: './src/components/DocsHead.astro', LanguageSelect: './src/components/DocsLanguagePicker.astro' },
     sidebar: [
-      { label: 'Learn NeoHaskell', items: [{ label: 'Core concepts', slug: 'learn' }] },
-      { label: 'Build an application', items: [{ label: 'Set up your agent', slug: 'getting-started' }] },
-      { label: 'Explore the project', items: [{ label: 'Resources and project status', slug: 'resources' }] },
+      group('nav.learn', 'learn'),
+      group('nav.build', 'getting-started'),
+      group('nav.explore', 'resources'),
     ],
     editLink: undefined,
   })],

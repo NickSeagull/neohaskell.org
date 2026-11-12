@@ -1,0 +1,153 @@
+---
+import HomepageVisual from './HomepageVisual.astro';
+import FeatureIcon from './FeatureIcon.astro';
+import Arrow from './Arrow.astro';
+import VisitorContext from './VisitorContext.astro';
+import '../styles/home.css';
+
+import LanguagePicker from './LanguagePicker.astro';
+import AlternateLinks from './AlternateLinks.astro';
+import { messages, localePath } from '../i18n/runtime';
+import { localeByCode } from '../i18n/locales.mjs';
+interface Props { locale?: string; }
+const { locale = 'en' } = Astro.props;
+const t = messages(locale);
+const path = (url: string) => localePath(locale, url);
+const canonical = new URL(path('/'), Astro.site);
+
+const capabilities = [
+  { icon: 'layers', title: t("capability.convention-over-configuration"), text: t("capability.a-shared-project-structure-and-sensible-defaults-spend-") },
+  { icon: 'document', title: t("capability.openapi-automatically"), text: t("capability.api-documentation-comes-from-your-command-and-query-typ") },
+  { icon: 'key', title: t("capability.oauth-connections"), text: t("capability.let-users-connect-their-accounts-from-other-services-th") },
+  { icon: 'database', title: t("capability.postgresql-built-in"), text: t("capability.give-your-events-and-query-data-a-durable-home-use-post") },
+  { icon: 'upload', title: t("capability.files-handled"), text: t("capability.accept-uploads-and-store-generated-documents-with-owner") },
+  { icon: 'shield', title: t("capability.identity-and-access"), text: t("capability.connect-an-identity-provider-and-define-who-can-do-what") },
+] as const;
+---
+<!doctype html>
+<html lang={localeByCode(locale).lang} data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={t("meta.neohaskell-is-an-ai-first-language-and-framework-build-")} />
+    <meta name="theme-color" content="#1c062d" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="preload" href="/fonts/sansation.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:title" content={t("home.neohaskell-build-with-ai-keep-control")} />
+    <meta property="og:description" content={t("meta.an-ai-first-language-and-framework-with-pure-business-l")} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <title>{t("home.neohaskell-build-with-ai-keep-control")}</title>
+    <script is:inline>
+      (() => {
+        let preference;
+        try { preference = localStorage.getItem('starlight-theme'); } catch {}
+        const theme = preference === 'light' || preference === 'dark' ? preference : matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.dataset.theme = theme;
+        document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#fafafc' : '#1c062d';
+      })();
+    </script>
+    <AlternateLinks locale={locale} path="/" />
+    <VisitorContext />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t("home.skip-to-content")}</a>
+    <div class="site-shell">
+      <header class="site-header">
+        <a href={path("/")} class="brand" aria-label={t("home.neohaskell-home")}><img src="/logo.svg" width="43" height="43" alt="" /><span>NeoHaskell</span></a>
+        <nav class="main-nav" aria-label={t("home.main-navigation")}>
+          <a href={path("/learn/")} class="nav-guide"><span class="nav-label-full">{t("home.documentation")}</span><span class="nav-label-short">{t("home.docs")}</span></a>
+          <a href={path("/resources/")} class="nav-resources">{t("home.resources")}</a>
+          <a href="https://github.com/neohaskell/NeoHaskell" class="github-link">GitHub<svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 15 15 5M5 5h10v10" stroke="currentColor" stroke-width="1.5"/></svg></a>
+        </nav>
+        <LanguagePicker locale={locale} />
+        <button data-light-label={t("theme.light")} data-dark-label={t("theme.dark")} class="theme-toggle" type="button" aria-label={t("home.switch-color-theme")} title={t("home.switch-color-theme")}>
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg>
+        </button>
+      </header>
+      <main id="main">
+        <section class="opening" aria-labelledby="headline">
+          <div class="hero-copy">
+            <h1 id="headline" set:html={t("home.build-with-ai-keep-control")} />
+            <p class="hero-description" set:html={t("home.an-ai-first-language-and-framework-for-turning-your-ide")} />
+            <div class="hero-actions"><a href={path("/learn/")} class="primary-link">{t("home.explore-the-docs")}<Arrow /></a><a href="#framework" class="secondary-link">{t("home.see-what-s-included")}</a></div>
+          </div>
+          <HomepageVisual locale={locale} kind="application" />
+        </section>
+
+        <section class="history-section" aria-labelledby="history-title">
+          <div class="history-copy">
+            <h2 id="history-title" set:html={t("home.your-datahas-a-memory")} />
+            <p set:html={t("home.most-applications-only-remember-where-things-ended-up-n")} />
+            <p set:html={t("home.trace-an-unexpected-result-correct-a-mistake-without-er")} />
+            <a href={path("/learn/#events")} class="text-link">{t("home.discover-event-sourcing")}<Arrow /></a>
+          </div>
+          <HomepageVisual locale={locale} kind="history" />
+        </section>
+
+        <section class="benefit-pair" aria-label={t("home.a-safer-foundation-with-room-to-grow")}>
+          <article class="purity-benefit">
+            <div class="benefit-copy"><h2 set:html={t("home.more-freedom-to-build-fewer-ways-to-break-things")} />
+              <p set:html={t("home.your-business-logic-stays-pure-it-cannot-quietly-write-")} />
+            </div>
+            <HomepageVisual locale={locale} kind="pure" />
+          </article>
+          <article class="transport-benefit">
+            <div class="benefit-copy"><h2 set:html={t("home.new-transport-same-application")} />
+              <p set:html={t("home.an-http-server-for-your-app-an-mcp-server-for-ai-tools-")} />
+            </div>
+            <HomepageVisual locale={locale} kind="transport" />
+          </article>
+        </section>
+
+        <section class="framework-section" id="framework" aria-labelledby="framework-title">
+          <div class="section-heading"><h2 id="framework-title" set:html={t("home.the-frameworkcomes-with-the-language")} /><p set:html={t("home.less-assembly-more-application-the-pieces-you-would-usu")} /></div>
+          <div class="capability-grid">
+            {capabilities.map(({ icon, title, text }) => <article><FeatureIcon name={icon} /><h3>{title}</h3><p>{text}</p></article>)}
+          </div>
+          <a href={path("/resources/#language-and-framework")} class="text-link">{t("home.explore-the-framework")}<Arrow /></a>
+        </section>
+
+        <section class="agent-section" aria-labelledby="agent-title">
+          <div class="agent-intro"><h2 id="agent-title" set:html={t("home.your-ideas-your-agent-a-shared-way-to-build")} /><p set:html={t("home.give-your-agent-a-framework-it-can-follow-neohaskell-s-")} /><a href={path("/getting-started/")} class="text-link">{t("home.build-with-your-agent")}<Arrow /></a></div>
+          <div class="agent-workflow">
+            <div class="workflow-intent"><span class="workflow-mark" aria-hidden="true"></span><h3 set:html={t("home.start-with-what-should-happen")} /><p set:html={t("home.describe-your-feature-and-the-rules-it-needs-to-follow")} /><blockquote set:html={t("home.customers-can-cancel-an-order-before-it-ships")} /></div>
+            <div class="workflow-build"><span class="workflow-mark" aria-hidden="true"></span><h3 set:html={t("home.let-your-agent-connect-the-pieces")} /><p set:html={t("home.business-logic-api-frontend-and-tests-built-around-the-")} /></div>
+            <div class="workflow-check"><span class="workflow-mark" aria-hidden="true"><FeatureIcon name="check" /></span><h3 set:html={t("home.check-it-against-your-intent")} /><p set:html={t("home.review-the-behavior-run-the-checks-and-make-the-next-ch")} /></div>
+          </div>
+        </section>
+
+        <section class="closing-section" aria-labelledby="closing-title">
+          <div><h2 id="closing-title" set:html={t("home.build-the-ideayou-keep-thinking-about")} /><a href={path("/learn/")} class="primary-link">{t("home.explore-the-docs")}<Arrow /></a></div>
+          <img class="closing-logo" src="/logo.svg" width="240" height="240" alt="" loading="lazy" />
+        </section>
+      </main>
+      <footer class="site-footer"><a href={path("/")} class="footer-brand">NeoHaskell</a><nav aria-label={t("home.footer-navigation")}><a href={path("/learn/")}>{t("home.documentation")}</a><a href={path("/resources/")}>{t("home.resources")}</a><a href="https://github.com/neohaskell/NeoHaskell">GitHub</a><a href="https://discord.com/invite/wDj3UYzec8">Discord</a></nav></footer>
+    </div>
+    <script>
+      const button = document.querySelector<HTMLButtonElement>('.theme-toggle');
+      const root = document.documentElement;
+      const updateLabel = () => {
+        const target = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        button?.setAttribute('aria-label', button?.dataset[target === 'light' ? 'lightLabel' : 'darkLabel'] ?? '');
+        button?.setAttribute('title', button?.dataset[target === 'light' ? 'lightLabel' : 'darkLabel'] ?? '');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', target === 'light' ? '#1c062d' : '#fafafc');
+      };
+      button?.addEventListener('click', () => {
+        const theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = theme;
+        try { localStorage.setItem('starlight-theme', theme); } catch {}
+        updateLabel();
+      });
+      matchMedia('(prefers-color-scheme: light)').addEventListener('change', (event) => {
+        let preference;
+        try { preference = localStorage.getItem('starlight-theme'); } catch {}
+        if (preference !== 'light' && preference !== 'dark') { root.dataset.theme = event.matches ? 'light' : 'dark'; updateLabel(); }
+      });
+      updateLabel();
+    </script>
+  </body>
+</html>

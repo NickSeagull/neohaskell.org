@@ -1,0 +1,45 @@
+---
+title: 资源与项目状态
+description: 查找 NeoHaskell 的设置说明、语言指南、发行说明和获取帮助的途径。
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+---
+
+<p class="docs-lead">找到构建应用的下一步，并了解当前可以查看的内容。</p>
+
+NeoHaskell 是一门仍在积极开发中的 AI 优先编程语言。先从一个你能描述并检查的小型行为开始。Counter 入门项目提供了一个具体应用，你可以先检查，再让智能体扩展它。
+
+## 开始构建
+
+请先了解[核心概念](/learn/)，然后再按照[设置你的智能体](/getting-started/)中的说明操作。阅读核心概念无需安装任何内容。
+
+- [CLI 前置条件和安装](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites)：创建和运行应用所需的工具。
+- [创建并运行项目](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md)：项目创建、构建和运行流程。
+- [Counter 入门项目快速入门指南](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter/README.md#quickstart)：主页代码摘录所对应的应用，包含 HTTP 工作流和测试说明。
+
+## 语言和框架
+
+以下指南发布在 NeoHaskell 仓库中，供应用开发者和编程智能体使用。它们介绍的是经过检查的源码版本；如果项目固定了其他版本，请使用相应版本的指南。
+
+- [语法和核心功能](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/syntax-and-core.md)：完整模块、类型、运算符和应用约定。
+- [按任务查找应用指南](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/index.md)：命令、事件、查询、配置、传输方式和集成。
+- [测试](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/testing.md)：决策测试、HTTP 场景和变更检查。
+- [存储](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/storage.md)：事件历史记录、查询存储和持久化。
+
+## 使用应用前须知
+
+入门项目默认使用内存事件存储。进程结束后，其中记录的事件就会消失。持久化事件历史记录和持久化查询存储是两项独立的配置选项；需要在重启后保留数据时，请遵循上面的存储指南。
+
+应用的访问规则也由你负责。请阅读[授权指南](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/authorization.md)，并测试允许和拒绝的情况。AI 智能体可以帮助实现这些规则，但在运行时决定应用策略的不是智能体。
+
+已发布的源码和版本可供检查，但仅凭这些并不能证明你的应用已达到生产就绪状态。
+
+你可以查看随代码提供的[框架源码许可证](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/LICENSE)。选择依赖项时，请查看各工具自己的许可证。
+
+## 跟进变更并获取帮助
+
+- [CLI 和框架发行历史](https://github.com/neohaskell/NeoHaskell/releases)：应用工具和框架的变更。2026 年 11 月 6 日发布的 [0.17.1 版本](https://github.com/neohaskell/NeoHaskell/releases/tag/neo-v0.17.1)增加了用于生成文档的自有文件存储。
+- [智能体技能发行版本](https://github.com/neohaskell/skills/releases)：Claude Code 和 Codex 专用独立指导集合的变更。
+- [在 Discord 社区提问](https://discord.com/invite/wDj3UYzec8)：分享你想构建什么，以及遇到了什么困难。
+- [浏览已报告的问题](https://github.com/neohaskell/NeoHaskell/issues)或[阅读贡献指南](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/CONTRIBUTING.md)：了解已知问题和项目的贡献流程。

@@ -1,0 +1,45 @@
+---
+title: Ressourcen und Projektstatus
+description: Hier findest du Anleitungen zum Einrichten von NeoHaskell, Hinweise zur Sprache, Versionshinweise und Möglichkeiten, Hilfe zu erhalten.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+---
+
+<p class="docs-lead">Finde den nächsten Schritt für deine Anwendung und sieh, was du dir schon heute ansehen kannst.</p>
+
+NeoHaskell ist eine KI-orientierte Programmiersprache in aktiver Entwicklung. Beginne mit einem kleinen Verhalten, das du beschreiben und überprüfen kannst. Mit dem Counter-Starter kannst du dir eine konkrete Anwendung ansehen, bevor du sie mit deinem Agenten erweiterst.
+
+## Mit dem Entwickeln beginnen
+
+Lerne zuerst die [Grundkonzepte](/learn/) kennen und folge dann der Anleitung [Agent einrichten](/getting-started/). Du kannst die Konzepte lesen, ohne etwas zu installieren.
+
+- [Voraussetzungen und Installation der CLI](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites): die Werkzeuge, die du zum Erstellen und Starten einer Anwendung benötigst.
+- [Projekt erstellen und starten](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md): die Schritte zum Erstellen, Bauen und Starten eines Projekts.
+- [Schnellstart für den Counter-Starter](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter/README.md#quickstart): die Anwendung hinter dem Codeauszug auf der Startseite, mit einem HTTP-Ablauf und Anweisungen zum Testen.
+
+## Sprache und Framework
+
+Die folgenden Anleitungen für Anwendungsentwickler und Coding-Agenten sind im NeoHaskell-Repository veröffentlicht. Sie beschreiben eine geprüfte Version des Quellcodes. Wenn dein Projekt eine andere Version festlegt, verwende die dazugehörige Version der Anleitungen.
+
+- [Syntax und Core](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/syntax-and-core.md): vollständiges Modul, Typen, Operatoren und Konventionen für Anwendungen.
+- [Anleitung für Anwendungen nach Aufgabe](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/index.md): Befehle, Ereignisse, Abfragen, Konfiguration, Transports und Integrationen.
+- [Testen](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/testing.md): Entscheidungstests, HTTP-Szenarien und das Überprüfen einer Änderung.
+- [Speicherung](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/storage.md): Ereignishistorie, Abfragespeicher und dauerhafte Speicherung.
+
+## Bevor du dich auf eine Anwendung verlässt
+
+Der Starter verwendet standardmäßig einen Ereignisspeicher im Arbeitsspeicher. Seine erfassten Ereignisse gehen verloren, wenn der Prozess endet. Dauerhafte Ereignishistorie und dauerhafter Abfragespeicher sind separate Konfigurationsmöglichkeiten. Folge der Anleitung zur Speicherung oben, wenn Daten einen Neustart überdauern sollen.
+
+Deine Anwendung legt außerdem ihre Zugriffsregeln fest. Lies die [Anleitung zur Autorisierung](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/authorization.md) und teste sowohl zulässige als auch abgelehnte Fälle. Ein KI-Agent hilft dir bei der Implementierung dieser Regeln. Er entscheidet nicht zur Laufzeit über die Richtlinien deiner Anwendung.
+
+Veröffentlichter Quellcode und Releases ermöglichen es dir, den verfügbaren Stand zu prüfen. Sie belegen für sich genommen nicht, dass deine Anwendung produktionsbereit ist.
+
+Die [Lizenz des Framework-Quellcodes](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/LICENSE) ist neben dem Code verfügbar. Prüfe bei der Auswahl von Abhängigkeiten auch die jeweilige Lizenz der Werkzeuge.
+
+## Änderungen verfolgen und Hilfe erhalten
+
+- [Versionsverlauf der CLI und des Frameworks](https://github.com/neohaskell/NeoHaskell/releases): Änderungen an den Anwendungstools und am Framework. [Version 0.17.1](https://github.com/neohaskell/NeoHaskell/releases/tag/neo-v0.17.1), veröffentlicht am 6. November 2026, ergänzt Dateispeicher mit Eigentümerzuordnung für generierte Dokumente.
+- [Releases der Agent-Skills](https://github.com/neohaskell/skills/releases): Änderungen an der separaten Anleitungssammlung für Claude Code und Codex.
+- [Stelle der Community auf Discord deine Frage](https://discord.com/invite/wDj3UYzec8): Erzähle, was du entwickeln möchtest und wo du nicht weiterkommst.
+- [Gemeldete Probleme ansehen](https://github.com/neohaskell/NeoHaskell/issues) oder [den Leitfaden für Beiträge lesen](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/CONTRIBUTING.md): Verfolge bekannte Probleme und erfahre, wie du zum Projekt beitragen kannst.

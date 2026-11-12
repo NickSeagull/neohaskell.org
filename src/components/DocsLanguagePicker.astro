@@ -1,0 +1,5 @@
+---
+import LanguagePicker from './LanguagePicker.astro';
+const locale = Astro.locals.starlightRoute.locale ?? 'en';
+---
+<LanguagePicker locale={locale} />

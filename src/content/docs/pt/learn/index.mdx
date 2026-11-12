@@ -1,0 +1,93 @@
+---
+title: Conceitos fundamentais
+description: Compreenda comandos, decisões, eventos e consultas acompanhando uma encomenda numa pequena loja online.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+---
+
+<p class="docs-lead">Compreenda como uma aplicação decide o que pode acontecer, regista o que aconteceu e responde a perguntas sobre o seu estado.</p>
+
+NeoHaskell é uma linguagem de programação pensada para IA desde o início, que permite criar aplicações com um agente de IA sem deixar de compreender o seu comportamento. Descreve esse comportamento através de **comandos, decisões, eventos e consultas**. A linguagem e a framework dão a estes conceitos uma estrutura comum.
+
+Este guia acompanha uma pequena loja com três canecas de cerâmica em stock. Um cliente encomenda uma caneca. Pode compreender o modelo antes de instalar o NeoHaskell ou utilizar um agente de IA.
+
+| Conceito | Finalidade | Exemplo da loja |
+| --- | --- | --- |
+| [Comando](#commands) | Expressar uma intenção | Fazer uma encomenda |
+| [Decisão](#decisions) | Aceitar ou rejeitar a intenção | Verificar o stock disponível |
+| [Evento](#events) | Registar o que aconteceu | Encomenda efetuada |
+| [Consulta](#queries) | Ler o estado atual | Duas canecas restantes |
+
+## Comandos
+
+Um **comando** expressa algo que uma pessoa ou um processo pretende que a aplicação faça. Descreve uma intenção; não significa que a ação já tenha acontecido.
+
+Para encomendar uma caneca, o cliente indica o produto e a quantidade. A aplicação ainda tem de decidir se pode concretizar essa intenção.
+
+```text title="Exemplo de comando"
+PlaceOrder
+  product: caneca de cerâmica
+  quantity: 1
+```
+
+Os exemplos deste guia descrevem o modelo em texto simples. Não são código NeoHaskell executável nem dados para uma API.
+
+## Decisões
+
+Uma **decisão** avalia um comando com base no estado atual e nas condições que a aplicação tem de impor. Determina se o comando é aceite ou rejeitado.
+
+Nesta loja, a quantidade tem de ser positiva e tem de haver stock suficiente. Com três canecas em stock, é possível aceitar uma encomenda de uma. Não é possível aceitar uma encomenda de quatro.
+
+| Comando | Stock disponível | Decisão |
+| --- | --- | --- |
+| Encomendar 1 caneca | 3 canecas | Aceitar |
+| Encomendar 4 canecas | 3 canecas | Rejeitar |
+
+Estas condições fazem parte do comportamento da aplicação. Um agente de IA pode ajudar a implementá-las, mas não é quem toma decisões em tempo de execução.
+
+## Eventos
+
+Um **evento** regista um facto sobre algo que aconteceu. Quando a loja aceita a encomenda, regista um evento `OrderPlaced`.
+
+```text title="Evento registado"
+OrderPlaced
+  product: caneca de cerâmica
+  quantity: 1
+```
+
+Repare na diferença entre os nomes: `PlaceOrder` expressa uma intenção; `OrderPlaced` descreve um facto aceite. O evento passa a fazer parte do histórico da aplicação.
+
+Neste exemplo, aceitar a encomenda consome uma caneca. O evento regista a encomenda, enquanto o stock restante é um estado derivado desse histórico. Noutras aplicações, um comando pode produzir um número diferente de eventos; este exemplo acompanha uma encomenda e um evento.
+
+## Consultas
+
+Uma **consulta** lê o estado da aplicação sem o alterar. Responde a uma pergunta com base no estado derivado dos eventos registados.
+
+Após a encomenda aceite, uma consulta do stock devolve duas canecas: as três iniciais menos a que foi encomendada.
+
+```text title="Consulta e resultado"
+Stock restante da caneca de cerâmica
+2
+```
+
+O evento e o resultado da consulta têm finalidades diferentes. `OrderPlaced` permanece no histórico como registo da encomenda. Uma consulta do stock dá a resposta atual, que pode mudar à medida que são aceites mais encomendas.
+
+## Comandos rejeitados
+
+Um comando pode expressar uma intenção válida e, ainda assim, ser rejeitado. Se a loja não tiver canecas, uma encomenda de uma não satisfaz a condição de stock.
+
+Não é registado qualquer evento `OrderPlaced` para essa encomenda rejeitada. Uma consulta continua a devolver zero canecas. A tentativa não se tornou uma encomenda aceite e o stock não mudou.
+
+| Stock inicial | Comando | Evento registado | Stock final |
+| --- | --- | --- | --- |
+| 3 canecas | Encomendar 1 caneca | `OrderPlaced` | 2 canecas |
+| 0 canecas | Encomendar 1 caneca | Nenhum | 0 canecas |
+
+Este modelo abrange encomendas e stock. Pagamentos, envios e encomendas simultâneas ficam fora deste primeiro exemplo.
+
+## Comece a criar
+
+Antes de pedir a um agente que crie uma funcionalidade, descreva o comando, as condições para o aceitar, os eventos que deve registar e as perguntas a que a aplicação tem de responder. Inclua um caso que deva ser rejeitado.
+
+Quando conseguir explicar os dois resultados para esta loja, avance para [configurar o seu agente](/getting-started/).

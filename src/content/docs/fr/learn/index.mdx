@@ -1,0 +1,93 @@
+---
+title: Concepts fondamentaux
+description: Comprenez les commandes, les décisions, les événements et les requêtes en suivant une commande dans une petite boutique en ligne.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+---
+
+<p class="docs-lead">Comprenez comment une application décide ce qui peut se passer, enregistre ce qui s'est passé et répond aux questions sur son état.</p>
+
+NeoHaskell est un langage de programmation et un framework pensés pour l'IA dès leur conception. Ils vous permettent de créer des applications avec un agent d'IA tout en gardant leur comportement compréhensible. Vous décrivez ce comportement à l'aide de **commandes, décisions, événements et requêtes**. Le langage et le framework donnent une structure commune à ces concepts.
+
+Ce guide suit l'exemple d'une petite boutique qui a trois tasses en céramique en stock. Un client en commande une. Vous pouvez comprendre le modèle avant d'installer NeoHaskell ou d'utiliser un agent d'IA.
+
+| Concept | Rôle | Exemple dans la boutique |
+| --- | --- | --- |
+| [Commande](#commands) | Exprime une intention | Passer une commande |
+| [Décision](#decisions) | L'accepter ou la rejeter | Vérifier le stock disponible |
+| [Événement](#events) | Enregistre ce qui s'est passé | Commande passée |
+| [Requête](#queries) | Lit l'état actuel | Deux tasses restantes |
+
+## Commandes
+
+Une **commande** exprime ce qu'une personne ou un processus souhaite faire faire à l'application. Elle décrit une intention, mais ne signifie pas encore que l'action a eu lieu.
+
+Pour commander une tasse, le client indique le produit et la quantité. L'application doit encore décider si elle peut répondre à cette intention.
+
+```text title="Exemple de commande"
+PlaceOrder
+  product: tasse en céramique
+  quantity: 1
+```
+
+Les exemples de ce guide décrivent le modèle en texte brut. Ils ne constituent ni du code NeoHaskell exécutable ni des données destinées à une API.
+
+## Décisions
+
+Une **décision** évalue une commande selon l'état actuel et les conditions que votre application doit respecter. Elle détermine si la commande est acceptée ou rejetée.
+
+Dans cette boutique, la quantité doit être positive et le stock disponible suffisant. Avec trois tasses en stock, une commande d'une tasse peut être acceptée. Une commande de quatre tasses ne le peut pas.
+
+| Commande | Stock disponible | Décision |
+| --- | --- | --- |
+| Commander 1 tasse | 3 tasses | Accepter |
+| Commander 4 tasses | 3 tasses | Rejeter |
+
+Ces conditions font partie du comportement de l'application. Un agent d'IA peut vous aider à les implémenter, mais il ne prend pas les décisions à l'exécution.
+
+## Événements
+
+Un **événement** enregistre un fait survenu. Lorsque la boutique accepte la commande, elle enregistre un événement `OrderPlaced`.
+
+```text title="Événement enregistré"
+OrderPlaced
+  product: tasse en céramique
+  quantity: 1
+```
+
+Remarquez la différence de nom : `PlaceOrder` exprime une intention, tandis que `OrderPlaced` décrit un fait correspondant à une commande acceptée. L'événement rejoint l'historique de l'application.
+
+Dans cet exemple, l'acceptation de la commande consomme une tasse. L'événement enregistre la commande, tandis que le stock restant est un état calculé à partir de cet historique. Dans d'autres applications, une commande peut produire un nombre différent d'événements. Cet exemple suit une commande et un événement.
+
+## Requêtes
+
+Une **requête** lit l'état de l'application sans le modifier. Elle répond à une question à partir de l'état calculé à partir des événements enregistrés.
+
+Après l'acceptation de la commande, une requête sur le stock renvoie deux tasses : les trois initiales, moins celle qui a été commandée.
+
+```text title="Requête et résultat"
+Stock restant pour la tasse en céramique
+2
+```
+
+L'événement et le résultat de la requête ont des rôles différents. `OrderPlaced` reste dans l'historique comme trace de la commande. Une requête sur le stock fournit la réponse actuelle, qui peut changer au fil des commandes acceptées.
+
+## Commandes rejetées
+
+Une commande peut exprimer une intention valide et tout de même être rejetée. Si la boutique n'a plus de tasses, une commande d'une tasse ne respecte pas la condition de stock.
+
+Aucun événement `OrderPlaced` n'est enregistré pour cette commande rejetée. Une requête renvoie toujours zéro tasse. La tentative n'est pas devenue une commande acceptée et le stock n'a pas changé.
+
+| Stock de départ | Commande | Événement enregistré | Stock restant |
+| --- | --- | --- | --- |
+| 3 tasses | Commander 1 tasse | `OrderPlaced` | 2 tasses |
+| 0 tasse | Commander 1 tasse | Aucun | 0 tasse |
+
+Ce modèle couvre les commandes et le stock. Les paiements, l'expédition et les commandes simultanées ne font pas partie de ce premier exemple.
+
+## Commencez à créer
+
+Avant de demander à un agent de créer une fonctionnalité, décrivez la commande, les conditions de son acceptation, les événements à enregistrer et les questions auxquelles l'application doit répondre. Ajoutez un cas qui doit être rejeté.
+
+Lorsque vous pouvez expliquer les deux résultats pour cette boutique, poursuivez avec [la configuration de votre agent](/getting-started/).
