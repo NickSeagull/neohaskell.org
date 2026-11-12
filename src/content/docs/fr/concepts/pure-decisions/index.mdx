@@ -1,0 +1,17 @@
+---
+title: Décisions pures et effets
+description: "Plan de page. Comprendre la logique de décision déterministe et la frontière des effets externes."
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Plan de page
+
+Cette page expliquera ce qu’une décision reçoit, ce qu’elle renvoie et pourquoi les effets externes doivent rester en dehors de ce calcul. Elle comparera une même entrée évaluée deux fois, une commande acceptée et une commande rejetée, à l’aide de code source minimal vérifié et de résultats explicites. Une figure de délimitation séparera la logique pure des opérations réseau, de stockage et sur les fichiers. L’explication montrera comment les vérifications de types permettent de détecter des erreurs tout en laissant au lecteur la responsabilité de l’intention métier, puis renverra vers [Connecter des services externes](/guides/integrations/).

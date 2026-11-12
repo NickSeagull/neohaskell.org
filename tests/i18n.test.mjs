@@ -82,6 +82,15 @@ test('translated headings retain English anchors and internal links stay localiz
   walk(tree, (node) => { if (node.name === 'a') assert.equal(node.attributes[0].value, '/logo.svg'); });
 });
 
+test('MDX translation ignores attribute positions while preserving their values', () => {
+  const source = { path: 'guide.mdx', content: '---\ntitle: Guide\ndescription: A guide\n---\n\nA short introduction.\n\n<section class="docs-plan" data-pagefind-ignore>\n\n## Page plan\n\nRead the <a href="/learn/">concepts</a>.\n\n</section>\n' };
+  const translated = source.content.replace('A short introduction.', 'Una introducción con una longitud diferente.').replace('Page plan', 'Plan de la página').replace('concepts</a>', 'conceptos</a>');
+  assert.doesNotThrow(() => validateTranslation(source, translated));
+  for (const changed of [translated.replace('docs-plan', 'other'), translated.replace('/learn/', '/other/'), translated.replace('data-pagefind-ignore', 'data-other')]) {
+    assert.throws(() => validateTranslation(source, changed), /changed document structure/);
+  }
+});
+
 test('CLI uses one Luna max call per pending language, skips current, rejects incomplete batches', async (t) => {
   const root = await fixture(t);
   const fake = join(root, 'fake-codex.mjs');

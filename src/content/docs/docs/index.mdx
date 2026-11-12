@@ -1,0 +1,99 @@
+---
+title: Documentation plan
+description: Find existing NeoHaskell guidance and browse the planned tutorials, task guides, explanations, and reference pages.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+<p class="docs-lead">Understand the behavior. Build one feature. Check the result.</p>
+
+[Core concepts](/learn/), [Set up your agent](/getting-started/), and [Resources](/resources/) contain existing guidance. The other destinations below contain page plans describing the explanations, examples, and figures to be written. For instructions available now, Resources links to upstream syntax, CLI, storage, testing, and authorization guidance.
+
+This page will orient readers around a short first journey, independent task guides, deeper explanations, and a predictable reference. It will use a linked reading map to show where each question belongs. The tutorial will follow one shop feature from its specification to a tested backend behavior and callable interface; it will not require a Haskell course. Examples and figures will support the article where they explain a specific idea.
+
+## Start here
+
+<dl class="docs-map">
+  <dt><a href="/learn/">Core concepts</a></dt>
+  <dd>Recognize commands, decisions, events, and queries through an order in a small shop.</dd>
+  <dt><a href="/getting-started/">Set up your agent</a></dt>
+  <dd>Prepare the environment and agent. The planned walkthrough will cover the complete path to a running project and a checked first response.</dd>
+</dl>
+
+## Build an application
+
+Follow these four planned chapters in order, using the same shop and the project prepared during setup.
+
+<dl class="docs-map">
+  <dt><a href="/tutorial/">Model your first feature</a></dt>
+  <dd>Write one specification, including the conditions for acceptance and rejection.</dd>
+  <dt><a href="/tutorial/first-feature/">Implement the feature</a></dt>
+  <dd>Turn the specification into one reviewed backend behavior and callable interface.</dd>
+  <dt><a href="/tutorial/test-behavior/">Test the behavior</a></dt>
+  <dd>Compare events and query results with the intended outcomes.</dd>
+  <dt><a href="/tutorial/change-safely/">Change it safely</a></dt>
+  <dd>Add one requirement and check its effect on existing behavior.</dd>
+</dl>
+
+## Solve a task
+
+These planned guides will answer a practical question without requiring the whole tutorial.
+
+<dl class="docs-map">
+  <dt><a href="/guides/ai-workflow/">Work with an AI agent</a></dt>
+  <dd>Provide context, bound a change, review evidence, and recover from a mistaken implementation.</dd>
+  <dt><a href="/guides/transports/">Expose HTTP and MCP interfaces</a></dt>
+  <dd>Connect application behavior to requests, tool calls, and generated OpenAPI contracts.</dd>
+  <dt><a href="/guides/storage/">Keep data across restarts</a></dt>
+  <dd>Configure persistent event history and query storage, then check a restart.</dd>
+  <dt><a href="/guides/authorization/">Control access</a></dt>
+  <dd>Separate identity from permission and test allowed and denied actions.</dd>
+  <dt><a href="/guides/integrations/">Connect external services</a></dt>
+  <dd>Place provider connections, credentials, and network effects outside pure decisions.</dd>
+  <dt><a href="/guides/files/">Store and retrieve files</a></dt>
+  <dd>Follow file ownership, storage, and permitted access.</dd>
+  <dt><a href="/guides/deployment/">Deploy and operate</a></dt>
+  <dd>Configure the running parts, inspect failures, and verify recovery.</dd>
+</dl>
+
+## Understand the design
+
+These planned explanations will explore why the model works and how to choose useful boundaries.
+
+<dl class="docs-map">
+  <dt><a href="/concepts/event-modeling/">Model application behavior</a></dt>
+  <dd>Reason about ambiguous requirements and multi-step workflows.</dd>
+  <dt><a href="/concepts/history-and-state/">History and current state</a></dt>
+  <dd>Distinguish recorded facts from reconstructed state and current query answers.</dd>
+  <dt><a href="/concepts/pure-decisions/">Pure decisions and effects</a></dt>
+  <dd>Understand deterministic logic, type checks, and external effects.</dd>
+</dl>
+
+## Reference and help
+
+The reference pages are planned. <a href="/resources/">Resources and project status</a> already links to inspected upstream material and places to get help.
+
+<dl class="docs-map">
+  <dt><a href="/reference/language/">Language essentials</a></dt>
+  <dd>Find syntax for reading and reviewing application code, with small examples.</dd>
+  <dt><a href="/reference/core/">Core library</a></dt>
+  <dd>Look up common types and operations by signature, result, and edge case.</dd>
+  <dt><a href="/reference/framework/">Framework building blocks</a></dt>
+  <dd>Connect the application model to entities, commands, decisions, events, and queries in source.</dd>
+  <dt><a href="/reference/cli/">Neo CLI</a></dt>
+  <dd>Look up commands, arguments, working directories, and expected outcomes.</dd>
+  <dt><a href="/reference/configuration/">Configuration</a></dt>
+  <dd>Find required values, defaults, environment overrides, and secret-handling requirements.</dd>
+  <dt><a href="/reference/errors/">Errors and troubleshooting</a></dt>
+  <dd>Find a symptom, its cause, the smallest useful fix, and a recovery check.</dd>
+  <dt><a href="/resources/">Resources and project status</a></dt>
+  <dd>Read existing source and guides, follow releases, and ask for help.</dd>
+</dl>

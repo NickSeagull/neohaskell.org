@@ -76,5 +76,10 @@
   "language.label": "Выбрать язык",
   "nav.learn": "Изучить NeoHaskell",
   "nav.build": "Создать приложение",
-  "nav.explore": "Изучить проект"
+  "nav.explore": "Изучить проект",
+  "docs.start": "Начните здесь",
+  "docs.tutorial": "Создание приложения",
+  "docs.guides": "Решение задачи",
+  "docs.concepts": "Понимание устройства",
+  "docs.reference": "Справочник и помощь"
 }

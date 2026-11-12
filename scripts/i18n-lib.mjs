@@ -94,7 +94,9 @@ function structure(node) {
     else if (key === 'meta' && node.type === 'code') copy.meta = value?.replace(/title="[^"]*"/, 'title=""');
     else if (key === 'title' && ['link', 'image', 'definition'].includes(node.type)) copy.title = value === null ? null : '';
     else if (key === 'alt' && node.type === 'image') copy.alt = '';
-    else copy[key] = value;
+    // MDX attributes also carry source positions, which change as prose is translated.
+    else if (Array.isArray(value)) copy[key] = value.map((item) => item && typeof item === 'object' ? structure(item) : item);
+    else copy[key] = value && typeof value === 'object' ? structure(value) : value;
   }
   return copy;
 }

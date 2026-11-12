@@ -1,0 +1,17 @@
+---
+title: 外部サービスを接続する
+description: "ページの計画。判定の中に隠さずに、外部の副作用とプロバイダー接続を計画します。"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## ページの計画
+
+このページでは、ネットワークの副作用と認証情報を純粋な判定ロジックの外に置きながら、対応する外部サービスを接続する方法を説明します。ソースに基づく例では、プロバイダーへの接続、アプリケーションが要求する副作用、成功時と失敗時の処理を扱います。各操作をどのコンポーネントが行うか、シーケンス図で示します。成功した呼び出しとプロバイダーが利用できない場合のトレースを並べて説明します。境界については[純粋な判定と副作用](/concepts/pure-decisions/)、必要な値については[設定](/reference/configuration/)に案内します。

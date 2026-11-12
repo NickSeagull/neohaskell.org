@@ -1,0 +1,17 @@
+---
+title: Keep data across restarts
+description: "Page plan. Plan persistent event history and query storage, with restart checks."
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Page plan
+
+This page will distinguish event history from query storage and show how to configure supported persistence options. It will compare an in-memory example with a persistent configuration, then verify what survives a restart using explicit commands and expected results. A small diagram will keep the event store and query state separate. Failure examples will cover missing configuration and unavailable storage, with links to [History and current state](/concepts/history-and-state/) for the underlying model and [Resources](/resources/#language-and-framework) for existing upstream guidance.

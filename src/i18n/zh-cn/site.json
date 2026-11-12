@@ -76,5 +76,10 @@
   "language.label": "选择语言",
   "nav.learn": "学习 NeoHaskell",
   "nav.build": "构建应用",
-  "nav.explore": "了解项目"
+  "nav.explore": "了解项目",
+  "docs.start": "从这里开始",
+  "docs.tutorial": "构建应用",
+  "docs.guides": "完成一项任务",
+  "docs.concepts": "理解设计",
+  "docs.reference": "参考资料和帮助"
 }

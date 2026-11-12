@@ -1,0 +1,99 @@
+---
+title: Dokumentationsplan
+description: Finde vorhandene NeoHaskell-Anleitungen und entdecke die geplanten Tutorials, Aufgabenleitfäden, Erklärungen und Referenzseiten.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+<p class="docs-lead">Verstehe das Verhalten. Baue eine Funktion. Prüfe das Ergebnis.</p>
+
+Die [Kernkonzepte](/learn/), [Deinen Agenten einrichten](/getting-started/) und [Ressourcen](/resources/) enthalten bereits vorhandene Anleitungen. Die übrigen Ziele unten enthalten Seitenpläne für Erklärungen, Beispiele und Abbildungen, die noch erstellt werden. Für Anleitungen, die schon jetzt verfügbar sind, verweisen die Ressourcen auf maßgebliche Anleitungen zu Syntax, CLI, Speicherung, Tests und Autorisierung.
+
+Diese Seite bietet einen Überblick über einen kurzen Einstieg, eigenständige Aufgabenleitfäden, ausführlichere Erklärungen und eine übersichtliche Referenz. Eine verlinkte Lesekarte zeigt, wo die jeweilige Frage behandelt wird. Das Tutorial begleitet eine Funktion des Shops von der Spezifikation über ein getestetes Backend-Verhalten bis zu einer aufrufbaren Schnittstelle. Ein Haskell-Kurs ist dafür nicht erforderlich. Beispiele und Abbildungen unterstützen den Text, wenn sie einen konkreten Gedanken erklären.
+
+## Hier beginnen
+
+<dl class="docs-map">
+  <dt><a href="/learn/">Kernkonzepte</a></dt>
+  <dd>Kommandos, Entscheidungen, Ereignisse und Abfragen anhand einer Bestellung in einem kleinen Shop kennenlernen.</dd>
+  <dt><a href="/getting-started/">Deinen Agenten einrichten</a></dt>
+  <dd>Die Umgebung und den Agenten vorbereiten. Die geplante Anleitung führt durch den gesamten Weg bis zu einem laufenden Projekt und einer geprüften ersten Antwort.</dd>
+</dl>
+
+## Eine Anwendung erstellen
+
+Folge diesen vier geplanten Kapiteln der Reihe nach. Dabei verwendest du denselben Shop und das bei der Einrichtung vorbereitete Projekt.
+
+<dl class="docs-map">
+  <dt><a href="/tutorial/">Die erste Funktion modellieren</a></dt>
+  <dd>Eine Spezifikation mit den Bedingungen für Annahme und Ablehnung verfassen.</dd>
+  <dt><a href="/tutorial/first-feature/">Die Funktion implementieren</a></dt>
+  <dd>Die Spezifikation in ein geprüftes Backend-Verhalten und eine aufrufbare Schnittstelle umsetzen.</dd>
+  <dt><a href="/tutorial/test-behavior/">Das Verhalten testen</a></dt>
+  <dd>Ereignisse und Abfrageergebnisse mit den vorgesehenen Ergebnissen vergleichen.</dd>
+  <dt><a href="/tutorial/change-safely/">Sicher Änderungen vornehmen</a></dt>
+  <dd>Eine Anforderung ergänzen und ihre Auswirkungen auf das bestehende Verhalten prüfen.</dd>
+</dl>
+
+## Eine Aufgabe lösen
+
+Diese geplanten Leitfäden beantworten eine praktische Frage, ohne dass das ganze Tutorial erforderlich ist.
+
+<dl class="docs-map">
+  <dt><a href="/guides/ai-workflow/">Mit einem KI-Agenten arbeiten</a></dt>
+  <dd>Kontext bereitstellen, eine Änderung eingrenzen, Belege prüfen und eine fehlerhafte Implementierung korrigieren.</dd>
+  <dt><a href="/guides/transports/">HTTP- und MCP-Schnittstellen bereitstellen</a></dt>
+  <dd>Anwendungsverhalten mit Anfragen, Tool-Aufrufen und generierten OpenAPI-Verträgen verbinden.</dd>
+  <dt><a href="/guides/storage/">Daten über Neustarts hinweg beibehalten</a></dt>
+  <dd>Persistenten Ereignisverlauf und Abfragespeicher konfigurieren und anschließend einen Neustart prüfen.</dd>
+  <dt><a href="/guides/authorization/">Zugriff steuern</a></dt>
+  <dd>Identität von Berechtigung trennen und erlaubte sowie abgelehnte Aktionen testen.</dd>
+  <dt><a href="/guides/integrations/">Externe Dienste anbinden</a></dt>
+  <dd>Dienstverbindungen, Zugangsdaten und Netzwerkeffekte außerhalb reiner Entscheidungen platzieren.</dd>
+  <dt><a href="/guides/files/">Dateien speichern und abrufen</a></dt>
+  <dd>Dateibesitz, Speicherung und erlaubten Zugriff nachvollziehen.</dd>
+  <dt><a href="/guides/deployment/">Bereitstellen und betreiben</a></dt>
+  <dd>Laufende Komponenten konfigurieren, Fehler untersuchen und die Wiederherstellung prüfen.</dd>
+</dl>
+
+## Das Design verstehen
+
+Diese geplanten Erklärungen zeigen, warum das Modell funktioniert und wie sich sinnvolle Grenzen festlegen lassen.
+
+<dl class="docs-map">
+  <dt><a href="/concepts/event-modeling/">Anwendungsverhalten modellieren</a></dt>
+  <dd>Mehrdeutige Anforderungen und mehrstufige Abläufe durchdenken.</dd>
+  <dt><a href="/concepts/history-and-state/">Verlauf und aktueller Zustand</a></dt>
+  <dd>Aufgezeichnete Fakten von rekonstruiertem Zustand und aktuellen Abfrageergebnissen unterscheiden.</dd>
+  <dt><a href="/concepts/pure-decisions/">Reine Entscheidungen und Effekte</a></dt>
+  <dd>Deterministische Logik, Typprüfungen und externe Effekte verstehen.</dd>
+</dl>
+
+## Referenz und Hilfe
+
+Die Referenzseiten sind geplant. <a href="/resources/">Ressourcen und Projektstatus</a> verweisen bereits auf geprüfte Inhalte aus dem Upstream-Projekt und Anlaufstellen für Hilfe.
+
+<dl class="docs-map">
+  <dt><a href="/reference/language/">Sprachgrundlagen</a></dt>
+  <dd>Syntax zum Lesen und Prüfen von Anwendungscode anhand kurzer Beispiele finden.</dd>
+  <dt><a href="/reference/core/">Core-Bibliothek</a></dt>
+  <dd>Häufig verwendete Typen und Operationen nach Signatur, Ergebnis und Grenzfall nachschlagen.</dd>
+  <dt><a href="/reference/framework/">Bausteine des Frameworks</a></dt>
+  <dd>Das Anwendungsmodell im Quelltext mit Entitäten, Kommandos, Entscheidungen, Ereignissen und Abfragen verbinden.</dd>
+  <dt><a href="/reference/cli/">Neo CLI</a></dt>
+  <dd>Kommandos, Argumente, Arbeitsverzeichnisse und erwartete Ergebnisse nachschlagen.</dd>
+  <dt><a href="/reference/configuration/">Konfiguration</a></dt>
+  <dd>Erforderliche Werte, Standardwerte, Umgebungsüberschreibungen und Anforderungen an den Umgang mit Geheimnissen finden.</dd>
+  <dt><a href="/reference/errors/">Fehler und Problemlösung</a></dt>
+  <dd>Ein Symptom, seine Ursache, die kleinste sinnvolle Korrektur und eine Prüfung der Wiederherstellung finden.</dd>
+  <dt><a href="/resources/">Ressourcen und Projektstatus</a></dt>
+  <dd>Vorhandene Quellen und Anleitungen lesen, Releases verfolgen und Hilfe anfragen.</dd>
+</dl>

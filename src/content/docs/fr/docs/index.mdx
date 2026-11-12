@@ -1,0 +1,99 @@
+---
+title: Plan de la documentation
+description: Trouver les ressources NeoHaskell existantes et parcourir les tutoriels, guides pratiques, explications et pages de référence prévus.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+<p class="docs-lead">Comprendre le comportement. Créer une fonctionnalité. Vérifier le résultat.</p>
+
+[Concepts fondamentaux](/learn/), [Configurer votre agent](/getting-started/) et [Ressources](/resources/) contiennent des ressources existantes. Les autres destinations ci-dessous présentent les plans des pages, avec les explications, exemples et figures à rédiger. Pour consulter les instructions disponibles dès maintenant, la page Ressources renvoie vers des ressources externes sur la syntaxe, la CLI, le stockage, les tests et l’autorisation.
+
+Cette page guidera les lecteurs dans un premier parcours succinct, des guides pratiques indépendants, des explications approfondies et une référence prévisible. Une carte de lecture avec des liens indiquera où trouver la réponse à chaque question. Le tutoriel suivra une fonctionnalité de boutique, de sa spécification à un comportement backend testé et une interface appelable. Il ne nécessitera pas de cours de Haskell. Des exemples et des figures accompagneront l’article lorsqu’ils éclaireront une idée précise.
+
+## Commencer ici
+
+<dl class="docs-map">
+  <dt><a href="/learn/">Concepts fondamentaux</a></dt>
+  <dd>Reconnaître les commandes, décisions, événements et requêtes à travers une commande passée dans une petite boutique.</dd>
+  <dt><a href="/getting-started/">Configurer votre agent</a></dt>
+  <dd>Préparer l’environnement et l’agent. Le parcours prévu couvrira toutes les étapes jusqu’au démarrage d’un projet et à la vérification d’une première réponse.</dd>
+</dl>
+
+## Créer une application
+
+Suivez ces quatre chapitres prévus dans l’ordre, en utilisant la même boutique et le projet préparé pendant la configuration.
+
+<dl class="docs-map">
+  <dt><a href="/tutorial/">Modéliser votre première fonctionnalité</a></dt>
+  <dd>Rédiger une spécification, avec les conditions d’acceptation et de rejet.</dd>
+  <dt><a href="/tutorial/first-feature/">Implémenter la fonctionnalité</a></dt>
+  <dd>Transformer la spécification en un comportement backend relu et une interface appelable.</dd>
+  <dt><a href="/tutorial/test-behavior/">Tester le comportement</a></dt>
+  <dd>Comparer les événements et les résultats des requêtes aux résultats attendus.</dd>
+  <dt><a href="/tutorial/change-safely/">Modifier en toute sécurité</a></dt>
+  <dd>Ajouter une exigence et vérifier son effet sur le comportement existant.</dd>
+</dl>
+
+## Réaliser une tâche
+
+Ces guides pratiques prévus répondront à une question concrète sans exiger de suivre tout le tutoriel.
+
+<dl class="docs-map">
+  <dt><a href="/guides/ai-workflow/">Travailler avec un agent IA</a></dt>
+  <dd>Fournir du contexte, délimiter une modification, examiner les éléments de vérification et corriger une implémentation erronée.</dd>
+  <dt><a href="/guides/transports/">Exposer des interfaces HTTP et MCP</a></dt>
+  <dd>Relier le comportement de l’application aux requêtes, aux appels d’outils et aux contrats OpenAPI générés.</dd>
+  <dt><a href="/guides/storage/">Conserver les données après un redémarrage</a></dt>
+  <dd>Configurer le stockage persistant de l’historique des événements et des requêtes, puis vérifier le résultat après un redémarrage.</dd>
+  <dt><a href="/guides/authorization/">Contrôler les accès</a></dt>
+  <dd>Distinguer l’identité des autorisations et tester les actions autorisées et refusées.</dd>
+  <dt><a href="/guides/integrations/">Connecter des services externes</a></dt>
+  <dd>Gérer les connexions aux fournisseurs, les identifiants et les effets réseau en dehors des décisions pures.</dd>
+  <dt><a href="/guides/files/">Stocker et récupérer des fichiers</a></dt>
+  <dd>Suivre la propriété des fichiers, leur stockage et les accès autorisés.</dd>
+  <dt><a href="/guides/deployment/">Déployer et exploiter</a></dt>
+  <dd>Configurer les éléments en cours d’exécution, examiner les défaillances et vérifier la reprise.</dd>
+</dl>
+
+## Comprendre la conception
+
+Ces explications prévues examineront le fonctionnement du modèle et le choix de frontières utiles.
+
+<dl class="docs-map">
+  <dt><a href="/concepts/event-modeling/">Modéliser le comportement d’une application</a></dt>
+  <dd>Réfléchir aux exigences ambiguës et aux processus à plusieurs étapes.</dd>
+  <dt><a href="/concepts/history-and-state/">Historique et état actuel</a></dt>
+  <dd>Distinguer les faits enregistrés de l’état reconstitué et des réponses actuelles aux requêtes.</dd>
+  <dt><a href="/concepts/pure-decisions/">Décisions pures et effets</a></dt>
+  <dd>Comprendre la logique déterministe, les vérifications de types et les effets externes.</dd>
+</dl>
+
+## Référence et aide
+
+Les pages de référence sont prévues. <a href="/resources/">Ressources et état du projet</a> renvoie déjà vers des ressources externes consultées et des moyens d’obtenir de l’aide.
+
+<dl class="docs-map">
+  <dt><a href="/reference/language/">Les bases du langage</a></dt>
+  <dd>Consulter la syntaxe utile pour lire et relire le code de l’application, avec de petits exemples.</dd>
+  <dt><a href="/reference/core/">Bibliothèque Core</a></dt>
+  <dd>Rechercher des types et opérations courants par signature, résultat et cas limite.</dd>
+  <dt><a href="/reference/framework/">Composants du framework</a></dt>
+  <dd>Relier le modèle de l’application aux entités, commandes, décisions, événements et requêtes dans le code source.</dd>
+  <dt><a href="/reference/cli/">Neo CLI</a></dt>
+  <dd>Consulter les commandes, les arguments, les répertoires de travail et les résultats attendus.</dd>
+  <dt><a href="/reference/configuration/">Configuration</a></dt>
+  <dd>Rechercher les valeurs requises, les valeurs par défaut, les substitutions d’environnement et les exigences de gestion des secrets.</dd>
+  <dt><a href="/reference/errors/">Erreurs et dépannage</a></dt>
+  <dd>Rechercher un symptôme, sa cause, la correction minimale utile et une vérification de reprise.</dd>
+  <dt><a href="/resources/">Ressources et état du projet</a></dt>
+  <dd>Consulter les ressources et guides existants, suivre les versions et demander de l’aide.</dd>
+</dl>

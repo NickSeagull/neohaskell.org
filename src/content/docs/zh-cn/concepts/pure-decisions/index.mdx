@@ -1,0 +1,17 @@
+---
+title: 纯决策与副作用
+description: "页面规划。了解确定性的决策逻辑以及外部副作用的边界。"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## 页面规划
+
+本页将说明决策接收什么、返回什么，以及为什么外部副作用应放在计算过程之外。页面会用最精简且经过验证的源代码和明确结果，对比相同输入被求值两次、命令被接受以及命令被拒绝的情况。一张边界图将纯逻辑与网络、存储和文件操作区分开来。说明会联系类型检查能发现的错误，同时明确业务意图仍由读者负责，然后链接到[连接外部服务](/guides/integrations/)。

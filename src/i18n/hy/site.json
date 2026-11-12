@@ -76,5 +76,10 @@
   "language.label": "Ընտրել լեզուն",
   "nav.learn": "Ուսումնասիրել NeoHaskell-ը",
   "nav.build": "Կառուցել հավելված",
-  "nav.explore": "Ուսումնասիրել նախագիծը"
+  "nav.explore": "Ուսումնասիրել նախագիծը",
+  "docs.start": "Սկսեք այստեղից",
+  "docs.tutorial": "Կառուցեք հավելված",
+  "docs.guides": "Լուծեք առաջադրանք",
+  "docs.concepts": "Հասկացեք նախագծումը",
+  "docs.reference": "Տեղեկատու և օգնություն"
 }

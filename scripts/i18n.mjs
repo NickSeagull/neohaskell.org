@@ -61,6 +61,7 @@ Return the complete translation of every supplied file in the required JSON resp
 Preserve meaning and all sections. Use natural, concise technical language. NeoHaskell is an AI-first language AND framework. Keep command, decision, event, and query as four distinct concepts with consistent translated terminology. Do not invent claims or add explanations.
 JSON files: translate VALUES only. Keep every key, HTML tag and attribute, URL, and placeholder (including {{title}}, [COUNT], [SEARCH_TERM]) exactly. Never introduce HTML tags into plain text values.
 MDX files: translate prose, headings, title/description frontmatter, code-block titles, and human-readable text in text fences (including the example agent task). Preserve the Markdown/MDX structure, paragraphs, emphasis, tables, links and anchors EXACTLY. Keep all other YAML frontmatter unchanged. Preserve executable code byte for byte. Keep inline code, identifiers such as PlaceOrder and OrderPlaced, field names product/quantity, numbers, import paths and URLs unchanged. Do not translate URL fragments even when translating headings. Do not add JSX, imports, expressions, or components.
+Keep existing HTML links as HTML links, translating only their visible text. Do not convert an <a href="..."> element into a Markdown link.
 Use ordinary punctuation. No middle dots (U+00B7), em dashes (U+2014), emojis or footnotes. Return file paths exactly as supplied. Return full files, never summaries or omissions.
 Domain glossary:
 ${glossary}

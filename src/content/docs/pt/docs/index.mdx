@@ -1,0 +1,99 @@
+---
+title: Plano da documentação
+description: Encontre a orientação existente sobre NeoHaskell e consulte os tutoriais, guias de tarefas, explicações e páginas de referência planeados.
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+<p class="docs-lead">Compreenda o comportamento. Crie uma funcionalidade. Verifique o resultado.</p>
+
+[Conceitos fundamentais](/learn/), [Configurar o agente](/getting-started/) e [Recursos](/resources/) contêm orientações existentes. Os restantes destinos abaixo contêm planos de páginas que descrevem as explicações, os exemplos e as figuras a criar. Para consultar as instruções disponíveis, Recursos inclui ligações para orientações sobre sintaxe, CLI, armazenamento, testes e autorização.
+
+Esta página orientará os leitores por um primeiro percurso curto, guias de tarefas independentes, explicações mais aprofundadas e uma referência previsível. Usará um mapa de leitura com ligações para indicar onde se enquadra cada pergunta. O tutorial acompanhará uma funcionalidade de loja, desde a especificação até ao comportamento testado do backend e a uma interface que pode ser chamada; não exigirá um curso de Haskell. Os exemplos e as figuras apoiarão o artigo quando explicarem uma ideia específica.
+
+## Comece aqui
+
+<dl class="docs-map">
+  <dt><a href="/learn/">Conceitos fundamentais</a></dt>
+  <dd>Reconheça comandos, decisões, eventos e consultas através de uma encomenda numa pequena loja.</dd>
+  <dt><a href="/getting-started/">Configurar o agente</a></dt>
+  <dd>Prepare o ambiente e o agente. O percurso planeado abrangerá todas as etapas até ter um projeto em execução e uma primeira resposta verificada.</dd>
+</dl>
+
+## Criar uma aplicação
+
+Siga estes quatro capítulos planeados por ordem, usando a mesma loja e o projeto preparado durante a configuração.
+
+<dl class="docs-map">
+  <dt><a href="/tutorial/">Modelar a primeira funcionalidade</a></dt>
+  <dd>Escreva uma especificação, incluindo as condições de aceitação e rejeição.</dd>
+  <dt><a href="/tutorial/first-feature/">Implementar a funcionalidade</a></dt>
+  <dd>Transforme a especificação num comportamento de backend revisto e numa interface que pode ser chamada.</dd>
+  <dt><a href="/tutorial/test-behavior/">Testar o comportamento</a></dt>
+  <dd>Compare os eventos e os resultados das consultas com os resultados pretendidos.</dd>
+  <dt><a href="/tutorial/change-safely/">Alterar com segurança</a></dt>
+  <dd>Acrescente um requisito e verifique o seu efeito no comportamento existente.</dd>
+</dl>
+
+## Resolver uma tarefa
+
+Estes guias planeados responderão a perguntas práticas sem exigir o tutorial completo.
+
+<dl class="docs-map">
+  <dt><a href="/guides/ai-workflow/">Trabalhar com um agente de IA</a></dt>
+  <dd>Forneça contexto, delimite uma alteração, reveja as evidências e recupere de uma implementação incorreta.</dd>
+  <dt><a href="/guides/transports/">Disponibilizar interfaces HTTP e MCP</a></dt>
+  <dd>Ligue o comportamento da aplicação a pedidos, chamadas de ferramentas e contratos OpenAPI gerados.</dd>
+  <dt><a href="/guides/storage/">Manter os dados após reinícios</a></dt>
+  <dd>Configure o histórico de eventos persistente e o armazenamento de consultas e, em seguida, verifique um reinício.</dd>
+  <dt><a href="/guides/authorization/">Controlar o acesso</a></dt>
+  <dd>Separe a identidade das permissões e teste as ações permitidas e negadas.</dd>
+  <dt><a href="/guides/integrations/">Ligar serviços externos</a></dt>
+  <dd>Mantenha as ligações a fornecedores, as credenciais e os efeitos de rede fora das decisões puras.</dd>
+  <dt><a href="/guides/files/">Armazenar e obter ficheiros</a></dt>
+  <dd>Respeite a propriedade dos ficheiros, o armazenamento e o acesso permitido.</dd>
+  <dt><a href="/guides/deployment/">Implementar e operar</a></dt>
+  <dd>Configure os componentes em execução, inspecione falhas e verifique a recuperação.</dd>
+</dl>
+
+## Compreender a conceção
+
+Estas explicações planeadas explorarão por que motivo o modelo funciona e como escolher limites úteis.
+
+<dl class="docs-map">
+  <dt><a href="/concepts/event-modeling/">Modelar o comportamento da aplicação</a></dt>
+  <dd>Analise requisitos ambíguos e fluxos de trabalho com várias etapas.</dd>
+  <dt><a href="/concepts/history-and-state/">Histórico e estado atual</a></dt>
+  <dd>Distinga factos registados do estado reconstruído e das respostas atuais a consultas.</dd>
+  <dt><a href="/concepts/pure-decisions/">Decisões puras e efeitos</a></dt>
+  <dd>Compreenda a lógica determinística, as verificações de tipos e os efeitos externos.</dd>
+</dl>
+
+## Referência e ajuda
+
+As páginas de referência estão planeadas. <a href="/resources/">Recursos e estado do projeto</a> já inclui ligações para material upstream analisado e locais onde pode pedir ajuda.
+
+<dl class="docs-map">
+  <dt><a href="/reference/language/">Fundamentos da linguagem</a></dt>
+  <dd>Consulte a sintaxe para ler e rever código de aplicações, com exemplos pequenos.</dd>
+  <dt><a href="/reference/core/">Biblioteca Core</a></dt>
+  <dd>Pesquise tipos e operações comuns por assinatura, resultado e casos-limite.</dd>
+  <dt><a href="/reference/framework/">Componentes fundamentais do framework</a></dt>
+  <dd>Ligue o modelo da aplicação a entidades, comandos, decisões, eventos e consultas no código-fonte.</dd>
+  <dt><a href="/reference/cli/">Neo CLI</a></dt>
+  <dd>Consulte comandos, argumentos, diretórios de trabalho e resultados esperados.</dd>
+  <dt><a href="/reference/configuration/">Configuração</a></dt>
+  <dd>Consulte valores obrigatórios, predefinições, substituições do ambiente e requisitos para gerir segredos.</dd>
+  <dt><a href="/reference/errors/">Erros e resolução de problemas</a></dt>
+  <dd>Encontre um sintoma, a sua causa, a correção mínima útil e uma verificação de recuperação.</dd>
+  <dt><a href="/resources/">Recursos e estado do projeto</a></dt>
+  <dd>Consulte o código-fonte e os guias existentes, acompanhe versões e peça ajuda.</dd>
+</dl>

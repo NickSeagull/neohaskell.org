@@ -1,0 +1,99 @@
+---
+title: 文档规划
+description: 查找现有 NeoHaskell 指南，并浏览规划中的教程、任务指南、概念说明和参考页面。
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+<p class="docs-lead">了解行为。构建一个功能。检查结果。</p>
+
+[核心概念](/learn/)、[设置你的智能体](/getting-started/)和[资源](/resources/)包含现有指南。下方其他页面介绍的是尚待编写的说明、示例和图示规划。若要查阅目前已有的说明，资源页面链接到上游的语法、CLI、存储、测试和授权指南。
+
+本页将引导读者完成一段简短的入门流程，介绍独立任务指南、更深入的概念说明和结构清晰的参考资料。页面将用带链接的阅读路线图说明每个问题适合在哪里查找。教程将围绕一个商店功能，从规格说明讲到经过测试的后端行为和可调用接口，不要求读者先学习 Haskell。文章会在能解释具体概念时配上示例和图示。
+
+## 从这里开始
+
+<dl class="docs-map">
+  <dt><a href="/learn/">核心概念</a></dt>
+  <dd>通过小商店中的一笔订单，认识命令、决策、事件和查询。</dd>
+  <dt><a href="/getting-started/">设置你的智能体</a></dt>
+  <dd>准备环境和智能体。规划中的入门指南将介绍从创建可运行项目到检查第一个响应的完整流程。</dd>
+</dl>
+
+## 构建应用
+
+按顺序阅读下面规划中的四个章节，使用同一家商店和设置阶段准备的项目。
+
+<dl class="docs-map">
+  <dt><a href="/tutorial/">为第一个功能建模</a></dt>
+  <dd>编写一份规格说明，列出接受和拒绝命令的条件。</dd>
+  <dt><a href="/tutorial/first-feature/">实现功能</a></dt>
+  <dd>将规格说明转化为一个经过审查的后端行为和可调用接口。</dd>
+  <dt><a href="/tutorial/test-behavior/">测试行为</a></dt>
+  <dd>将事件和查询结果与预期结果进行比较。</dd>
+  <dt><a href="/tutorial/change-safely/">安全地修改功能</a></dt>
+  <dd>添加一项需求，并检查它对现有行为的影响。</dd>
+</dl>
+
+## 完成一项任务
+
+下面这些规划中的指南将解答实际问题，不要求读者完成整个教程。
+
+<dl class="docs-map">
+  <dt><a href="/guides/ai-workflow/">与 AI 智能体协作</a></dt>
+  <dd>提供上下文，限定修改范围，审查证据，并从错误的实现中恢复。</dd>
+  <dt><a href="/guides/transports/">公开 HTTP 和 MCP 接口</a></dt>
+  <dd>将应用行为连接到请求、工具调用和生成的 OpenAPI 契约。</dd>
+  <dt><a href="/guides/storage/">让数据在重启后保留</a></dt>
+  <dd>配置持久化事件历史和查询存储，然后检查重启后的结果。</dd>
+  <dt><a href="/guides/authorization/">控制访问权限</a></dt>
+  <dd>区分身份与权限，并测试允许和拒绝的操作。</dd>
+  <dt><a href="/guides/integrations/">连接外部服务</a></dt>
+  <dd>将服务连接、凭据和网络副作用放在纯决策逻辑之外。</dd>
+  <dt><a href="/guides/files/">存储和检索文件</a></dt>
+  <dd>了解文件归属、存储方式和允许的访问权限。</dd>
+  <dt><a href="/guides/deployment/">部署和运维</a></dt>
+  <dd>配置运行组件，检查故障并验证恢复情况。</dd>
+</dl>
+
+## 理解设计
+
+下面这些规划中的说明将探讨该模型为何有效，以及如何选择合适的边界。
+
+<dl class="docs-map">
+  <dt><a href="/concepts/event-modeling/">为应用行为建模</a></dt>
+  <dd>推理含糊需求和多步骤工作流。</dd>
+  <dt><a href="/concepts/history-and-state/">历史记录与当前状态</a></dt>
+  <dd>区分已记录的事实、重建出的状态和当前查询结果。</dd>
+  <dt><a href="/concepts/pure-decisions/">纯决策与副作用</a></dt>
+  <dd>了解确定性逻辑、类型检查和外部副作用。</dd>
+</dl>
+
+## 参考资料和帮助
+
+参考页面仍在规划中。<a href="/resources/">资源和项目状态</a>已链接到经过检查的上游资料和可获取帮助的渠道。
+
+<dl class="docs-map">
+  <dt><a href="/reference/language/">语言基础</a></dt>
+  <dd>查找阅读和审查应用代码所需的语法，并参考简短示例。</dd>
+  <dt><a href="/reference/core/">核心库</a></dt>
+  <dd>按签名、结果和边界情况查找常用类型和操作。</dd>
+  <dt><a href="/reference/framework/">框架构件</a></dt>
+  <dd>了解如何在源代码中将应用模型与实体、命令、决策、事件和查询联系起来。</dd>
+  <dt><a href="/reference/cli/">Neo CLI</a></dt>
+  <dd>查找命令、参数、工作目录和预期结果。</dd>
+  <dt><a href="/reference/configuration/">配置</a></dt>
+  <dd>查找必填值、默认值、环境变量覆盖方式和密钥处理要求。</dd>
+  <dt><a href="/reference/errors/">错误与故障排查</a></dt>
+  <dd>查找故障表现、原因、最简有效修复方法和恢复检查步骤。</dd>
+  <dt><a href="/resources/">资源和项目状态</a></dt>
+  <dd>阅读现有源码和指南，关注版本发布并寻求帮助。</dd>
+</dl>

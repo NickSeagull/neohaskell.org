@@ -76,5 +76,10 @@
   "language.label": "言語を選択",
   "nav.learn": "NeoHaskell を学ぶ",
   "nav.build": "アプリケーションを作る",
-  "nav.explore": "プロジェクトを見る"
+  "nav.explore": "プロジェクトを見る",
+  "docs.start": "まずはこちら",
+  "docs.tutorial": "アプリケーションを作る",
+  "docs.guides": "タスクを解決する",
+  "docs.concepts": "設計を理解する",
+  "docs.reference": "リファレンスとヘルプ"
 }
