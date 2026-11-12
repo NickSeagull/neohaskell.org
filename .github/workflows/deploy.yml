@@ -13,6 +13,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_PAGES_PREVIEW: 'true'
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
@@ -23,6 +25,8 @@ jobs:
       - run: npm test
       - run: npm run i18n:check -- --strict
       - run: npm run build
+      - name: Keep the preview on the GitHub Pages URL
+        run: rm dist/CNAME dist/robots.txt
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist

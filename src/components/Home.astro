@@ -7,12 +7,13 @@ import '../styles/home.css';
 
 import LanguagePicker from './LanguagePicker.astro';
 import AlternateLinks from './AlternateLinks.astro';
-import { messages, localePath } from '../i18n/runtime';
+import { messages, sitePath } from '../i18n/runtime';
 import { localeByCode } from '../i18n/locales.mjs';
 interface Props { locale?: string; }
 const { locale = 'en' } = Astro.props;
 const t = messages(locale);
-const path = (url: string) => localePath(locale, url);
+const path = (url: string) => sitePath(locale, url);
+const asset = (url: string) => `${import.meta.env.BASE_URL.replace(/\/$/, '')}${url}`;
 const canonical = new URL(path('/'), Astro.site);
 
 const capabilities = [
@@ -32,9 +33,9 @@ const capabilities = [
     <meta name="description" content={t("meta.neohaskell-is-an-ai-first-language-and-framework-build-")} />
     <meta name="theme-color" content="#1c062d" />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <link rel="preload" href="/fonts/sansation.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" type="image/svg+xml" href={asset('/logo.svg')} />
+    <link rel="preload" href={asset('/fonts/sansation.woff2')} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={asset('/fonts/manrope.woff2')} as="font" type="font/woff2" crossorigin />
     <meta property="og:title" content={t("home.neohaskell-build-with-ai-keep-control")} />
     <meta property="og:description" content={t("meta.an-ai-first-language-and-framework-with-pure-business-l")} />
     <meta property="og:type" content="website" />
@@ -56,7 +57,7 @@ const capabilities = [
     <a class="skip-link" href="#main">{t("home.skip-to-content")}</a>
     <div class="site-shell">
       <header class="site-header">
-        <a href={path("/")} class="brand" aria-label={t("home.neohaskell-home")}><img src="/logo.svg" width="43" height="43" alt="" /><span>NeoHaskell</span></a>
+        <a href={path("/")} class="brand" aria-label={t("home.neohaskell-home")}><img src={asset('/logo.svg')} width="43" height="43" alt="" /><span>NeoHaskell</span></a>
         <nav class="main-nav" aria-label={t("home.main-navigation")}>
           <a href={path("/learn/")} class="nav-guide"><span class="nav-label-full">{t("home.documentation")}</span><span class="nav-label-short">{t("home.docs")}</span></a>
           <a href={path("/resources/")} class="nav-resources">{t("home.resources")}</a>
@@ -122,7 +123,7 @@ const capabilities = [
 
         <section class="closing-section" aria-labelledby="closing-title">
           <div><h2 id="closing-title" set:html={t("home.build-the-ideayou-keep-thinking-about")} /><a href={path("/learn/")} class="primary-link">{t("home.explore-the-docs")}<Arrow /></a></div>
-          <img class="closing-logo" src="/logo.svg" width="240" height="240" alt="" loading="lazy" />
+          <img class="closing-logo" src={asset('/logo.svg')} width="240" height="240" alt="" loading="lazy" />
         </section>
       </main>
       <footer class="site-footer"><a href={path("/")} class="footer-brand">NeoHaskell</a><nav aria-label={t("home.footer-navigation")}><a href={path("/learn/")}>{t("home.documentation")}</a><a href={path("/resources/")}>{t("home.resources")}</a><a href="https://github.com/neohaskell/NeoHaskell">GitHub</a><a href="https://discord.com/invite/wDj3UYzec8">Discord</a></nav></footer>

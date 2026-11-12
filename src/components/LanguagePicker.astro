@@ -1,6 +1,6 @@
 ---
-import { locales, localePath } from '../i18n/locales.mjs';
-import { messages } from '../i18n/runtime';
+import { locales } from '../i18n/locales.mjs';
+import { messages, sitePath } from '../i18n/runtime';
 interface Props { locale?: string; path?: string; }
 const { locale = 'en', path = Astro.url.pathname } = Astro.props;
 ---
@@ -10,7 +10,7 @@ const { locale = 'en', path = Astro.url.pathname } = Astro.props;
     <span>{locales.find(({ code }) => code === locale)?.label}</span>
   </summary>
   <nav aria-label={messages(locale)('language.label')}>
-    {locales.map(({ code, lang, label }) => <a href={localePath(code, path)} lang={lang} hreflang={lang} aria-current={code === locale ? 'true' : undefined}>{label}</a>)}
+    {locales.map(({ code, lang, label }) => <a href={sitePath(code, path)} lang={lang} hreflang={lang} aria-current={code === locale ? 'true' : undefined}>{label}</a>)}
   </nav>
 </details>
 <script>

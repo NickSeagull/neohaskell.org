@@ -1,6 +1,6 @@
 # NeoHaskell website
 
-Astro + Starlight, with a custom homepage and static documentation. The site targets `https://neohaskell.org` on GitHub Pages.
+Astro + Starlight, with a custom homepage and static documentation. Local builds target `https://neohaskell.org`. GitHub Actions publishes a preview at `https://nickseagull.dev/neohaskell.org/`. GitHub redirects `https://nickseagull.github.io/neohaskell.org/` there because the account's Pages site uses a custom domain.
 
 ## Run locally
 
@@ -67,7 +67,7 @@ Failures keep the response, prompt, invocation metadata, and bounded Codex diagn
 
 ## Deployment
 
-`.github/workflows/deploy.yml` checks translation freshness, builds on `main` or manual dispatch, and uploads the static artifact to GitHub Pages. Pending translations block deployment; CI never invokes Codex. The configured custom domain is in `public/CNAME`; no project subpath is used. Connect this checkout to the intended GitHub repository and enable Pages with GitHub Actions before deploying. This working session has not published the site or changed DNS.
+`.github/workflows/deploy.yml` checks translation freshness, builds on every push to `main` or manual dispatch, and publishes to the GitHub Pages project URL. Pending translations block deployment; CI never invokes Codex. The preview build uses `/neohaskell.org/` as its base path and omits the production `CNAME` and `robots.txt` files from the artifact. Local builds still use `https://neohaskell.org` without a base path. To reproduce the preview build locally, run `GITHUB_PAGES_PREVIEW=true npm run build`.
 
 Framework references: [Starlight custom pages](https://starlight.astro.build/guides/pages/) and [Astro on GitHub Pages](https://docs.astro.build/en/guides/deploy/github/).
 

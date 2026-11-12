@@ -127,21 +127,22 @@ export function remarkLocales() {
   return async (tree, file) => {
     const path = relative(join(process.cwd(), 'src/content/docs'), String(file.path)).split(sep).join('/');
     const locale = targetLocales.find(({ code }) => path.startsWith(`${code}/`));
-    if (!locale) return;
-    const original = await readFile(join(process.cwd(), 'src/content/docs', path.slice(locale.code.length + 1)), 'utf8');
-    const ids = headings(original);
+    const original = locale ? await readFile(join(process.cwd(), 'src/content/docs', path.slice(locale.code.length + 1)), 'utf8') : '';
+    const ids = locale ? headings(original) : [];
+    const base = process.env.GITHUB_PAGES_PREVIEW === 'true' ? '/neohaskell.org' : '';
+    const localize = (url) => `${base}${locale ? localePath(locale.code, url) : url}`;
     let index = 0;
     walk(tree, (node) => {
-      if (node.type === 'heading') {
+      if (locale && node.type === 'heading') {
         node.data ??= {};
         node.data.hProperties = { ...node.data.hProperties, id: ids[index++] };
       }
-      if (node.type === 'link' && /^\/(?!\/)/.test(node.url) && !/\.[a-z\d]+(?:[?#]|$)/i.test(node.url)) node.url = localePath(locale.code, node.url);
+      if (node.type === 'link' && /^\/(?!\/)/.test(node.url) && !/\.[a-z\d]+(?:[?#]|$)/i.test(node.url)) node.url = localize(node.url);
       if (['mdxJsxFlowElement', 'mdxJsxTextElement'].includes(node.type) && node.name === 'a') {
         const href = node.attributes.find((attribute) => attribute.name === 'href');
-        if (typeof href?.value === 'string' && /^\/(?!\/)/.test(href.value) && !/\.[a-z\d]+(?:[?#]|$)/i.test(href.value)) href.value = localePath(locale.code, href.value);
+        if (typeof href?.value === 'string' && /^\/(?!\/)/.test(href.value) && !/\.[a-z\d]+(?:[?#]|$)/i.test(href.value)) href.value = localize(href.value);
       }
     });
-    if (index !== ids.length) throw new Error(`${path}: translated heading count differs from English. Run npm run i18n:translate.`);
+    if (locale && index !== ids.length) throw new Error(`${path}: translated heading count differs from English. Run npm run i18n:translate.`);
   };
 }

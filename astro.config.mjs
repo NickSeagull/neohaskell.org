@@ -17,7 +17,8 @@ const group = (key, slug) => ({
 });
 
 export default defineConfig({
-  site: 'https://neohaskell.org',
+  site: process.env.GITHUB_PAGES_PREVIEW === 'true' ? 'https://nickseagull.dev' : 'https://neohaskell.org',
+  base: process.env.GITHUB_PAGES_PREVIEW === 'true' ? '/neohaskell.org' : '/',
   output: 'static',
   trailingSlash: 'always',
   devToolbar: { enabled: false },
