@@ -103,11 +103,41 @@ The visual model is derived from the source declarations. When those declaration
 
 **The specification is part of the code.** NeoHaskell's Event Model DSL declares features, chapters, slices, commands, events, queries, and integrations. The rules beside a slice describe its required behavior, including Given, When, Then cases.
 
-For cancellation, two rules make the shop's promise concrete:
+Here is the cancellation chapter from the shop's model. The example uses the shop's `Order`, command, event, and query types, already defined elsewhere:
 
-- **Given** an accepted order for one mug that has not been dispatched, **when** cancellation is requested, **then** record `OrderCancelled`.
-- **Given** an order that has already been dispatched, **when** cancellation is requested, **then** reject it and leave stock unchanged.
+```haskell
+orders = feature "Orders" do
+  chapter "Cancel order" do
+    slice "Cancel before dispatch" do
+      entity @Order do
+        command @CancelOrder do
+          produces @OrderCancelled
 
-The stock-query slice separately checks that the cancellation event restores the available count. These cases belong with the behavior they specify. They give the developer and the agent something concrete to check when writing the decision. The model describes how the parts connect; the rules describe what those parts must do.
+      rule "Cancel before dispatch" do
+        orderId <- requestValue @Uuid
+        given do
+          event OrderPlaced {
+            orderId = orderId,
+            quantity = 1
+          }
+        when CancelOrder { orderId = orderId }
+        therefore do
+          event OrderCancelled {
+            orderId = orderId,
+            quantity = 1
+          }
+
+    slice "Show restored stock" do
+      query @AvailableMugs do
+        readsFrom @Order do
+          onEvent @OrderPlaced
+          onEvent @OrderCancelled
+```
+
+**The hierarchy in the diagram is the hierarchy in the code.** The chapter contains a command slice and a query slice. `produces` declares the command's event; `readsFrom` and `onEvent` declare which history supplies the query. The stock query listens to both placed and cancelled orders so its answer reflects both changes.
+
+The rule sits beside the command it specifies. `requestValue` asks the rule runner for a typed example order ID. `given` supplies the accepted order's history, `when` supplies the cancellation command, and `therefore` is the DSL's Then: the expected `OrderCancelled` event. The decision implementation has a concrete case to satisfy.
+
+A second rule covers an already dispatched order: cancellation must be rejected and stock must stay unchanged. The stock-query slice separately checks that an accepted cancellation restores the available count. Each case belongs with the behavior it specifies.
 
 A separate Markdown file or Confluence page can become stale because someone has to update it after changing the application. In NeoHaskell, the declared model and rules already live in the source. A document describing that specification can be derived from those declarations instead of becoming another authority to maintain.
