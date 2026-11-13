@@ -12,6 +12,6 @@ head:
       content: noindex
 ---
 
-## Plan de la página
+## Plan de la página <a id="page-plan" />
 
 Esta página comparará `Nothing` y `Just` con `Err` y `Ok`, y mostrará cuándo la ausencia no necesita explicación y cuándo hace falta un error tipado. Firmas compactas y casos emparejados cubrirán `map`, `andThen`, `withDefault`, `mapError` y las conversiones entre ambos contenedores. Un ejemplo de análisis o búsqueda conservará el error hasta que quien lo llama decida gestionarlo y enlazará el tratamiento de errores con efectos a `Task`.

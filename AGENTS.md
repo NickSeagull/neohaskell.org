@@ -45,6 +45,12 @@ For documentation page openings and reused examples or concepts, load `$document
 
 For conceptual lessons, load `$neohaskell-progressive-explanations`. It owns page purpose, editorial conviction, connected examples, and the fresh adversarial reader review required for new or substantially rewritten arguments. Review the page's intended effect and rendered reading rhythm as well as technical accuracy. Comparisons with other development approaches are an internal test, not mandatory public concessions. Combine that review with the teaching-example review when both apply.
 
+# Translation
+
+For translation requests, follow the page-based workflow in README.md. Resolve the requested pages and languages from the current task; ask one scope question if they are unclear. Edit the translated MDX directly, preserving human corrections. Page plans are excluded unless explicitly requested. Update shared catalog keys only when their text is in scope.
+
+Use native Starlight fallback for missing translations. Preserve relative links and explicit heading anchors. English edits and glossary changes do not trigger whole-site regeneration or block publication. Review changed passages, code, links, and affected rendering; do not turn ordinary translation edits into a review of every language. Translation does not authorize deployment.
+
 # Diagram colors and terminology
 
 For NeoHaskell diagrams, load `$neohaskell-diagram-colors`. For inline Event Models connecting screens and domain nodes, load `$neohaskell-event-model-diagrams`. For domain prose, diagrams, examples, or API explanations, load `$neohaskell-terminology`; `GLOSSARY.md` owns the vocabulary. If discovery has not refreshed, read `${CODEX_HOME:-$HOME/.codex}/skills/<skill-name>/SKILL.md`. Reuse `src/styles/diagram-colors.css` for diagram colors across documentation and the homepage.

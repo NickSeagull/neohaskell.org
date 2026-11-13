@@ -15,7 +15,7 @@ import EventHistoryReplay from '@components/learn/EventHistoryReplay.astro';
 
 A quantidade de stock diz ao próximo cliente quantas canecas estão disponíveis. **Os eventos explicam o que aconteceu para esse número mudar.**
 
-Considere a loja de canecas introduzida em [O trabalho por detrás do código](/introduction/#the-questions-that-change-the-software), onde um pedido de encomendas online levantou questões sobre as promessas da loja aos clientes.
+Considere a loja de canecas introduzida em [O trabalho por detrás do código](../#the-questions-that-change-the-software), onde um pedido de encomendas online levantou questões sobre as promessas da loja aos clientes.
 
 Aqui, a loja tem três canecas. Ao aceitar uma encomenda de uma, reserva essa caneca para o cliente e deixa duas disponíveis.
 
@@ -23,7 +23,7 @@ Aqui, a loja tem três canecas. Ao aceitar uma encomenda de uma, reserva essa ca
 
 A quantidade de stock dá ao próximo cliente uma resposta útil. **Não explica por que razão essa resposta mudou.** Uma caneca partida também reduziria o stock de três para duas, mas não daria à loja uma encomenda para preparar.
 
-## Registe o que aconteceu
+## Registe o que aconteceu <a id="record-what-happened" />
 
 Guardar apenas a quantidade de stock mais recente perde essa distinção. NeoHaskell regista o facto de negócio que causou a alteração: foi feita uma encomenda de uma caneca de cerâmica. Este facto registado é um **evento**.
 
@@ -31,7 +31,7 @@ O nome do evento transmite significado. `OrderPlaced` diz à aplicação que a l
 
 **Registar eventos preserva o significado de negócio da alteração.** O programador escolhe explicitamente esse significado, em vez de deixar que alguém o reconstrua mais tarde a partir de uma quantidade de stock.
 
-## Calcule o presente a partir do passado
+## Calcule o presente a partir do passado <a id="calculate-the-present-from-the-past" />
 
 Em NeoHaskell, **os eventos são a fonte de verdade do estado da aplicação**. Para calcular o stock disponível, comece sem canecas e acompanhe o que aconteceu: a loja recebeu três e depois aceitou uma encomenda de uma. O resultado são duas canecas disponíveis. Derivar o estado a partir de eventos registados chama-se **Event Sourcing**.
 
@@ -43,13 +43,13 @@ As correções seguem o mesmo princípio: registe a correção e aplique o respe
 
 Este histórico também permite reparar cálculos. Se houver um erro num cálculo de stock, corrigi-lo e voltar a aplicar o histórico reconstrói o estado derivado. **A reprodução recalcula o estado**; não volta a fazer a encomenda nem a cobrar ao cliente.
 
-## O processo não fica lento à medida que o histórico cresce?
+## O processo não fica lento à medida que o histórico cresce? <a id="wont-this-get-slow-as-the-history-grows" />
 
 O histórico cresce à medida que as pessoas usam a aplicação, mas **NeoHaskell não começa pelo primeiro evento em cada operação**. Mantém o estado já calculado e aplica as alterações seguintes a partir desse ponto. Para ler uma resposta, usa dados mantidos e não reproduz todo o histórico sempre que alguém visita uma página.
 
 Esse trabalho é tratado internamente. A aplicação mantém o seu registo do que aconteceu sem recalcular todas as encomendas anteriores ao aceitar cada nova encomenda.
 
-## Guarde os factos de que as perguntas futuras precisam
+## Guarde os factos de que as perguntas futuras precisam <a id="keep-the-facts-future-questions-need" />
 
 Com eventos de encomenda e cancelamento, a loja consegue distinguir vendas de cancelamentos, mesmo quando ambos acabam com o mesmo stock final que não ter havido qualquer atividade. Pode investigar uma encomenda ou criar um novo relatório a partir desses factos registados.
 

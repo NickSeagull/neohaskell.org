@@ -14,13 +14,13 @@ import GrowthComparison from '@components/learn/GrowthComparison.astro';
 import ShopEventModel from '@components/learn/ShopEventModel.astro';
 import IdeScreenshot from '@components/learn/IdeScreenshot.astro';
 
-Piensa en la tienda de tazas que presentamos en [El trabajo que hay detrás del código](/introduction/#the-questions-that-change-the-software). Al aceptar un pedido, la tienda reserva para el cliente las tazas solicitadas. Para diseñar su aplicación, tenemos que conectar toda la experiencia: un cliente consulta las existencias, pide una taza y averigua si la tienda ha aceptado el pedido.
+Piensa en la tienda de tazas que presentamos en [El trabajo que hay detrás del código](../#the-questions-that-change-the-software). Al aceptar un pedido, la tienda reserva para el cliente las tazas solicitadas. Para diseñar su aplicación, tenemos que conectar toda la experiencia: un cliente consulta las existencias, pide una taza y averigua si la tienda ha aceptado el pedido.
 
-[Protege los cambios y responde a las preguntas](/learn/) explica cada parte por separado: un comando solicita un cambio, un evento registra un hecho aceptado y una consulta proporciona una respuesta.
+[Protege los cambios y responde a las preguntas](../../learn/) explica cada parte por separado: un comando solicita un cambio, un evento registra un hecho aceptado y una consulta proporciona una respuesta.
 
 **El modelado de eventos conecta esas partes en un proceso que las personas pueden examinar en conjunto.** Reúne pantallas, comandos, eventos y consultas en un mismo modelo. Las conexiones revelan de dónde procede la información, dónde se necesita y qué preguntas de negocio siguen pendientes. NeoHaskell usa esa misma estructura para organizar el desarrollo y conservar la especificación en el código.
 
-## Sigue un pedido y una cancelación
+## Sigue un pedido y una cancelación <a id="follow-an-order-and-a-cancellation" />
 
 La tienda tiene tres tazas disponibles. El propietario quiere que los clientes puedan cancelar un pedido antes del envío y que sus tazas vuelvan a las existencias disponibles. Empecemos con el recorrido de pedir una taza y luego cancelarla.
 
@@ -39,7 +39,7 @@ Al dibujar las conexiones también queda claro qué preguntas no ha respondido e
 
 **Cada pregunta sin respuesta señala una parte de la aplicación que aún no se ha diseñado.** El propietario y el desarrollador pueden resolverla mientras examinan el mismo proceso, antes de que un agente o una persona convierta una suposición en código.
 
-## Desarrolla un slice cada vez
+## Desarrolla un slice cada vez <a id="develop-one-slice-at-a-time" />
 
 **Un slice es la unidad de desarrollo.** «Aceptar un pedido» tiene una entrada, una decisión y un resultado observable. Su implementación comprueba la cantidad solicitada y las existencias, y sus reglas especifican cuándo aceptar o rechazar. «Mostrar las existencias restantes» es un slice distinto con otro trabajo: mantener la respuesta después de hacer un pedido.
 
@@ -47,7 +47,7 @@ La misma división se aplica a la cancelación. Un slice decide si se puede canc
 
 Una **feature** agrupa capítulos relacionados. Aquí, una feature Orders contiene Hacer un pedido y Cancelar un pedido. Si el proceso necesita un efecto externo, como enviar la confirmación del pedido, la integración tiene su propio slice. El modelo asigna un lugar a cada tarea y muestra los contratos de los que depende.
 
-## Fija el contrato cuando se despliega
+## Fija el contrato cuando se despliega <a id="freeze-the-contract-when-it-is-deployed" />
 
 Un comando visible para el cliente es una promesa. Quien llama a `PlaceOrder` depende de sus entradas aceptadas y de su comportamiento. Quienes usan una consulta dependen de la respuesta que proporciona. Los eventos registrados dependen de definiciones que conservan el significado de esos hechos.
 
@@ -59,7 +59,7 @@ La compra con entrega usa el contrato nuevo, mientras que los pedidos para recog
 
 La misma regla se aplica a las correcciones de errores. Si `CancelOrder` acepta por error pedidos enviados, crea `CancelUndispatchedOrder` con la corrección, prueba el caso que faltaba, cambia las llamadas para que lo usen y desactiva el comando defectuoso. Fijar la implementación anterior conserva lo que se desplegó; no obliga a mantener disponible un punto de entrada defectuoso.
 
-## Retira comportamientos sin versionar toda la API
+## Retira comportamientos sin versionar toda la API <a id="retire-behavior-without-versioning-the-whole-api" />
 
 **Los contratos antiguos y nuevos pueden coexistir mientras sus usuarios migran.** La aplicación móvil puede seguir ofreciendo la opción de recoger en tienda con `PlaceOrder`, mientras que el sitio web añade la entrega con `PlaceOrderWithContact`. La consulta de existencias y los comandos no relacionados conservan sus nombres y contratos.
 
@@ -67,7 +67,7 @@ Así se evita copiar una API completa a `/v2` porque haya cambiado una operació
 
 Marca un comando o una consulta antiguos como **obsoletos** cuando quieras que los usuarios nuevos dejen de elegirlos. Cuando el uso demuestre que ya nadie los llama, desactiva o elimina ese punto de entrada. Retirar un comando no borra los eventos que registró ni elimina las definiciones necesarias para interpretar ese historial.
 
-## Por qué el código compartido cambiante genera más trabajo
+## Por qué el código compartido cambiante genera más trabajo <a id="why-changing-shared-code-creates-more-work" />
 
 Considera el mismo requisito de los datos de contacto para la entrega en una aplicación convencional donde la tienda modifica el endpoint `POST /orders` existente y el modelo `Order` compartido. Hacer obligatorio el nuevo campo rompe la compra antigua de la aplicación móvil. Añadirlo al modelo compartido también afecta al editor de pedidos y a la pantalla del personal, aunque ninguno haya pedido una nueva política de pedidos.
 
@@ -77,7 +77,7 @@ A continuación, la tienda cambia la cancelación de un indicador de sí o no a 
 
 <GrowthComparison mode="rework" />
 
-## Mantén el crecimiento cerca de lo lineal
+## Mantén el crecimiento cerca de lo lineal <a id="keep-growth-close-to-linear" />
 
 En NeoHaskell, el requisito de los datos de contacto para la entrega añade un comando con nombre y sus reglas junto al contrato de pedidos fijado. El comportamiento de la compra anterior se conserva. Una nueva política de cancelación obtiene del mismo modo un slice y un contrato explícitos, con las consultas y las integraciones afectadas visibles en el modelo de eventos.
 
@@ -89,7 +89,7 @@ Un esfuerzo aproximadamente constante por ampliación hace que el esfuerzo total
 
 La cancelación sigue teniendo que coordinarse con el envío para determinar cuándo se puede cancelar un pedido. Ese acuerdo forma parte de los contratos y las reglas de los slices afectados. El desarrollador puede nombrar la dependencia, inspeccionarla y probarla, en vez de descubrirla cuando se rompe el recorrido del cliente.
 
-## Usa el modelo para entender el código
+## Usa el modelo para entender el código <a id="use-the-model-to-understand-the-code" />
 
 **El IDE de NeoHaskell muestra la estructura de la aplicación.** Abre una feature para ver sus capítulos y slices, y sigue las conexiones entre comandos, eventos, consultas e integraciones. Puedes explorar el modelo de la tienda de tazas en la interfaz real del IDE:
 
@@ -99,7 +99,7 @@ Para modificar una cancelación, empieza por el capítulo Cancel order. Localiza
 
 El modelo visual se deriva de las declaraciones del código fuente. Cuando esas declaraciones cambian, el IDE actualiza el modelo. Un comando renombrado o una nueva conexión con una consulta forman parte de la estructura de la aplicación y aparecen en el diagrama sin que nadie tenga que mantener otro dibujo a mano.
 
-## Mantén la especificación en la aplicación
+## Mantén la especificación en la aplicación <a id="keep-the-specification-in-the-application" />
 
 **La especificación forma parte del código.** El DSL del modelo de eventos de NeoHaskell declara features, capítulos, slices, comandos, eventos, consultas e integraciones. Las reglas junto a un slice describen el comportamiento requerido, incluidos los casos Given, When y Then.
 

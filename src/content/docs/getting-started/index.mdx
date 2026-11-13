@@ -10,9 +10,9 @@ next: false
 
 <p class="docs-lead">Prepare your environment and give your AI agent a small, well-defined first task.</p>
 
-Start with [The work behind the code](/introduction/) if commands, decisions, events, and queries are new to you. This guide uses the same shop example: accept an order when stock is available, and reject it when the shop is sold out.
+Start with [The work behind the code](../introduction/) if commands, decisions, events, and queries are new to you. This guide uses the same shop example: accept an order when stock is available, and reject it when the shop is sold out.
 
-## Prepare your environment
+## Prepare your environment <a id="prepare-your-environment" />
 
 The **Neo CLI** creates, builds, runs, and tests an application. Its [prerequisites and installation instructions](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites) name Nix and Git; the documented source installation also uses Rust's Cargo. Follow the [project creation and run guide](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md#create-and-run-an-application) to create your application repository before installing agent skills.
 
@@ -22,7 +22,7 @@ These links describe the inspected framework revision. Use the instructions that
 
 Before continuing, have your application repository open and your coding agent ready to work in it. The current skills collection supports **Claude Code** and **Codex**.
 
-## Install agent skills
+## Install agent skills <a id="install-agent-skills" />
 
 The NeoHaskell skills give your coding agent project-specific guidance. Run this command from your application's Git root:
 
@@ -34,7 +34,7 @@ The installer asks which agent and installation scope to use. Select the complet
 
 The command and installer requirements come from the [NeoHaskell skills README](https://github.com/neohaskell/skills/blob/0ff0872d554e79d955f4c92f9b905056b908e9ae/README.md), checked on 9 November 2026. Consult the [current installation instructions](https://github.com/neohaskell/skills#readme) for updates.
 
-## Describe a first task
+## Describe a first task <a id="describe-a-first-task" />
 
 Give the agent the behavior you want, including what should happen when the command cannot be accepted. You can use this task for the shop example:
 
@@ -52,7 +52,7 @@ Check both accepted and rejected outcomes.
 
 Start with this one behavior. Add payments, shipping, and other conditions as separate changes once you can check the first result.
 
-## Check the result
+## Check the result <a id="check-the-result" />
 
 Ask the agent to demonstrate both an accepted order and a rejected order. For each case, start from the stock shown below and compare the result with the model.
 
@@ -65,11 +65,11 @@ Also check that zero or negative quantities are rejected. Technical checks help 
 
 If a result is unexpected, describe the difference to the agent using the same vocabulary: the command, the decision, the event, and the query. That gives you a concrete behavior to correct.
 
-For syntax, testing guidance, release notes, or help, use [Resources and project status](/resources/).
+For syntax, testing guidance, release notes, or help, use [Resources and project status](../resources/).
 
 <section class="docs-plan" data-pagefind-ignore>
 
-## Page plan
+## Page plan <a id="page-plan" />
 
 This page will retain its existing agent installation guidance, shop task, and accepted-versus-rejected checks while linking environment preparation and first-run work to dedicated pages. It will distinguish shared workflow skills from guidance matched to the application's framework revision, explain the supported agent choices for the documented CLI version, and verify the installed instructions in the project. The first request will remain small enough for the reader to judge before entering the application tutorial.
 

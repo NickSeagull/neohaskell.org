@@ -11,7 +11,7 @@ npm ci
 npm run dev -- --port 4323 --background --force
 ```
 
-`npm run build` checks Astro/TypeScript and generates `dist/`. `npm run preview` serves that production build. `npm test` verifies campaign-context handling, the illustrative order model, and the translation workflow.
+`npm run build` checks Astro/TypeScript and generates `dist/`. `npm run preview` serves that production build. `npm test` verifies campaign-context handling, the illustrative order model, and stable documentation links and anchors.
 
 During documentation authoring, keep one server at `http://127.0.0.1:4323`. Restart it after every completed batch of changes, before browser verification and sharing the URL. An existing process can serve updated MDX while retaining an older Starlight configuration.
 
@@ -48,43 +48,29 @@ Author English content in `src/content/docs/`. Reading styles live in `src/style
 
 ## Translation workflow
 
-Translation and publication resumed by owner direction on 13 November 2026. The documentation loader includes all eight translated locales, and deployment requires a current translation manifest.
+Use Starlight's native language folders. English lives in `src/content/docs/`; a Spanish translation of `introduction/history/index.mdx` lives in `src/content/docs/es/introduction/history/index.mdx`. The configured languages are listed in `src/i18n/locales.mjs`. Missing pages use [Starlight's English fallback](https://starlight.astro.build/guides/i18n/#fallback-content).
 
-English is the source of truth. Write documentation in `src/content/docs/` outside the language directories, homepage and shared diagram copy in `src/i18n/en/site.json`, and documentation controls in `src/content/i18n/en.json`. JSON keys are stable identifiers; change their English values when revising copy. Preserve inline markup in rich messages. Shared Astro components read localized messages from the catalogs. Documentation component imports use the `@components/` alias so they resolve identically from English and localized MDX. Translate sidebar labels along with page titles; preserve executable code and non-text frontmatter configuration.
+Ask an agent to update named pages in named languages, for example: “Update the Spanish and French translations of Events and history using the latest English changes.” There is no bulk translation command, manifest, or freshness gate.
 
-English keeps `/`, `/learn/`, `/getting-started/`, and `/resources/`. The other languages use `/es/` (Castilian Spanish), `/zh-cn/` (Simplified Chinese), `/ru/`, `/hy/` (Eastern Armenian), `/ja/`, `/de/`, `/fr/`, and `/pt/` (Portuguese from Portugal). `src/i18n/locales.mjs` owns this list. The language menu links to the same page and works without JavaScript. Internal documentation links retain the selected language; section anchors retain their English identifiers. Starlight supplies localized navigation, search, and code-copy controls.
+1. Read the English page, its relevant Git diff, `GLOSSARY.md`, and the existing translations. Limit the work to the requested pages and languages. Page plans are outside the default translation scope. A glossary edit is guidance for relevant passages, not an instruction to regenerate every language.
+2. Edit each translated file directly. Preserve human corrections and translate only the changed passages, with the full page as context. Keep executable code, imports, component props, URL destinations, and stable anchors intact. Translate prose, headings, titles, descriptions, and sidebar labels naturally; grammar and emphasis need not follow English node order. Update only the affected keys in shared catalogs when the request includes diagram or interface text.
+3. Review the diff, including code blocks and links, then run `npm run build`. Inspect the affected page and any changed shared component. Technical checks do not certify linguistic accuracy. A copy edit does not require another review of every language.
 
-1. Edit the English source and inspect pending translations:
+Documentation links are relative, such as `../history/#record-what-happened`. They preserve the selected language and deployment base, including on fallback pages. Headings with shared links keep an explicit anchor:
 
-   ```sh
-   npm run i18n:check
-   ```
+```mdx
+## Recorded facts <a id="record-what-happened" />
+```
 
-2. Translate one language, or omit `--locale es` to update all eight:
+The small `remark-stable-headings.mjs` plugin moves that marker's ID onto the heading. It does not read another document or compare heading counts. Preserve the ID when translating, renaming, or moving a section; new headings without a marker use Astro's normal generated IDs.
 
-   ```sh
-   npm run i18n:translate -- --locale es
-   ```
+Homepage and diagram strings remain in `src/i18n/<locale>/site.json`; custom documentation controls live in `src/content/i18n/<lang>.json`. Missing site-catalog keys fall back to English. Reuse existing keys and the `@components/` imports. Keep literal IDE labels and code identifiers when describing the actual English screenshot or code.
 
-3. Verify freshness and build the website:
-
-   ```sh
-   npm run i18n:check -- --strict
-   npm test
-   npm run build
-   ```
-
-The translator requires an installed, authenticated Codex CLI (`codex login`). It invokes `codex exec --model gpt-6-luna -c 'model_reasoning_effort="max"'` once per language with pending work, passing all pending files in that one prompt. It uses an ephemeral read-only session, ignores user configuration while retaining Codex authentication, and requests a structured JSON response. There is no call for an up-to-date language, no session resume, and no automatic retry or fallback model. Languages run sequentially. This is one CLI execution per language, not a promise about the CLI's internal network requests. See [Codex non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode) and [GPT-6 Luna](https://developers.openai.com/api/docs/models/gpt-6-luna).
-
-`i18n-manifest.json` records the source hash, translated-file hash, translation timestamp, model, and reasoning effort for each file. Source hashes include the English content, `GLOSSARY.md`, and the translation-policy version. An old translation remains current when its source is unchanged. New pages, changed English or glossary, missing output, and edited translation files become pending. `npm run i18n:check -- --json` exposes the report for automation; `--strict` exits with code 1 when work remains. Normal builds can use Starlight's English fallback for new, untranslated documents while you work.
-
-All files in a language batch are validated before any are written. Validation checks JSON keys, markup, placeholders, MDX structure, configuration, links, inline identifiers, executable code, and the repository's copy rules. Prose in illustrative `text` fences is translated; shell commands are preserved. English-source changes during a running translation reject that result. Output files are replaced atomically and the manifest is written last, so interrupted work cannot appear current. A process lock prevents overlapping translation runs.
-
-Failures keep the response, prompt, invocation metadata, and bounded Codex diagnostics under the ignored `.i18n/runs/` directory. Inspect that result before retrying. After correcting a validation issue, `node scripts/i18n.mjs apply --locale es --from .i18n/runs/<saved-run>` revalidates and applies the saved response without another Codex call. For editorial corrections to an already applied batch, update both the translated destination and its saved response, then run the same apply command. It validates the full saved batch and updates only pending destinations. It rejects a response whose recorded source hashes no longer match the English revision. Each call has a 15-minute deadline. If a process was forcibly interrupted, check the PID in `.i18n/translate.lock/owner.json` before removing its abandoned lock. When deleting an English page, remove its translated copies and corresponding manifest entries; the checker reports these as orphaned and never deletes them automatically. Commit translations and `i18n-manifest.json` together. Review translated prose before publication; structural validation does not establish linguistic accuracy.
+English changes do not block publication. Existing translations remain editable and available while their updates are reviewed. Git diffs and editorial review track that work; there is no automatic stale-translation detection. If an outdated translation is misleading, deliberately remove that page from published content to use the English fallback. Existing translated page plans are retained, but are not automatically refreshed.
 
 ## Deployment
 
-`.github/workflows/deploy.yml` checks translation freshness, builds on every push to `main` or manual dispatch, and publishes to the GitHub Pages project URL. Missing, stale, modified, or orphaned translations block deployment; CI never invokes Codex. The preview build uses `/neohaskell.org/` as its base path and omits the production `CNAME` and `robots.txt` files from the artifact. Local builds still use `https://neohaskell.org` without a base path. To reproduce the preview build locally, run `GITHUB_PAGES_PREVIEW=true npm run build`.
+`.github/workflows/deploy.yml` runs tests and the normal build on every push to `main` or manual dispatch, then publishes to the GitHub Pages project URL. CI does not translate content or require all languages to be synchronized. Publication remains paused by owner direction; do not push until publication is requested again. The preview build uses `/neohaskell.org/` as its base path and omits the production `CNAME` and `robots.txt` files from the artifact. Local builds still use `https://neohaskell.org` without a base path. To reproduce the preview build locally, run `GITHUB_PAGES_PREVIEW=true npm run build`.
 
 Framework references: [Starlight custom pages](https://starlight.astro.build/guides/pages/) and [Astro on GitHub Pages](https://docs.astro.build/en/guides/deploy/github/).
 

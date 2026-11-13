@@ -10,9 +10,9 @@ next: false
 
 <p class="docs-lead">准备好环境，并给 AI 智能体一个范围明确的小任务。</p>
 
-如果命令、决策、事件和查询对你来说还是新概念，请先阅读[代码背后的工作](/introduction/)。本指南沿用同一个商店示例：库存充足时接受订单，商店售罄时拒绝订单。
+如果命令、决策、事件和查询对你来说还是新概念，请先阅读[代码背后的工作](../introduction/)。本指南沿用同一个商店示例：库存充足时接受订单，商店售罄时拒绝订单。
 
-## 准备开发环境
+## 准备开发环境 <a id="prepare-your-environment" />
 
 **Neo CLI** 用于创建、构建、运行和测试应用。[前置要求和安装说明](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites)列出了 Nix 和 Git；文档中的源码安装也会使用 Rust 的 Cargo。请先按照[项目创建和运行指南](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md#create-and-run-an-application)创建应用仓库，再安装智能体技能。
 
@@ -22,7 +22,7 @@ next: false
 
 继续之前，请打开应用仓库，并确保编程智能体可以在其中工作。目前的技能集合支持 **Claude Code** 和 **Codex**。
 
-## 安装智能体技能
+## 安装智能体技能 <a id="install-agent-skills" />
 
 NeoHaskell 技能为编程智能体提供项目专用指南。请在应用的 Git 根目录运行此命令：
 
@@ -34,7 +34,7 @@ npx skills add neohaskell/skills --skill '*'
 
 命令和安装程序要求来自 [NeoHaskell 技能 README](https://github.com/neohaskell/skills/blob/0ff0872d554e79d955f4c92f9b905056b908e9ae/README.md)，检查日期为 2026 年 11 月 9 日。更新信息请参阅[当前安装说明](https://github.com/neohaskell/skills#readme)。
 
-## 描述第一个任务
+## 描述第一个任务 <a id="describe-a-first-task" />
 
 告诉智能体你期望的行为，并说明命令无法被接受时应该发生什么。商店示例可以使用下面这项任务：
 
@@ -52,7 +52,7 @@ npx skills add neohaskell/skills --skill '*'
 
 先从这一种行为开始。等你能检查第一个结果后，再分别添加付款、配送和其他条件。
 
-## 检查结果
+## 检查结果 <a id="check-the-result" />
 
 让智能体演示一次接受的订单和一次拒绝的订单。对于每种情况，以如下所示的库存为起点，并根据模型比较结果。
 
@@ -65,11 +65,11 @@ npx skills add neohaskell/skills --skill '*'
 
 如果结果出乎意料，请使用相同术语向智能体说明差异：命令、决策、事件和查询。这样就能明确要修正的行为。
 
-有关语法、测试指南、发行说明或帮助，请参阅[资源与项目状态](/resources/)。
+有关语法、测试指南、发行说明或帮助，请参阅[资源与项目状态](../resources/)。
 
 <section class="docs-plan" data-pagefind-ignore>
 
-## 页面计划
+## 页面计划 <a id="page-plan" />
 
 本页将保留现有的智能体安装说明、商店任务和接受与拒绝检查，同时将环境准备和首次运行工作链接到专门页面。页面会区分共享工作流技能与匹配应用框架版本的指南，说明文档对应 CLI 版本支持哪些智能体，并验证项目中已安装的说明。首个请求仍会保持足够简单，让读者能先判断结果，再进入应用教程。
 

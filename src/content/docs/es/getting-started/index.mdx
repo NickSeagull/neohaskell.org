@@ -10,9 +10,9 @@ next: false
 
 <p class="docs-lead">Prepara tu entorno y asigna a tu agente de IA una primera tarea pequeña y bien definida.</p>
 
-Empieza por [El trabajo que hay detrás del código](/introduction/) si aún no conoces los comandos, las decisiones, los eventos y las consultas. Esta guía usa el mismo ejemplo de la tienda: aceptar un pedido cuando haya existencias y rechazarlo cuando se agoten.
+Empieza por [El trabajo que hay detrás del código](../introduction/) si aún no conoces los comandos, las decisiones, los eventos y las consultas. Esta guía usa el mismo ejemplo de la tienda: aceptar un pedido cuando haya existencias y rechazarlo cuando se agoten.
 
-## Prepara tu entorno
+## Prepara tu entorno <a id="prepare-your-environment" />
 
 La **CLI de Neo** crea, compila, ejecuta y prueba una aplicación. Sus [requisitos previos e instrucciones de instalación](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites) indican que hacen falta Nix y Git; la instalación documentada desde el código fuente también usa Cargo de Rust. Sigue la [guía para crear y ejecutar un proyecto](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md#create-and-run-an-application) para crear el repositorio de tu aplicación antes de instalar las skills del agente.
 
@@ -22,7 +22,7 @@ Estos enlaces describen la revisión inspeccionada del framework. Usa las instru
 
 Antes de continuar, abre el repositorio de tu aplicación y prepara el agente de programación para que trabaje en él. La colección actual de skills es compatible con **Claude Code** y **Codex**.
 
-## Instala las skills del agente
+## Instala las skills del agente <a id="install-agent-skills" />
 
 Las skills de NeoHaskell proporcionan a tu agente de programación instrucciones específicas del proyecto. Ejecuta este comando desde la raíz Git de tu aplicación:
 
@@ -34,7 +34,7 @@ El instalador pregunta qué agente y ámbito de instalación quieres usar. Selec
 
 El comando y los requisitos del instalador proceden del [README de las skills de NeoHaskell](https://github.com/neohaskell/skills/blob/0ff0872d554e79d955f4c92f9b905056b908e9ae/README.md), consultado el 9 de noviembre de 2026. Consulta las [instrucciones de instalación actuales](https://github.com/neohaskell/skills#readme) para ver las novedades.
 
-## Describe una primera tarea
+## Describe una primera tarea <a id="describe-a-first-task" />
 
 Indica al agente el comportamiento que quieres, incluido lo que debe ocurrir si no se puede aceptar el comando. Puedes usar esta tarea para el ejemplo de la tienda:
 
@@ -52,7 +52,7 @@ Comprueba tanto los resultados aceptados como los rechazados.
 
 Empieza con este único comportamiento. Añade los pagos, los envíos y otras condiciones en cambios separados cuando puedas comprobar el primer resultado.
 
-## Comprueba el resultado
+## Comprueba el resultado <a id="check-the-result" />
 
 Pide al agente que demuestre un pedido aceptado y otro rechazado. En cada caso, parte de las existencias indicadas y compara el resultado con el modelo.
 
@@ -65,11 +65,11 @@ Comprueba también que se rechacen las cantidades cero o negativas. Las comproba
 
 Si el resultado no es el esperado, describe la diferencia al agente usando el mismo vocabulario: el comando, la decisión, el evento y la consulta. Así tendrás un comportamiento concreto que corregir.
 
-Para consultar la sintaxis, las instrucciones de pruebas, las notas de versión o la ayuda, visita [Recursos y estado del proyecto](/resources/).
+Para consultar la sintaxis, las instrucciones de pruebas, las notas de versión o la ayuda, visita [Recursos y estado del proyecto](../resources/).
 
 <section class="docs-plan" data-pagefind-ignore>
 
-## Plan de la página
+## Plan de la página <a id="page-plan" />
 
 Esta página conservará las instrucciones existentes para instalar el agente, la tarea de la tienda y las comprobaciones de aceptación y rechazo, además de enlazar la preparación del entorno y el primer inicio con páginas específicas. Distinguirá las skills de flujo de trabajo compartidas de la guía correspondiente a la revisión del framework de la aplicación, explicará las opciones de agente compatibles con la versión documentada de la CLI y comprobará las instrucciones instaladas en el proyecto. La primera petición seguirá siendo lo bastante pequeña para que el lector pueda evaluarla antes de empezar el tutorial de la aplicación.
 

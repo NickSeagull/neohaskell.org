@@ -15,7 +15,7 @@ import EventHistoryReplay from '@components/learn/EventHistoryReplay.astro';
 
 Der Lagerbestand verrät dem nächsten Kunden, wie viele Tassen verfügbar sind. **Ereignisse erklären, wodurch sich diese Zahl geändert hat.**
 
-Betrachte den Tassenladen aus [Die Arbeit hinter dem Code](/introduction/#the-questions-that-change-the-software), in dem die Anfrage nach Online-Bestellungen Fragen zu den Versprechen des Ladens an seine Kunden aufwarf.
+Betrachte den Tassenladen aus [Die Arbeit hinter dem Code](../#the-questions-that-change-the-software), in dem die Anfrage nach Online-Bestellungen Fragen zu den Versprechen des Ladens an seine Kunden aufwarf.
 
 Hier hat der Laden drei Tassen. Wird eine Bestellung über eine Tasse angenommen, ist diese für den Kunden reserviert und zwei Tassen bleiben verfügbar.
 
@@ -23,7 +23,7 @@ Hier hat der Laden drei Tassen. Wird eine Bestellung über eine Tasse angenommen
 
 Der Lagerbestand liefert dem nächsten Kunden eine hilfreiche Antwort. **Er erklärt aber nicht, warum sich die Zahl geändert hat.** Auch eine zerbrochene Tasse würde den Bestand von drei auf zwei senken, doch der Laden hätte dann keine Bestellung, die er vorbereiten müsste.
 
-## Aufzeichnen, was passiert ist
+## Aufzeichnen, was passiert ist <a id="record-what-happened" />
 
 Wird nur der letzte Bestandswert gespeichert, geht dieser Unterschied verloren. NeoHaskell zeichnet die fachliche Tatsache auf, die die Änderung verursacht hat: Eine Bestellung für eine Keramiktasse wurde aufgegeben. Diese aufgezeichnete Tatsache ist ein **Ereignis**.
 
@@ -31,7 +31,7 @@ Der Ereignisname trägt Bedeutung. `OrderPlaced` sagt der Anwendung, dass der La
 
 **Aufgezeichnete Ereignisse bewahren die fachliche Bedeutung einer Änderung.** Die Entwicklerin oder der Entwickler legt diese Bedeutung ausdrücklich fest, statt sie später aus einer Bestandszahl rekonstruieren zu müssen.
 
-## Die Gegenwart aus der Vergangenheit berechnen
+## Die Gegenwart aus der Vergangenheit berechnen <a id="calculate-the-present-from-the-past" />
 
 In NeoHaskell sind **Ereignisse die maßgebliche Quelle für den Anwendungszustand**. Beginne für die Berechnung des verfügbaren Bestands ohne Tassen und verfolge, was passiert ist: Der Laden erhielt drei, dann nahm er eine Bestellung über eine Tasse an. Das Ergebnis sind zwei verfügbare Tassen. Den Zustand aus aufgezeichneten Ereignissen abzuleiten, heißt **Event Sourcing**.
 
@@ -43,13 +43,13 @@ Korrekturen folgen demselben Prinzip: Die Korrektur wird aufgezeichnet und ihre 
 
 Dieser Verlauf macht Berechnungen außerdem reparierbar. Enthält die Bestandsberechnung einen Fehler, lässt sich der abgeleitete Zustand nach der Korrektur durch erneute Anwendung des Verlaufs wiederherstellen. **Bei der Wiedergabe wird der Zustand neu berechnet**; die Bestellung wird weder erneut aufgegeben noch dem Kunden ein zweites Mal etwas berechnet.
 
-## Wird das nicht langsam, wenn der Verlauf wächst?
+## Wird das nicht langsam, wenn der Verlauf wächst? <a id="wont-this-get-slow-as-the-history-grows" />
 
 Der Verlauf wächst, während Menschen die Anwendung nutzen. **NeoHaskell beginnt jedoch nicht bei jeder Operation mit dem ersten Ereignis.** Es bewahrt den bereits berechneten Zustand auf und wendet spätere Änderungen ab dort an. Eine Antwort wird aus gepflegten Daten gelesen, statt bei jedem Seitenaufruf den gesamten Verlauf erneut abzuspielen.
 
 Diese Arbeit wird intern erledigt. Die Anwendung bewahrt ihren Bericht über das Geschehene, ohne bei jeder neuen Bestellung alle vorherigen Bestellungen neu berechnen zu müssen.
 
-## Die Fakten für künftige Fragen bewahren
+## Die Fakten für künftige Fragen bewahren <a id="keep-the-facts-future-questions-need" />
 
 Mit Ereignissen für Bestellung und Stornierung kann der Laden Verkäufe von Stornierungen unterscheiden, selbst wenn beide am Ende denselben Bestand ergeben wie gar keine Aktivität. Er kann eine Bestellung untersuchen oder aus den aufgezeichneten Fakten einen neuen Bericht erstellen.
 

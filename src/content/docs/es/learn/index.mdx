@@ -12,13 +12,13 @@ next: true
 
 import EventModelTour from '@components/learn/EventModelTour.astro';
 
-La tienda de tazas de [Conserva los hechos que hay detrás de los números](/introduction/history/#record-what-happened) registra los pedidos aceptados como eventos y los usa para calcular las existencias disponibles.
+La tienda de tazas de [Conserva los hechos que hay detrás de los números](../introduction/history/#record-what-happened) registra los pedidos aceptados como eventos y los usa para calcular las existencias disponibles.
 
 Un evento es un hecho que la aplicación ha aceptado. Por eso es importante delimitarlo: un cliente no puede declarar que la tienda ha aceptado un pedido simplemente enviando un evento `OrderPlaced`.
 
 Imagina que un cliente pide cuatro tazas cuando solo quedan tres. **Solicitar un pedido y tener un pedido aceptado son cosas distintas.** La aplicación necesita recibir la petición, comprobarla y rechazarla sin consumir existencias.
 
-## Solicita un cambio con un comando
+## Solicita un cambio con un comando <a id="ask-for-a-change-with-a-command" />
 
 Un **comando** expresa la intención de cambiar la aplicación. `PlaceOrder` contiene la información necesaria para solicitar un pedido. Para una taza, esa información tiene este aspecto:
 
@@ -37,7 +37,7 @@ La aceptación registra `OrderPlaced`. El rechazo deja las existencias como esta
 
 NeoHaskell proporciona el flujo de ejecución: obtiene el estado pertinente, evalúa la decisión y añade los eventos aceptados. El desarrollador escribe las condiciones que expresan la promesa de la tienda. Un sitio web y una herramienta de IA pueden enviar el mismo comando y utilizar esa misma decisión.
 
-## Toma decisiones de negocio puras
+## Toma decisiones de negocio puras <a id="make-business-decisions-pure" />
 
 **NeoHaskell sitúa el código puro en el centro del desarrollo de aplicaciones.** La lógica de negocio describe lo que debería ocurrir a partir de la información que recibe. Una decisión comprueba el comando y el estado actual, y después describe su aceptación o rechazo. No puede abrir una conexión a la base de datos, enviar un correo de confirmación ni llamar a un proveedor de pagos.
 
@@ -53,15 +53,15 @@ Este límite cambia el trabajo diario:
 
 **La lógica pura de aplicación es la forma habitual de construir en NeoHaskell.** El desarrollador escribe las reglas y los cálculos; el lenguaje proporciona los mecanismos para cargar el estado y registrar los cambios aceptados. Para probar el comportamiento de negocio no hace falta rodear cada regla de esos mecanismos.
 
-## ¿Cómo realiza trabajo útil la aplicación?
+## ¿Cómo realiza trabajo útil la aplicación? <a id="how-does-the-application-do-useful-work" />
 
 Aun así, un pedido aceptado necesita un correo de confirmación. **Las integraciones realizan efectos fuera de la lógica de la aplicación.** Agrupan ese trabajo por separado para que las decisiones de la tienda no dependan del proveedor que lo ejecuta.
 
 Un worker de integración sabe realizar su tarea. Un worker de correo recibe el destinatario y el mensaje y los envía. No decide si se permite un pedido, cuántas existencias quedan ni qué clientes deben recibir una confirmación. Esas decisiones pertenecen a la lógica pura de la aplicación.
 
-La aplicación puede solicitar ese trabajo después de registrar `OrderPlaced`. Si el proveedor de correo no está disponible, el pedido sigue aceptado. Cambiar el modo de envío del correo modifica la integración, no la política de existencias. Las [guías de integraciones](/guides/integrations/) explican cómo configurar y ejecutar estos workers.
+La aplicación puede solicitar ese trabajo después de registrar `OrderPlaced`. Si el proveedor de correo no está disponible, el pedido sigue aceptado. Cambiar el modo de envío del correo modifica la integración, no la política de existencias. Las [guías de integraciones](../guides/integrations/) explican cómo configurar y ejecutar estos workers.
 
-## Ofrece a cada pantalla la respuesta que necesita
+## Ofrece a cada pantalla la respuesta que necesita <a id="give-each-screen-the-answer-it-needs" />
 
 Una vez aceptado el pedido, distintas personas necesitan respuestas distintas. El siguiente comprador necesita saber las existencias disponibles. El cliente necesita una confirmación. El personal necesita saber cuántos pedidos requieren su atención.
 

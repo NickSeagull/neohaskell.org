@@ -10,15 +10,15 @@ next: false
 
 NeoHaskellは開発が続いているAIファーストのプログラミング言語です。まずは、説明して確認できる小さな動作から始めてください。Counterスターターを使うと、エージェントで拡張する前に具体的なアプリケーションを調べられます。
 
-## 開発を始める
+## 開発を始める <a id="start-building" />
 
-[コードの背後にある仕事](/introduction/)から始めて、[エージェントを設定する](/getting-started/)前に設計の流れを確認してください。設計の流れを学ぶのにインストールは必要ありません。
+[コードの背後にある仕事](../introduction/)から始めて、[エージェントを設定する](../getting-started/)前に設計の流れを確認してください。設計の流れを学ぶのにインストールは必要ありません。
 
 - [CLIの前提条件とインストール](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites): アプリケーションの作成と実行に必要なツール。
 - [プロジェクトの作成と実行](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md): プロジェクトの作成、ビルド、実行の手順。
 - [Counterスターターのクイックスタート](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter/README.md#quickstart): ホームページのコード抜粋に使われているアプリケーション。HTTPでの操作とテスト手順を含みます。
 
-## 言語とフレームワーク
+## 言語とフレームワーク <a id="language-and-framework" />
 
 以下のガイダンスは、アプリケーション開発者とコーディングエージェント向けにNeoHaskellリポジトリで公開されています。確認済みのソースリビジョンについて説明しているため、プロジェクトで異なるバージョンを固定している場合は対応するリビジョンを参照してください。
 
@@ -27,7 +27,7 @@ NeoHaskellは開発が続いているAIファーストのプログラミング�
 - [テスト](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/testing.md): 判断のテスト、HTTPシナリオ、変更の確認。
 - [ストレージ](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/storage.md): イベント履歴、クエリストレージ、永続化。
 
-## アプリケーションを使う前に
+## アプリケーションを使う前に <a id="before-relying-on-an-application" />
 
 スターターの既定設定では、イベントストアはメモリ内にあります。プロセスが終了すると、記録されたイベントは消えます。イベント履歴の永続化とクエリストレージの永続化は個別に設定します。再起動後もデータを残したい場合は、上記のストレージガイドを参照してください。
 
@@ -37,7 +37,7 @@ NeoHaskellは開発が続いているAIファーストのプログラミング�
 
 コードとともに[フレームワークのソースライセンス](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/LICENSE)を確認できます。依存関係を選ぶ際は、各ツール固有のライセンスも確認してください。
 
-## 変更を追い、ヘルプを得る
+## 変更を追い、ヘルプを得る <a id="follow-changes-and-get-help" />
 
 - [CLIとフレームワークのリリース履歴](https://github.com/neohaskell/NeoHaskell/releases): アプリケーションのツールとフレームワークの変更。2026年11月6日公開の[Version 0.17.1](https://github.com/neohaskell/NeoHaskell/releases/tag/neo-v0.17.1)では、生成ドキュメント用の所有者に紐づいたファイルストレージが追加されました。
 - [エージェントスキルのリリース](https://github.com/neohaskell/skills/releases): Claude CodeとCodex向けの独立した手順集の変更。
@@ -46,7 +46,7 @@ NeoHaskellは開発が続いているAIファーストのプログラミング�
 
 <section class="docs-plan" data-pagefind-ignore>
 
-## ページ案
+## ページ案 <a id="page-plan" />
 
 このページでは、既存のセットアップ、ソース、ストレージ、認可、ライセンス、リリース、コミュニティの情報を維持しながら、より詳細なリファレンスページに案内します。上流へのリンクは説明対象のリビジョンに結びつけ、mainを調査した結果を公開済みリリースやエージェントスキルのバージョンとは分けます。バージョンを確認できた段階で、簡潔な互換性表を追加する場合があります。新たなサポートの約束やランタイム検証の主張は追加しません。
 

@@ -3,7 +3,7 @@ import starlight from '@astrojs/starlight';
 import { unified } from '@astrojs/markdown-remark';
 import { readFileSync, existsSync } from 'node:fs';
 import { locales, targetLocales } from './src/i18n/locales.mjs';
-import { remarkLocales } from './scripts/i18n-lib.mjs';
+import { remarkStableHeadings } from './scripts/remark-stable-headings.mjs';
 import english from './src/i18n/en/site.json' with { type: 'json' };
 
 const catalogs = Object.fromEntries(targetLocales.map(({ code }) => {
@@ -23,7 +23,7 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'always',
   devToolbar: { enabled: false },
-  markdown: { processor: unified({ remarkPlugins: [remarkLocales] }) },
+  markdown: { processor: unified({ remarkPlugins: [remarkStableHeadings] }) },
   integrations: [starlight({
     title: 'NeoHaskell',
     description: 'An AI-first programming language for applications with clear behavior and recorded history.',

@@ -10,9 +10,9 @@ next: false
 
 <p class="docs-lead">Préparez votre environnement et confiez à votre agent d’IA une première tâche clairement délimitée.</p>
 
-Commencez par [Le travail derrière le code](/introduction/) si les commandes, les décisions, les événements et les requêtes sont nouveaux pour vous. Ce guide reprend le même exemple de boutique : accepter une commande lorsque le stock est disponible et la rejeter lorsque la boutique est en rupture de stock.
+Commencez par [Le travail derrière le code](../introduction/) si les commandes, les décisions, les événements et les requêtes sont nouveaux pour vous. Ce guide reprend le même exemple de boutique : accepter une commande lorsque le stock est disponible et la rejeter lorsque la boutique est en rupture de stock.
 
-## Préparer votre environnement
+## Préparer votre environnement <a id="prepare-your-environment" />
 
 La **CLI Neo** crée, compile, exécute et teste une application. Ses [prérequis et instructions d’installation](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites) indiquent Nix et Git ; l’installation depuis les sources documentée utilise aussi Cargo de Rust. Suivez le [guide de création et d’exécution d’un projet](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md#create-and-run-an-application) pour créer le dépôt de votre application avant d’installer les compétences pour agents.
 
@@ -22,7 +22,7 @@ Ces liens décrivent la révision du framework examinée. Suivez les instruction
 
 Avant de continuer, ouvrez le dépôt de votre application et préparez votre agent de programmation à y travailler. La collection actuelle de compétences prend en charge **Claude Code** et **Codex**.
 
-## Installer les compétences pour agents
+## Installer les compétences pour agents <a id="install-agent-skills" />
 
 Les compétences NeoHaskell fournissent à votre agent de programmation des conseils adaptés au projet. Exécutez cette commande depuis la racine Git de votre application :
 
@@ -34,7 +34,7 @@ Le programme d’installation vous demande quel agent et quelle portée d’inst
 
 La commande et les prérequis du programme d’installation proviennent du [fichier README des compétences NeoHaskell](https://github.com/neohaskell/skills/blob/0ff0872d554e79d955f4c92f9b905056b908e9ae/README.md), vérifié le 9 novembre 2026. Consultez les [instructions d’installation actuelles](https://github.com/neohaskell/skills#readme) pour connaître les mises à jour.
 
-## Décrire une première tâche
+## Décrire une première tâche <a id="describe-a-first-task" />
 
 Indiquez à l’agent le comportement attendu, y compris ce qui doit se passer si la commande ne peut pas être acceptée. Vous pouvez utiliser cette tâche pour l’exemple de la boutique :
 
@@ -52,7 +52,7 @@ Vérifie les résultats acceptés et rejetés.
 
 Commencez par ce seul comportement. Ajoutez les paiements, l’expédition et les autres conditions dans des modifications distinctes, une fois que vous pourrez vérifier le premier résultat.
 
-## Vérifier le résultat
+## Vérifier le résultat <a id="check-the-result" />
 
 Demandez à l’agent de montrer une commande acceptée et une commande rejetée. Pour chaque cas, partez du stock indiqué ci-dessous et comparez le résultat au modèle.
 
@@ -65,11 +65,11 @@ Vérifiez aussi que les quantités nulles ou négatives sont rejetées. Les cont
 
 Si le résultat est inattendu, décrivez la différence à l’agent avec le même vocabulaire : la commande, la décision, l’événement et la requête. Vous indiquerez ainsi précisément quel comportement corriger.
 
-Pour la syntaxe, les conseils sur les tests, les notes de version ou l’aide, consultez [Ressources et état du projet](/resources/).
+Pour la syntaxe, les conseils sur les tests, les notes de version ou l’aide, consultez [Ressources et état du projet](../resources/).
 
 <section class="docs-plan" data-pagefind-ignore>
 
-## Plan de page
+## Plan de page <a id="page-plan" />
 
 Cette page conservera ses conseils existants sur l’installation de l’agent, la tâche de la boutique et les vérifications des résultats acceptés ou rejetés, tout en reliant la préparation de l’environnement et les premières étapes à des pages dédiées. Elle distinguera les compétences de flux de travail commun des conseils adaptés à la révision du framework de l’application, expliquera les choix d’agent pris en charge pour la version de la CLI documentée et vérifiera les instructions installées dans le projet. La première demande restera assez limitée pour que le lecteur puisse en juger avant d’aborder le tutoriel de l’application.
 

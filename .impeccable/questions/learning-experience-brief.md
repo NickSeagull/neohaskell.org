@@ -40,9 +40,9 @@ Most other destinations remain one-paragraph page plans, excluded from Pagefind 
 
 ## Translation and delivery
 
-On 13 November 2026, after accepting the revised documentation, the owner authorized all translation processes followed by deployment. The normal documentation loader and strict translation freshness gate are restored. Shared diagram text and sidebar labels join the translated prose; executable examples retain the English source verbatim. README owns the maintained translation and deployment workflow.
+On 13 November 2026, the owner stopped the bulk translation and deployment task, then selected native Starlight language folders with explicit translation by page. Existing translations are preserved. Translation updates edit the requested files directly, with no manifest, whole-site regeneration, or deployment freshness gate. Page plans are excluded from the default translation scope. README owns the workflow. Publication remains paused until explicitly requested again.
 
-Keep one development server at http://127.0.0.1:4323/introduction/ from the canonical checkout `/Users/nick/egregoreOS/repos/neohaskell.org`. The owner's 13 November correction requires restarting it after every completed batch of changes, before checking navigation and content on that exact URL. Stop other servers belonging to this repository. README owns the lifecycle commands; a build does not require a separate production-preview server. Publish this accepted iteration after translation and verification, as explicitly requested by the owner.
+Keep one development server at http://127.0.0.1:4323/introduction/ from the canonical checkout `/Users/nick/egregoreOS/repos/neohaskell.org`. The owner's 13 November correction requires restarting it after every completed batch of changes, before checking navigation and content on that exact URL. Stop other servers belonging to this repository. README owns the lifecycle commands; a build does not require a separate production-preview server. Keep this iteration local while the publication pause is in force.
 
 ## History
 

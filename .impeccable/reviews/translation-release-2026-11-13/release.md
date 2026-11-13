@@ -24,4 +24,4 @@ The homepage event-sourcing link now opens the history lesson in the selected la
 
 ## Release verification
 
-Final build, route, interaction, and deployment results will be recorded after all language batches finish. The adjacent teaching review reports record visual findings and their resolutions.
+The owner stopped publication after the translations and local build completed. Nothing was pushed or deployed. The saved translation state is preserved in local checkpoint `c858a13d982f51f7bc61b1999f1112255651effb`. The subsequent native Starlight workflow supersedes the pipeline described here; README records the current process. The adjacent teaching review reports record the completed visual reviews.

@@ -12,13 +12,13 @@ next: true
 
 import EventModelTour from '@components/learn/EventModelTour.astro';
 
-La boutique de tasses présentée dans [Garder les faits derrière les nombres](/introduction/history/#record-what-happened) enregistre les commandes acceptées sous forme d’événements et les utilise pour calculer le stock disponible.
+La boutique de tasses présentée dans [Garder les faits derrière les nombres](../introduction/history/#record-what-happened) enregistre les commandes acceptées sous forme d’événements et les utilise pour calculer le stock disponible.
 
 Un événement est un fait que l’application a accepté. La frontière qui l’entoure est donc importante : un client ne peut pas déclarer que la boutique a accepté une commande en lui envoyant simplement un événement `OrderPlaced`.
 
 Imaginons qu’un client demande quatre tasses alors qu’il n’en reste que trois. **Demander une commande et obtenir une commande acceptée sont deux choses différentes.** L’application doit pouvoir recevoir la demande, la vérifier et la refuser sans diminuer le stock.
 
-## Demander une modification avec une commande
+## Demander une modification avec une commande <a id="ask-for-a-change-with-a-command" />
 
 Une **commande** exprime l’intention de modifier l’application. `PlaceOrder` transporte les informations nécessaires pour demander une commande. Pour une tasse, elles se présentent ainsi :
 
@@ -37,7 +37,7 @@ L’acceptation enregistre `OrderPlaced`. Le rejet laisse le stock inchangé et 
 
 NeoHaskell fournit le parcours d’exécution : obtenir l’état pertinent, évaluer la décision et ajouter les événements acceptés. Le développeur écrit les conditions qui expriment la promesse de la boutique. Le site et un outil d’IA peuvent envoyer la même commande et utiliser la même décision.
 
-## Rendre les décisions métier pures
+## Rendre les décisions métier pures <a id="make-business-decisions-pure" />
 
 **NeoHaskell place le code pur au cœur du développement applicatif.** La logique métier décrit ce qui doit se passer à partir des informations reçues. Une décision vérifie la commande et l’état actuel, puis décrit l’acceptation ou le rejet. Elle ne peut pas ouvrir une connexion à une base de données, envoyer un courriel de confirmation ni appeler un prestataire de paiement.
 
@@ -53,15 +53,15 @@ Cette frontière change le travail quotidien :
 
 **La logique applicative pure est la manière habituelle de construire avec NeoHaskell.** Le développeur écrit les règles et les calculs ; le langage fournit les mécanismes de chargement de l’état et d’enregistrement des modifications acceptées. Tester le comportement métier n’exige pas d’exécuter ces mécanismes autour de chaque règle.
 
-## Comment l’application réalise-t-elle un travail utile ?
+## Comment l’application réalise-t-elle un travail utile ? <a id="how-does-the-application-do-useful-work" />
 
 Une commande acceptée doit tout de même déclencher un courriel de confirmation. **Les intégrations réalisent les effets qui se produisent en dehors de la logique de l’application.** Elles isolent ce travail pour que les décisions de la boutique ne dépendent pas du fournisseur qui l’effectue.
 
 Un travailleur d’intégration sait exécuter sa tâche. Le travailleur de messagerie reçoit le destinataire et le message, puis les envoie. Il ne décide pas si une commande est autorisée, combien de stock reste ni quels clients doivent recevoir une confirmation. Ces choix relèvent de la logique pure de l’application.
 
-L’application peut demander ce travail après l’enregistrement de `OrderPlaced`. Si le fournisseur de messagerie est indisponible, la commande reste acceptée. Modifier le mode d’envoi du courriel change l’intégration, pas la règle de stock. Les [guides des intégrations](/guides/integrations/) expliquent comment configurer et exécuter ces travailleurs.
+L’application peut demander ce travail après l’enregistrement de `OrderPlaced`. Si le fournisseur de messagerie est indisponible, la commande reste acceptée. Modifier le mode d’envoi du courriel change l’intégration, pas la règle de stock. Les [guides des intégrations](../guides/integrations/) expliquent comment configurer et exécuter ces travailleurs.
 
-## Fournir à chaque écran la réponse dont il a besoin
+## Fournir à chaque écran la réponse dont il a besoin <a id="give-each-screen-the-answer-it-needs" />
 
 Après l’acceptation de la commande, différentes personnes ont besoin de réponses différentes. Le prochain client veut connaître le stock disponible. Le client qui a commandé attend une confirmation. Le personnel doit savoir combien de commandes nécessitent son attention.
 

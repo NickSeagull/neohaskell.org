@@ -15,7 +15,7 @@ import EventHistoryReplay from '@components/learn/EventHistoryReplay.astro';
 
 A stock count tells the next customer how many mugs are available. **Events explain what happened to make that number change.**
 
-Consider the mug shop introduced in [The work behind the code](/introduction/#the-questions-that-change-the-software), where a request for online orders raised questions about the shop's promises to its customers.
+Consider the mug shop introduced in [The work behind the code](../#the-questions-that-change-the-software), where a request for online orders raised questions about the shop's promises to its customers.
 
 Here, the shop has three mugs. Accepting an order for one commits that mug to the customer, leaving two available.
 
@@ -23,7 +23,7 @@ Here, the shop has three mugs. Accepting an order for one commits that mug to th
 
 The stock number gives the next customer a useful answer. **It does not explain why that answer changed.** A broken mug would also reduce stock from three to two, but it would not give the shop an order to prepare.
 
-## Record what happened
+## Record what happened <a id="record-what-happened" />
 
 Saving only the latest stock value loses that distinction. NeoHaskell records the business fact that caused the change: an order was placed for one ceramic mug. This recorded fact is an **event**.
 
@@ -31,7 +31,7 @@ The event's name carries meaning. `OrderPlaced` tells the application that the s
 
 **Recording events preserves the business meaning of the change.** The developer chooses that meaning explicitly instead of leaving someone to reconstruct it later from a stock number.
 
-## Calculate the present from the past
+## Calculate the present from the past <a id="calculate-the-present-from-the-past" />
 
 In NeoHaskell, **events are the source of truth for application state**. To calculate available stock, start with no mugs and follow what happened: the shop received three, then accepted an order for one. The result is two available mugs. Deriving state from recorded events is called **Event Sourcing**.
 
@@ -43,13 +43,13 @@ Corrections follow the same principle: record the correction and apply its effec
 
 This history also makes calculations repairable. If a stock calculation contains a bug, fixing it and applying the history again rebuilds the derived state. **Replay recalculates state**; it does not place the order or charge the customer again.
 
-## Won't this get slow as the history grows?
+## Won't this get slow as the history grows? <a id="wont-this-get-slow-as-the-history-grows" />
 
 The history grows as people use the application, but **NeoHaskell does not start from the first event for every operation**. It keeps already-calculated state and applies later changes from that point. Reading an answer uses maintained data instead of replaying the entire history for each page visit.
 
 That work is handled internally. The application keeps its account of what happened without making every new order recalculate all the orders that came before it.
 
-## Keep the facts future questions need
+## Keep the facts future questions need <a id="keep-the-facts-future-questions-need" />
 
 With order and cancellation events, the shop can distinguish sales from cancellations even when both leave the same final stock as no activity at all. It can investigate an order or build a new report from those recorded facts.
 

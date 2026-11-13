@@ -14,13 +14,13 @@ import GrowthComparison from '@components/learn/GrowthComparison.astro';
 import ShopEventModel from '@components/learn/ShopEventModel.astro';
 import IdeScreenshot from '@components/learn/IdeScreenshot.astro';
 
-回想[代码背后的工作](/introduction/#the-questions-that-change-the-software)中介绍的马克杯商店。接受订单会为顾客留出所订购的马克杯。要设计这个应用，我们需要连接完整的体验：顾客查看库存、订购马克杯，并得知商店是否接受了订单。
+回想[代码背后的工作](../#the-questions-that-change-the-software)中介绍的马克杯商店。接受订单会为顾客留出所订购的马克杯。要设计这个应用，我们需要连接完整的体验：顾客查看库存、订购马克杯，并得知商店是否接受了订单。
 
-[保护变更并回答问题](/learn/)介绍了各个部分：命令请求变更，事件记录已接受的事实，查询提供答案。
+[保护变更并回答问题](../../learn/)介绍了各个部分：命令请求变更，事件记录已接受的事实，查询提供答案。
 
 **事件建模把这些部分连接成一个人们可以共同审视的流程。** 它把屏幕、命令、事件和查询放在同一个模型中。各部分的连接会揭示信息从何而来、在哪里需要信息，以及哪些业务问题仍待回答。NeoHaskell 使用相同结构来组织开发，并将规范保留在代码中。
 
-## 跟踪下单和取消
+## 跟踪下单和取消 <a id="follow-an-order-and-a-cancellation" />
 
 商店有三只可用的马克杯。店主希望顾客可以在发货前取消订单，并将马克杯退回可用库存。先从订购一只马克杯再取消的流程开始。
 
@@ -39,7 +39,7 @@ import IdeScreenshot from '@components/learn/IdeScreenshot.astro';
 
 **每一个未回答的问题，都代表应用中尚未设计的一部分。** 店主和开发者可以在一起查看同一流程时解决这些问题，避免智能体或开发者把假设直接写进代码。
 
-## 一次开发一个切片
+## 一次开发一个切片 <a id="develop-one-slice-at-a-time" />
 
 **切片是开发单元。** “接受订单”有输入、决策和可观察的结果。其实现会检查请求数量和库存，规则则会规定何时接受或拒绝。“显示剩余库存”是职责不同的独立切片：下单后维护相应答案。
 
@@ -47,7 +47,7 @@ import IdeScreenshot from '@components/learn/IdeScreenshot.astro';
 
 一个**功能**会把相关章节归在一起。这里，Orders 功能包含 下单 和 取消订单。如果流程需要外部副作用，例如发送订单确认，集成也会有自己的切片。模型为每项任务安排位置，并展示它依赖的契约。
 
-## 部署后冻结契约
+## 部署后冻结契约 <a id="freeze-the-contract-when-it-is-deployed" />
 
 面向顾客的命令是一项承诺。`PlaceOrder` 的调用者依赖其接受的输入和行为。查询的使用者依赖它提供的答案。已记录事件的含义，则依赖其定义保持不变。
 
@@ -59,7 +59,7 @@ import IdeScreenshot from '@components/learn/IdeScreenshot.astro';
 
 修复错误也遵循相同规则。如果 `CancelOrder` 错误地接受了已发货订单，就创建修正后的 `CancelUndispatchedOrder`，测试遗漏的情况，将调用者迁移到新命令，并禁用错误命令。冻结旧实现会保留已部署时的行为，但不要求继续开放有问题的入口。
 
-## 逐步淘汰行为，无需为整个 API 版本化
+## 逐步淘汰行为，无需为整个 API 版本化 <a id="retire-behavior-without-versioning-the-whole-api" />
 
 **新旧契约可以并存，等待各自的使用者迁移。** 移动应用可以继续通过 `PlaceOrder` 提供自取服务，网站则通过 `PlaceOrderWithContact` 增加配送服务。库存查询和无关命令保留原有名称和契约。
 
@@ -67,7 +67,7 @@ import IdeScreenshot from '@components/learn/IdeScreenshot.astro';
 
 当不应再让新使用者选择某个旧命令或查询时，将其标记为**已弃用**。用量表明无人再调用后，就禁用或移除此入口。淘汰命令不会抹除它记录的事件，也不会移除解释这些历史所需的定义。
 
-## 为什么更改共享代码会增加工作量
+## 为什么更改共享代码会增加工作量 <a id="why-changing-shared-code-creates-more-work" />
 
 想象在传统应用中，商店通过修改现有的 `POST /orders` 端点和共享的 `Order` 模型，来加入配送联系方式要求。把新字段设为必填会破坏旧的移动端结账流程。再把字段加入共享模型，就会影响订单编辑器和员工页面，尽管它们都没有要求改变订购策略。
 
@@ -77,7 +77,7 @@ import IdeScreenshot from '@components/learn/IdeScreenshot.astro';
 
 <GrowthComparison mode="rework" />
 
-## 让增长保持接近线性
+## 让增长保持接近线性 <a id="keep-growth-close-to-linear" />
 
 在 NeoHaskell 中，配送联系方式要求会在被冻结的订购契约旁边增加一个命名命令及其规则。旧结账流程保持原有行为。新取消策略同样会得到明确的切片和契约；受影响的查询和集成则会显示在事件模型中。
 
@@ -89,7 +89,7 @@ import IdeScreenshot from '@components/learn/IdeScreenshot.astro';
 
 取消行为仍必须与发货流程约定何时可以取消订单。这项约定属于受影响切片的契约和规则。开发者可以明确指出、检查并测试这种依赖，而不必等到顾客流程出错后才发现。
 
-## 用模型理解代码
+## 用模型理解代码 <a id="use-the-model-to-understand-the-code" />
 
 **NeoHaskell IDE 会展示应用的结构。** 打开一个功能即可查看它的章节和切片，然后跟踪命令、事件、查询与集成之间的连接。你可以在实际 IDE 界面中探索马克杯商店模型：
 
@@ -99,7 +99,7 @@ import IdeScreenshot from '@components/learn/IdeScreenshot.astro';
 
 可视模型由源码声明生成。声明变更时，IDE 会刷新模型。重命名命令或新增查询连接都属于应用结构的一部分，因此会自动显示在图中，无需另行手动维护一张图。
 
-## 将规范保留在应用中
+## 将规范保留在应用中 <a id="keep-the-specification-in-the-application" />
 
 **规范是代码的一部分。** NeoHaskell 的事件模型 DSL 会声明功能、章节、切片、命令、事件、查询和集成。切片旁的规则会描述其所需行为，包括 Given、When、Then 案例。
 

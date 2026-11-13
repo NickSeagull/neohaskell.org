@@ -12,13 +12,13 @@ next: true
 
 import EventModelTour from '@components/learn/EventModelTour.astro';
 
-A loja de canecas em [Guarde os factos por detrás dos números](/introduction/history/#record-what-happened) regista as encomendas aceites como eventos e usa-os para calcular o stock disponível.
+A loja de canecas em [Guarde os factos por detrás dos números](../introduction/history/#record-what-happened) regista as encomendas aceites como eventos e usa-os para calcular o stock disponível.
 
 Um evento é um facto que a aplicação aceitou. Por isso, a fronteira que o delimita é importante: um cliente não pode declarar que a loja aceitou uma encomenda enviando simplesmente um evento `OrderPlaced`.
 
 Considere um cliente que pede quatro canecas quando só restam três. **Pedir uma encomenda e ter uma encomenda aceite são coisas diferentes.** A aplicação precisa de um modo de receber o pedido, verificá-lo e recusá-lo sem consumir stock.
 
-## Peça uma alteração com um comando
+## Peça uma alteração com um comando <a id="ask-for-a-change-with-a-command" />
 
 Um **comando** exprime a intenção de alterar a aplicação. `PlaceOrder` transporta a informação necessária para pedir uma encomenda. Para uma caneca, essa informação é assim:
 
@@ -37,7 +37,7 @@ A aceitação regista `OrderPlaced`. A rejeição mantém o stock inalterado e n
 
 NeoHaskell fornece o percurso de execução: obtém o estado relevante, avalia a decisão e acrescenta os eventos aceites. O programador escreve as condições que exprimem a promessa da loja. Um site e uma ferramenta de IA podem enviar o mesmo comando e usar essa mesma decisão.
 
-## Mantenha puras as decisões de negócio
+## Mantenha puras as decisões de negócio <a id="make-business-decisions-pure" />
 
 **NeoHaskell coloca o código puro no centro do desenvolvimento de aplicações.** A lógica de negócio descreve o que deve acontecer com base na informação que recebe. Uma decisão verifica o comando e o estado atual e, em seguida, descreve a aceitação ou a rejeição. Não pode abrir uma ligação à base de dados, enviar um email de confirmação nem invocar um fornecedor de pagamentos.
 
@@ -53,15 +53,15 @@ Essa fronteira altera o trabalho quotidiano:
 
 **A lógica pura da aplicação é a forma normal de criar em NeoHaskell.** O programador escreve as regras e os cálculos; a linguagem fornece os mecanismos que carregam o estado e registam as alterações aceites. Não é necessário executar esses mecanismos em torno de cada regra para testar o comportamento de negócio.
 
-## Como executa a aplicação trabalho útil?
+## Como executa a aplicação trabalho útil? <a id="how-does-the-application-do-useful-work" />
 
 Uma encomenda aceite ainda precisa de um email de confirmação. **As integrações executam efeitos fora da lógica da aplicação.** Agrupam esse trabalho separadamente, para que as decisões da loja não dependam do fornecedor que o executa.
 
 Um processo de integração sabe executar a sua tarefa. Um processo de email recebe o destinatário e a mensagem e envia-os. Não decide se uma encomenda é permitida, quanto stock resta nem que clientes devem receber uma confirmação. Essas escolhas pertencem à lógica pura da aplicação.
 
-A aplicação pode pedir esse trabalho depois de registar `OrderPlaced`. Se o fornecedor de email estiver indisponível, a encomenda continua aceite. Alterar a forma de entrega do email altera a integração, não a política de stock. Os [guias de integrações](/guides/integrations/) explicam como configurar e executar estes processos.
+A aplicação pode pedir esse trabalho depois de registar `OrderPlaced`. Se o fornecedor de email estiver indisponível, a encomenda continua aceite. Alterar a forma de entrega do email altera a integração, não a política de stock. Os [guias de integrações](../guides/integrations/) explicam como configurar e executar estes processos.
 
-## Dê a cada ecrã a resposta de que precisa
+## Dê a cada ecrã a resposta de que precisa <a id="give-each-screen-the-answer-it-needs" />
 
 Depois de a encomenda ser aceite, diferentes pessoas precisam de respostas diferentes. O próximo cliente precisa de saber o stock disponível. O cliente que fez a encomenda precisa de uma confirmação. A equipa precisa de saber quantas encomendas requerem atenção.
 

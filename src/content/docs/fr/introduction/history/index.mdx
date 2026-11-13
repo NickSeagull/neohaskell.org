@@ -15,7 +15,7 @@ import EventHistoryReplay from '@components/learn/EventHistoryReplay.astro';
 
 Le niveau de stock indique au prochain client combien de tasses sont disponibles. **Les événements expliquent ce qui s’est passé pour faire évoluer ce nombre.**
 
-Reprenons la boutique de tasses présentée dans [Le travail derrière le code](/introduction/#the-questions-that-change-the-software), où une demande de commandes en ligne a soulevé des questions sur les promesses de la boutique envers ses clients.
+Reprenons la boutique de tasses présentée dans [Le travail derrière le code](../#the-questions-that-change-the-software), où une demande de commandes en ligne a soulevé des questions sur les promesses de la boutique envers ses clients.
 
 La boutique a ici trois tasses. Accepter une commande d’une tasse la réserve pour le client et en laisse deux disponibles.
 
@@ -23,7 +23,7 @@ La boutique a ici trois tasses. Accepter une commande d’une tasse la réserve 
 
 Le niveau de stock fournit une réponse utile au prochain client. **Il n’explique pas pourquoi cette réponse a changé.** Une tasse cassée ferait aussi passer le stock de trois à deux, mais ne donnerait pas à la boutique de commande à préparer.
 
-## Enregistrer ce qui s’est passé
+## Enregistrer ce qui s’est passé <a id="record-what-happened" />
 
 Enregistrer seulement le dernier niveau de stock fait perdre cette distinction. NeoHaskell enregistre le fait métier à l’origine du changement : une commande d’une tasse en céramique a été passée. Ce fait enregistré est un **événement**.
 
@@ -31,7 +31,7 @@ Le nom de l’événement porte un sens. `OrderPlaced` indique à l’applicatio
 
 **L’enregistrement des événements préserve le sens métier du changement.** Le développeur choisit explicitement ce sens, au lieu de laisser quelqu’un le reconstituer plus tard à partir d’un niveau de stock.
 
-## Calculer le présent à partir du passé
+## Calculer le présent à partir du passé <a id="calculate-the-present-from-the-past" />
 
 Dans NeoHaskell, **les événements sont la source de vérité de l’état de l’application**. Pour calculer le stock disponible, partez de zéro tasse et suivez les événements : la boutique en a reçu trois, puis a accepté une commande d’une tasse. Il reste deux tasses disponibles. La dérivation de l’état à partir des événements enregistrés s’appelle **Event Sourcing**.
 
@@ -43,13 +43,13 @@ Les corrections suivent le même principe : enregistrer la correction et en appl
 
 Cet historique permet aussi de réparer les calculs. Si le calcul du stock contient un bogue, le corriger et appliquer de nouveau l’historique reconstruit l’état dérivé. **La relecture recalcule l’état** ; elle ne passe pas une nouvelle commande et ne facture pas le client une seconde fois.
 
-## L’historique ne va-t-il pas ralentir l’application en grandissant ?
+## L’historique ne va-t-il pas ralentir l’application en grandissant ? <a id="wont-this-get-slow-as-the-history-grows" />
 
 L’historique grandit à mesure que les gens utilisent l’application, mais **NeoHaskell ne repart pas du premier événement pour chaque opération**. Il conserve l’état déjà calculé et applique les modifications ultérieures à partir de cet état. La lecture d’une réponse utilise des données maintenues, au lieu de rejouer tout l’historique à chaque visite de page.
 
 Ce travail est pris en charge en interne. L’application conserve la trace de ce qui s’est passé sans recalculer toutes les commandes antérieures à chaque nouvelle commande.
 
-## Conserver les faits nécessaires aux questions futures
+## Conserver les faits nécessaires aux questions futures <a id="keep-the-facts-future-questions-need" />
 
 Avec les événements de commande et d’annulation, la boutique peut distinguer les ventes des annulations, même si les deux laissent le même stock final qu’une absence totale d’activité. Elle peut enquêter sur une commande ou créer un nouveau rapport à partir de ces faits enregistrés.
 

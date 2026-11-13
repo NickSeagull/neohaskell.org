@@ -14,13 +14,13 @@ import GrowthComparison from '@components/learn/GrowthComparison.astro';
 import ShopEventModel from '@components/learn/ShopEventModel.astro';
 import IdeScreenshot from '@components/learn/IdeScreenshot.astro';
 
-Consider the mug shop introduced in [The work behind the code](/introduction/#the-questions-that-change-the-software). Accepting an order sets aside the requested mugs for the customer. To design its application, we need to connect the whole experience: a customer sees stock, orders a mug, and finds out whether the shop accepted the order.
+Consider the mug shop introduced in [The work behind the code](../#the-questions-that-change-the-software). Accepting an order sets aside the requested mugs for the customer. To design its application, we need to connect the whole experience: a customer sees stock, orders a mug, and finds out whether the shop accepted the order.
 
-[Protect changes and answer questions](/learn/) explains the individual parts: a command requests a change, an event records an accepted fact, and a query supplies an answer.
+[Protect changes and answer questions](../../learn/) explains the individual parts: a command requests a change, an event records an accepted fact, and a query supplies an answer.
 
 **Event Modeling connects those parts into a process people can examine together.** It puts screens, commands, events, and queries in one model. The connections reveal where information comes from, where it is needed, and which business questions still need an answer. NeoHaskell uses that same structure to organize development and keep the specification in the code.
 
-## Follow an order and a cancellation
+## Follow an order and a cancellation <a id="follow-an-order-and-a-cancellation" />
 
 The shop has three mugs available. The owner wants customers to be able to cancel an order before dispatch and return its mugs to available stock. Start with the journey of ordering one mug and then cancelling it.
 
@@ -39,7 +39,7 @@ Drawing the connections also exposes what this first sketch has not answered. "A
 
 **Each unanswered question is a piece of the application that has not been designed yet.** The owner and developer can resolve it while looking at the same process, before an agent or a person turns an assumption into code.
 
-## Develop one slice at a time
+## Develop one slice at a time <a id="develop-one-slice-at-a-time" />
 
 **A slice is the unit of development.** "Accept an order" has an input, a decision, and an observable outcome. Its implementation checks the requested quantity and stock, and its rules specify when to accept or reject. "Show remaining stock" is a separate slice with a different job: maintain the answer after an order is placed.
 
@@ -47,7 +47,7 @@ The same split applies to cancellation. One slice decides whether the order can 
 
 A **feature** groups related chapters. Here, an Orders feature contains Place order and Cancel order. An integration has its own slice when the process needs an external effect, such as sending the order confirmation. The model gives each task a place and shows the contracts it depends on.
 
-## Freeze the contract when it is deployed
+## Freeze the contract when it is deployed <a id="freeze-the-contract-when-it-is-deployed" />
 
 A customer-facing command is a promise. A caller of `PlaceOrder` depends on its accepted inputs and behavior. A query's consumers depend on the answer it supplies. Recorded events depend on definitions that preserve what those facts mean.
 
@@ -59,7 +59,7 @@ The delivery checkout uses the new contract while collection orders continue to 
 
 A bug fix follows the same rule. If `CancelOrder` incorrectly accepts dispatched orders, create the corrected `CancelUndispatchedOrder`, test the missing case, move callers to it, and disable the faulty command. Freezing the old implementation preserves what was deployed; it does not require keeping a faulty entry point available.
 
-## Retire behavior without versioning the whole API
+## Retire behavior without versioning the whole API <a id="retire-behavior-without-versioning-the-whole-api" />
 
 **Old and new contracts can coexist while their consumers migrate.** The mobile app can keep offering collection through `PlaceOrder` while the website adds delivery through `PlaceOrderWithContact`. The stock query and unrelated commands keep their existing names and contracts.
 
@@ -67,7 +67,7 @@ This avoids copying an entire API into `/v2` because one operation changed. Each
 
 Mark an old command or query as **deprecated** when new consumers should stop choosing it. Once usage shows that nobody calls it, disable or remove that entry point. Retiring a command does not erase the events it recorded or remove the definitions needed to interpret that history.
 
-## Why changing shared code creates more work
+## Why changing shared code creates more work <a id="why-changing-shared-code-creates-more-work" />
 
 Consider the same delivery-contact requirement in a conventional application where the shop edits its existing `POST /orders` endpoint and shared `Order` model. Making the new field required breaks the old mobile checkout. Adding it to the shared model then affects the order editor and the staff screen, even though neither asked for a new ordering policy.
 
@@ -77,7 +77,7 @@ Next, the shop changes cancellation from a yes/no flag to a status that distingu
 
 <GrowthComparison mode="rework" />
 
-## Keep growth close to linear
+## Keep growth close to linear <a id="keep-growth-close-to-linear" />
 
 In NeoHaskell, the delivery-contact requirement adds a named command and its rules beside the frozen ordering contract. The old checkout keeps its existing behavior. A new cancellation policy likewise gets an explicit slice and contract, with the affected queries and integrations visible in the Event Model.
 
@@ -89,7 +89,7 @@ The roughly level effort per addition is what makes total development effort gro
 
 Cancellation still has to agree with dispatch about when an order can be cancelled. That agreement belongs in the contracts and rules of the affected slices. The developer can name the dependency, inspect it, and test it instead of discovering it through a broken customer journey.
 
-## Use the model to understand the code
+## Use the model to understand the code <a id="use-the-model-to-understand-the-code" />
 
 **The NeoHaskell IDE makes the application's structure visible.** Open a feature to see its chapters and slices, then follow the connections between commands, events, queries, and integrations. The mug-shop model can be explored in the actual IDE interface:
 
@@ -99,7 +99,7 @@ For a cancellation change, begin with the Cancel order chapter. Locate the comma
 
 The visual model is derived from the source declarations. When those declarations change, the IDE refreshes the model. A renamed command or a new query connection belongs to the application structure, so it appears in the diagram without somebody maintaining a second drawing by hand.
 
-## Keep the specification in the application
+## Keep the specification in the application <a id="keep-the-specification-in-the-application" />
 
 **The specification is part of the code.** NeoHaskell's Event Model DSL declares features, chapters, slices, commands, events, queries, and integrations. The rules beside a slice describe its required behavior, including Given, When, Then cases.
 

@@ -12,13 +12,13 @@ next: true
 
 import EventModelTour from '@components/learn/EventModelTour.astro';
 
-Der Tassenladen aus [Die Fakten hinter den Zahlen bewahren](/introduction/history/#record-what-happened) zeichnet angenommene Bestellungen als Ereignisse auf und berechnet daraus den verfügbaren Bestand.
+Der Tassenladen aus [Die Fakten hinter den Zahlen bewahren](../introduction/history/#record-what-happened) zeichnet angenommene Bestellungen als Ereignisse auf und berechnet daraus den verfügbaren Bestand.
 
 Ein Ereignis ist eine von der Anwendung angenommene Tatsache. Deshalb ist die Grenze darum wichtig: Ein Kunde kann nicht einfach ein Ereignis `OrderPlaced` senden und damit erklären, dass der Laden eine Bestellung angenommen hat.
 
 Ein Kunde möchte vier Tassen bestellen, obwohl nur drei verfügbar sind. **Eine Bestellung anzufragen und eine angenommene Bestellung zu haben, sind zwei verschiedene Dinge.** Die Anwendung braucht eine Möglichkeit, die Anfrage zu erhalten, zu prüfen und abzulehnen, ohne Bestand zu verbrauchen.
 
-## Mit einem Kommando eine Änderung anfordern
+## Mit einem Kommando eine Änderung anfordern <a id="ask-for-a-change-with-a-command" />
 
 Ein **Kommando** drückt die Absicht aus, den Zustand der Anwendung zu ändern. `PlaceOrder` enthält die nötigen Informationen, um eine Bestellung anzufragen. Für eine Tasse sehen diese Informationen so aus:
 
@@ -37,7 +37,7 @@ Bei Annahme wird `OrderPlaced` aufgezeichnet. Bei Ablehnung bleibt der Bestand u
 
 NeoHaskell stellt den Ausführungsweg bereit: den relevanten Zustand abrufen, die Entscheidung auswerten und angenommene Ereignisse anhängen. Die Entwicklerin oder der Entwickler schreibt die Bedingungen, die das Versprechen des Ladens ausdrücken. Eine Website und ein KI-Tool können dasselbe Kommando senden und dieselbe Entscheidung verwenden.
 
-## Fachliche Entscheidungen rein halten
+## Fachliche Entscheidungen rein halten <a id="make-business-decisions-pure" />
 
 **NeoHaskell stellt reinen Code in den Mittelpunkt der Anwendungsentwicklung.** Die Geschäftslogik beschreibt anhand der erhaltenen Informationen, was passieren soll. Eine Entscheidung prüft das Kommando und den aktuellen Zustand und beschreibt anschließend Annahme oder Ablehnung. Sie kann keine Datenbankverbindung öffnen, keine Bestätigungs-E-Mail senden und keine Datei aufrufen.
 
@@ -53,15 +53,15 @@ Diese Grenze verändert die tägliche Entwicklung:
 
 **Reine Anwendungslogik ist die übliche Entwicklungsweise in NeoHaskell.** Die Entwicklerin oder der Entwickler schreibt Regeln und Berechnungen; die Sprache stellt die Mechanismen bereit, die den Zustand laden und angenommene Änderungen aufzeichnen. Um das fachliche Verhalten zu testen, muss nicht jede Regel von diesen Mechanismen umgeben sein.
 
-## Wie erledigt die Anwendung nützliche Arbeit?
+## Wie erledigt die Anwendung nützliche Arbeit? <a id="how-does-the-application-do-useful-work" />
 
 Für eine angenommene Bestellung muss weiterhin eine Bestätigungs-E-Mail versendet werden. **Integrationen führen Effekte außerhalb der Anwendungslogik aus.** Sie verpacken diese Arbeit separat, damit die Entscheidungen des Ladens nicht vom ausführenden Anbieter abhängen.
 
 Ein Integrations-Worker weiß, wie er seine Aufgabe erledigt. Ein E-Mail-Worker erhält Empfänger und Nachricht und versendet sie. Er entscheidet weder, ob eine Bestellung erlaubt ist, noch wie viel Bestand bleibt oder welche Kunden eine Bestätigung erhalten sollen. Diese Entscheidungen gehören zur reinen Logik der Anwendung.
 
-Nach der Aufzeichnung von `OrderPlaced` kann die Anwendung diese Arbeit anfordern. Ist der E-Mail-Anbieter nicht verfügbar, bleibt die Bestellung angenommen. Wird die Zustellung der E-Mail geändert, betrifft das die Integration, nicht die Bestandsregel. Die [Integrationsleitfäden](/guides/integrations/) erklären, wie diese Worker konfiguriert und ausgeführt werden.
+Nach der Aufzeichnung von `OrderPlaced` kann die Anwendung diese Arbeit anfordern. Ist der E-Mail-Anbieter nicht verfügbar, bleibt die Bestellung angenommen. Wird die Zustellung der E-Mail geändert, betrifft das die Integration, nicht die Bestandsregel. Die [Integrationsleitfäden](../guides/integrations/) erklären, wie diese Worker konfiguriert und ausgeführt werden.
 
-## Jedem Bildschirm die benötigte Antwort geben
+## Jedem Bildschirm die benötigte Antwort geben <a id="give-each-screen-the-answer-it-needs" />
 
 Nach Annahme einer Bestellung brauchen verschiedene Personen unterschiedliche Antworten. Der nächste Kunde braucht den verfügbaren Bestand. Der Kunde mit der Bestellung benötigt eine Bestätigung. Die Mitarbeitenden müssen wissen, wie viele Bestellungen auf ihre Bearbeitung warten.
 

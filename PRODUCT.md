@@ -122,7 +122,7 @@ The owner accepted the more concrete documentation navigation and requested a sh
 
 Source revision `033ae4a570686cd885ca14c6595997d9498d5287` contains the visual IDE server, model canvas, feature navigation, and code-to-model synchronization. The introduction can explain diagram inspection without treating future diagram-to-code generation as shipped behavior. Exact source links and boundaries are in [the introduction research](docs/research/event-modeling-introduction-2026-11-13.md). This is source evidence, not an executed runtime or a guarantee that a model captures every business requirement.
 
-The homepage's accepted copy and visual direction remain; its primary documentation links now enter the Event Modeling introduction. Translation is postponed by owner direction until documentation is complete.
+The homepage's accepted copy and visual direction remain; its primary documentation links now enter the Event Modeling introduction. Translation now uses explicit page requests and native Starlight language folders; the owner selected this workflow on 13 November after stopping bulk translation. Publication remains paused.
 
 The subsequent 13 November documentation correction removes promotional lead sentences and teaches directly through a concrete shop scenario. Separate figures explain conceptual change effort and an Event Model. `GLOSSARY.md` now distinguishes the owner-facing query and integration names from source identifiers such as `StateView` and `OutboundTranslation`, and records the single-primary DSL slice boundary. The accepted homepage pitch remains scoped to the homepage.
 

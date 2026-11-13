@@ -10,9 +10,9 @@ next: false
 
 <p class="docs-lead">Bereite deine Umgebung vor und gib deinem KI-Agenten eine kleine, klar umrissene erste Aufgabe.</p>
 
-Beginne mit [Die Arbeit hinter dem Code](/introduction/), wenn Kommandos, Entscheidungen, Ereignisse und Abfragen neu für dich sind. Dieser Leitfaden verwendet dasselbe Ladenbeispiel: Eine Bestellung wird angenommen, wenn Bestand verfügbar ist, und abgelehnt, wenn der Laden ausverkauft ist.
+Beginne mit [Die Arbeit hinter dem Code](../introduction/), wenn Kommandos, Entscheidungen, Ereignisse und Abfragen neu für dich sind. Dieser Leitfaden verwendet dasselbe Ladenbeispiel: Eine Bestellung wird angenommen, wenn Bestand verfügbar ist, und abgelehnt, wenn der Laden ausverkauft ist.
 
-## Umgebung vorbereiten
+## Umgebung vorbereiten <a id="prepare-your-environment" />
 
 Die **Neo-CLI** erstellt, baut, startet und testet eine Anwendung. Die [Voraussetzungen und Installationsanweisungen](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites) nennen Nix und Git. Die dokumentierte Installation aus dem Quellcode verwendet außerdem Rusts Cargo. Folge der [Anleitung zum Erstellen und Ausführen eines Projekts](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md#create-and-run-an-application), um dein Anwendungs-Repository zu erstellen, bevor du Agent-Skills installierst.
 
@@ -22,7 +22,7 @@ Diese Links beschreiben die untersuchte Framework-Revision. Verwende die Anleitu
 
 Öffne vor dem Weitermachen dein Anwendungs-Repository und halte deinen Coding-Agenten bereit, darin zu arbeiten. Die aktuelle Skill-Sammlung unterstützt **Claude Code** und **Codex**.
 
-## Agent-Skills installieren
+## Agent-Skills installieren <a id="install-agent-skills" />
 
 Die NeoHaskell-Skills geben deinem Coding-Agenten projektspezifische Hinweise. Führe dieses Kommando im Git-Stammverzeichnis deiner Anwendung aus:
 
@@ -34,7 +34,7 @@ Das Installationsprogramm fragt, welchen Agenten und Installationsbereich du ver
 
 Das Kommando und die Installationsvoraussetzungen stammen aus der [NeoHaskell-Skills-README](https://github.com/neohaskell/skills/blob/0ff0872d554e79d955f4c92f9b905056b908e9ae/README.md), geprüft am 9. November 2026. Aktuelle Änderungen findest du in den [Installationsanweisungen](https://github.com/neohaskell/skills#readme).
 
-## Erste Aufgabe beschreiben
+## Erste Aufgabe beschreiben <a id="describe-a-first-task" />
 
 Beschreibe dem Agenten das gewünschte Verhalten und was passieren soll, wenn das Kommando nicht angenommen werden kann. Für das Ladenbeispiel kannst du diese Aufgabe verwenden:
 
@@ -52,7 +52,7 @@ Prüfe sowohl angenommene als auch abgelehnte Ergebnisse.
 
 Beginne mit diesem einen Verhalten. Ergänze Zahlungen, Versand und weitere Bedingungen als eigene Änderungen, sobald du das erste Ergebnis prüfen kannst.
 
-## Ergebnis prüfen
+## Ergebnis prüfen <a id="check-the-result" />
 
 Bitte den Agenten, sowohl eine angenommene als auch eine abgelehnte Bestellung vorzuführen. Beginne in beiden Fällen mit dem unten gezeigten Bestand und vergleiche das Ergebnis mit dem Modell.
 
@@ -65,11 +65,11 @@ Prüfe außerdem, dass Mengen von null oder weniger abgelehnt werden. Technische
 
 Falls ein Ergebnis unerwartet ist, beschreibe dem Agenten den Unterschied mit denselben Begriffen: Kommando, Entscheidung, Ereignis und Abfrage. So kannst du das zu korrigierende Verhalten konkret benennen.
 
-Syntax, Testhinweise, Versionshinweise und Hilfe findest du unter [Ressourcen und Projektstatus](/resources/).
+Syntax, Testhinweise, Versionshinweise und Hilfe findest du unter [Ressourcen und Projektstatus](../resources/).
 
 <section class="docs-plan" data-pagefind-ignore>
 
-## Seitenplan
+## Seitenplan <a id="page-plan" />
 
 Diese Seite behält ihre vorhandenen Hinweise zur Agenteninstallation, die Ladenaufgabe und die Prüfungen für angenommene und abgelehnte Bestellungen bei. Hinweise zur Umgebungsvorbereitung und zum ersten Start werden auf eigene Seiten verlinkt. Sie unterscheidet gemeinsame Workflow-Skills von Hinweisen, die zur Framework-Revision der Anwendung passen, erklärt die unterstützten Agenten für die dokumentierte CLI-Version und zeigt, wie sich die installierten Anleitungen im Projekt überprüfen lassen. Die erste Anfrage bleibt klein genug, um sie beurteilen zu können, bevor das Anwendungstutorial beginnt.
 

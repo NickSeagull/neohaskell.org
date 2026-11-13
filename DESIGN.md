@@ -602,3 +602,11 @@ After accepting the revised documentation and DSL formatting, the owner explicit
 Executable examples retain the English source exactly, including the line break after `orders =`. Documentation component imports use a directory-independent alias. Localized Event Model columns gain horizontal space while retaining 16px text, the existing vertical geometry, semantic colors, slice boundaries, chapter arrows, and native horizontal scrolling. The SVG follows the same horizontal scale as its nodes. The actual IDE screenshot retains its original interface and opens through the deployment base path.
 
 The translation release review is recorded under `.impeccable/reviews/translation-release-2026-11-13/`. Structural validation, linguistic inspection, visual review, and deployment verification are distinct checks. No new conceptual argument, application behavior, or documentation layout is introduced by translation.
+
+## Translation by page, 2026-11-13
+
+The owner stopped publication and selected native Starlight i18n after reviewing the custom translation pipeline. This supersedes the global freshness gate and batch workflow above. Translations remain ordinary editable MDX files; an explicit request selects pages and languages. Page plans are excluded from default translation work, while existing translated plans are retained. Shared diagram and interface catalogs remain.
+
+The translation runner, manifest, recovery protocol, and CI freshness requirement are removed. Relative document links preserve locale and deployment base. Explicit anchors preserve existing section URLs without reading English headings during the build. Missing pages use native English fallback; existing translations can evolve independently. The rendered lessons, code, layout, and accepted semantic colors are preserved.
+
+Checkpoint before migration: `c858a13d982f51f7bc61b1999f1112255651effb`. No publication is authorized by this simplification.
