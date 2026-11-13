@@ -6,6 +6,8 @@ Write file contents, code comments, documentation, Git commit messages, and othe
 
 Finish each task with the applicable checks and a local commit in English. During the current documentation authoring phase, keep the development preview available and publish only when the owner explicitly requests it. Do not push an iteration when that push would trigger deployment. When publication is requested, push to the current branch's remote and verify the push and deployment. If the remote or credentials are missing, preserve the local commit and report the exact blocker.
 
+Keep exactly one local server for this repository, at `http://127.0.0.1:4323`. After each completed batch of changes, restart it before browser verification and sharing the URL. Stop other servers belonging to this repository; use the process ownership checks and maintained commands in README.md. Verify navigation and changed content on that same server. A build needs no second preview server.
+
 # Copy and auxiliary text
 
 Write primary content, necessary labels, and direct actions. Preserve NeoHaskell's opinionated voice and approved developer-centered philosophy through `$neohaskell-positioning`; generic restraint against marketing must not dilute those convictions. Follow `$nick-plain-copy` for substantive prose and endings without duplicated navigation. Keep substantive explanations in the main prose and place source links inline where they support a claim.

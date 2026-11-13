@@ -36,7 +36,7 @@ Most other destinations remain one-paragraph page plans, excluded from Pagefind 
 
 Saved translations and their manifest remain untouched. Draft locale docs use native English fallback; no translation model is invoked. English homepage prose and metadata now use the language identity; saved localized homepage values remain unchanged while translation is paused. README owns restoration of the normal loader and freshness gate.
 
-Keep the active development preview at http://127.0.0.1:4323/introduction/ available from the canonical checkout `/Users/nick/egregoreOS/repos/neohaskell.org` so MDX changes reload through the Work-directory symlink. Do not deploy this authoring iteration.
+Keep one development server at http://127.0.0.1:4323/introduction/ from the canonical checkout `/Users/nick/egregoreOS/repos/neohaskell.org`. The owner's 13 November correction requires restarting it after every completed batch of changes, before checking navigation and content on that exact URL. Stop other servers belonging to this repository. README owns the lifecycle commands; a build does not require a separate production-preview server. Do not deploy this authoring iteration.
 
 ## History
 

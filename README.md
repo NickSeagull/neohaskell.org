@@ -8,10 +8,25 @@ Use Node.js 24 (or Node.js 22.23.4+).
 
 ```sh
 npm ci
-npm run dev
+npm run dev -- --port 4323 --background --force
 ```
 
 `npm run build` checks Astro/TypeScript and generates `dist/`. `npm run preview` serves that production build. `npm test` verifies campaign-context handling, the illustrative order model, and the translation workflow.
+
+During documentation authoring, keep one server at `http://127.0.0.1:4323`. Restart it after every completed batch of changes, before browser verification and sharing the URL. An existing process can serve updated MDX while retaining an older Starlight configuration.
+
+Use the project's maintained commands to stop the registered servers, run applicable checks, then start the one development server:
+
+```sh
+npm run preview -- stop
+npm run dev -- stop
+npm run build
+npm run dev -- --port 4323 --background --force
+```
+
+`npm run dev -- status` identifies the active process and URL. Check listening processes as well when cleaning up duplicates: confirm a process belongs to this repository by its working directory and command before terminating it. For an unregistered server without a maintained stop command, use SIGTERM on its verified PID. Preserve other projects' servers. If port 4323 is occupied, resolve ownership instead of accepting a new port or using `--ignore-lock`.
+
+Check the rendered sidebar against `astro.config.mjs` and inspect the changed content on the same development URL. A build needs no second preview server, and verification on a different origin cannot establish what the owner sees. If production serving is explicitly needed, stop development first and restore the single development server afterward.
 
 ## Main files
 
