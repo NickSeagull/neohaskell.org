@@ -1,6 +1,6 @@
 ---
-title: 文档计划
-description: 查找现有 NeoHaskell 指南，并浏览计划中的安装步骤、商店章节、任务指南、概念说明和 API 参考。
+title: 文档规划
+description: 查找现有 NeoHaskell 指南，并浏览规划中的教程、任务指南、概念说明和参考页面。
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 2
@@ -13,197 +13,87 @@ head:
       content: noindex
 ---
 
-<p class="docs-lead">运行第一个项目。构建一家马克杯商店。查找所需任务或 API。</p>
+<p class="docs-lead">了解行为。构建一个功能。检查结果。</p>
 
-[核心概念](/learn/)、[设置你的智能体](/getting-started/)和[资源](/resources/)包含现有指南。其他页面将说明计划撰写的内容，包括解释、示例和图示。资源页面链接到目前上游已有的说明。
+[核心概念](/learn/)、[设置你的智能体](/getting-started/)和[资源](/resources/)包含现有指南。下方其他页面介绍的是尚待编写的说明、示例和图示规划。若要查阅目前已有的说明，资源页面链接到上游的语法、CLI、存储、测试和授权指南。
 
-第一段学习流程将检查 NeoHaskell 附带的 Counter 起始项目。随后，教程将在该项目中构建一家陶瓷马克杯商店，从第一个决策开始，直至经过测试的 HTTP 接口。每篇任务指南将回答一个独立问题；概念页面将解释设计，参考页面则定义语法和 API 契约。
+本页将引导读者完成一段简短的入门流程，介绍独立任务指南、更深入的概念说明和结构清晰的参考资料。页面将用带链接的阅读路线图说明每个问题适合在哪里查找。教程将围绕一个商店功能，从规格说明讲到经过测试的后端行为和可调用接口，不要求读者先学习 Haskell。文章会在能解释具体概念时配上示例和图示。
 
 ## 从这里开始
 
 <dl class="docs-map">
   <dt><a href="/learn/">核心概念</a></dt>
-  <dd>订单被接受或拒绝时，应用会怎样处理？</dd>
-  <dt><a href="/getting-started/installation/">安装 NeoHaskell</a></dt>
-  <dd>需要安装什么？如何确认工具链已就绪？</dd>
-  <dt><a href="/getting-started/create-project/">创建项目</a></dt>
-  <dd>应在哪里运行项目创建命令？命令会生成什么？</dd>
-  <dt><a href="/getting-started/run/">运行应用</a></dt>
-  <dd>如何启动和停止起始项目？哪个终端必须保持打开？</dd>
-  <dt><a href="/getting-started/first-response/">检查首次响应</a></dt>
-  <dd>应用是否真的在处理命令并回答查询？</dd>
-  <dt><a href="/getting-started/project-files/">查找项目文件</a></dt>
-  <dd>哪个文件负责我正在检查的行为、连接、配置和证据？</dd>
+  <dd>通过小商店中的一笔订单，认识命令、决策、事件和查询。</dd>
   <dt><a href="/getting-started/">设置你的智能体</a></dt>
-  <dd>我的编程智能体如何获取项目约定？我应该先让它做什么？</dd>
-  <dt><a href="/getting-started/troubleshooting/">解决设置问题</a></dt>
-  <dd>哪个设置步骤失败了？最小且安全的修正是什么？</dd>
+  <dd>准备环境和智能体。规划中的入门指南将介绍从创建可运行项目到检查第一个响应的完整流程。</dd>
 </dl>
 
-## 构建一家马克杯商店
+## 构建应用
+
+按顺序阅读下面规划中的四个章节，使用同一家商店和设置阶段准备的项目。
 
 <dl class="docs-map">
-  <dt><a href="/tutorial/">规划马克杯商店</a></dt>
-  <dd>我们的单杯订单必须实现什么行为？</dd>
-  <dt><a href="/tutorial/first-feature/">创建商店功能</a></dt>
-  <dd>商店状态和事件应放在哪里？</dd>
-  <dt><a href="/tutorial/decide-orders/">接受或拒绝订单</a></dt>
-  <dd>商店应在什么情况下接受或拒绝订单？</dd>
-  <dt><a href="/tutorial/stock-query/">查询可用库存</a></dt>
-  <dd>如何读取剩余库存？</dd>
-  <dt><a href="/tutorial/http-orders/">通过 HTTP 下单</a></dt>
-  <dd>如何通过正在运行的服务下单？</dd>
-  <dt><a href="/tutorial/test-behavior/">测试商店行为</a></dt>
-  <dd>哪些检查可以证明商店行为符合要求？</dd>
-  <dt><a href="/tutorial/change-safely/">预留一只马克杯</a></dt>
-  <dd>如何修改库存策略，同时不破坏现有行为？</dd>
+  <dt><a href="/tutorial/">为第一个功能建模</a></dt>
+  <dd>编写一份规格说明，列出接受和拒绝命令的条件。</dd>
+  <dt><a href="/tutorial/first-feature/">实现功能</a></dt>
+  <dd>将规格说明转化为一个经过审查的后端行为和可调用接口。</dd>
+  <dt><a href="/tutorial/test-behavior/">测试行为</a></dt>
+  <dd>将事件和查询结果与预期结果进行比较。</dd>
+  <dt><a href="/tutorial/change-safely/">安全地修改功能</a></dt>
+  <dd>添加一项需求，并检查它对现有行为的影响。</dd>
 </dl>
 
 ## 完成一项任务
 
-### 智能体与接口
+下面这些规划中的指南将解答实际问题，不要求读者完成整个教程。
 
 <dl class="docs-map">
   <dt><a href="/guides/ai-workflow/">与 AI 智能体协作</a></dt>
-  <dd>如何提出并验证范围明确的应用变更？</dd>
-  <dt><a href="/guides/transports/">开放 HTTP API</a></dt>
-  <dd>如何通过 HTTP 调用我的命令和查询？</dd>
-  <dt><a href="/guides/transports/mcp/">开放 MCP 工具和资源</a></dt>
-  <dd>智能体如何通过 MCP 调用此应用？</dd>
-  <dt><a href="/guides/transports/cli/">从终端运行命令</a></dt>
-  <dd>如何从终端调用应用行为？</dd>
-</dl>
-
-### 数据与文件
-
-<dl class="docs-map">
-  <dt><a href="/guides/storage/">重启后保留事件</a></dt>
-  <dd>进程停止后，如何保留已记录的应用历史？</dd>
-  <dt><a href="/guides/storage/query-rebuilds/">持久化并重建查询</a></dt>
-  <dd>重启或投影变更后，如何恢复查询结果？</dd>
-  <dt><a href="/guides/files/">上传和获取文件</a></dt>
-  <dd>如何附加用户文件并限制其获取权限？</dd>
-  <dt><a href="/guides/files/generated-documents/">生成文档</a></dt>
-  <dd>如何为文件所有者保留服务器生成的文件？</dd>
-  <dt><a href="/guides/storage/erase-protected-values/">删除受保护的值</a></dt>
-  <dd>如何让归属自己的受保护值无法读取，同时不删除历史记录？</dd>
-</dl>
-
-### 身份与访问
-
-<dl class="docs-map">
-  <dt><a href="/guides/authentication/">验证调用者身份</a></dt>
-  <dd>我的 HTTP 应用如何识别调用者？</dd>
-  <dt><a href="/guides/authorization/">授权命令</a></dt>
-  <dd>谁可以对这个实体运行此命令？</dd>
-  <dt><a href="/guides/authorization/query-access/">限制查询结果</a></dt>
-  <dd>谁可以读取查询及其各项结果？</dd>
-</dl>
-
-### 外部系统
-
-<dl class="docs-map">
-  <dt><a href="/guides/integrations/">调用外部服务</a></dt>
-  <dd>决策完成后，如何执行外部操作？</dd>
-  <dt><a href="/guides/integrations/inbound-workers/">运行入站工作进程</a></dt>
-  <dd>后台来源如何发送带类型的应用命令？</dd>
-  <dt><a href="/guides/integrations/oauth-connections/">连接外部账户</a></dt>
-  <dd>用户如何授权访问提供方账户？</dd>
-</dl>
-
-### 部署与恢复
-
-<dl class="docs-map">
-  <dt><a href="/guides/deployment/">部署应用</a></dt>
-  <dd>要在其他环境运行此应用，需要配置和持久化什么？</dd>
-  <dt><a href="/guides/deployment/readiness-and-failures/">检查就绪状态和故障</a></dt>
-  <dd>如何确认应用已就绪，并定位失败的操作？</dd>
+  <dd>提供上下文，限定修改范围，审查证据，并从错误的实现中恢复。</dd>
+  <dt><a href="/guides/transports/">公开 HTTP 和 MCP 接口</a></dt>
+  <dd>将应用行为连接到请求、工具调用和生成的 OpenAPI 契约。</dd>
+  <dt><a href="/guides/storage/">让数据在重启后保留</a></dt>
+  <dd>配置持久化事件历史和查询存储，然后检查重启后的结果。</dd>
+  <dt><a href="/guides/authorization/">控制访问权限</a></dt>
+  <dd>区分身份与权限，并测试允许和拒绝的操作。</dd>
+  <dt><a href="/guides/integrations/">连接外部服务</a></dt>
+  <dd>将服务连接、凭据和网络副作用放在纯决策逻辑之外。</dd>
+  <dt><a href="/guides/files/">存储和检索文件</a></dt>
+  <dd>了解文件归属、存储方式和允许的访问权限。</dd>
+  <dt><a href="/guides/deployment/">部署和运维</a></dt>
+  <dd>配置运行组件，检查故障并验证恢复情况。</dd>
 </dl>
 
 ## 理解设计
 
+下面这些规划中的说明将探讨该模型为何有效，以及如何选择合适的边界。
+
 <dl class="docs-map">
-  <dt><a href="/concepts/event-modeling/">功能、章节与切片</a></dt>
-  <dd>应用故事如何成为与实现保持关联的模型？</dd>
-  <dt><a href="/concepts/command-outcomes/">命令、决策与结果</a></dt>
-  <dd>命令到达应用后可能发生什么？</dd>
-  <dt><a href="/concepts/entities-and-streams/">实体与事件流</a></dt>
-  <dd>决策必须综合考虑哪些事实？命令发生竞争时会怎样？</dd>
+  <dt><a href="/concepts/event-modeling/">为应用行为建模</a></dt>
+  <dd>推理含糊需求和多步骤工作流。</dd>
   <dt><a href="/concepts/history-and-state/">历史记录与当前状态</a></dt>
-  <dd>应用已有当前状态时，为什么还要保留事件？</dd>
-  <dt><a href="/concepts/query-projections/">查询投影与重放</a></dt>
-  <dd>相同的历史如何回答不同的问题？查询又如何追上进度？</dd>
+  <dd>区分已记录的事实、重建出的状态和当前查询结果。</dd>
   <dt><a href="/concepts/pure-decisions/">纯决策与副作用</a></dt>
-  <dd>决策需要上下文或生成值时，纯函数意味着什么？</dd>
-  <dt><a href="/concepts/event-driven-workflows/">跨实体工作流</a></dt>
-  <dd>一条已记录的事实如何促使应用的另一部分采取行动？</dd>
-  <dt><a href="/concepts/identity-and-permissions/">身份与权限</a></dt>
-  <dd>为什么知道某人是谁，并不能决定他们可以执行或读取什么？</dd>
+  <dd>了解确定性逻辑、类型检查和外部副作用。</dd>
 </dl>
 
-## 参考与帮助
+## 参考资料和帮助
 
-### 语言
-
-<dl class="docs-map">
-  <dt><a href="/reference/language/">语法与表达式</a></dt>
-  <dd>这个表达式是什么意思？</dd>
-  <dt><a href="/reference/language/types/">类型与记录</a></dt>
-  <dd>如何读取或定义功能中的数据结构？</dd>
-</dl>
-
-### 核心库
+参考页面仍在规划中。<a href="/resources/">资源和项目状态</a>已链接到经过检查的上游资料和可获取帮助的渠道。
 
 <dl class="docs-map">
-  <dt><a href="/reference/core/">值与常用类型</a></dt>
-  <dd>Core 中已经提供了哪些类型和操作？</dd>
-  <dt><a href="/reference/core/containers/">数组与映射</a></dt>
-  <dd>如何转换集合或查找项目？</dd>
-  <dt><a href="/reference/core/results/">Maybe 与 Result</a></dt>
-  <dd>如何表示缺失值或可恢复的失败？</dd>
-  <dt><a href="/reference/core/tasks/">任务与副作用</a></dt>
-  <dd>如何按顺序执行可能失败的工作？</dd>
-  <dt><a href="/reference/core/json/">JSON 与架构</a></dt>
-  <dd>带类型的值如何转换为 JSON 和 API 架构？</dd>
-</dl>
-
-### 框架契约
-
-<dl class="docs-map">
-  <dt><a href="/reference/framework/">事件模型与功能</a></dt>
-  <dd>已声明的功能如何组成正在运行的应用？</dd>
-  <dt><a href="/reference/framework/commands/">命令与决策</a></dt>
-  <dd>命令必须定义什么？决策可以返回什么？</dd>
-  <dt><a href="/reference/framework/entities/">实体与事件</a></dt>
-  <dd>如何标识实体并根据其事件重建实体？</dd>
-  <dt><a href="/reference/framework/queries/">查询与投影</a></dt>
-  <dd>什么会更新查询行？调用者可以读取什么？</dd>
-  <dt><a href="/reference/framework/transports/">传输契约</a></dt>
-  <dd>已注册的命令或查询会开放什么接口？</dd>
-</dl>
-
-### 工具与配置
-
-<dl class="docs-map">
-  <dt><a href="/reference/cli/">Neo 命令</a></dt>
-  <dd>本地开发需要使用哪个命令和哪些标志？</dd>
-  <dt><a href="/reference/cli/model-tools/">IDE、检查与验证</a></dt>
-  <dd>如何从命令行检查或验证模型？</dd>
-  <dt><a href="/reference/cli/agent-commands/">技能与智能体指南</a></dt>
-  <dd>如何选择已安装的技能并刷新匹配的 API 指南？</dd>
-  <dt><a href="/reference/configuration/">运行时配置</a></dt>
-  <dd>默认值、环境变量和参数不一致时，哪个值生效？</dd>
-  <dt><a href="/reference/configuration/project/">neo.json 与依赖项</a></dt>
-  <dd>哪些项目设置会控制生成的构建文件和框架版本？</dd>
-</dl>
-
-### 错误与帮助
-
-<dl class="docs-map">
-  <dt><a href="/reference/errors/">设置与构建错误</a></dt>
-  <dd>开发命令为什么失败？接下来应该检查什么？</dd>
-  <dt><a href="/reference/errors/runtime/">启动与请求错误</a></dt>
-  <dd>故障来自配置、访问控制、业务拒绝还是基础设施？</dd>
-  <dt><a href="/resources/">资源与项目状态</a></dt>
-  <dd>在哪里可以找到维护中的说明、版本历史和帮助？</dd>
+  <dt><a href="/reference/language/">语言基础</a></dt>
+  <dd>查找阅读和审查应用代码所需的语法，并参考简短示例。</dd>
+  <dt><a href="/reference/core/">核心库</a></dt>
+  <dd>按签名、结果和边界情况查找常用类型和操作。</dd>
+  <dt><a href="/reference/framework/">框架构件</a></dt>
+  <dd>了解如何在源代码中将应用模型与实体、命令、决策、事件和查询联系起来。</dd>
+  <dt><a href="/reference/cli/">Neo CLI</a></dt>
+  <dd>查找命令、参数、工作目录和预期结果。</dd>
+  <dt><a href="/reference/configuration/">配置</a></dt>
+  <dd>查找必填值、默认值、环境变量覆盖方式和密钥处理要求。</dd>
+  <dt><a href="/reference/errors/">错误与故障排查</a></dt>
+  <dd>查找故障表现、原因、最简有效修复方法和恢复检查步骤。</dd>
+  <dt><a href="/resources/">资源和项目状态</a></dt>
+  <dd>阅读现有源码和指南，关注版本发布并寻求帮助。</dd>
 </dl>

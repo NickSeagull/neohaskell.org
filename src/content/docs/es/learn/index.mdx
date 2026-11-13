@@ -1,6 +1,6 @@
 ---
 title: Conceptos básicos
-description: Comprende los comandos, las decisiones, los eventos y las consultas siguiendo un pedido en una pequeña tienda online.
+description: Comprende los comandos, las decisiones, los eventos y las consultas siguiendo el recorrido de un pedido en una pequeña tienda online.
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 2
@@ -8,45 +8,45 @@ prev: false
 next: true
 ---
 
-<p class="docs-lead">Comprende cómo decide una aplicación lo que puede ocurrir, registra lo ocurrido y responde a preguntas sobre su estado.</p>
+<p class="docs-lead">Comprende cómo una aplicación decide qué puede ocurrir, registra lo que ha ocurrido y responde a preguntas sobre su estado.</p>
 
-NeoHaskell es un lenguaje de programación concebido desde el principio para la IA, pensado para crear aplicaciones con un agente de IA sin perder de vista su comportamiento. Ese comportamiento se describe mediante **comandos, decisiones, eventos y consultas**. El lenguaje y el framework dan a estos conceptos una estructura común.
+NeoHaskell es un lenguaje de programación con la IA como prioridad, pensado para crear aplicaciones con un agente de IA sin perder de vista cómo se comportan. Describes ese comportamiento mediante **comandos, decisiones, eventos y consultas**. El lenguaje y el framework dan a esos conceptos una estructura común.
 
-Esta guía sigue el caso de una pequeña tienda con tres tazas de cerámica en existencias. Un cliente pide una taza. Puedes comprender el modelo antes de instalar NeoHaskell o usar un agente de IA.
+Esta guía sigue el caso de una pequeña tienda que tiene tres tazas de cerámica en existencias. Un cliente pide una. Puedes comprender el modelo antes de instalar NeoHaskell o usar un agente de IA.
 
-| Concepto | Función | Ejemplo de la tienda |
+| Concepto | Propósito | Ejemplo de la tienda |
 | --- | --- | --- |
-| [Comando](#commands) | Expresa una intención | Hacer un pedido |
-| [Decisión](#decisions) | Acepta o rechaza la intención | Comprobar las existencias disponibles |
-| [Evento](#events) | Registra lo ocurrido | Pedido realizado |
-| [Consulta](#queries) | Lee el estado actual | Quedan dos tazas |
+| [Comando](#commands) | Expresar una intención | Hacer un pedido |
+| [Decisión](#decisions) | Aceptarla o rechazarla | Comprobar las existencias disponibles |
+| [Evento](#events) | Registrar lo que ha ocurrido | Pedido realizado |
+| [Consulta](#queries) | Leer el estado actual | Quedan dos tazas |
 
 ## Comandos
 
-Un **comando** expresa algo que una persona o proceso quiere que haga la aplicación. Describe una intención, pero no significa que la acción ya haya ocurrido.
+Un **comando** expresa algo que una persona o un proceso quiere que haga la aplicación. Describe una intención; no significa que la acción ya haya ocurrido.
 
-Para pedir una taza, el cliente indica el producto y la cantidad. La aplicación todavía debe decidir si puede cumplir esa intención.
+Para pedir una taza, el cliente indica el producto y la cantidad. La aplicación todavía tiene que decidir si puede cumplir esa intención.
 
 ```text title="Ejemplo de comando"
 PlaceOrder
-  product: ceramic mug
+  product: taza de cerámica
   quantity: 1
 ```
 
-Los ejemplos de esta guía describen el modelo en texto sencillo. No son código ejecutable de NeoHaskell ni cuerpos de solicitudes de API.
+Los ejemplos de esta guía describen el modelo en texto sencillo. No son código ejecutable de NeoHaskell ni cargas útiles de API.
 
 ## Decisiones
 
 Una **decisión** evalúa un comando teniendo en cuenta el estado actual y las condiciones que debe aplicar tu aplicación. Determina si se acepta o se rechaza el comando.
 
-En esta tienda, la cantidad debe ser positiva y debe haber existencias suficientes. Con tres tazas en existencias, se puede aceptar un pedido de una. No se puede aceptar uno de cuatro.
+En esta tienda, la cantidad debe ser positiva y debe haber existencias suficientes. Si hay tres tazas en existencias, se puede aceptar un pedido de una. No se puede aceptar un pedido de cuatro.
 
 | Comando | Existencias disponibles | Decisión |
 | --- | --- | --- |
 | Pedir 1 taza | 3 tazas | Aceptar |
 | Pedir 4 tazas | 3 tazas | Rechazar |
 
-Estas condiciones forman parte del comportamiento de la aplicación. Un agente de IA puede ayudarte a implementarlas, pero no toma decisiones en tiempo de ejecución.
+Estas condiciones forman parte del comportamiento de la aplicación. Un agente de IA puede ayudarte a implementarlas, pero no toma las decisiones en tiempo de ejecución.
 
 ## Eventos
 
@@ -54,34 +54,34 @@ Un **evento** registra un hecho sobre algo que ha ocurrido. Cuando la tienda ace
 
 ```text title="Evento registrado"
 OrderPlaced
-  product: ceramic mug
+  product: taza de cerámica
   quantity: 1
 ```
 
-Observa el cambio de nombre: `PlaceOrder` expresa una intención; `OrderPlaced` describe un hecho aceptado. El evento pasa a formar parte del historial de la aplicación.
+Fíjate en el cambio de nombre: `PlaceOrder` expresa una intención; `OrderPlaced` describe un hecho aceptado. El evento pasa a formar parte del historial de la aplicación.
 
-En este ejemplo, aceptar el pedido consume una taza. El evento registra el pedido, mientras que las existencias restantes son un estado derivado de ese historial. En otras aplicaciones, un comando puede generar distintas cantidades de eventos; este ejemplo muestra un pedido y un evento.
+En este ejemplo, aceptar el pedido consume una taza. El evento registra el pedido, mientras que las existencias restantes son un estado derivado de ese historial. En otras aplicaciones, un comando puede generar una cantidad distinta de eventos; este ejemplo sigue un pedido y un evento.
 
 ## Consultas
 
 Una **consulta** lee el estado de la aplicación sin modificarlo. Responde a una pregunta usando el estado derivado de los eventos registrados.
 
-Después de aceptar el pedido, una consulta de existencias devuelve dos tazas: las tres iniciales menos la pedida.
+Después de aceptar el pedido, una consulta sobre las existencias devuelve dos tazas: las tres iniciales menos la pedida.
 
 ```text title="Consulta y resultado"
-Remaining stock for ceramic mug
+Existencias restantes de tazas de cerámica
 2
 ```
 
-El evento y el resultado de la consulta tienen funciones distintas. `OrderPlaced` permanece en el historial como registro del pedido. Una consulta de existencias da la respuesta actual, que puede cambiar si se aceptan más pedidos.
+El evento y el resultado de la consulta cumplen funciones distintas. `OrderPlaced` permanece en el historial como registro del pedido. Una consulta sobre las existencias proporciona la respuesta actual, que puede cambiar cuando se acepten más pedidos.
 
 ## Comandos rechazados
 
-Un comando puede ser una intención válida y, aun así, rechazarse. Si no quedan tazas en la tienda, un pedido de una taza no cumple la condición de existencias.
+Un comando puede ser una intención válida y, aun así, ser rechazado. Si la tienda se ha quedado sin tazas, un pedido de una no cumple la condición de existencias.
 
 No se registra ningún evento `OrderPlaced` para ese pedido rechazado. Una consulta sigue devolviendo cero tazas. El intento no se ha convertido en un pedido aceptado y las existencias no han cambiado.
 
-| Existencias iniciales | Comando | Evento registrado | Existencias posteriores |
+| Existencias iniciales | Comando | Evento registrado | Existencias finales |
 | --- | --- | --- | --- |
 | 3 tazas | Pedir 1 taza | `OrderPlaced` | 2 tazas |
 | 0 tazas | Pedir 1 taza | Ninguno | 0 tazas |
@@ -90,14 +90,14 @@ Este modelo abarca los pedidos y las existencias. Los pagos, los envíos y los p
 
 ## Empieza a crear
 
-Antes de pedir a un agente que cree una función, describe el comando, las condiciones para aceptarlo, los eventos que debe registrar y las preguntas que debe responder la aplicación. Incluye un caso que deba rechazarse.
+Antes de pedir a un agente que cree una funcionalidad, describe el comando, las condiciones para aceptarlo, los eventos que debería registrar y las preguntas a las que debe responder la aplicación. Incluye un caso que debería rechazarse.
 
-Cuando puedas explicar los dos resultados posibles para esta tienda, continúa con la [configuración de tu agente](/getting-started/).
+Cuando puedas explicar ambos resultados para esta tienda, continúa con [configura tu agente](/getting-started/).
 
 <section class="docs-plan" data-pagefind-ignore>
 
 ## Plan de la página
 
-Esta página seguirá presentando comandos, decisiones, eventos y consultas mediante una tienda de tazas de cerámica. Los lectores seguirán un pedido aceptado y otro rechazado, calcularán las existencias restantes y distinguirán el historial de eventos del resultado de la consulta. Se conservarán las tablas y los ejemplos en texto sencillo. Una figura estática y breve podrá relacionar los cuatro conceptos antes de que los lectores continúen con la instalación o creen su primera función.
+Esta página mantendrá la tienda pequeña como introducción a los comandos, las decisiones, los eventos y las consultas. Sus ejemplos ayudarán a los lectores a reconocer cada concepto y prever si un pedido se acepta o se rechaza antes de instalar nada. Una figura estática compacta separará el comando, la decisión, el evento registrado y el resultado de la consulta, junto con las tablas comparativas existentes. Los lectores podrán continuar con [Configura tu agente](/getting-started/) para preparar un proyecto funcional o con [Modela tu primera funcionalidad](/tutorial/) para aplicar los conceptos a una especificación.
 
 </section>

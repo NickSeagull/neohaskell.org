@@ -1,6 +1,6 @@
 ---
-title: "Expón una API HTTP"
-description: "Plan de la página. ¿Cómo invoco mis comandos y consultas por HTTP?"
+title: Expón interfaces HTTP y MCP
+description: "Plan de la página. Planifica cómo exponer el mismo comportamiento de la aplicación mediante los transportes compatibles."
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plan de la página
 
-Esta página expondrá una función existente mediante el transporte Web e inspeccionará sus rutas generadas y el contrato OpenAPI. Una solicitud de comando, una entrada rechazada y la respuesta de una consulta relacionarán la definición de la aplicación con el comportamiento HTTP observable. El filtrado y la paginación remitirán al [contrato de consulta](/reference/framework/queries/). Los ejemplos incluirán el registro del transporte y la configuración del origen del navegador. También enlazarán a la autenticación antes de exponer la interfaz a usuarios no fiables.
+Esta página explicará cómo se expone el comportamiento de la aplicación mediante HTTP y MCP, incluida la configuración y los contratos verificados para la versión documentada del framework. Mostrará un comando y una consulta mediante pares de solicitud/respuesta y llamadas equivalentes a herramientas, con un ejemplo de inspección de OpenAPI generado. Un diagrama pequeño de límites separará los transportes de las decisiones. Los ejemplos estáticos incluirán tanto el éxito como el rechazo; solo se planteará un componente de solicitud en directo cuando haya disponible un entorno de ejecución aislado compatible.

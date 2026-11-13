@@ -33,6 +33,10 @@ Author content directly in `src/content/docs/learn/index.mdx` and `src/content/d
 
 ## Translation workflow
 
+Translation is paused by owner direction on 13 November 2026 until the documentation is complete. Author and review the English pages only. Saved translations remain in the repository; the content loader excludes them from the draft build so every documentation locale uses Starlight's English fallback. The existing localized homepage stays available. Do not run the translator during this phase.
+
+When translation resumes, restore `docsLoader()` in `src/content.config.ts`, restore the strict freshness check in `.github/workflows/deploy.yml`, and use the workflow below.
+
 English is the source of truth. Write documentation in `src/content/docs/` outside the language directories, homepage copy in `src/i18n/en/site.json`, and documentation controls in `src/content/i18n/en.json`. JSON keys are stable identifiers; change their English values when revising copy. Preserve inline markup in rich messages. Shared Astro components contain layout, not translations.
 
 English keeps `/`, `/learn/`, `/getting-started/`, and `/resources/`. The other languages use `/es/` (Castilian Spanish), `/zh-cn/` (Simplified Chinese), `/ru/`, `/hy/` (Eastern Armenian), `/ja/`, `/de/`, `/fr/`, and `/pt/` (Portuguese from Portugal). `src/i18n/locales.mjs` owns this list. The language menu links to the same page and works without JavaScript. Internal documentation links retain the selected language; section anchors retain their English identifiers. Starlight supplies localized navigation, search, and code-copy controls.
@@ -67,7 +71,7 @@ Failures keep the response, prompt, invocation metadata, and bounded Codex diagn
 
 ## Deployment
 
-`.github/workflows/deploy.yml` checks translation freshness, builds on every push to `main` or manual dispatch, and publishes to the GitHub Pages project URL. Pending translations block deployment; CI never invokes Codex. The preview build uses `/neohaskell.org/` as its base path and omits the production `CNAME` and `robots.txt` files from the artifact. Local builds still use `https://neohaskell.org` without a base path. To reproduce the preview build locally, run `GITHUB_PAGES_PREVIEW=true npm run build`.
+`.github/workflows/deploy.yml` checks translation freshness, builds on every push to `main` or manual dispatch, and publishes to the GitHub Pages project URL. During the English authoring phase, pending translations are reported without blocking deployment; CI never invokes Codex. Restore strict freshness checking when translation resumes. The preview build uses `/neohaskell.org/` as its base path and omits the production `CNAME` and `robots.txt` files from the artifact. Local builds still use `https://neohaskell.org` without a base path. To reproduce the preview build locally, run `GITHUB_PAGES_PREVIEW=true npm run build`.
 
 Framework references: [Starlight custom pages](https://starlight.astro.build/guides/pages/) and [Astro on GitHub Pages](https://docs.astro.build/en/guides/deploy/github/).
 

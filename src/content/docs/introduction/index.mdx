@@ -1,0 +1,62 @@
+---
+title: Understand the application together
+description: Use Event Modeling to agree how an application should behave before you build or change it.
+sidebar:
+  label: Start with Event Modeling
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: false
+next: true
+---
+
+Your value as a developer starts with helping people agree what their application should do. The people running a business know its work, its exceptions, and what customers need. You help turn that knowledge into behavior everyone can discuss and check.
+
+Consider a shop owner asking, "Let customers order mugs online." That sounds clear until you ask when a mug stops being available. When someone adds it to a basket? When the shop accepts the order? When payment arrives? Each answer describes a different application.
+
+**Event Modeling gives that conversation a shared picture.** You lay out what someone sees, what they try to do, what happens, and what information becomes available next. You can use it to design a new application or understand one your business already relies on.
+
+## Follow one order
+
+Our shop has three ceramic mugs available. The owner chooses a simple policy: accepting an order uses the requested stock immediately.
+
+| Moment | What happens |
+| --- | --- |
+| Before ordering | The customer sees three mugs available. |
+| Customer action | The customer asks to order one mug. |
+| Shop decision | Enough stock is available, so the shop accepts the order. |
+| Recorded fact | An order for one mug has been placed. |
+| After ordering | The customer sees confirmation. The available stock is now two. |
+
+Read this story with the shop owner. The important work is agreeing what each step means. Does "available" include mugs already promised to another customer? What should the customer see when an order cannot be accepted?
+
+For this first model, if no mugs remain, the shop rejects the order and explains that it is sold out. There is no accepted order to record, and stock stays at zero. Payment and delivery are separate behaviors we can model later.
+
+[Adam Dymitruk's introduction to Event Modeling](https://eventmodeling.org/posts/what-is-event-modeling/) connects a timeline of facts with the actions and screens around them. That connection gives both business people and developers something concrete to question.
+
+## Find the missing decision
+
+A model becomes useful when it reveals something you have not agreed yet. Suppose the owner now says, "Customers should be able to cancel." Follow the story again: does accepting a cancellation make that mug available to sell? What must the customer see afterward?
+
+Write the unanswered question beside the step it affects. Ask the person responsible for that policy and update the story together. An AI agent can suggest cases and help implement the answer, but the business decision still belongs to you and the people who know the work.
+
+For an existing application, begin with a real customer task and describe what happens today. Compare that story with someone who uses or supports the application. Mark any behavior you have assumed and check it against the running system. [Martin Dilger recommends starting with one small part of a system](https://eventmodelers.ai/docs/blog/bring-event-modeling-company/) to uncover differences in how a team understands it.
+
+## Try it on paper
+
+Take five minutes with one behavior from your own work, such as approving an expense or booking an appointment.
+
+1. Write what the person needs to see before acting.
+2. Add the action, the fact that should follow, and what they see afterward.
+3. Describe one situation where the action should be refused. Write the expected response.
+4. Review the story with someone who knows the work. Record one unanswered question or confirm one assumption together.
+
+For our shop, a checkable example is: "With three mugs available, accepting an order for one leaves two. With no mugs available, the order is rejected and stock stays at zero."
+
+## Carry the story into NeoHaskell
+
+Event Modeling helps you describe behavior. Event Sourcing is a way to implement an application by retaining its events and deriving state from that history. You can model a process before choosing how to store its data.
+
+NeoHaskell is an AI-first language and framework that carries this way of thinking into the application. Commands express intentions, decisions enforce the agreed conditions, events record what happened, and queries answer questions about the resulting state. Its visual IDE lets you inspect the event model as a diagram as you work on the application.
+
+That gives you and your agent a concrete behavior to build and a result you can check. Continue to [Core concepts](/learn/) to follow the same order through those four parts before installing NeoHaskell.

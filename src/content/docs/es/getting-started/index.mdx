@@ -1,6 +1,6 @@
 ---
 title: Configura tu agente
-description: Prepara tu entorno de desarrollo, instala las skills de agente de NeoHaskell y crea un primer comportamiento que puedas comprobar.
+description: Prepara tu entorno de desarrollo, instala las habilidades de NeoHaskell para agentes y crea un primer comportamiento que puedas comprobar.
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 2
@@ -8,69 +8,69 @@ prev: true
 next: false
 ---
 
-<p class="docs-lead">Prepara tu entorno y asigna a tu agente de IA una primera tarea concreta y bien delimitada.</p>
+<p class="docs-lead">Prepara tu entorno y asigna a tu agente de IA una primera tarea pequeña y bien definida.</p>
 
-Empieza por los [conceptos básicos](/learn/) si aún no conoces los comandos, las decisiones, los eventos y las consultas. Esta guía usa el mismo ejemplo de la tienda: aceptar un pedido cuando haya existencias y rechazarlo cuando se hayan agotado.
+Empieza por los [conceptos básicos](/learn/) si los comandos, las decisiones, los eventos y las consultas son nuevos para ti. Esta guía usa el mismo ejemplo de la tienda: acepta un pedido cuando haya existencias y recházalo cuando se agoten.
 
 ## Prepara tu entorno
 
-La **CLI de Neo** crea, compila, ejecuta y prueba una aplicación. Sus [requisitos e instrucciones de instalación](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites) especifican Nix y Git; la instalación desde el código fuente descrita también usa Cargo de Rust. Sigue la [guía para crear y ejecutar un proyecto](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md#create-and-run-an-application) para crear el repositorio de tu aplicación antes de instalar las skills del agente.
+La **Neo CLI** crea, compila, ejecuta y prueba una aplicación. Sus [requisitos previos e instrucciones de instalación](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites) indican que necesitas Nix y Git; la instalación desde el código fuente documentada también usa Cargo de Rust. Sigue la [guía para crear y ejecutar un proyecto](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md#create-and-run-an-application) para crear el repositorio de tu aplicación antes de instalar las habilidades para agentes.
 
-Para inspeccionar primero la aplicación Counter, consulta los [requisitos y la guía rápida del proyecto inicial](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter/README.md#requirements). Su almacén de eventos predeterminado está en memoria: los eventos registrados desaparecen cuando termina el proceso. La [guía de almacenamiento](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/storage.md) explica las opciones de almacenamiento persistente.
+Para inspeccionar primero la aplicación Counter, lee los [requisitos y la guía de inicio rápido del proyecto inicial](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter/README.md#requirements). Su almacén de eventos predeterminado está en memoria: los eventos registrados desaparecen cuando termina el proceso. La [guía de almacenamiento](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/storage.md) explica las opciones de almacenamiento persistente.
 
-Estos enlaces describen la versión inspeccionada del framework. Sigue las instrucciones que correspondan a la versión fijada por tu aplicación. El instalador de skills del agente requiere **Node.js 22.20 o posterior**.
+Estos enlaces describen la revisión del framework que se ha inspeccionado. Usa las instrucciones que correspondan a la versión fijada por tu aplicación. El instalador de habilidades para agentes requiere **Node.js 22.20 o posterior**.
 
-Antes de continuar, abre el repositorio de tu aplicación y prepara tu agente de programación para trabajar en él. La colección actual de skills es compatible con **Claude Code** y **Codex**.
+Antes de continuar, abre el repositorio de tu aplicación y prepara tu agente de programación para trabajar en él. La colección actual de habilidades es compatible con **Claude Code** y **Codex**.
 
-## Instala las skills del agente
+## Instala las habilidades para agentes
 
-Las skills de NeoHaskell proporcionan instrucciones específicas del proyecto a tu agente de programación. Ejecuta este comando desde la raíz Git de tu aplicación:
+Las habilidades de NeoHaskell proporcionan a tu agente de programación instrucciones específicas para el proyecto. Ejecuta este comando desde la raíz Git de tu aplicación:
 
 ```sh title="Terminal" wrap
 npx skills add neohaskell/skills --skill '*'
 ```
 
-El instalador pregunta qué agente y ámbito de instalación quieres usar. Selecciona la colección completa para tener disponibles las skills y los recursos relacionados. Conserva los archivos instalados y el archivo de bloqueo con tu proyecto.
+El instalador te preguntará qué agente y ámbito de instalación quieres usar. Selecciona la colección completa para que las habilidades y los recursos relacionados estén disponibles conjuntamente. Mantén los archivos instalados y el archivo de bloqueo en tu proyecto.
 
-El comando y los requisitos del instalador proceden del [README de las skills de NeoHaskell](https://github.com/neohaskell/skills/blob/0ff0872d554e79d955f4c92f9b905056b908e9ae/README.md), consultado el 9 de noviembre de 2026. Consulta las [instrucciones de instalación actuales](https://github.com/neohaskell/skills#readme) para ver las novedades.
+El comando y los requisitos del instalador proceden del [README de las habilidades de NeoHaskell](https://github.com/neohaskell/skills/blob/0ff0872d554e79d955f4c92f9b905056b908e9ae/README.md), consultado el 9 de noviembre de 2026. Consulta las [instrucciones de instalación actuales](https://github.com/neohaskell/skills#readme) para ver las actualizaciones.
 
 ## Describe una primera tarea
 
-Indica al agente el comportamiento que quieres, incluido qué debe ocurrir si no se puede aceptar el comando. Puedes usar esta tarea para el ejemplo de la tienda:
+Indica al agente qué comportamiento quieres, incluido lo que debería ocurrir si no se puede aceptar el comando. Puedes usar esta tarea para el ejemplo de la tienda:
 
 ```text title="Ejemplo de tarea para tu agente" wrap
 Deja que un cliente pida una taza de cerámica.
 
 Acepta el pedido solo si la cantidad es positiva y hay existencias suficientes.
 
-Registra un pedido aceptado como OrderPlaced y proporciona una consulta para las existencias restantes.
+Registra un pedido aceptado como OrderPlaced y proporciona una consulta para conocer las existencias restantes.
 
 Si no hay existencias suficientes, rechaza el comando sin registrar un evento de pedido aceptado.
 
-Comprueba tanto los resultados aceptados como los rechazados.
+Comprueba tanto el resultado aceptado como el rechazado.
 ```
 
-Empieza con este único comportamiento. Añade los pagos, los envíos y otras condiciones como cambios separados cuando puedas comprobar el primer resultado.
+Empieza con este único comportamiento. Añade los pagos, los envíos y otras condiciones en cambios separados cuando puedas comprobar el primer resultado.
 
 ## Comprueba el resultado
 
-Pide al agente que muestre un pedido aceptado y otro rechazado. En cada caso, parte de las existencias indicadas y compara el resultado con el modelo.
+Pide al agente que muestre tanto un pedido aceptado como uno rechazado. En cada caso, parte de las existencias indicadas abajo y compara el resultado con el modelo.
 
-| Existencias iniciales | Comando | Evento esperado | Existencias posteriores |
+| Existencias iniciales | Comando | Evento esperado | Existencias finales |
 | --- | --- | --- | --- |
 | 3 tazas | Pedir 1 taza | `OrderPlaced` | 2 tazas |
 | 0 tazas | Pedir 1 taza | Ningún evento de pedido aceptado | 0 tazas |
 
-Comprueba también que se rechacen las cantidades cero o negativas. Las comprobaciones técnicas ayudan a detectar errores de implementación; tú decides si el comportamiento coincide con lo que debe hacer tu aplicación.
+Comprueba también que se rechacen las cantidades iguales o inferiores a cero. Las comprobaciones técnicas te ayudan a detectar errores de implementación; tú decides si el comportamiento se ajusta a lo que debería hacer tu aplicación.
 
-Si el resultado no es el esperado, describe la diferencia al agente usando los mismos términos: el comando, la decisión, el evento y la consulta. Así tendrá un comportamiento concreto que corregir.
+Si el resultado no es el esperado, describe la diferencia al agente con el mismo vocabulario: el comando, la decisión, el evento y la consulta. Así dispondrás de un comportamiento concreto que corregir.
 
-Para consultar la sintaxis, las pautas de pruebas, las notas de versión o la ayuda, visita [Recursos y estado del proyecto](/resources/).
+Para consultar la sintaxis, las pautas de pruebas, las notas de versión o pedir ayuda, visita [Recursos y estado del proyecto](/resources/).
 
 <section class="docs-plan" data-pagefind-ignore>
 
 ## Plan de la página
 
-Esta página conservará las instrucciones existentes para instalar el agente, la tarea de la tienda y las comprobaciones de pedidos aceptados y rechazados, y enlazará la preparación del entorno y los primeros pasos a páginas específicas. Distinguirá las skills de flujo de trabajo compartido de las instrucciones que se adaptan a la versión del framework de la aplicación, explicará las opciones de agente compatibles con la versión documentada de la CLI y comprobará las instrucciones instaladas en el proyecto. La primera solicitud seguirá siendo lo bastante pequeña como para que el lector pueda evaluar el resultado antes de entrar en el tutorial de la aplicación.
+Esta página abarcará el recorrido completo desde un equipo sin preparar hasta un proyecto de aplicación comprobado: requisitos previos de la cadena de herramientas, instalación del entorno de ejecución, creación del proyecto, primer inicio y respuesta, y configuración de las habilidades para agentes. Distinguirá el entorno de ejecución de la aplicación de las instrucciones instaladas para el agente. Pares verificados de comandos y resultados, alternativas relevantes según la plataforma o el agente y ejemplos concretos de recuperación permitirán comprobar cada paso. La orientación existente de arriba seguirá disponible mientras se desarrolla este recorrido; el proyecto resultante enlazará a [Modela tu primera funcionalidad](/tutorial/).
 
 </section>
