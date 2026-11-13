@@ -1,6 +1,6 @@
 ---
 title: Keep the facts behind the numbers
-description: Why current values and snapshots do not always explain a business change, and how NeoHaskell uses events.
+description: Record the business facts that explain a change, then use that history to understand and rebuild application state.
 sidebar:
   label: Events and history
 tableOfContents:
@@ -10,17 +10,19 @@ prev: true
 next: true
 ---
 
-The shop had three mugs available. Now it has two. That number answers how many remain, but it does not explain what happened.
+import EventModelTour from '../../../../components/learn/EventModelTour.astro';
 
-Perhaps a customer ordered one mug. Perhaps one broke. Perhaps a stock count found that the original number was wrong. All three situations can produce the same change from three to two. They have different consequences: an order creates work for dispatch, breakage is a stock loss, and a counting correction should not become a sale.
+The shop's questions determine what the application needs to remember. Consider an accepted order: the shop starts with three mugs, and accepting an order for one commits that mug to the customer. Two remain available.
 
-## A value, a snapshot, and a fact
+<EventModelTour kind="story" />
 
-An application can replace its stored stock value with two. To explain the change later, it must retain additional information somewhere else.
+The stock number gives the next customer a useful answer. **It does not explain why that answer changed.** A broken mug would also reduce stock from three to two, but it would not give the shop an order to prepare.
 
-Keeping successive snapshots preserves more: stock was three, then two. Comparing these two snapshots reveals a decrease of one. The numbers alone still cannot distinguish an order from a broken mug. A snapshot that also contains an order record retains more meaning because that meaning was explicitly modeled. Saving versions of the stock value alone cannot supply it.
+## Record what happened
 
-An event records the business fact. `OrderPlaced` says that an order was accepted, with its product and quantity. A different kind of fact would describe breakage or a corrected count. The meaning is recorded when the change happens, rather than guessed later from the difference between two values.
+Saving only the latest stock value loses that distinction. NeoHaskell records the business fact that caused the change: an order was placed for one ceramic mug. This recorded fact is an **event**.
+
+The event's name carries meaning. `OrderPlaced` tells the application that the shop accepted an order. Breakage needs a different event because it represents different work, even when the effect on available stock is identical.
 
 | Information retained | What it establishes |
 | --- | --- |
@@ -28,22 +30,26 @@ An event records the business fact. `OrderPlaced` says that an order was accepte
 | Stock snapshots: 3, then 2 | Stock decreased by one. |
 | Order placed: 1 ceramic mug | An order was accepted; the shop has an order to prepare. |
 
-This does not mean an ordinary database cannot preserve history. It can store events, audit records, and snapshots. The difference is which records the application treats as authoritative and whether they retain the business meaning needed later.
+Keeping versions of the stock value preserves the difference between two numbers. **Recording events preserves the business meaning of the change.** The developer chooses that meaning explicitly instead of leaving someone to reconstruct it later.
 
-## Derive the present from the history
+## Calculate the present from the past
 
-NeoHaskell treats recorded business events as the source of truth for application state. The current state is derived from those events. This approach is called **Event Sourcing**. In this small example, the agreed opening stock is three. Applying the accepted order for one produces a current stock of two.
+In NeoHaskell, **events are the source of truth for application state**. Starting with the shop's opening stock of three, applying the accepted order for one produces the current stock of two. Deriving state from recorded events is called **Event Sourcing**.
 
-A later cancellation can record another event and return the mug to available stock. The order event stays in the history. The application can distinguish an order that was cancelled from an order that never existed.
+Suppose the customer then cancels before dispatch, and the shop returns the mug to available stock. The application records `OrderCancelled`, bringing availability back to three. It keeps the original order event as well. An order that was cancelled is a different history from an order that never existed.
 
-This also separates the facts from a particular calculation. If a stock calculation contains a bug, correcting that calculation and applying the retained history again can rebuild the derived state. Replaying an order does not mean placing it again, charging a customer again, or undoing an external payment.
+Corrections follow the same principle: record the correction and apply its effect. Changing the present does not require rewriting the account of how it happened.
 
-NeoHaskell also uses snapshots to avoid recalculating a whole history each time. They save a derived state at a known point, allowing later events to be applied from there. Snapshots and business events serve different purposes and can be used together.
+This history also makes calculations repairable. If a stock calculation contains a bug, fixing it and applying the history again rebuilds the derived state. **Replay recalculates state**; it does not place the order or charge the customer again.
 
-## Remember enough to answer later
+## A snapshot saves a calculation
 
-History only contains what was recorded. An event with a product and quantity cannot explain who approved an exception unless that information was also retained. Event design therefore returns to business questions: which facts will staff need when investigating an order or explaining a decision?
+Recalculating from the first event on every operation would repeat work. NeoHaskell uses **snapshots** to save derived state at a known point in the history, then applies later events from there.
 
-Keeping history also creates work. Old event shapes must remain understandable, and a corrected interpretation must be checked against existing records. Retention and privacy policies decide which records and protected values remain available. The benefit is a retained account of business changes, with enough information to calculate useful answers again.
+A snapshot answers what the state was at that point. Events explain the business changes that led to it. Saving more versions of a stock number cannot recover a reason that was never recorded.
 
-Before a fact can enter that history, the application must decide whether the proposed change is allowed. Continue to [Protect changes and answer questions](/learn/).
+## Keep the facts future questions need
+
+With order and cancellation events, the shop can distinguish sales from cancellations even when both leave the same final stock as no activity at all. It can investigate an order or build a new report from those recorded facts.
+
+That makes event design part of understanding the business. If staff need to know who approved an exception, the event must retain that information. **The useful question is what someone will need to explain later.** Its answer determines what the application remembers today.

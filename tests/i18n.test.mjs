@@ -71,11 +71,11 @@ test('validation rejects changed code, links, identifiers, markup and incomplete
 
 test('translated headings retain English anchors and internal links stay localized', async () => {
   const source = await readFile(join(project, 'src/content/docs/learn/index.mdx'), 'utf8');
-  const { tree } = markdown(source.replace('## Put the decision before the fact', '## Eventos') + '\n[Setup](/getting-started/)\n\n[Event anchor](#events)\n\n[Download](/sample.pdf)\n\n<a href="/logo.svg">Logo</a>\n');
+  const { tree } = markdown(source.replace('## Ask for a change with a command', '## Eventos') + '\n[Setup](/getting-started/)\n\n[Event anchor](#events)\n\n[Download](/sample.pdf)\n\n<a href="/logo.svg">Logo</a>\n');
   await remarkLocales()(tree, { path: join(project, 'src/content/docs/es/learn/index.mdx') });
   const ids = [], links = [];
   walk(tree, (node) => { if (node.type === 'heading') ids.push(node.data.hProperties.id); if (node.type === 'link') links.push(node.url); });
-  assert.ok(ids.includes('put-the-decision-before-the-fact'));
+  assert.ok(ids.includes('ask-for-a-change-with-a-command'));
   assert.ok(links.includes('/es/getting-started/'));
   assert.ok(links.includes('#events'));
   assert.ok(links.includes('/sample.pdf'));

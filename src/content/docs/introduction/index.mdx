@@ -1,6 +1,6 @@
 ---
 title: The work behind the code
-description: How developer judgment, shared conventions, and AI fit together when building software.
+description: Why developer judgment matters more with AI, and why NeoHaskell puts a whole application within one person's reach.
 sidebar:
   label: The work behind the code
 tableOfContents:
@@ -10,35 +10,41 @@ prev: false
 next: true
 ---
 
-import EventModelTour from '../../../components/learn/EventModelTour.astro';
+**A developer's value has never been memorizing APIs or getting syntax right.** It lies in understanding a problem well enough to build something that solves it. That means asking questions, finding contradictions, and pursuing the uncomfortable details that change what the software must do.
 
-A developer's work begins with understanding what people need to accomplish and which promises a business makes. Knowledge of APIs and syntax helps turn that understanding into software. The harder contribution is often asking the uncomfortable question: what happens when the business cannot keep a promise, who may make an exception, and which part of the process nobody has agreed on yet?
+AI makes writing an implementation easier. It makes that judgment more valuable. An agent can produce a checkout screen from a short description; deciding what the shop promises when someone presses its button takes an understanding of the business.
 
-AI can generate an implementation, suggest alternatives, and help explore unfamiliar code. It cannot resolve a disagreement about how the business should work merely by producing a program that builds. The developer still has to map the process, recognize missing decisions, and judge whether the result solves the intended problem.
+NeoHaskell is built around this view of development. **One person should be able to understand and build a whole application**, with tools that support their judgment and make the work enjoyable. That is why the language includes the tools for building an application, and why AI belongs at the center of its design.
 
-NeoHaskell is an AI-first language and framework built around that responsibility. Its aim is to make developing software enjoyable: understanding a difficult process, expressing it clearly, and seeing it work as intended. Its conventions and tools shorten the distance between those business decisions and their implementation. The same structure supports reviewing a change, tracing an unexpected result, and deciding what should happen next, whether the code is written with an agent or by hand.
+## The questions that change the software
 
-## A shop with three mugs
-
-A shop owner asks for online orders. The shop has three ceramic mugs available. Before choosing a database or generating a checkout screen, several questions affect the design:
+Consider a shop owner asking for online orders. Three ceramic mugs remain on the shelf. The request sounds simple until a developer starts asking what buying one actually means:
 
 - Does adding a mug to a basket make it unavailable to other customers?
 - Does the shop promise the mug when it accepts the order or when payment arrives?
 - If an order is cancelled, when does its mug become available again?
 - What should happen when a customer orders more mugs than remain?
 
-For this first example, accepting an order immediately uses the requested stock. The quantity must be positive, and enough stock must be available. The shop starts with no orders. Accepting an order for one mug leaves two available.
+These questions reach beyond a checkout screen. They connect the customer's expectations to the work of the person packing orders and the owner handling refunds. Those people may use the same word, "order," for different moments in the process.
 
-<EventModelTour kind="story" />
+**Discovering and resolving that disagreement is software development.** The answer determines what the application must remember, what it must prevent, and what it must tell each person. Writing code before asking the question simply hides an unspoken business decision inside an implementation.
 
-These are choices for this shop, not universal rules of online commerce.
+This is demanding work. It requires listening, challenging assumptions, and following a process through its exceptions. An agent makes it easier to act on that understanding. The understanding is what gives the resulting software its value.
 
-## Why NeoHaskell makes technical choices
+## A language that takes on the assembly work
 
-NeoHaskell makes several recurring architecture choices in advance. It keeps a history of business changes, separates the decision to accept a change from work with external systems, and provides a common structure for changing and reading application state. The starting point is the shop's behavior; the framework supplies the path for recording its accepted changes and keeping its answers up to date.
+That judgment deserves attention. Spending it repeatedly choosing how to store changes, connect libraries, and organize each new feature leaves less for the application itself.
 
-A team can build the same approach with another language and selected libraries. It must then choose and maintain the conventions that join those parts. NeoHaskell makes those choices part of the framework, so a developer or agent does not have to invent a new arrangement for each feature.
+NeoHaskell makes those recurring technical choices. It provides a common path for checking a proposed change, recording what happened, and updating the answers shown on screens. The developer defines the shop's policy; NeoHaskell supplies the machinery that applies it.
 
-For example, adding a second interface should reuse the shop's stock policy. The framework already gives that policy a place shared by its interfaces. A developer or agent can concentrate on the condition to check and its expected result. Storage configuration, permissions, and the business policy still need deliberate choices; the conventions reduce the surrounding assembly work.
+For example, a stock policy should have one implementation even when orders arrive through a website and an AI tool. NeoHaskell gives those interfaces a shared path through the same business decision. Adding an interface does not mean inventing another place to enforce the policy.
 
-The first of those choices concerns what the application remembers. Continue to [Keep the facts](/introduction/history/).
+**We build these capabilities into the language because one person should not have to become a specialist in every layer to build a useful application.** Shared conventions also give an agent a structure to work within and give the developer a structure in which to review its changes.
+
+## Enjoy building something that makes sense
+
+NeoHaskell treats developer happiness as a design priority. There is pleasure in untangling a difficult process, expressing it clearly, and seeing the application do what was intended. The tools should leave more room for that work.
+
+To keep business understanding close to implementation, NeoHaskell uses a method called **Event Modeling**. It connects what people want to do, what actually happens, and what they need to see afterward. Those same concepts organize the application, so the reasoning agreed with the shop owner has a recognizable place in the code.
+
+Whether an agent writes the implementation or a developer writes it by hand, the basis for judging the result stays concrete: the customer's request, the shop's promise, and the behavior they agreed on. That is what makes a generated change something a developer can understand and take responsibility for.

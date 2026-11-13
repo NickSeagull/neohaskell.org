@@ -8,7 +8,7 @@ Finish each task with the applicable checks and a local commit in English. Durin
 
 # Copy and auxiliary text
 
-Write primary content, necessary labels, and direct actions. An introductory lesson can begin with developer motivation when it explains concrete work, judgment, or tradeoffs. Build a reason for each concept before naming it. Remove generic motivational slogans instead of replacing them with new taglines. Follow `$nick-plain-copy` for this editorial rule. Keep substantive explanations in the main prose and place source links inline where they support a claim.
+Write primary content, necessary labels, and direct actions. Preserve NeoHaskell's opinionated voice and approved developer-centered philosophy through `$neohaskell-positioning`; generic restraint against marketing must not dilute those convictions. Follow `$nick-plain-copy` for substantive prose and endings without duplicated navigation. Keep substantive explanations in the main prose and place source links inline where they support a claim.
 
 Do not add footnotes, caption bars, widget identity labels, language badges, or explanatory rows around examples and actions. Remove redundant reassurance beneath buttons and text that merely describes the component beside it. Use standard visual affordances for scrolling instead of instruction sentences. Keep accessible control names and meaningful domain labels.
 
@@ -33,13 +33,13 @@ When the user asks to compare this site with a reference, requests a design crit
 
 # Product positioning
 
-For NeoHaskell homepage work, product explanations, metadata, or capability evidence, load `$neohaskell-positioning`. It owns the approved benefits-first pitch for NeoHaskell as an AI-first language and framework, including the accepted homepage direction. If discovery has not refreshed, read `${CODEX_HOME:-$HOME/.codex}/skills/neohaskell-positioning/SKILL.md`; use `PRODUCT.md` for repository-specific facts and `GLOSSARY.md` for terminology.
+For NeoHaskell homepage work, product explanations, metadata, or capability evidence, load `$neohaskell-positioning`. It owns the approved benefits-first pitch for NeoHaskell as an AI-first programming language, including the accepted homepage direction. If discovery has not refreshed, read `${CODEX_HOME:-$HOME/.codex}/skills/neohaskell-positioning/SKILL.md`; use `PRODUCT.md` for repository-specific facts and `GLOSSARY.md` for terminology.
 
 # Documentation direction
 
 For NeoHaskell documentation pages, examples, navigation, or styling, load `$neohaskell-docs`. For a rejected direction, corrected feedback scope, conflicting constraints, or ambiguous design reference, load `$design-feedback`. Both use the existing repository records; later explicit user direction can supersede the baseline within its stated scope. If discovery has not refreshed, read `${CODEX_HOME:-$HOME/.codex}/skills/<skill-name>/SKILL.md`.
 
-For conceptual lessons, load `$neohaskell-progressive-explanations`. New or substantially rewritten arguments require its fresh adversarial reader review, checking the causal progression and concrete value relative to other development approaches. Combine that review with the teaching-example review when both apply.
+For conceptual lessons, load `$neohaskell-progressive-explanations`. It owns page purpose, editorial conviction, connected examples, and the fresh adversarial reader review required for new or substantially rewritten arguments. Review the page's intended effect and rendered reading rhythm as well as technical accuracy. Comparisons with other development approaches are an internal test, not mandatory public concessions. Combine that review with the teaching-example review when both apply.
 
 # Diagram colors and terminology
 

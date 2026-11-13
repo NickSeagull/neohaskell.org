@@ -2,6 +2,8 @@
 
 Canonical website and diagram terminology, confirmed by the owner on 2026-11-06 and extended on 2026-11-13. Use these terms in future copy, diagrams, and domain identifiers.
 
+NeoHaskell is an AI-first **language** with integrated application capabilities. Use NeoHaskell or the language for the product; framework names an actual implementation layer when that distinction matters. `PRODUCT.md` owns the approved positioning and the One Person Framework philosophical reference.
+
 | Term | Meaning in the website's explanatory model | Replaces |
 | --- | --- | --- |
 | Command | An intent to change application state, such as placing an order for one mug. | Request |
@@ -18,7 +20,7 @@ Keep the event record distinct from the query result. The history retains the ev
 
 Archived image prompts and prior visual rounds retain their original wording as provenance. This glossary takes precedence for all new and revised work. HTTP requests, browser APIs, and SVG `viewBox` remain ordinary technical terms.
 
-## Framework structure
+## Application structure
 
 | Term | NeoHaskell meaning |
 | --- | --- |

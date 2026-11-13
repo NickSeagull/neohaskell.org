@@ -18,9 +18,9 @@ Prior Haskell expertise is not an established audience requirement. Do not assum
 
 ## Product Purpose
 
-neohaskell.org introduces NeoHaskell as an **AI-first language and framework**. It should help people build applications with AI agents while keeping the intended behavior understandable, changes traceable, and technical checks available. The language's framework and tooling supply a common technical structure.
+neohaskell.org introduces NeoHaskell as an **AI-first language**. It should help people build applications with AI agents while keeping the intended behavior understandable, changes traceable, and technical checks available. The language's framework and tooling supply a common technical structure.
 
-The homepage is a benefits-led sales page for NeoHaskell as an AI-first language and framework. The owner replaced the earlier code-first homepage on 11 November 2026: no source syntax or concept lesson on the homepage. Show the advantages of event history and recovery, pure logic and type checks, convention over configuration, interchangeable HTTP/MCP transports, generated OpenAPI, OAuth provider connections, PostgreSQL and file storage. Motivate visitors to enter documentation, where concepts and syntax belong. The owner explicitly requested final-state product content for a future publication, rather than a release-readiness report. Keep claims concrete without invented benchmarks or universal error-free guarantees.
+The homepage is a benefits-led sales page for NeoHaskell as an AI-first language. The owner replaced the earlier code-first homepage on 11 November 2026: no source syntax or concept lesson on the homepage. Show the advantages of event history and recovery, pure logic and type checks, convention over configuration, interchangeable HTTP/MCP transports, generated OpenAPI, OAuth provider connections, PostgreSQL and file storage. Motivate visitors to enter documentation, where concepts and syntax belong. The owner explicitly requested final-state product content for a future publication, rather than a release-readiness report. Keep claims concrete without invented benchmarks or universal error-free guarantees.
 
 Documentation begins with developer judgment, meaningful business questions, and enjoyment and control while building with AI or by hand. The Start here sequence then explains why business events preserve meaning beyond current values or snapshots, why changes pass through commands and decisions, how queries supply answers, and how Event Modeling connects those parts. Installation and the first project have their own navigation group. The owner requested this progression on 13 November 2026, superseding the previous immediate jump into a shop example. Substantive motivation is required; generic slogans remain excluded. The example is a small online shop and requires no installation or prior Haskell knowledge.
 
@@ -28,15 +28,20 @@ Documentation follows conventional guide pages inspired by Stripe Docs: topic na
 
 ## Positioning
 
+The owner's latest correction on 13 November 2026 establishes **language** as NeoHaskell's primary identity, as with Elm. Refer to the product as NeoHaskell or the language. It includes framework capabilities, but framework is not the product category or shorthand for its name. This supersedes the earlier language-and-framework pitch. The named One Person Framework reference remains a philosophy, not NeoHaskell's category. Preserve exact API names and technical references to actual framework components.
+
+The owner confirmed on 13 November 2026 that the One Person Framework philosophy expresses NeoHaskell's purpose: one developer should be able to understand and build a whole application, using integrated conventions and AI assistance while retaining judgment, control, and enjoyment. This is an editorial conviction and design priority, not a staffing requirement or a claim that every application is a solo project. Developer value lies in understanding processes, asking difficult questions, and deciding what the software should do. The documentation should express that position firmly and explain the language's integrated choices that support it. Rails' [doctrine](https://rubyonrails.org/doctrine) and DHH's [The One Person Framework](https://world.hey.com/dhh/the-one-person-framework-711e6318) are philosophical references, not sources for NeoHaskell capability claims.
+
+
 The owner confirmed on 2026-11-10: “I do not want to sell NeoHaskell as a dialect of Haskell, but rather to be an AI-first language.” This supersedes Haskell-first product framing. The reusable principles live in `$neohaskell-positioning`, referenced by `AGENTS.md`.
 
 Lead with building applications with an AI agent and understanding the result. Explain the supporting mechanisms: explicit application behavior, pure decision logic, recorded history, bounded changes, and checks against intended behavior. Haskell remains accurate technical context where relevant, rather than the opening identity or implied prerequisite.
 
-Ease of use, fast application development, and preventing accidental technical errors are the owner-confirmed product priorities. Explain those priorities through the language and framework's mechanisms. Any absolute guarantee of error-free software or quantified productivity improvement requires separate evidence.
+Ease of use, fast application development, and preventing accidental technical errors are the owner-confirmed product priorities. Explain those priorities through the language's integrated capabilities. Any absolute guarantee of error-free software or quantified productivity improvement requires separate evidence.
 
 ## Operating Context
 
-Users work with AI agents to create applications. NeoHaskell is intended to let them concentrate on what an application should do while the language and framework supply technical structure. Event Modeling is central to expressing that behavior; event sourcing supplies its recorded history.
+Users work with AI agents to create applications. NeoHaskell is intended to let them concentrate on what an application should do while the language and its tools supply technical structure. Event Modeling is central to expressing that behavior; event sourcing supplies its recorded history.
 
 Use **commands, decisions, events, and queries** to explain application behavior, following [GLOSSARY.md](GLOSSARY.md). The owner confirmed this vocabulary on 2026-11-06: command replaces request, decision replaces rule, and query replaces view. The selected Event ledger diagram keeps recorded events separate from query results.
 
@@ -44,7 +49,7 @@ The existing public site offers paths to the GitHub organization and Discord com
 
 ## Capabilities and Constraints
 
-- Introduce NeoHaskell as an AI-first language and framework, with integrated capabilities and a shared structure for humans and agents.
+- Introduce NeoHaskell as an AI-first language, with integrated capabilities and a shared structure for humans and agents.
 - Treat pure application logic and preselected technical decisions as central to the product's intended ease of use.
 - The homepage may present the owner-authorized final product direction for future publication. Keep current source evidence and final-state intent distinct in this internal record; no release-readiness caveats are required in the sales copy.
 - The current site distinguishes technical checks from determining whether application behavior matches the business's intent. Preserve that distinction when explaining error prevention.

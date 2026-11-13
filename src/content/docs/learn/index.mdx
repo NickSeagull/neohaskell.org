@@ -1,6 +1,6 @@
 ---
 title: Protect changes and answer questions
-description: Why NeoHaskell accepts changes through commands and exposes maintained answers through queries.
+description: Use commands to request changes, decisions to protect business promises, and queries to give each screen the answers it needs.
 sidebar:
   label: Commands and queries
 tableOfContents:
@@ -12,11 +12,13 @@ next: true
 
 import EventModelTour from '../../../components/learn/EventModelTour.astro';
 
-A customer asking for four mugs has not created an order for four mugs. With only three available, the shop must refuse that request without consuming stock or recording an accepted order.
+Events record facts the application has accepted. That makes the boundary around them important: a customer cannot declare that the shop accepted an order simply by sending an `OrderPlaced` event.
 
-## Put the decision before the fact
+Consider a customer asking for four mugs when only three remain. **Asking for an order and having an accepted order are different things.** The application needs a way to hear the request, check it, and refuse it without consuming stock.
 
-The application therefore exposes a way to ask for an action, rather than letting a caller declare that the action already happened. A **command** carries that request. This plain-text example shows the information in `PlaceOrder`:
+## Ask for a change with a command
+
+A **command** expresses an intention to change the application. `PlaceOrder` carries the information needed to request an order. For one mug, that information looks like this:
 
 ```text
 PlaceOrder
@@ -24,30 +26,34 @@ PlaceOrder
   quantity: 1
 ```
 
-A **decision** evaluates the command against the relevant current state and the shop's conditions. The event history belongs behind this boundary: a customer can request an order, but cannot make the shop accept it simply by submitting an `OrderPlaced` fact.
-
-For this example, the quantity must be positive and enough stock must remain. An order for one passes when three are available. An order for four fails.
+A **decision** evaluates that command against the current state and the shop's policy. The quantity must be positive, and enough mugs must be available. With three in stock, an order for one passes and an order for four fails.
 
 <EventModelTour kind="decision" />
 
-If accepted, the application records `OrderPlaced`. If rejected, it records no `OrderPlaced` event and leaves stock unchanged. Naming the intention and the fact separately prevents a submitted form from being mistaken for a promise the shop has accepted.
+Acceptance records `OrderPlaced`. Rejection leaves stock unchanged and records no `OrderPlaced` event. **The command carries the intention; the event records the accepted fact.**
 
-Validation can be written in any language. NeoHaskell supplies the execution path around it: obtain the relevant state, evaluate the decision, and append the accepted events. The decision API separates business logic from external actions such as sending an email or charging a payment. Those actions belong in **integrations**. The stock decision can be tested with a command and state without contacting a payment service.
+NeoHaskell supplies the execution path: obtain the relevant state, evaluate the decision, and append the accepted events. The developer writes the conditions that express the shop's promise. A website and an AI tool can submit the same command and use that same decision.
 
-The same behavior can then serve different interfaces. A website and an application command line can submit the same command instead of each implementing their own stock policy. An agent helps write that policy; it does not decide at runtime whether the customer deserves a mug.
+## Keep external work out of the decision
 
-## Give questions their own answers
+Accepting an order may also require sending a confirmation email. That work has a different failure mode: the shop can have accepted the order even while its email provider is unavailable.
 
-The customer needs order confirmation. The next shopper needs available stock. Staff may need the number of accepted orders.
+NeoHaskell separates business decisions from these external actions. **Integrations** connect application behavior to external work. An outbound integration can react to `OrderPlaced` and send the confirmation. An inbound integration can introduce a command from an external source.
 
-A **query** maintains useful state derived from the application and exposes an answer to a caller. In the example, the accepted order reduces the stock answer from three to two and increases the order count from zero to one.
+This separation gives the stock policy a focused test: supply a command and current state, then check whether the decision accepts or rejects it. No email provider or payment service is needed to find out whether four mugs can be ordered from a stock of three.
+
+## Give each screen the answer it needs
+
+Once the order is accepted, different people need different answers. The next shopper needs available stock. The customer needs confirmation. Staff need to know how many orders await their attention.
+
+A **query** maintains useful information derived from application state and exposes an answer to a caller. For the shop that started with three mugs and no orders, accepting an order for one produces these answers:
 
 <EventModelTour kind="queries" />
 
-Reading the answer does not place or cancel an order. The application does not need to scan the complete history for every page visit. Query state can be updated as changes arrive, so the stock question reads the maintained stock answer. The event remains the recorded fact; the query's state is a way of using those facts.
+Reading the stock answer does not place another order. It also does not require scanning the complete event history for each page visit: NeoHaskell updates query state as changes arrive, and the screen reads that maintained answer.
 
-Separating these responsibilities means a staff report can have a different shape from the customer's stock display, while both use the same recorded business facts. A new report can be built from retained history if that history contains the information it needs. A query that is still catching up may return an older answer, so the application must account for that in the screen it shows.
+**The same facts can support different questions.** A customer display and a staff report can have different shapes without needing competing accounts of what happened. A new report can use the retained history to calculate another answer.
 
-Separating the handling of changes from the handling of questions is called **CQRS**. Event Sourcing concerns the history used to derive state; CQRS concerns these different responsibilities.
+A displayed answer can lag behind a new change. That is why the stock shown on a screen is not permission to place an order: the command's decision checks the relevant state when the request arrives.
 
-Commands, decisions, events, and queries explain the parts. The next page connects them to the work people do: [Connect the whole process](/introduction/event-modeling/).
+Separating changes from questions is called **CQRS**. Commands and decisions control what may happen; queries organize what people need to know. Event Sourcing supplies the history from which the application derives its state.

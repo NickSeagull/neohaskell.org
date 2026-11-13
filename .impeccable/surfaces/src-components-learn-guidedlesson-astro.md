@@ -78,7 +78,7 @@ related_targets:
 
 Mode: Read. This stable filename targets current MDX documentation, not the retired widget. The [learning experience brief](../questions/learning-experience-brief.md) owns the current sequence, navigation, evidence, translation pause, and local delivery preference.
 
-THESIS: Begin with developer judgment and the pleasure of understanding and building software. Establish why each mechanism is useful before naming it, then connect the parts in a shared model of business behavior.
+THESIS: Developer value lies in understanding and judgment. NeoHaskell is a language whose integrated capabilities help one person understand and build the whole application. Each page serves its own purpose; examples connect to that argument before mechanisms are introduced.
 
 OWN-WORLD: Native documentation navigation, continuous articles, quiet separators, and readable inline examples. Preserve the original logo, Manrope, violet/cyan identity, and ordinary scrolling.
 
@@ -86,8 +86,8 @@ STORY: The work behind the code; Events and history; Commands and queries; Model
 
 FIRST VIEWPORT: Native header, topic navigation, title, substantive motivation, and an on-page outline. Six top-level sections contain 64 destinations. All 16 disclosures begin expanded. Setup is a separate group. The sidebar remains 18rem wide, with wrapping labels and native phone navigation.
 
-FORM: 18px reading text and at least 16px essential example text. Five existing static diagrams are distributed across the four-page sequence; a compact table distinguishes a current value, snapshots, and business facts. Commands are blue, events orange, queries cyan-leaning green, and integrations neutral. The connected Event Model preserves readable phone geometry through native horizontal scrolling. No teaching console, decorative captions, or scroll-linked state.
+FORM: 18px reading text and at least 16px essential example text. Semantic bold and paragraphs with one main argumentative job support scanning. Five existing static diagrams are distributed across the history, commands, and modeling pages; a compact table distinguishes a current value, snapshots, and business facts. Commands are blue, events orange, queries cyan-leaning green, and integrations neutral. The connected Event Model preserves readable phone geometry through native horizontal scrolling. No teaching console, decorative captions, or scroll-linked state.
 
 FLOW: The four design pages lead into the six-step setup reading sequence ending at agent setup; setup troubleshooting is an independent destination. The shop tutorial has seven pages. Other destinations have no unrelated pagination. All existing URLs remain valid. Locale routes use English fallback while translations are paused.
 
-EVIDENCE: The source and editorial investigations are in `.impeccable/reviews/progressive-intro-2026-11-13/`. Complete the new progressive-explanations adversarial review together with the rendered teaching review. Technical checks, review verdicts, and owner acceptance remain separate.
+EVIDENCE: Source evidence remains in `.impeccable/reviews/progressive-intro-2026-11-13/`; current editorial and rendered evidence is in `.impeccable/reviews/editorial-intro-2026-11-13/`. Review purpose, conviction, continuity, reading rhythm, factual accuracy, and substantive endings with the updated progressive-explanations skill. Technical checks, review verdicts, and owner acceptance remain separate.

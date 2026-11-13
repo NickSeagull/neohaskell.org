@@ -1,6 +1,6 @@
 ---
 title: Connect the whole process
-description: Connect screens, commands, events, and queries in an Event Model and use it to review application changes.
+description: Use an Event Model to agree on business behavior, locate changes, and keep a growing application understandable.
 sidebar:
   label: Model the whole process
 tableOfContents:
@@ -13,42 +13,49 @@ next: true
 import GrowthComparison from '../../../../components/learn/GrowthComparison.astro';
 import ShopEventModel from '../../../../components/learn/ShopEventModel.astro';
 
-An accepted order connects several things: a customer sees available stock, submits an intention, receives confirmation, and changes what the next customer can order. Describing each part separately can leave gaps between them.
+The shop now has a way to request changes, record accepted facts, and answer questions. To design the application, those parts need to describe a complete experience: a customer sees stock, orders a mug, and finds out whether the shop accepted the order.
 
-**Event Modeling** lays out the process as connected screens, commands, events, and queries. It helps people examine where information originates, what changes it, and where it is needed next. It is a design method, distinct from Event Sourcing's choice of history and CQRS's separation of changes and questions.
+**Event Modeling connects the parts into a process people can examine together.** It puts screens, commands, events, and queries in one model, showing where information comes from and where it is needed. A missing connection becomes a question to resolve with the people running the business.
 
 ## Follow an order and a cancellation
 
-Extend the shop with one policy: cancelling an order before dispatch returns its mug to available stock. The customer first orders one mug, then cancels that order.
+Consider the next request from the shop owner: customers should be able to cancel before dispatch, returning their mugs to available stock. Start with a first sketch of that journey, from ordering one mug to cancelling it.
 
 <ShopEventModel />
 
-The order command leads to an accepted order event. The stock query then answers two. The order screen supplies the identity needed to request cancellation. After an accepted cancellation, another event records that fact and the stock answer returns to three. Both events remain in the history.
+The order command leads to an accepted order event. The stock query then answers two. Cancellation needs the identity of the order; the stock answer alone does not supply it. After acceptance, an event records the cancellation and the stock answer returns to three.
 
-Following the connections exposes questions that a list of features might hide. Where does the cancellation command obtain the order identity? Which condition prevents cancellation after dispatch? Which query supplies the confirmation that cancellation succeeded?
+This is where drawing the connections earns its place in the work. "Add cancellation" sounded like a button. The model asks for the rest of the behavior:
 
-These questions can be discussed with the people running the shop before their answers become code. Staff may expect cancellation to restore stock while the current system only changes an order status.
+- Where does the cancellation command get the order identity?
+- What prevents cancellation after dispatch?
+- Which answer tells the customer that cancellation succeeded?
+- What tells staff to stop preparing that order?
 
-## Keep a change understandable
+**Each unanswered question is a piece of the application that has not been designed yet.** The owner and the developer can resolve it while looking at the same process, before an agent or a person turns an assumption into code.
 
-Adding cancellation does not require inventing a new way to describe behavior. It needs an intention, acceptance conditions, a recorded outcome, and answers that reflect the change. This repeated structure gives a developer or agent a specific set of things to implement and check.
+## Give a change a clear boundary
 
-## How change effort grows
+Cancellation has a recognizable set of responsibilities: request the action, check whether it is allowed, record the outcome, and update the answers people use. That gives the developer concrete behavior to implement and cases to test.
 
-In the comparison below, A through G represent added behaviors. Each R represents rework in earlier behavior caused by hidden dependencies. The second plot keeps shared contracts visible as new behaviors are added.
+It also exposes the shared agreement with dispatch. Once an order has been dispatched, cancellation must be refused. Placing those behaviors in the same model makes the dependency visible instead of leaving two features to define "cancelled" independently.
+
+## Keep growth close to linear
+
+Hidden dependencies make an application progressively harder to change. A new behavior requires adjustments to older behaviors, and those adjustments uncover more assumptions. The work grows beyond the feature being added.
+
+**Event Modeling aims to keep added behavior a bounded piece of work.** When its inputs, outcomes, and shared contracts are visible, the team can identify what needs to change and what needs testing. Similar additions can then take similar effort, so total effort grows roughly with the number of behaviors.
+
+In the comparison, A through G represent added behaviors. Each R is rework in an earlier behavior. The second plot shows the intended growth pattern when slices and their shared contracts remain visible.
 
 <GrowthComparison />
 
-If new behaviors take roughly similar effort, total effort grows roughly in proportion to their number. Reusing the same structure and keeping dependencies visible supports that aim. The graph compares this aim with repeated changes to earlier behavior; it shows a conceptual comparison, not measured costs.
+Cancellation and dispatch show what that requires in practice. Their shared order status must agree, so a change to dispatch needs a check against cancellation. Drawing that connection gives the team a specific dependency to manage. The curves illustrate these two ways of accumulating work; they are not benchmark measurements.
 
-Some changes still cross boundaries. Cancellation and dispatch must agree on which order states permit each action. Making that dependency visible identifies the behavior and tests that need review. It does not make every new feature equally cheap or eliminate coordination.
+## Use the model to understand the code
 
-## Keep the model connected to the application
+NeoHaskell carries these concepts into typed application declarations. Its visual IDE reads the source model and displays the relationships between behaviors. **The model remains useful after the application has been built.** It helps locate a behavior in an unfamiliar project and examine what an agent has changed.
 
-NeoHaskell carries these concepts into typed application declarations. Its visual IDE reads the source model and displays the relationships between behaviors. When investigating an existing application or reviewing an agent's change, this provides a place to locate the relevant command, its recorded outcome, and the queries that depend on it.
+For a cancellation change, that means finding the command, the decision that prevents cancellation after dispatch, the recorded outcome, and the queries that should reflect it. The model guides inspection; tests check the concrete cases: cancellation before dispatch restores stock, and cancellation after dispatch is refused.
 
-The connections point to concrete review questions. If a new cancellation restores stock, does the stock answer change as expected? If cancellation is forbidden after dispatch, does the decision reject that case? The diagram helps locate the behavior; decisions and tests check it. The people running the shop still decide whether that policy is the right one.
-
-The design now contains a concrete accepted case and a rejected case: ordering one mug from three leaves two; ordering when none remain is refused and leaves zero. Those examples provide observable results for the first implementation, whether written by hand or with an agent.
-
-Continue to [Install NeoHaskell](/getting-started/installation/) to prepare the development environment. The first-project pages are still being written; [Resources](/resources/#start-building) links to the available setup instructions.
+The developer can discuss the policy with the shop owner, locate its implementation, and judge a generated change using the same business concepts. That connection is how NeoHaskell keeps a whole application within one person's understanding as its implementation grows.
