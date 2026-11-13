@@ -1,3 +1,5 @@
+@import './diagram-colors.css';
+
 @font-face { font-family: Sansation; src: url('/fonts/sansation.woff2') format('woff2'); font-weight: 400; font-display: swap; }
 @font-face { font-family: Manrope; src: url('/fonts/manrope.woff2') format('woff2'); font-weight: 400 800; font-display: swap; }
 @font-face { font-family: Pixelify; src: url('/fonts/pixelify-sans.woff2') format('woff2'); font-weight: 400; font-display: swap; }
@@ -13,8 +15,6 @@
   --hover: #2c173c;
   --field: #301244;
   --scene: #250c37;
-  --record: #7816a9;
-  --record-ink: #fff;
   --rule: color-mix(in srgb, var(--line) 48%, transparent);
   --action-face: var(--ink);
   --action-ink: var(--ground);
@@ -96,10 +96,10 @@ h1 { font-size: clamp(56px, 5.55vw, 80px); line-height: 1.06; hyphens: none; }
 .app-rule > svg { color: var(--violet); }
 .app-records { margin-top: 20px; color: var(--muted); font-size: 16px; }
 .record-slips { display: grid; gap: 8px; margin-top: 12px; }
-.record-slips > div { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 40px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 4px; margin-right: 24px; background: var(--scene); color: var(--muted); font-size: 16px; }
+.record-slips > div { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 40px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 4px; margin-right: 24px; background: var(--diagram-surface); color: var(--diagram-ink); border-color: var(--diagram-line); font-size: 16px; }
 .record-slips > div:nth-child(2) { margin-left: 12px; margin-right: 12px; }
-.record-slips > div:last-child { margin-left: 24px; margin-right: 0; background: var(--record); border-color: var(--record); color: #fff; }
-.record-slips .feature-icon { width: 20px; height: 20px; color: #7df9ff; }
+.record-slips > div:last-child { margin-left: 24px; margin-right: 0; background: var(--diagram-ink); border-color: var(--diagram-ink); color: var(--diagram-surface); }
+.record-slips .feature-icon { width: 20px; height: 20px; color: inherit; }
 .app-outlets { display: grid; grid-template-columns: repeat(3, 1fr); height: 56px; padding-inline: 8px; }
 .app-outlets i { width: 1px; background: var(--line); justify-self: center; }
 .app-services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
@@ -114,17 +114,17 @@ h1 { font-size: clamp(56px, 5.55vw, 80px); line-height: 1.06; hyphens: none; }
 .history-scene { width: 100%; }
 .history-ledger { position: relative; display: grid; gap: 16px; }
 .history-ledger::before { content: ''; position: absolute; left: 23px; top: 32px; bottom: 32px; width: 1px; background: var(--line); }
-.history-entry { position: relative; display: grid; grid-template-columns: 16px 1fr auto; align-items: center; gap: 16px; min-height: 72px; padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--field); font-size: 18px; }
-.history-point { width: 12px; height: 12px; border: 1px solid var(--muted); border-radius: 50%; background: var(--field); }
+.history-entry { position: relative; display: grid; grid-template-columns: 16px 1fr auto; align-items: center; gap: 16px; min-height: 72px; padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--diagram-surface); border-color: var(--diagram-line); color: var(--diagram-ink); font-size: 18px; }
+.history-point { width: 12px; height: 12px; border: 1px solid var(--diagram-line); border-radius: 50%; background: var(--diagram-surface); }
 .history-amount { font-size: 20px; font-variant-numeric: tabular-nums; }
-.history-correction { background: var(--record); border-color: var(--record); color: #fff; }
-.history-correction .history-point { background: #7df9ff; border-color: #7df9ff; }
-.history-correction .history-amount { color: #7df9ff; }
+.history-correction { background: var(--diagram-ink); border-color: var(--diagram-ink); color: var(--diagram-surface); }
+.history-correction .history-point { background: var(--diagram-surface); border-color: var(--diagram-surface); }
+.history-correction .history-amount { color: inherit; }
 .history-result { position: relative; display: flex; align-items: center; justify-content: flex-end; gap: 20px; padding: 28px 0 0; margin-left: 24px; border-left: 1px solid var(--line); }
 .history-result::before { content: ''; height: 1px; flex: 1; background: var(--line); }
-.history-result > svg { color: var(--violet); flex-shrink: 0; }
+.history-result > svg { color: var(--diagram-ink); flex-shrink: 0; }
 .history-result > div { display: flex; align-items: baseline; gap: 12px; }
-.history-result strong { font-family: Sansation, sans-serif; font-size: 60px; font-weight: 400; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+.history-result strong { font-family: Sansation, sans-serif; font-size: 60px; font-weight: 400; line-height: 1; color: var(--diagram-ink); font-variant-numeric: tabular-nums; }
 .history-result span { font-size: 16px; color: var(--muted); }
 
 /* The two mechanisms share a frame, but each has its own geometry. */
@@ -146,6 +146,7 @@ h1 { font-size: clamp(56px, 5.55vw, 80px); line-height: 1.06; hyphens: none; }
 .pure-decision > .feature-icon { color: var(--accent); width: 20px; height: 20px; }
 .effect-ports { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-top: 24px; }
 .effect-ports > span { display: flex; justify-content: center; align-items: center; gap: 8px; color: var(--muted); font-size: 16px; }
+.app-services [data-diagram-role], .effect-ports [data-diagram-role] { color: var(--diagram-ink); }
 .effect-ports .feature-icon { width: 20px; height: 20px; }
 .transport-core { display: flex; align-items: center; justify-content: center; gap: 12px; width: fit-content; max-width: 100%; margin: auto; padding: 16px 32px; background: var(--field); border: 1px solid var(--line); border-radius: 8px; font-size: 18px; }
 .transport-routes { display: block; width: 100%; height: 52px; color: var(--accent); }

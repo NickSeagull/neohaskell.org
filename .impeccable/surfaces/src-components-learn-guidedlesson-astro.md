@@ -4,6 +4,9 @@ slug: src-components-learn-guidedlesson-astro
 primary_target: src/content/docs/introduction/index.mdx
 related_targets:
   - src/components/learn/EventModelTour.astro
+  - src/components/learn/GrowthComparison.astro
+  - src/components/learn/ShopEventModel.astro
+  - src/styles/diagram-colors.css
   - src/content/docs/docs/index.mdx
   - src/content/docs/learn/index.mdx
   - src/content/docs/getting-started/installation/index.mdx
@@ -79,11 +82,11 @@ THESIS: Understand application behavior with the people who know the business, t
 
 OWN-WORLD: Native documentation navigation, continuous articles, quiet separators, and readable inline code. No decorative cards, simulation console, or teaching companion.
 
-STORY: Follow one mug-order story through four diagrams, agree its behavior with business stakeholders, learn the core concepts, check the supplied Counter starter, and then build a shop feature through a decision, query, HTTP interface, tests, and one policy change. Independent guides and reference serve returning readers. Most destinations remain explicit plans.
+STORY: Follow one mug-order story through five diagrams, agree its behavior with business stakeholders, learn the core concepts, check the supplied Counter starter, and then build a shop feature through a decision, query, HTTP interface, tests, and one policy change. Independent guides and reference serve returning readers. Most destinations remain explicit plans.
 
 FIRST VIEWPORT: Header and search, native left topic navigation, article title and main prose, and a right outline when useful. Five top-level sections contain 62 destinations. Start here, tutorial, and concepts are flat. Guides and reference each use five subgroups. All 15 groups are initially expanded, with native manual collapse controls and desktop session restoration. The desktop sidebar is 18rem wide; selected links retain the accepted accent. Phone navigation uses the native Starlight menu and wrapping labels.
 
-FORM: Continuous MDX prose and native scrolling. Preserve 18px prose and 16px essential code and tables. Links and disclosure controls have minimum 36px desktop and 44px phone rows. The map uses native definition lists with existing spacing. Each standalone brief has one Page plan paragraph and no empty outline. The introduction adds four static HTML/SVG diagrams with 16px minimum text: customer experience, command/decision/event, query answers, and bounded behavior slices. The entry label is Design your application. Author mentions and the paper exercise are removed by owner direction. Existing guides preserve their substantive content and examples, with updated planning appendices and the new previous-page link from Core concepts. No snapping, viewport-height sections, persistent widget, or scroll-linked state.
+FORM: Continuous MDX prose and native scrolling. Preserve 18px prose and 16px essential code and tables. Links and disclosure controls have minimum 36px desktop and 44px phone rows. The map uses native definition lists with existing spacing. Each standalone brief has one Page plan paragraph and no empty outline. The introduction has five static HTML/SVG diagrams with 16px minimum text: customer experience, command/decision/event, query answers, a conceptual effort comparison, and a connected Event Model. Promotional opening slogans are removed. Domain colors follow src/styles/diagram-colors.css and vocabulary follows GLOSSARY.md. The Event Model preserves its connections on phones with native horizontal scrolling and keyboard access. The entry label is Design your application. Author mentions and the paper exercise are removed by owner direction. Existing guides preserve their substantive content and examples, with updated planning appendices and the new previous-page link from Core concepts. No snapping, viewport-height sections, persistent widget, or scroll-linked state.
 
 FLOW: An eight-page first-project sequence starts with the introduction; the shop tutorial retains seven pages. Homepage primary documentation links enter the introduction. The Core concepts article still links directly to usable agent setup. Independent pages have no unrelated previous/next links. All previous URLs remain valid. Native language switching preserves destinations; draft content uses English fallback while saved translations remain untouched.
 
@@ -96,3 +99,7 @@ FINISH: The previous navigation and table-introduction verification is under `.i
 ## Earlier evidence
 
 The 9 November accepted guide baseline is recorded in `.impeccable/review/stripe-docs/`. The 12 November 24-page scaffold is recorded in `.impeccable/reviews/docs-research-2026-11-12/`. Those reviews are historical and do not validate the current expanded implementation. The owner correction supersedes their sidebar granularity while retaining the accepted guide format.
+
+## Color, vocabulary, and diagram correction, 13 November 2026
+
+The owner requested two separate growth and Event Model sections using supplied visual references, plus reusable skills for domain colors, terminology, and inline Event Models. These replace the earlier repeated four-stage slice figure. Evidence is in `.impeccable/reviews/diagram-language-2026-11-13/`. Keep changes local until the owner requests publication.

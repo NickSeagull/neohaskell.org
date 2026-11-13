@@ -1,3 +1,5 @@
+@import './diagram-colors.css';
+
 @font-face {
   font-family: Manrope;
   src: url('/fonts/manrope.woff2') format('woff2');

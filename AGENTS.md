@@ -4,11 +4,11 @@ Write file contents, code comments, documentation, Git commit messages, and othe
 
 # Task completion
 
-Finish each task by committing its completed changes and pushing the commit to the current branch's remote. Run the applicable checks first, write the commit message in English, and verify that the push succeeded. If the remote or credentials are missing, preserve the local commit and report the exact blocker.
+Finish each task with the applicable checks and a local commit in English. During the current documentation authoring phase, keep the development preview available and publish only when the owner explicitly requests it. Do not push an iteration when that push would trigger deployment. When publication is requested, push to the current branch's remote and verify the push and deployment. If the remote or credentials are missing, preserve the local commit and report the exact blocker.
 
 # Copy and auxiliary text
 
-Write primary content, necessary labels, and direct actions. Keep substantive explanations in the main prose and place source links inline where they support a claim.
+Write primary content, necessary labels, and direct actions. Documentation starts with its subject or a concrete example. Remove promotional lead paragraphs and generic motivational slogans instead of replacing them with new taglines. Follow `$nick-plain-copy` for this editorial rule. Keep substantive explanations in the main prose and place source links inline where they support a claim.
 
 Do not add footnotes, caption bars, widget identity labels, language badges, or explanatory rows around examples and actions. Remove redundant reassurance beneath buttons and text that merely describes the component beside it. Use standard visual affordances for scrolling instead of instruction sentences. Keep accessible control names and meaningful domain labels.
 
@@ -38,6 +38,10 @@ For NeoHaskell homepage work, product explanations, metadata, or capability evid
 # Documentation direction
 
 For NeoHaskell documentation pages, examples, navigation, or styling, load `$neohaskell-docs`. For a rejected direction, corrected feedback scope, conflicting constraints, or ambiguous design reference, load `$design-feedback`. Both use the existing repository records; later explicit user direction can supersede the baseline within its stated scope. If discovery has not refreshed, read `${CODEX_HOME:-$HOME/.codex}/skills/<skill-name>/SKILL.md`.
+
+# Diagram colors and terminology
+
+For NeoHaskell diagrams, load `$neohaskell-diagram-colors`. For inline Event Models connecting screens and domain nodes, load `$neohaskell-event-model-diagrams`. For domain prose, diagrams, examples, or API explanations, load `$neohaskell-terminology`; `GLOSSARY.md` owns the vocabulary. If discovery has not refreshed, read `${CODEX_HOME:-$HOME/.codex}/skills/<skill-name>/SKILL.md`. Reuse `src/styles/diagram-colors.css` for diagram colors across documentation and the homepage.
 
 # Teaching examples
 

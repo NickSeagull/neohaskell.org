@@ -1,46 +1,33 @@
 ---
-interface Props { kind: 'story' | 'decision' | 'queries' | 'growth'; }
+interface Props { kind: 'story' | 'decision' | 'queries'; }
 const { kind } = Astro.props;
-const stages = ['Command', 'Decision', 'Event', 'Query'];
-const behaviors = ['Place an order', 'Cancel an order', 'Dispatch an order'];
 ---
 
 {kind === 'story' && (
   <figure class="model-tour not-content customer-story" aria-label="A customer orders one of three available mugs. The order is confirmed and two mugs remain.">
-    <div class="shop-screen"><span>Ceramic mugs</span><strong class="stock-number">3</strong><span>available to order</span></div>
-    <div class="story-action"><strong>Order one mug</strong><svg class="flow-arrow" viewBox="0 0 48 24" width="48" height="24" fill="none" aria-hidden="true"><path d="M2 12h42m-8-8 8 8-8 8" /></svg></div>
-    <div class="shop-screen confirmed-screen"><strong>Order confirmed</strong><strong class="stock-number">2</strong><span>mugs still available</span></div>
+    <div class="shop-screen" data-diagram-role="query"><span>Ceramic mugs</span><strong class="stock-number">3</strong><span>available to order</span></div>
+    <div class="story-action" data-diagram-role="command"><strong>Order one mug</strong><svg class="flow-arrow" viewBox="0 0 48 24" width="48" height="24" fill="none" aria-hidden="true"><path d="M2 12h42m-8-8 8 8-8 8" /></svg></div>
+    <div class="shop-screen confirmed-screen" data-diagram-role="query"><strong>Order confirmed</strong><strong class="stock-number">2</strong><span>mugs still available</span></div>
   </figure>
 )}
 
 {kind === 'decision' && (
   <figure class="model-tour not-content decision-flow" aria-label="Command: order one mug. Decision: three are available, so accept. Event: an order for one mug was placed.">
-    <div class="model-node command-node"><span class="model-role">Command</span><strong>Order one mug</strong></div>
+    <div class="model-node command-node" data-diagram-role="command"><span class="model-role">Command</span><strong>Order one mug</strong></div>
     <svg class="flow-arrow" viewBox="0 0 48 24" width="32" height="24" fill="none" aria-hidden="true"><path d="M2 12h42m-8-8 8 8-8 8" /></svg>
     <div class="model-node decision-node"><span class="model-role">Decision</span><strong>Enough stock</strong><span>3 available, 1 needed</span></div>
     <svg class="flow-arrow" viewBox="0 0 48 24" width="32" height="24" fill="none" aria-hidden="true"><path d="M2 12h42m-8-8 8 8-8 8" /></svg>
-    <div class="model-node event-node"><span class="model-role">Event</span><strong>Order placed</strong><span>1 ceramic mug</span></div>
+    <div class="model-node event-node" data-diagram-role="event"><span class="model-role">Event</span><strong>Order placed</strong><span>1 ceramic mug</span></div>
   </figure>
 )}
 
 {kind === 'queries' && (
   <figure class="model-tour not-content query-flow" aria-label="Starting with three mugs, one recorded order for one mug gives two query answers: two mugs available and one confirmed order.">
-    <div class="model-history"><p class="opening-stock">Opening stock: 3 mugs</p><div class="model-node event-node"><span class="model-role">Recorded event</span><strong>Order placed</strong><span>1 ceramic mug</span></div></div>
+    <div class="model-history"><p class="opening-stock">Opening stock: 3 mugs</p><div class="model-node event-node" data-diagram-role="event"><span class="model-role">Recorded event</span><strong>Order placed</strong><span>1 ceramic mug</span></div></div>
     <svg class="flow-arrow" viewBox="0 0 48 24" width="32" height="24" fill="none" aria-hidden="true"><path d="M2 12h42m-8-8 8 8-8 8" /></svg>
     <div class="query-answers">
-      <div class="query-answer"><span class="model-role">Query</span><strong>Available mugs</strong><span class="query-value">2</span></div>
-      <div class="query-answer"><span class="model-role">Query</span><strong>Confirmed orders</strong><span class="query-value">1</span></div>
-    </div>
-  </figure>
-)}
-
-{kind === 'growth' && (
-  <figure class="model-tour not-content slice-model" aria-label="Three behavior slices, placing, cancelling and dispatching an order, reuse the command, decision, event and query pattern and share the meaning of order identity and status.">
-    <div class="shared-contract"><strong>Order identity and status</strong></div>
-    <div class="slice-list">
-      {behaviors.map(behavior => (
-        <div class="behavior-slice"><strong class="slice-title">{behavior}</strong><ol class="slice-pattern">{stages.map(stage => <li>{stage}</li>)}</ol></div>
-      ))}
+      <div class="query-answer" data-diagram-role="query"><span class="model-role">Query</span><strong>Available mugs</strong><span class="query-value">2</span></div>
+      <div class="query-answer" data-diagram-role="query"><span class="model-role">Query</span><strong>Confirmed orders</strong><span class="query-value">1</span></div>
     </div>
   </figure>
 )}
@@ -52,18 +39,18 @@ const behaviors = ['Place an order', 'Cancel an order', 'Dispatch an order'];
   .model-tour .flow-arrow { color: var(--sl-color-gray-3); flex-shrink: 0; }
   .flow-arrow path { stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
   .customer-story { display: grid; grid-template-columns: 1fr 8rem 1fr; gap: 1rem; align-items: center; }
-  .shop-screen { display: grid; padding: 1.5rem; border: 1px solid var(--docs-line); border-radius: .75rem; background: var(--docs-surface); }
+  .shop-screen { display: grid; padding: 1.5rem; border: 1px solid var(--diagram-line); border-radius: .75rem; background: var(--diagram-surface); }
   .shop-screen .stock-number { margin-block: .5rem; font-size: 2.5rem; line-height: 1.2; font-variant-numeric: tabular-nums; }
-  .confirmed-screen { border-color: var(--sl-color-accent); }
-  .confirmed-screen > strong:first-child { color: var(--sl-color-text-accent); }
+  .shop-screen .stock-number, .confirmed-screen > strong:first-child, .story-action strong { color: var(--diagram-ink); }
   .story-action { display: grid; justify-items: center; gap: .75rem; text-align: center; }
   .decision-flow { display: grid; grid-template-columns: 1fr 2rem 1.2fr 2rem 1fr; gap: .5rem; align-items: center; }
   .model-node { display: grid; gap: .5rem; padding: 1rem; border: 1px solid var(--docs-line); border-radius: .5rem; }
   .model-role { color: var(--sl-color-gray-2); }
   .model-node > strong { font-size: 1.125rem; }
   .command-node { border-style: dashed; }
+  .model-node[data-diagram-role] { background: var(--diagram-surface); border-color: var(--diagram-line); }
+  [data-diagram-role] .model-role { color: var(--diagram-ink); }
   .decision-node { background: var(--docs-surface); }
-  .event-node { background: var(--sl-color-accent-low); border-color: var(--docs-violet); }
   .query-flow { display: grid; grid-template-columns: 1fr 2rem 1fr; gap: 1rem; align-items: center; }
   .model-history { display: grid; gap: 1rem; }
   .opening-stock { color: var(--sl-color-gray-2); }
@@ -71,20 +58,7 @@ const behaviors = ['Place an order', 'Cancel an order', 'Dispatch an order'];
   .query-answer { display: grid; grid-template-columns: 1fr auto; gap: .25rem 1rem; }
   .query-answer .model-role { grid-column: 1; }
   .query-answer > strong { grid-column: 1; }
-  .query-value { grid-column: 2; grid-row: 1 / 3; align-self: center; font-size: 2rem; font-weight: 650; font-variant-numeric: tabular-nums; color: var(--sl-color-text-accent); }
-  .slice-model { display: grid; grid-template-columns: 8rem 1fr; gap: 1.5rem; align-items: center; }
-  .shared-contract { padding-block: 1rem; }
-  .slice-list { display: grid; gap: 1.5rem; padding-inline-start: 1.5rem; border-inline-start: 1px solid var(--docs-line); }
-  .behavior-slice { position: relative; }
-  .behavior-slice::before { content: ''; position: absolute; inset-inline-start: -1.5rem; top: .75rem; width: 1rem; border-top: 1px solid var(--docs-line); }
-  .slice-title { display: block; }
-  .model-tour .slice-pattern { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; padding: 0; margin-top: .75rem; list-style: none; }
-  .slice-pattern li { padding: .5rem 0; border-block: 1px solid var(--docs-line); text-align: center; }
-  .slice-pattern li:nth-child(3) { border-color: var(--docs-violet); color: var(--sl-color-text-accent); }
-  @media (max-width: 60rem) {
-    .slice-model { grid-template-columns: 1fr; gap: .5rem; }
-    .shared-contract { padding-block: 0; }
-  }
+  .query-value { grid-column: 2; grid-row: 1 / 3; align-self: center; font-size: 2rem; font-weight: 650; font-variant-numeric: tabular-nums; color: var(--diagram-ink); }
   @media (max-width: 35rem) {
     .customer-story, .decision-flow, .query-flow { grid-template-columns: 1fr; gap: 1rem; }
     .story-action { gap: .25rem; }
@@ -93,8 +67,7 @@ const behaviors = ['Place an order', 'Cancel an order', 'Dispatch an order'];
     .shop-screen .stock-number { grid-column: 2; grid-row: 1 / 3; margin: 0; align-self: center; }
     .shop-screen > :last-child { grid-column: 1; }
     .query-answers { grid-template-columns: 1fr 1fr; padding: 0; border: 0; gap: 1rem; }
-    .query-answer { grid-template-columns: 1fr; padding-block-start: .75rem; border-top: 1px solid var(--docs-line); }
+    .query-answer { grid-template-columns: 1fr; padding-block-start: .75rem; border-top: 1px solid var(--diagram-line); }
     .query-value { grid-column: 1; grid-row: 3; }
-    .model-tour .slice-pattern { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 </style>

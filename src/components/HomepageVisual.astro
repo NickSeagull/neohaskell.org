@@ -12,20 +12,20 @@ const t = messages(locale);
     <div class="application-core">
       <div class="app-brand"><img src={`${import.meta.env.BASE_URL}logo.svg`} alt="" width="44" height="44" /><span>NeoHaskell</span></div>
       <div class="app-rule"><span>{t("visual.your-business-rules")}</span><FeatureIcon name="shield" /></div>
-      <div class="app-records"><span>{t("visual.every-change-recorded")}</span><div class="record-slips"><div>{t("visual.order-placed")}</div><div>{t("visual.payment-received")}</div><div>{t("visual.order-shipped")}<FeatureIcon name="check" /></div></div></div>
+      <div class="app-records"><span>{t("visual.every-change-recorded")}</span><div class="record-slips" data-diagram-role="event"><div>{t("visual.order-placed")}</div><div>{t("visual.payment-received")}</div><div>{t("visual.order-shipped")}<FeatureIcon name="check" /></div></div></div>
     </div>
     <div class="app-outlets" aria-hidden="true"><i></i><i></i><i></i></div>
-    <div class="app-services"><span><FeatureIcon name="database" />{t("visual.database")}</span><span><FeatureIcon name="upload" />{t("visual.files")}</span><span><FeatureIcon name="branch" />APIs</span></div>
+    <div class="app-services"><span><FeatureIcon name="database" />{t("visual.database")}</span><span><FeatureIcon name="upload" />{t("visual.files")}</span><span data-diagram-role="integration"><FeatureIcon name="branch" />APIs</span></div>
   </figure>
 )}
 {kind === 'history' && (
   <figure class="history-scene" aria-label={t("visual.example-shop-history-twelve-mugs-added-one-ordered-then")}>
-    <div class="history-ledger">
+    <div class="history-ledger" data-diagram-role="event">
       <div class="history-entry"><span class="history-point" aria-hidden="true"></span><span>{t("visual.stock-added")}</span><span class="history-amount">+12</span></div>
       <div class="history-entry"><span class="history-point" aria-hidden="true"></span><span>{t("visual.order-placed")}</span><span class="history-amount">-1</span></div>
       <div class="history-entry history-correction"><span class="history-point" aria-hidden="true"></span><span>{t("visual.order-cancelled")}</span><span class="history-amount">+1</span></div>
     </div>
-    <div class="history-result"><svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M9 11h23v22a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5V11Zm23 4h4a6 6 0 0 1 0 12h-4M15 4v2m6-2v2m6-2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg><div><strong>12</strong><span>{t("visual.mugs-available")}</span></div></div>
+    <div class="history-result" data-diagram-role="query"><svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M9 11h23v22a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5V11Zm23 4h4a6 6 0 0 1 0 12h-4M15 4v2m6-2v2m6-2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg><div><strong>12</strong><span>{t("visual.mugs-available")}</span></div></div>
   </figure>
 )}
 {kind === 'pure' && (
@@ -35,7 +35,7 @@ const t = messages(locale);
       <div class="pure-decision"><svg class="decision-outline" viewBox="0 0 140 140" fill="none" aria-hidden="true"><path d="m70 2 68 68-68 68L2 70 70 2Z" /></svg><FeatureIcon name="shield" /><span>{t("visual.pure-decisions")}</span></div>
       <div class="pure-output"><svg width="32" height="20" viewBox="0 0 32 20" fill="none" aria-hidden="true"><path d="M0 10h28m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" /></svg><span>{t("visual.same-result")}</span></div>
     </div>
-    <div class="effect-ports"><span><FeatureIcon name="database" />{t("visual.database")}</span><span><FeatureIcon name="web" />{t("visual.network")}</span><span><FeatureIcon name="upload" />{t("visual.files")}</span></div>
+    <div class="effect-ports"><span><FeatureIcon name="database" />{t("visual.database")}</span><span data-diagram-role="integration"><FeatureIcon name="web" />{t("visual.network")}</span><span><FeatureIcon name="upload" />{t("visual.files")}</span></div>
   </figure>
 )}
 {kind === 'transport' && (

@@ -316,7 +316,7 @@ The system is spacious and direct. Large headings establish intent; Manrope carr
 - Flat tonal fields, readable themes, and complete static illustrations.
 - Continuous documentation reading with native navigation, inline examples, and comparison tables.
 
-Source authority is `src/styles/home.css`, `src/pages/index.astro`, `src/components/HomepageVisual.astro`, `src/components/FeatureIcon.astro`, `src/styles/docs.css`, the articles in `src/content/docs/`, and `astro.config.mjs`. The documentation contract remains at `.impeccable/surfaces/src-components-learn-guidedlesson-astro.md`; its stable filename targets the MDX article. Homepage composition belongs to `.impeccable/surfaces/src-pages-index-astro.md`.
+Source authority is `src/styles/home.css`, `src/pages/index.astro`, `src/components/HomepageVisual.astro`, `src/components/FeatureIcon.astro`, `src/styles/docs.css`, `src/styles/diagram-colors.css`, the articles in `src/content/docs/`, and `astro.config.mjs`. The documentation contract remains at `.impeccable/surfaces/src-components-learn-guidedlesson-astro.md`; its stable filename targets the MDX article. Homepage composition belongs to `.impeccable/surfaces/src-pages-index-astro.md`.
 
 The owner's full homepage redesign on 11 November 2026 supersedes the old active full-width event model, homepage source examples, and single opening animation. The current page leads with benefits and uses static HTML and SVG illustrations. Historical decisions after the canonical sections below remain a record of earlier states. They do not override the current homepage contract or change documentation design.
 
@@ -543,3 +543,17 @@ The Documentation plan links each destination with a concrete question. The 57 s
 The owner postponed translation until documentation is complete. Saved locale content and the manifest remain at their pre-task baseline. Draft documentation routes use native English fallback; the existing localized homepage remains intact. CI reports the backlog without blocking the English draft. README records restoration of the normal loader and strict translation gate.
 
 The earlier expanded-navigation and table-introduction checks are recorded in `.impeccable/reviews/event-modeling-2026-11-13/`: 19 tests and 2915 browser assertions across 558 documentation locale routes. The later [visual-tour correction](docs/research/event-modeling-tour-2026-11-13.md) supersedes the table-and-exercise direction. Its fresh Astra review returns keep after one correction round. All 19 tests, 24 targeted browser checks, and the clean 568-page build pass; evidence is in `.impeccable/reviews/event-modeling-tour-2026-11-13/`. Review approval and owner acceptance remain separate.
+
+## Diagram semantics and explanatory prose: 13 November 2026
+
+The owner rejected promotional lead sentences in documentation. Articles begin with their concrete subject or scenario; the introduction now opens with the shop's stock policy. Similar generic leads were removed from the map and Resources, and Core concepts states the behavior directly. The accepted homepage pitch remains in its own scope.
+
+Diagram colors now carry stable domain meaning across the homepage and docs. Commands are blue; events are orange; queries and their answers are green leaning toward cyan; integrations are neutral slate. `src/styles/diagram-colors.css` owns paired ink, surface, and line tokens in both themes, and `data-diagram-role` binds them to elements. Preserve role labels and shape distinctions. Navigation, the logo, and the overall violet/cyan identity retain their existing colors. Earlier violet event-fill descriptions are superseded for current diagrams.
+
+The growth section now contains an effort comparison adapted from the owner's reference: behaviors A through G, earlier rework marked R, and a visible shared-contract boundary. These are conceptual shapes without numeric measurements. The main prose explains why roughly steady work per addition would give roughly linear total effort, with coordination still required.
+
+Rework is a chart category, distinct from the four domain roles. Its local ink/surface pair is `#963b50`/`#fbeaf0` in light mode and `#f2a6b4`/`#3b2130` in dark mode. The shared-contract curve uses the existing brand accent. These chart colors do not redefine events or integrations.
+
+A separate Event Model connects two screen mockups, two commands, two recorded events, and stock query answers in a left-to-right flow. HTML owns text and SVG owns connector geometry. The 684px canvas fits the desktop article and scrolls horizontally on phones without shrinking its 16px labels. Pictured screen actions are noninteractive. The selected cancellation policy restores stock before dispatch. This user journey crosses boundaries and is not presented as one four-primary DSL slice.
+
+The three reusable skills are neohaskell-diagram-colors, neohaskell-terminology, and neohaskell-event-model-diagrams. AGENTS.md routes future work to them. Fresh teaching review and verification are recorded in `.impeccable/reviews/diagram-language-2026-11-13/`; previous review verdicts do not override this owner correction. Publication is deferred while the owner reviews locally.

@@ -11,10 +11,10 @@ next: true
 ---
 
 import EventModelTour from '../../../components/learn/EventModelTour.astro';
+import GrowthComparison from '../../../components/learn/GrowthComparison.astro';
+import ShopEventModel from '../../../components/learn/ShopEventModel.astro';
 
-<p class="docs-lead">See what your application does. Agree what should change. Give the next behavior a clear place to belong.</p>
-
-The most useful conversation starts with the work people need to do. A shop owner wants customers to order ceramic mugs. You help turn that intention into a story the owner, the developers, and a coding agent can all follow.
+A shop owner wants customers to order ceramic mugs. Before writing code, the owner and developers need to agree when an order uses stock and what happens when there are no mugs left.
 
 The shop starts with three mugs and no orders. For this example, accepting an order immediately uses the requested stock. A customer orders one:
 
@@ -50,15 +50,25 @@ Payment and delivery are outside this first order story. Each can become another
 
 ## Keep growth close to linear
 
-As an application grows, hidden dependencies can turn one new feature into changes across several old ones. Event Modeling aims to keep growth closer to linear: add a small behavior with explicit inputs and outputs, then use the same pattern again.
+Adding a behavior can require revisiting several existing ones when their shared assumptions are hidden. In the comparison below, A through G represent added behaviors. Each R represents rework in earlier behavior.
 
-We call one of these bounded behaviors a **slice**. Placing, cancelling, and dispatching an order are different slices. Each has its own decision and outcome. Cancellation and dispatch share an order's identity and status, and must agree on what cancelled means.
+<GrowthComparison />
 
-<EventModelTour kind="growth" />
+If each added behavior takes roughly similar effort, total effort grows roughly in proportion to the number of behaviors. Event Modeling aims for this by making inputs, outcomes, and shared contracts explicit, so the team can implement and test a bounded change.
 
-The useful unit of work becomes one behavior you can explain and test. You can discuss cancellation without reopening every detail of ordering, and give an agent a focused change with a checkable result.
+The curves illustrate that aim, not measured costs or a guarantee. Shared contracts still require coordination. For example, cancellation and dispatch must agree on what an order's status means. Changing that meaning can affect both, even when their implementations are separate.
 
-That depends on clear boundaries and stable shared contracts. Changing what an order means can still affect several slices. The model makes that coordination visible so the team can plan it, rather than discover it accidentally while changing code.
+## Connect the steps in an event model
+
+An **event model** connects the screens people use, the commands they submit, the events that are recorded, and the queries that supply the next screen. The connections show where information comes from and where it goes.
+
+Extend the shop with cancellation. For this example, cancelling an order before dispatch returns its mug to available stock. The diagram follows two accepted commands: placing the order and then cancelling it.
+
+<ShopEventModel />
+
+The first screen sends the order command. After the order is accepted, the stock query returns two available mugs and supplies the order screen. That screen lets the customer request cancellation. Once accepted, the cancellation is recorded as another event and the stock query returns three mugs again. The original order event stays in the history.
+
+A missing connection identifies an unanswered question. If the cancellation event is recorded but no query uses it, which screen will tell the customer that the cancellation succeeded? These questions let the owner and developers check the behavior before implementing it.
 
 ## Use the model to understand what you already have
 

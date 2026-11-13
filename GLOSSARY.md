@@ -1,18 +1,39 @@
 # NeoHaskell vocabulary
 
-Canonical website and diagram terminology, confirmed by the owner on 2026-11-06. Use these terms in future copy, diagrams, and domain identifiers.
+Canonical website and diagram terminology, confirmed by the owner on 2026-11-06 and extended on 2026-11-13. Use these terms in future copy, diagrams, and domain identifiers.
 
 | Term | Meaning in the website's explanatory model | Replaces |
 | --- | --- | --- |
 | Command | An intent to change application state, such as placing an order for one mug. | Request |
 | Decision | Evaluates a command against current state and domain conditions; determines whether to accept or reject it. | Rule |
 | Event | A recorded fact about something that happened, such as `OrderPlaced`. | Unchanged |
-| Query | Reads application state; its result reflects the state derived from recorded events. | View |
+| Query | Maintains and exposes answers derived from application state. Distinguish the query definition, its maintained state, and the answer returned to a caller. | Read model, view |
+| Integration | Connects application behavior to other work or external systems. Outbound integrations react to recorded events and can perform effects or issue commands; inbound integrations introduce commands from outside. | Translation, translator |
 
-The illustrative online shop follows **command → decision → event → query**. A customer places an order for one mug. The decision accepts it if stock is available, recording `OrderPlaced`; the query then returns two mugs in stock instead of three. When sold out, the decision rejects the command, no `OrderPlaced` event is recorded, and the query result remains zero. Accepting an order consumes one unit of stock in this teaching model. The ledger displays events from this order; opening stock is provided as the example's initial state.
+The illustrative online shop follows **command, decision, event, then query**. A customer places an order for one mug. The decision accepts it if stock is available, recording `OrderPlaced`; the query then returns two mugs in stock instead of three. When sold out, the decision rejects the command, no `OrderPlaced` event is recorded, and the query result remains zero. Accepting an order consumes one unit of stock in this teaching model. The ledger displays events from this order; opening stock is provided as the example's initial state.
 
 This illustration does not claim that every command in every application emits exactly one event. It illustrates one order and its stock effect; payments, shipping, and concurrent orders are outside this first example. Explain these concepts in documentation before introducing installation and AI-agent setup. The homepage uses the same vocabulary in one initial animation, without an interactive lesson. The visual study's controls are review tools, not approved website components.
 
 Keep the event record distinct from the query result. The history retains the event; the query returns the current state. The AI agent helps the builder create the application and is not the runtime decision maker in this model.
 
 Archived image prompts and prior visual rounds retain their original wording as provenance. This glossary takes precedence for all new and revised work. HTTP requests, browser APIs, and SVG `viewBox` remain ordinary technical terms.
+
+## Framework structure
+
+| Term | NeoHaskell meaning |
+| --- | --- |
+| Entity | The state and event boundary a command acts on. Use the actual `Entity` and `EntityOf` contracts, rather than introducing aggregate as a competing label. |
+| Feature | A named group of chapters in the application's Event Model. It is not automatically a bounded context. |
+| Chapter | A named group of slices within a feature. |
+| Slice | In the inspected DSL, a named unit with exactly one primary command, query, outbound integration, or inbound integration declaration, plus its rules. A whole user journey can cross several slices. |
+| Transport | An interface such as HTTP, MCP, or the application CLI through which a caller accesses application behavior. It is distinct from an integration. |
+
+The introduction's order-and-cancellation journey shows behaviors and their information flow. It does not claim that a single DSL slice contains a command, decision, event, and query as four primary declarations.
+
+## Source names and comparisons
+
+Owner terminology governs explanatory labels. Exact API identifiers retain their spelling. At source revision `033ae4a570686cd885ca14c6595997d9498d5287`, [Service.EventModel](https://github.com/neohaskell/NeoHaskell/blob/033ae4a570686cd885ca14c6595997d9498d5287/core/service/Service/EventModel.hs) exposes `query`, `outboundIntegration`, and `inboundIntegration`, while internal constructors still include `StateView`, `OutboundTranslation`, and `InboundTranslation`. Those internal names do not rename the concepts in documentation.
+
+[Query.Core](https://github.com/neohaskell/NeoHaskell/blob/033ae4a570686cd885ca14c6595997d9498d5287/core/service/Service/Query/Core.hs) defines `Query`, `QueryOf`, and `combine`. Query projection describes the mechanism that maintains query state; it is not a replacement domain label. [Integration](https://github.com/neohaskell/NeoHaskell/blob/033ae4a570686cd885ca14c6595997d9498d5287/core/service/Integration.hs) defines inbound and outbound APIs. These sources were inspected, not executed.
+
+Keep ordinary meanings such as HTTP request, browser view, SQL view, language translation, and business rule when they name those actual things. When comparing another method, introduce its term explicitly and then use the NeoHaskell term for the application. Do not perform global word substitutions on source, quotations, localization workflows, or historical records.

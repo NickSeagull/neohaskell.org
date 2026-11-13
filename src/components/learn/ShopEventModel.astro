@@ -1,0 +1,61 @@
+---
+const nodes = [
+  { role: 'screen', title: 'Mug shop', detail: '3 available', action: 'Order one mug', x: 0, y: 0 },
+  { role: 'command', title: 'Place order', detail: '1 mug', x: 0, y: 176 },
+  { role: 'event', title: 'Order placed', detail: '1 mug', x: 0, y: 360 },
+  { role: 'query', title: 'Available mugs', detail: '2', x: 180, y: 176 },
+  { role: 'screen', title: 'Your order', detail: '2 available', action: 'Cancel order', x: 360, y: 0 },
+  { role: 'command', title: 'Cancel order', detail: 'This order', x: 360, y: 176 },
+  { role: 'event', title: 'Order cancelled', detail: 'Stock restored', x: 360, y: 360 },
+  { role: 'query', title: 'Available mugs', detail: '3', x: 540, y: 176 },
+];
+const connections = [
+  'M72 128 V170 m-5-7 5 7 5-7',
+  'M72 320 V354 m-5-7 5 7 5-7',
+  'M144 432 C214 432 252 380 252 326 m-5 7 5-7 5 7',
+  'M252 176 V150 Q252 144 266 144 H322 Q336 144 336 128 V70 Q336 64 342 64 H354 m-7-5 7 5-7 5',
+  'M432 128 V170 m-5-7 5 7 5-7',
+  'M432 320 V354 m-5-7 5 7 5-7',
+  'M504 432 C574 432 612 380 612 326 m-5 7 5-7 5 7',
+];
+---
+<figure class="shop-event-model not-content" aria-label="The mug-shop screen sends a place-order command. Acceptance records Order placed. The stock query reports two available mugs to the order screen. Cancelling before dispatch records Order cancelled, and the stock query reports three again.">
+  <div class="event-model-scroll" role="region" aria-label="Mug shop event model" tabindex="0">
+    <div class="event-model-canvas">
+      <svg class="model-connections" viewBox="0 0 684 504" fill="none" aria-hidden="true">{connections.map(d => <path d={d} />)}</svg>
+      {nodes.map(node => node.role === 'screen' ? (
+        <div class="model-screen" style={{left: `${node.x / 16}rem`, top: `${node.y / 16}rem`}}>
+          <strong class="screen-title">{node.title}</strong>
+          <span>{node.detail}</span>
+          <span class="screen-action">{node.action}</span>
+        </div>
+      ) : (
+        <div class="event-model-node" data-diagram-role={node.role} style={{left: `${node.x / 16}rem`, top: `${node.y / 16}rem`}}>
+          <span class="node-role">{node.role[0].toUpperCase() + node.role.slice(1)}</span>
+          <strong>{node.title}</strong>
+          <span class:list={{ 'node-answer': node.role === 'query' }}>{node.detail}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</figure>
+<style>
+  .shop-event-model { margin: 2rem 0; color: var(--sl-color-white); font-size: 1rem; line-height: 1.5; }
+  .shop-event-model :is(div, strong, span, svg) { margin: 0; line-height: 1.5; }
+  .event-model-scroll { overflow-x: auto; padding: .25rem .25rem 1rem; scrollbar-width: auto; scrollbar-color: var(--sl-color-gray-3) var(--docs-surface); }
+  .event-model-scroll::-webkit-scrollbar { height: .5rem; }
+  .event-model-scroll::-webkit-scrollbar-track { background: var(--docs-surface); }
+  .event-model-scroll::-webkit-scrollbar-thumb { background: var(--sl-color-gray-3); border-radius: .25rem; }
+  .event-model-canvas { position: relative; width: 42.75rem; height: 31.5rem; }
+  .model-connections { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--sl-color-gray-3); }
+  .model-connections path { stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .event-model-node, .model-screen { position: absolute; display: flex; flex-direction: column; gap: .25rem; width: 9rem; height: 8rem; padding: .75rem; border: 1px solid var(--docs-line); border-radius: .5rem; }
+  .event-model-node { height: 9rem; background: var(--diagram-surface); border-color: var(--diagram-line); }
+  .event-model-node[data-diagram-role='command'] { border-style: dashed; }
+  .node-role { color: var(--diagram-ink); }
+  .event-model-node strong { font-weight: 650; }
+  .event-model-node .node-answer { color: var(--diagram-ink); font-size: 1.75rem; font-weight: 650; line-height: 1.2; }
+  .model-screen { top: 0; background: var(--docs-surface); gap: .5rem; }
+  .screen-title { font-weight: 650; border-bottom: 1px solid var(--docs-line); padding-bottom: .25rem; }
+  .screen-action { color: var(--diagram-command-ink); text-decoration: underline; text-underline-offset: .2em; }
+</style>

@@ -1,6 +1,6 @@
 # Documentation experience
 
-Status on 13 November 2026: the owner accepted the concrete 61-page navigation, requested every sidebar group expanded on entry, and asked for a motivating Event Modeling introduction before code or installation. Translation is explicitly postponed until the documentation is complete. The current implementation has 62 pages, an English introduction, and native English fallback at the other locale routes. The owner subsequently corrected the initial table-and-exercise introduction toward a visual tour. The current article uses four static diagrams, removes author mentions and the paper exercise, and introduces terminology through the example. Its fresh rendered review and targeted verification are recorded separately from the earlier navigation pass.
+Status on 13 November 2026: the owner accepted the concrete 61-page navigation, requested every sidebar group expanded on entry, and asked for a motivating Event Modeling introduction before code or installation. Translation is explicitly postponed until the documentation is complete. The current implementation has 62 pages, an English introduction, and native English fallback at the other locale routes. The owner subsequently corrected the initial table-and-exercise introduction toward a visual tour. The current article uses five static diagrams, removes author mentions and the paper exercise, and introduces terminology through the example. The owner subsequently removed promotional lead sentences and split the growth section into a conceptual effort comparison and a connected Event Model. Its fresh rendered review and targeted verification are recorded separately from the earlier navigation pass.
 
 ## Current direction
 
@@ -12,7 +12,7 @@ The desktop sidebar is 18rem wide. Links and disclosure controls retain minimum 
 
 ## Entry and content
 
-The homepage's main documentation links enter `/introduction/`, labeled Design your application in navigation. The article motivates the developer's role in agreeing application behavior with business people. Four diagrams follow the customer's order, explain command/decision/event, derive useful query answers, and show bounded behavior slices. The prose explains linear growth as a design aim dependent on explicit contracts, covers understanding an existing application, and connects the shared model to NeoHaskell's implemented visual IDE. Author references remain in research records; the public article has no paper exercise. It contains no code or installation prerequisites.
+The homepage's main documentation links enter `/introduction/`, labeled Design your application in navigation. The article motivates the developer's role in agreeing application behavior with business people. Five diagrams follow the customer's order, explain command/decision/event, derive useful query answers, compare change effort, and connect screens to commands, events, and queries in an Event Model. The opening begins directly with the shop scenario, without a promotional lead. Commands use blue, events orange, queries a cyan-leaning green, and integrations neutral slate. Exact shades live in src/styles/diagram-colors.css. A journey can cross several framework slices; a single DSL slice has exactly one primary declaration. The prose explains linear growth as a design aim dependent on explicit contracts, covers understanding an existing application, and connects the shared model to NeoHaskell's implemented visual IDE. Author references remain in research records; the public article has no paper exercise. It contains no code or installation prerequisites.
 
 The [source research](../../docs/research/event-modeling-introduction-2026-11-13.md) and [visual-tour correction](../../docs/research/event-modeling-tour-2026-11-13.md) pin the IDE and framework evidence to source revision 033ae4a. Code-to-model synchronization and diagram inspection are implemented; diagram-to-Haskell field generation is not implied. No NeoHaskell runtime was executed.
 
@@ -26,9 +26,15 @@ Standalone plans are excluded from Pagefind and external indexing. The map remai
 
 Do not generate translations during the English authoring phase. Saved translated documents, catalogs, and the manifest retain the pre-task baseline. The content loader excludes translated MDX so stale headings and content cannot enter the draft build; Starlight supplies English fallback with its native language notice. The localized homepage remains intact. CI reports translation backlog without requiring freshness. README records how to restore the normal loader and strict gate when translation resumes. The backlog is not marked current.
 
+## Local delivery
+
+The owner requested local iteration on 13 November. Keep http://127.0.0.1:4324/introduction/ available with live reload. Commit completed changes locally; publish only on an explicit request. Starting Astro from the canonical checkout path restores MDX watcher updates through the Work-directory symlink. Translation remains paused.
+
 ## Verification and acceptance
 
 The [expanded-navigation review](../reviews/sidebar-2026-11-13/expanded-navigation.md) verifies native open defaults and manual keyboard control. The [earlier teaching review](../reviews/event-modeling-2026-11-13/teaching-review.md) covers the superseded table-and-exercise version. The [tour verification](../reviews/event-modeling-tour-2026-11-13/verification.md) records 24 targeted browser checks, 19 passing tests, a clean 568-page build, and the fresh review. The [verification record](../reviews/event-modeling-2026-11-13/verification.md) records 19 passing tests, a clean production build, 558 documentation locale routes, and 2915 passing browser assertions. Review approval, technical checks, publication, and owner acceptance remain separate.
+
+Current color, terminology, and diagram-split evidence belongs to `.impeccable/reviews/diagram-language-2026-11-13/`. Its fresh Astra review returns keep with no material corrections. The normal build, 19 tests, 27 targeted browser checks, and four live-development routes pass. Owner acceptance remains unrecorded. The earlier tour verdict does not approve these later changes.
 
 Any future new or materially changed teaching example requires learning-example-review. Static examples remain the default; interaction must teach a causal relationship and retain keyboard, touch, and static reading access.
 
