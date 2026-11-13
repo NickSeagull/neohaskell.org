@@ -1,6 +1,6 @@
 ---
 title: Plan de la documentation
-description: Trouver les ressources NeoHaskell existantes et parcourir les tutoriels, guides pratiques, explications et pages de référence prévus.
+description: Retrouvez les ressources NeoHaskell existantes et parcourez les plans des étapes d’installation, des chapitres sur la boutique, des guides de tâches, des concepts et de la référence d’API.
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 2
@@ -13,87 +13,206 @@ head:
       content: noindex
 ---
 
-<p class="docs-lead">Comprendre le comportement. Créer une fonctionnalité. Vérifier le résultat.</p>
+Les quatre pages sous [Pour commencer](/introduction/), [Configurer votre agent](/getting-started/) et [Ressources](/resources/) contiennent des conseils existants. Les autres destinations présentent des plans de page qui décrivent les explications, exemples et figures à rédiger. La page Ressources renvoie aux instructions actuellement disponibles en amont.
 
-[Concepts fondamentaux](/learn/), [Configurer votre agent](/getting-started/) et [Ressources](/resources/) contiennent des ressources existantes. Les autres destinations ci-dessous présentent les plans des pages, avec les explications, exemples et figures à rédiger. Pour consulter les instructions disponibles dès maintenant, la page Ressources renvoie vers des ressources externes sur la syntaxe, la CLI, le stockage, les tests et l’autorisation.
+Le premier parcours commence par le jugement du développeur et les questions métier, explique pourquoi les événements préservent le sens d’une modification, puis présente les commandes et les requêtes avant de les relier dans un modèle d’événements. Il vérifiera ensuite le projet de départ Counter fourni avec NeoHaskell. Le tutoriel construira ensuite une boutique de tasses en céramique dans ce projet, de sa première décision à une interface HTTP testée. Chaque guide de tâche répondra à une question indépendante ; les pages de concepts expliqueront la conception et les pages de référence définiront la syntaxe et les contrats d’API.
 
-Cette page guidera les lecteurs dans un premier parcours succinct, des guides pratiques indépendants, des explications approfondies et une référence prévisible. Une carte de lecture avec des liens indiquera où trouver la réponse à chaque question. Le tutoriel suivra une fonctionnalité de boutique, de sa spécification à un comportement backend testé et une interface appelable. Il ne nécessitera pas de cours de Haskell. Des exemples et des figures accompagneront l’article lorsqu’ils éclaireront une idée précise.
-
-## Commencer ici
+## Pour commencer
 
 <dl class="docs-map">
-  <dt><a href="/learn/">Concepts fondamentaux</a></dt>
-  <dd>Reconnaître les commandes, décisions, événements et requêtes à travers une commande passée dans une petite boutique.</dd>
+  <dt><a href="/introduction/">Le travail derrière le code</a></dt>
+  <dd>Qu’est-ce qui reste de la responsabilité du développeur lorsqu’un agent peut écrire l’implémentation ?</dd>
+  <dt><a href="/introduction/history/">Événements et historique</a></dt>
+  <dd>Pourquoi conserver les faits métier à l’origine d’un nombre qui évolue ?</dd>
+  <dt><a href="/learn/">Commandes et requêtes</a></dt>
+  <dd>Comment l’application accepte-t-elle ou rejette-t-elle une modification, et comment répond-elle à une question ?</dd>
+  <dt><a href="/introduction/event-modeling/">Modéliser le processus dans son ensemble</a></dt>
+  <dd>Comment les écrans, les commandes, les événements et les requêtes révèlent-ils les décisions qui manquent encore à un processus ?</dd>
+</dl>
+
+## Construire votre première application
+
+<dl class="docs-map">
+  <dt><a href="/getting-started/installation/">Installer NeoHaskell</a></dt>
+  <dd>Que faut-il installer, et comment vérifier que la chaîne d’outils est disponible ?</dd>
+  <dt><a href="/getting-started/create-project/">Créer un projet</a></dt>
+  <dd>Où lancer la création du projet, et que va-t-elle produire ?</dd>
+  <dt><a href="/getting-started/run/">Exécuter l’application</a></dt>
+  <dd>Comment démarrer et arrêter le projet de départ, et quel terminal doit rester ouvert ?</dd>
+  <dt><a href="/getting-started/first-response/">Vérifier votre première réponse</a></dt>
+  <dd>L’application traite-t-elle vraiment les commandes et répond-elle aux requêtes ?</dd>
+  <dt><a href="/getting-started/project-files/">Repérer les fichiers de votre projet</a></dt>
+  <dd>Quel fichier définit le comportement, le raccordement, la configuration et les éléments que je vérifie ?</dd>
   <dt><a href="/getting-started/">Configurer votre agent</a></dt>
-  <dd>Préparer l’environnement et l’agent. Le parcours prévu couvrira toutes les étapes jusqu’au démarrage d’un projet et à la vérification d’une première réponse.</dd>
+  <dd>Comment mon agent de programmation reçoit-il les conventions du projet, et que dois-je lui demander en premier ?</dd>
+  <dt><a href="/getting-started/troubleshooting/">Résoudre les problèmes de configuration</a></dt>
+  <dd>Quelle étape de configuration a échoué, et quelle est la correction la plus simple et la plus sûre ?</dd>
 </dl>
 
-## Créer une application
-
-Suivez ces quatre chapitres prévus dans l’ordre, en utilisant la même boutique et le projet préparé pendant la configuration.
+## Construire une boutique de tasses
 
 <dl class="docs-map">
-  <dt><a href="/tutorial/">Modéliser votre première fonctionnalité</a></dt>
-  <dd>Rédiger une spécification, avec les conditions d’acceptation et de rejet.</dd>
-  <dt><a href="/tutorial/first-feature/">Implémenter la fonctionnalité</a></dt>
-  <dd>Transformer la spécification en un comportement backend relu et une interface appelable.</dd>
-  <dt><a href="/tutorial/test-behavior/">Tester le comportement</a></dt>
-  <dd>Comparer les événements et les résultats des requêtes aux résultats attendus.</dd>
-  <dt><a href="/tutorial/change-safely/">Modifier en toute sécurité</a></dt>
-  <dd>Ajouter une exigence et vérifier son effet sur le comportement existant.</dd>
+  <dt><a href="/tutorial/">Planifier la boutique de tasses</a></dt>
+  <dd>Que doit faire notre commande d’une seule tasse ?</dd>
+  <dt><a href="/tutorial/first-feature/">Créer la fonctionnalité de la boutique</a></dt>
+  <dd>Où placer l’état et les événements de la boutique ?</dd>
+  <dt><a href="/tutorial/decide-orders/">Accepter ou rejeter une commande</a></dt>
+  <dd>Dans quels cas la boutique doit-elle accepter ou rejeter une commande ?</dd>
+  <dt><a href="/tutorial/stock-query/">Interroger le stock disponible</a></dt>
+  <dd>Comment lire le stock restant ?</dd>
+  <dt><a href="/tutorial/http-orders/">Passer une commande sur HTTP</a></dt>
+  <dd>Comment passer une commande via le service en cours d’exécution ?</dd>
+  <dt><a href="/tutorial/test-behavior/">Tester le comportement de la boutique</a></dt>
+  <dd>Quels contrôles montrent que la boutique se comporte comme prévu ?</dd>
+  <dt><a href="/tutorial/change-safely/">Garder une tasse en réserve</a></dt>
+  <dd>Comment modifier la règle de stock sans casser le comportement existant ?</dd>
 </dl>
 
-## Réaliser une tâche
+## Résoudre une tâche
 
-Ces guides pratiques prévus répondront à une question concrète sans exiger de suivre tout le tutoriel.
+### Agents et interfaces
 
 <dl class="docs-map">
-  <dt><a href="/guides/ai-workflow/">Travailler avec un agent IA</a></dt>
-  <dd>Fournir du contexte, délimiter une modification, examiner les éléments de vérification et corriger une implémentation erronée.</dd>
-  <dt><a href="/guides/transports/">Exposer des interfaces HTTP et MCP</a></dt>
-  <dd>Relier le comportement de l’application aux requêtes, aux appels d’outils et aux contrats OpenAPI générés.</dd>
-  <dt><a href="/guides/storage/">Conserver les données après un redémarrage</a></dt>
-  <dd>Configurer le stockage persistant de l’historique des événements et des requêtes, puis vérifier le résultat après un redémarrage.</dd>
-  <dt><a href="/guides/authorization/">Contrôler les accès</a></dt>
-  <dd>Distinguer l’identité des autorisations et tester les actions autorisées et refusées.</dd>
-  <dt><a href="/guides/integrations/">Connecter des services externes</a></dt>
-  <dd>Gérer les connexions aux fournisseurs, les identifiants et les effets réseau en dehors des décisions pures.</dd>
-  <dt><a href="/guides/files/">Stocker et récupérer des fichiers</a></dt>
-  <dd>Suivre la propriété des fichiers, leur stockage et les accès autorisés.</dd>
-  <dt><a href="/guides/deployment/">Déployer et exploiter</a></dt>
-  <dd>Configurer les éléments en cours d’exécution, examiner les défaillances et vérifier la reprise.</dd>
+  <dt><a href="/guides/ai-workflow/">Travailler avec un agent d’IA</a></dt>
+  <dd>Comment demander et vérifier une modification limitée de l’application ?</dd>
+  <dt><a href="/guides/transports/">Exposer une API HTTP</a></dt>
+  <dd>Comment appeler mes commandes et mes requêtes sur HTTP ?</dd>
+  <dt><a href="/guides/transports/mcp/">Exposer des outils et des ressources MCP</a></dt>
+  <dd>Comment un agent peut-il appeler cette application via MCP ?</dd>
+  <dt><a href="/guides/transports/cli/">Lancer des commandes depuis un terminal</a></dt>
+  <dd>Comment invoquer le comportement de mon application depuis un terminal ?</dd>
+</dl>
+
+### Données et fichiers
+
+<dl class="docs-map">
+  <dt><a href="/guides/storage/">Conserver les événements après un redémarrage</a></dt>
+  <dd>Comment conserver l’historique enregistré de l’application lorsque le processus s’arrête ?</dd>
+  <dt><a href="/guides/storage/query-rebuilds/">Persister et reconstruire les requêtes</a></dt>
+  <dd>Comment les résultats des requêtes sont-ils restaurés après un redémarrage ou une modification de projection ?</dd>
+  <dt><a href="/guides/files/">Téléverser et récupérer des fichiers</a></dt>
+  <dd>Comment joindre le fichier d’un utilisateur et limiter sa récupération ?</dd>
+  <dt><a href="/guides/files/generated-documents/">Générer un document</a></dt>
+  <dd>Comment conserver un fichier généré par le serveur pour son propriétaire ?</dd>
+  <dt><a href="/guides/storage/erase-protected-values/">Effacer une valeur protégée</a></dt>
+  <dd>Comment rendre illisible une valeur protégée appartenant à quelqu’un sans supprimer l’historique ?</dd>
+</dl>
+
+### Identité et accès
+
+<dl class="docs-map">
+  <dt><a href="/guides/authentication/">Vérifier l’identité de l’appelant</a></dt>
+  <dd>Comment mon application HTTP reconnaît-elle un appelant ?</dd>
+  <dt><a href="/guides/authorization/">Autoriser une commande</a></dt>
+  <dd>Qui peut exécuter cette commande sur cette entité ?</dd>
+  <dt><a href="/guides/authorization/query-access/">Restreindre les résultats des requêtes</a></dt>
+  <dd>Qui peut lire une requête et ses résultats individuels ?</dd>
+</dl>
+
+### Systèmes externes
+
+<dl class="docs-map">
+  <dt><a href="/guides/integrations/">Appeler un service externe</a></dt>
+  <dd>Comment réaliser un effet externe après une décision ?</dd>
+  <dt><a href="/guides/integrations/inbound-workers/">Exécuter un travailleur entrant</a></dt>
+  <dd>Comment une source en arrière-plan peut-elle envoyer des commandes d’application typées ?</dd>
+  <dt><a href="/guides/integrations/oauth-connections/">Connecter un compte externe</a></dt>
+  <dd>Comment un utilisateur autorise-t-il l’accès à un compte chez un fournisseur ?</dd>
+</dl>
+
+### Déploiement et reprise
+
+<dl class="docs-map">
+  <dt><a href="/guides/deployment/">Déployer une application</a></dt>
+  <dd>Que faut-il configurer et persister pour exécuter cette application ailleurs ?</dd>
+  <dt><a href="/guides/deployment/readiness-and-failures/">Vérifier l’état de préparation et les échecs</a></dt>
+  <dd>Comment savoir si l’application est prête et localiser une opération qui a échoué ?</dd>
 </dl>
 
 ## Comprendre la conception
 
-Ces explications prévues examineront le fonctionnement du modèle et le choix de frontières utiles.
-
 <dl class="docs-map">
-  <dt><a href="/concepts/event-modeling/">Modéliser le comportement d’une application</a></dt>
-  <dd>Réfléchir aux exigences ambiguës et aux processus à plusieurs étapes.</dd>
+  <dt><a href="/concepts/event-modeling/">Fonctionnalités, chapitres et tranches</a></dt>
+  <dd>Comment une histoire d’application devient-elle un modèle qui reste lié à son implémentation ?</dd>
+  <dt><a href="/concepts/command-outcomes/">Commandes, décisions et résultats</a></dt>
+  <dd>Que peut-il se passer lorsqu’une commande atteint l’application ?</dd>
+  <dt><a href="/concepts/entities-and-streams/">Entités et flux d’événements</a></dt>
+  <dd>Quels faits une décision doit-elle examiner ensemble, et que se passe-t-il lorsque des commandes sont en concurrence ?</dd>
   <dt><a href="/concepts/history-and-state/">Historique et état actuel</a></dt>
-  <dd>Distinguer les faits enregistrés de l’état reconstitué et des réponses actuelles aux requêtes.</dd>
+  <dd>Pourquoi conserver les événements alors que l’application dispose déjà de son état actuel ?</dd>
+  <dt><a href="/concepts/query-projections/">Projections de requêtes et relecture</a></dt>
+  <dd>Comment un même historique peut-il répondre à différentes questions, et comment une requête se met-elle à jour ?</dd>
   <dt><a href="/concepts/pure-decisions/">Décisions pures et effets</a></dt>
-  <dd>Comprendre la logique déterministe, les vérifications de types et les effets externes.</dd>
+  <dd>Que signifie la pureté lorsqu’une décision a besoin d’un contexte ou de valeurs générées ?</dd>
+  <dt><a href="/concepts/event-driven-workflows/">Flux de travail entre entités</a></dt>
+  <dd>Comment un fait enregistré pousse-t-il une autre partie de l’application à agir ?</dd>
+  <dt><a href="/concepts/identity-and-permissions/">Identité et permissions</a></dt>
+  <dd>Pourquoi savoir qui est une personne ne détermine-t-il pas ce qu’elle peut faire ou lire ?</dd>
 </dl>
 
 ## Référence et aide
 
-Les pages de référence sont prévues. <a href="/resources/">Ressources et état du projet</a> renvoie déjà vers des ressources externes consultées et des moyens d’obtenir de l’aide.
+### Langage
 
 <dl class="docs-map">
-  <dt><a href="/reference/language/">Les bases du langage</a></dt>
-  <dd>Consulter la syntaxe utile pour lire et relire le code de l’application, avec de petits exemples.</dd>
-  <dt><a href="/reference/core/">Bibliothèque Core</a></dt>
-  <dd>Rechercher des types et opérations courants par signature, résultat et cas limite.</dd>
-  <dt><a href="/reference/framework/">Composants du framework</a></dt>
-  <dd>Relier le modèle de l’application aux entités, commandes, décisions, événements et requêtes dans le code source.</dd>
-  <dt><a href="/reference/cli/">Neo CLI</a></dt>
-  <dd>Consulter les commandes, les arguments, les répertoires de travail et les résultats attendus.</dd>
-  <dt><a href="/reference/configuration/">Configuration</a></dt>
-  <dd>Rechercher les valeurs requises, les valeurs par défaut, les substitutions d’environnement et les exigences de gestion des secrets.</dd>
-  <dt><a href="/reference/errors/">Erreurs et dépannage</a></dt>
-  <dd>Rechercher un symptôme, sa cause, la correction minimale utile et une vérification de reprise.</dd>
+  <dt><a href="/reference/language/">Syntaxe et expressions</a></dt>
+  <dd>Que signifie cette expression ?</dd>
+  <dt><a href="/reference/language/types/">Types et enregistrements</a></dt>
+  <dd>Comment lire ou définir les formes utilisées dans une fonctionnalité ?</dd>
+</dl>
+
+### Bibliothèque Core
+
+<dl class="docs-map">
+  <dt><a href="/reference/core/">Valeurs et types courants</a></dt>
+  <dd>Quels types et opérations sont déjà disponibles dans Core ?</dd>
+  <dt><a href="/reference/core/containers/">Tableaux et maps</a></dt>
+  <dd>Comment transformer une collection ou rechercher un élément ?</dd>
+  <dt><a href="/reference/core/results/">Maybe et Result</a></dt>
+  <dd>Comment représenter une absence ou un échec récupérable ?</dd>
+  <dt><a href="/reference/core/tasks/">Tâches et effets</a></dt>
+  <dd>Comment enchaîner des opérations susceptibles d’échouer ?</dd>
+  <dt><a href="/reference/core/json/">JSON et schémas</a></dt>
+  <dd>Comment les valeurs typées deviennent-elles du JSON et des schémas d’API ?</dd>
+</dl>
+
+### Contrats du framework
+
+<dl class="docs-map">
+  <dt><a href="/reference/framework/">Modèles d’événements et fonctionnalités</a></dt>
+  <dd>Comment les fonctionnalités déclarées deviennent-elles une application en cours d’exécution ?</dd>
+  <dt><a href="/reference/framework/commands/">Commandes et décisions</a></dt>
+  <dd>Que doit définir une commande, et que peut renvoyer une décision ?</dd>
+  <dt><a href="/reference/framework/entities/">Entités et événements</a></dt>
+  <dd>Comment une entité est-elle identifiée et reconstruite à partir de ses événements ?</dd>
+  <dt><a href="/reference/framework/queries/">Requêtes et projections</a></dt>
+  <dd>Qu’est-ce qui met à jour une ligne de requête, et que peut lire un appelant ?</dd>
+  <dt><a href="/reference/framework/transports/">Contrats de transport</a></dt>
+  <dd>Quelle interface expose une commande ou une requête enregistrée ?</dd>
+</dl>
+
+### Outils et configuration
+
+<dl class="docs-map">
+  <dt><a href="/reference/cli/">Commandes Neo</a></dt>
+  <dd>De quelle commande et de quels indicateurs ai-je besoin pour le développement local ?</dd>
+  <dt><a href="/reference/cli/model-tools/">IDE, inspection et validation</a></dt>
+  <dd>Comment inspecter ou valider le modèle depuis la ligne de commande ?</dd>
+  <dt><a href="/reference/cli/agent-commands/">Compétences et conseils pour les agents</a></dt>
+  <dd>Comment sélectionner les compétences installées et actualiser les conseils d’API correspondants ?</dd>
+  <dt><a href="/reference/configuration/">Configuration d’exécution</a></dt>
+  <dd>Quelle valeur l’emporte lorsque les valeurs par défaut, l’environnement et les arguments divergent ?</dd>
+  <dt><a href="/reference/configuration/project/">neo.json et dépendances</a></dt>
+  <dd>Quels paramètres du projet contrôlent les fichiers de compilation générés et les versions du framework ?</dd>
+</dl>
+
+### Erreurs et aide
+
+<dl class="docs-map">
+  <dt><a href="/reference/errors/">Erreurs de configuration et de compilation</a></dt>
+  <dd>Pourquoi la commande de développement a-t-elle échoué, et que vérifier ensuite ?</dd>
+  <dt><a href="/reference/errors/runtime/">Erreurs de démarrage et de requête</a></dt>
+  <dd>L’échec vient-il de la configuration, des accès, d’un rejet métier ou de l’infrastructure ?</dd>
   <dt><a href="/resources/">Ressources et état du projet</a></dt>
-  <dd>Consulter les ressources et guides existants, suivre les versions et demander de l’aide.</dd>
+  <dd>Où trouver les instructions maintenues, l’historique des versions et de l’aide ?</dd>
 </dl>

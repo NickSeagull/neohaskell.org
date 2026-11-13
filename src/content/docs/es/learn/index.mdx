@@ -1,103 +1,78 @@
 ---
-title: Conceptos básicos
-description: Comprende los comandos, las decisiones, los eventos y las consultas siguiendo el recorrido de un pedido en una pequeña tienda online.
+title: Protege los cambios y responde a las preguntas
+description: Usa comandos para solicitar cambios, decisiones para proteger las promesas de negocio y consultas para ofrecer a cada pantalla las respuestas que necesita.
+sidebar:
+  label: Comandos y consultas
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 2
-prev: false
+prev: true
 next: true
 ---
 
-<p class="docs-lead">Comprende cómo una aplicación decide qué puede ocurrir, registra lo que ha ocurrido y responde a preguntas sobre su estado.</p>
+import EventModelTour from '@components/learn/EventModelTour.astro';
 
-NeoHaskell es un lenguaje de programación con la IA como prioridad, pensado para crear aplicaciones con un agente de IA sin perder de vista cómo se comportan. Describes ese comportamiento mediante **comandos, decisiones, eventos y consultas**. El lenguaje y el framework dan a esos conceptos una estructura común.
+La tienda de tazas de [Conserva los hechos que hay detrás de los números](/introduction/history/#record-what-happened) registra los pedidos aceptados como eventos y los usa para calcular las existencias disponibles.
 
-Esta guía sigue el caso de una pequeña tienda que tiene tres tazas de cerámica en existencias. Un cliente pide una. Puedes comprender el modelo antes de instalar NeoHaskell o usar un agente de IA.
+Un evento es un hecho que la aplicación ha aceptado. Por eso es importante delimitarlo: un cliente no puede declarar que la tienda ha aceptado un pedido simplemente enviando un evento `OrderPlaced`.
 
-| Concepto | Propósito | Ejemplo de la tienda |
-| --- | --- | --- |
-| [Comando](#commands) | Expresar una intención | Hacer un pedido |
-| [Decisión](#decisions) | Aceptarla o rechazarla | Comprobar las existencias disponibles |
-| [Evento](#events) | Registrar lo que ha ocurrido | Pedido realizado |
-| [Consulta](#queries) | Leer el estado actual | Quedan dos tazas |
+Imagina que un cliente pide cuatro tazas cuando solo quedan tres. **Solicitar un pedido y tener un pedido aceptado son cosas distintas.** La aplicación necesita recibir la petición, comprobarla y rechazarla sin consumir existencias.
 
-## Comandos
+## Solicita un cambio con un comando
 
-Un **comando** expresa algo que una persona o un proceso quiere que haga la aplicación. Describe una intención; no significa que la acción ya haya ocurrido.
+Un **comando** expresa la intención de cambiar la aplicación. `PlaceOrder` contiene la información necesaria para solicitar un pedido. Para una taza, esa información tiene este aspecto:
 
-Para pedir una taza, el cliente indica el producto y la cantidad. La aplicación todavía tiene que decidir si puede cumplir esa intención.
-
-```text title="Ejemplo de comando"
-PlaceOrder
-  product: taza de cerámica
-  quantity: 1
+```haskell
+PlaceOrder {
+  product = "ceramic mug",
+  quantity = 1
+}
 ```
 
-Los ejemplos de esta guía describen el modelo en texto sencillo. No son código ejecutable de NeoHaskell ni cargas útiles de API.
+Una **decisión** evalúa ese comando según el estado actual y la política de la tienda. La cantidad debe ser positiva y debe haber suficientes tazas disponibles. Con tres en existencias, se acepta un pedido de una y se rechaza uno de cuatro.
 
-## Decisiones
+<EventModelTour kind="decision" />
 
-Una **decisión** evalúa un comando teniendo en cuenta el estado actual y las condiciones que debe aplicar tu aplicación. Determina si se acepta o se rechaza el comando.
+La aceptación registra `OrderPlaced`. El rechazo deja las existencias como estaban y no registra ningún evento `OrderPlaced`. **El comando expresa la intención; el evento registra el hecho aceptado.**
 
-En esta tienda, la cantidad debe ser positiva y debe haber existencias suficientes. Si hay tres tazas en existencias, se puede aceptar un pedido de una. No se puede aceptar un pedido de cuatro.
+NeoHaskell proporciona el flujo de ejecución: obtiene el estado pertinente, evalúa la decisión y añade los eventos aceptados. El desarrollador escribe las condiciones que expresan la promesa de la tienda. Un sitio web y una herramienta de IA pueden enviar el mismo comando y utilizar esa misma decisión.
 
-| Comando | Existencias disponibles | Decisión |
-| --- | --- | --- |
-| Pedir 1 taza | 3 tazas | Aceptar |
-| Pedir 4 tazas | 3 tazas | Rechazar |
+## Toma decisiones de negocio puras
 
-Estas condiciones forman parte del comportamiento de la aplicación. Un agente de IA puede ayudarte a implementarlas, pero no toma las decisiones en tiempo de ejecución.
+**NeoHaskell sitúa el código puro en el centro del desarrollo de aplicaciones.** La lógica de negocio describe lo que debería ocurrir a partir de la información que recibe. Una decisión comprueba el comando y el estado actual, y después describe su aceptación o rechazo. No puede abrir una conexión a la base de datos, enviar un correo de confirmación ni llamar a un proveedor de pagos.
 
-## Eventos
+Para la regla de existencias de la tienda, el mismo pedido y las mismas existencias disponibles producen la misma aceptación o rechazo. Comprobar si se pueden pedir cuatro tazas cuando quedan tres no crea un pedido en una base de datos. Calcula la respuesta de la decisión.
 
-Un **evento** registra un hecho sobre algo que ha ocurrido. Cuando la tienda acepta el pedido, registra un evento `OrderPlaced`.
+Este límite cambia el trabajo diario:
 
-```text title="Evento registrado"
-OrderPlaced
-  product: taza de cerámica
-  quantity: 1
-```
+- **Prueba miles de casos sin efectos externos.** Genera combinaciones de existencias y cantidades solicitadas, incluidos cero, valores negativos y la última taza disponible. Comprueba las decisiones sin una base de datos, conexión de red ni cuenta de correo.
+- **Reproduce los fallos.** Conserva las entradas que revelaron una regla de existencias incorrecta y vuelve a ejecutarlas. Investigar esa regla no depende de que un proveedor esté disponible ni de que una base de datos de pruebas tenga los datos adecuados.
+- **Refactoriza según el comportamiento observable.** Aplica los mismos casos a las reglas de existencias antigua y nueva y compara sus decisiones. Puedes comprobar los cambios escritos a mano o por un agente de IA según las promesas de la tienda.
+- **Cambia la infraestructura sin reescribir la política.** La regla de existencias no contiene llamadas SQL ni a un proveedor de correo. Cambiar el almacenamiento o el servicio de correo conserva intactas las condiciones de aceptación de un pedido.
+- **Comprende y reutiliza la lógica.** Lee las entradas y la decisión resultante sin rastrear escrituras ocultas en otros servicios. Extrae un cálculo o reutiliza una regla sin arrastrar una conexión a la base de datos.
 
-Fíjate en el cambio de nombre: `PlaceOrder` expresa una intención; `OrderPlaced` describe un hecho aceptado. El evento pasa a formar parte del historial de la aplicación.
+**La lógica pura de aplicación es la forma habitual de construir en NeoHaskell.** El desarrollador escribe las reglas y los cálculos; el lenguaje proporciona los mecanismos para cargar el estado y registrar los cambios aceptados. Para probar el comportamiento de negocio no hace falta rodear cada regla de esos mecanismos.
 
-En este ejemplo, aceptar el pedido consume una taza. El evento registra el pedido, mientras que las existencias restantes son un estado derivado de ese historial. En otras aplicaciones, un comando puede generar una cantidad distinta de eventos; este ejemplo sigue un pedido y un evento.
+## ¿Cómo realiza trabajo útil la aplicación?
 
-## Consultas
+Aun así, un pedido aceptado necesita un correo de confirmación. **Las integraciones realizan efectos fuera de la lógica de la aplicación.** Agrupan ese trabajo por separado para que las decisiones de la tienda no dependan del proveedor que lo ejecuta.
 
-Una **consulta** lee el estado de la aplicación sin modificarlo. Responde a una pregunta usando el estado derivado de los eventos registrados.
+Un worker de integración sabe realizar su tarea. Un worker de correo recibe el destinatario y el mensaje y los envía. No decide si se permite un pedido, cuántas existencias quedan ni qué clientes deben recibir una confirmación. Esas decisiones pertenecen a la lógica pura de la aplicación.
 
-Después de aceptar el pedido, una consulta sobre las existencias devuelve dos tazas: las tres iniciales menos la pedida.
+La aplicación puede solicitar ese trabajo después de registrar `OrderPlaced`. Si el proveedor de correo no está disponible, el pedido sigue aceptado. Cambiar el modo de envío del correo modifica la integración, no la política de existencias. Las [guías de integraciones](/guides/integrations/) explican cómo configurar y ejecutar estos workers.
 
-```text title="Consulta y resultado"
-Existencias restantes de tazas de cerámica
-2
-```
+## Ofrece a cada pantalla la respuesta que necesita
 
-El evento y el resultado de la consulta cumplen funciones distintas. `OrderPlaced` permanece en el historial como registro del pedido. Una consulta sobre las existencias proporciona la respuesta actual, que puede cambiar cuando se acepten más pedidos.
+Una vez aceptado el pedido, distintas personas necesitan respuestas distintas. El siguiente comprador necesita saber las existencias disponibles. El cliente necesita una confirmación. El personal necesita saber cuántos pedidos requieren su atención.
 
-## Comandos rechazados
+Una **consulta** mantiene información útil derivada del estado de la aplicación y ofrece una respuesta a quien la solicita. Para la tienda que empezó con tres tazas y ningún pedido, aceptar un pedido de una produce estas respuestas:
 
-Un comando puede ser una intención válida y, aun así, ser rechazado. Si la tienda se ha quedado sin tazas, un pedido de una no cumple la condición de existencias.
+<EventModelTour kind="queries" />
 
-No se registra ningún evento `OrderPlaced` para ese pedido rechazado. Una consulta sigue devolviendo cero tazas. El intento no se ha convertido en un pedido aceptado y las existencias no han cambiado.
+Leer la respuesta sobre las existencias no genera otro pedido. Tampoco hace falta recorrer todo el historial de eventos en cada visita a una página: NeoHaskell actualiza el estado de la consulta a medida que llegan cambios y la pantalla lee la respuesta mantenida.
 
-| Existencias iniciales | Comando | Evento registrado | Existencias finales |
-| --- | --- | --- | --- |
-| 3 tazas | Pedir 1 taza | `OrderPlaced` | 2 tazas |
-| 0 tazas | Pedir 1 taza | Ninguno | 0 tazas |
+**Los mismos hechos pueden responder a preguntas distintas.** La pantalla del cliente y el informe del personal pueden tener estructuras diferentes sin necesitar relatos incompatibles de lo ocurrido. Un informe nuevo puede usar el historial conservado para calcular otra respuesta.
 
-Este modelo abarca los pedidos y las existencias. Los pagos, los envíos y los pedidos simultáneos quedan fuera de este primer ejemplo.
+Una respuesta mostrada en pantalla puede tardar en reflejar un cambio nuevo. Por eso las existencias que se muestran no autorizan a hacer un pedido: la decisión del comando comprueba el estado pertinente cuando llega la solicitud.
 
-## Empieza a crear
-
-Antes de pedir a un agente que cree una funcionalidad, describe el comando, las condiciones para aceptarlo, los eventos que debería registrar y las preguntas a las que debe responder la aplicación. Incluye un caso que debería rechazarse.
-
-Cuando puedas explicar ambos resultados para esta tienda, continúa con [configura tu agente](/getting-started/).
-
-<section class="docs-plan" data-pagefind-ignore>
-
-## Plan de la página
-
-Esta página mantendrá la tienda pequeña como introducción a los comandos, las decisiones, los eventos y las consultas. Sus ejemplos ayudarán a los lectores a reconocer cada concepto y prever si un pedido se acepta o se rechaza antes de instalar nada. Una figura estática compacta separará el comando, la decisión, el evento registrado y el resultado de la consulta, junto con las tablas comparativas existentes. Los lectores podrán continuar con [Configura tu agente](/getting-started/) para preparar un proyecto funcional o con [Modela tu primera funcionalidad](/tutorial/) para aplicar los conceptos a una especificación.
-
-</section>
+Separar los cambios de las preguntas se llama **CQRS**. Los comandos y las decisiones controlan lo que puede ocurrir; las consultas organizan lo que las personas necesitan saber. Event Sourcing proporciona el historial del que la aplicación deriva su estado.

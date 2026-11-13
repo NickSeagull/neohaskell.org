@@ -594,3 +594,11 @@ The owner accepted the independently readable history page and requested that th
 The owner's latest refinement gives the inline shop model four 172px slice columns on a 688px canvas. Vertical separators run through all model bands; chapter arrows span the first two and last two columns, with names above. The existing role colors, 16px node text, screen sketches, and connections remain. Native horizontal scrolling preserves the model on phones, while the complete model fits the desktop article.
 
 The growth comparison now appears as two separate figures in the argument: shared-code changes and rework first, then additive slices beside stable contracts. Each plot retains its effort-per-change axis; roughly level marginal effort explains the intended linear total growth. A linked capture of the actual NeoHaskell IDE provides full-size access without changing the article layout. Specification and Given/When/Then rules remain in the main prose. Evidence is in `.impeccable/reviews/model-evolution-2026-11-13/`.
+
+## Translation and publication resumed, 2026-11-13
+
+After accepting the revised documentation and DSL formatting, the owner explicitly requested translation followed by deployment. This supersedes the translation and publication pause recorded above. English remains the source, and all eight configured locales use translated MDX, navigation labels, homepage text, and shared teaching-diagram messages. The normal Starlight loader and strict deployment freshness gate are restored.
+
+Executable examples retain the English source exactly, including the line break after `orders =`. Documentation component imports use a directory-independent alias. Localized Event Model columns gain horizontal space while retaining 16px text, the existing vertical geometry, semantic colors, slice boundaries, chapter arrows, and native horizontal scrolling. The SVG follows the same horizontal scale as its nodes. The actual IDE screenshot retains its original interface and opens through the deployment base path.
+
+The translation release review is recorded under `.impeccable/reviews/translation-release-2026-11-13/`. Structural validation, linguistic inspection, visual review, and deployment verification are distinct checks. No new conceptual argument, application behavior, or documentation layout is introduced by translation.

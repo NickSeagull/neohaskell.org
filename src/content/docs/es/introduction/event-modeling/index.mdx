@@ -1,0 +1,144 @@
+---
+title: Conecta todo el proceso
+description: Divide un modelo de eventos en slices y capítulos, evoluciona contratos desplegados y conserva la especificación en el código.
+sidebar:
+  label: Modela todo el proceso
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: true
+next: true
+---
+
+import GrowthComparison from '@components/learn/GrowthComparison.astro';
+import ShopEventModel from '@components/learn/ShopEventModel.astro';
+import IdeScreenshot from '@components/learn/IdeScreenshot.astro';
+
+Piensa en la tienda de tazas que presentamos en [El trabajo que hay detrás del código](/introduction/#the-questions-that-change-the-software). Al aceptar un pedido, la tienda reserva para el cliente las tazas solicitadas. Para diseñar su aplicación, tenemos que conectar toda la experiencia: un cliente consulta las existencias, pide una taza y averigua si la tienda ha aceptado el pedido.
+
+[Protege los cambios y responde a las preguntas](/learn/) explica cada parte por separado: un comando solicita un cambio, un evento registra un hecho aceptado y una consulta proporciona una respuesta.
+
+**El modelado de eventos conecta esas partes en un proceso que las personas pueden examinar en conjunto.** Reúne pantallas, comandos, eventos y consultas en un mismo modelo. Las conexiones revelan de dónde procede la información, dónde se necesita y qué preguntas de negocio siguen pendientes. NeoHaskell usa esa misma estructura para organizar el desarrollo y conservar la especificación en el código.
+
+## Sigue un pedido y una cancelación
+
+La tienda tiene tres tazas disponibles. El propietario quiere que los clientes puedan cancelar un pedido antes del envío y que sus tazas vuelvan a las existencias disponibles. Empecemos con el recorrido de pedir una taza y luego cancelarla.
+
+El modelo tiene dos **capítulos**: Hacer un pedido y Cancelar un pedido. Cada capítulo agrupa dos **slices**: uno cambia el estado mediante un comando y su evento aceptado; el otro proporciona la respuesta de existencias mediante una consulta. Las líneas verticales separan las unidades de desarrollo. Cada flecha de la parte superior abarca los slices de su capítulo.
+
+<ShopEventModel />
+
+Cuando se acepta el pedido, la consulta de existencias responde dos. Después de la cancelación, responde tres. Los nodos Tazas disponibles repetidos muestran la respuesta sobre las existencias en esos dos momentos del proceso.
+
+Al dibujar las conexiones también queda claro qué preguntas no ha respondido este primer esbozo. «Añade la cancelación» parecía una petición para un botón. El modelo plantea el resto del comportamiento:
+
+- ¿De dónde obtiene el comando de cancelación la identidad del pedido?
+- ¿Qué impide la cancelación después del envío?
+- ¿Qué respuesta indica al cliente que la cancelación se ha realizado?
+- ¿Qué indica al personal que debe dejar de preparar ese pedido?
+
+**Cada pregunta sin respuesta señala una parte de la aplicación que aún no se ha diseñado.** El propietario y el desarrollador pueden resolverla mientras examinan el mismo proceso, antes de que un agente o una persona convierta una suposición en código.
+
+## Desarrolla un slice cada vez
+
+**Un slice es la unidad de desarrollo.** «Aceptar un pedido» tiene una entrada, una decisión y un resultado observable. Su implementación comprueba la cantidad solicitada y las existencias, y sus reglas especifican cuándo aceptar o rechazar. «Mostrar las existencias restantes» es un slice distinto con otro trabajo: mantener la respuesta después de hacer un pedido.
+
+La misma división se aplica a la cancelación. Un slice decide si se puede cancelar el pedido y registra el resultado. Otro proporciona la respuesta de existencias actualizada. El capítulo los mantiene unidos como parte de la experiencia del cliente sin convertirlos en una sola tarea de implementación.
+
+Una **feature** agrupa capítulos relacionados. Aquí, una feature Orders contiene Hacer un pedido y Cancelar un pedido. Si el proceso necesita un efecto externo, como enviar la confirmación del pedido, la integración tiene su propio slice. El modelo asigna un lugar a cada tarea y muestra los contratos de los que depende.
+
+## Fija el contrato cuando se despliega
+
+Un comando visible para el cliente es una promesa. Quien llama a `PlaceOrder` depende de sus entradas aceptadas y de su comportamiento. Quienes usan una consulta dependen de la respuesta que proporciona. Los eventos registrados dependen de definiciones que conservan el significado de esos hechos.
+
+**El modelo de despliegue de NeoHaskell fija esas definiciones y su implementación al desplegarlas.** Un comando, evento o consulta desplegados no se pueden reescribir silenciosamente con la misma identidad. Un nuevo requisito o una decisión corregida se convierte en un comportamiento nuevo, junto al comportamiento desplegado.
+
+Supongamos que la tienda añade una compra con entrega que exige datos de contacto antes de aceptar un pedido. La compra para recoger en tienda usa `PlaceOrder`, que solo acepta un producto y una cantidad. En vez de modificarlo en el mismo sitio, duplica la feature en desarrollo, asigna un nombre nuevo al comportamiento modificado, como `PlaceOrderWithContact`, e implementa la comprobación adicional. También se puede añadir un sufijo. Lo importante es que el nuevo contrato tenga su propia identidad.
+
+La compra con entrega usa el contrato nuevo, mientras que los pedidos para recoger siguen usando el original. NeoHaskell establece como vía de desarrollo habitual esta pequeña ampliación explícita: reutilizar la estructura existente, cambiar el comportamiento previsto y comprobar sus reglas. El trabajo se centra en el nuevo requisito, en vez de rastrear a todos los usuarios de una implementación modificada.
+
+La misma regla se aplica a las correcciones de errores. Si `CancelOrder` acepta por error pedidos enviados, crea `CancelUndispatchedOrder` con la corrección, prueba el caso que faltaba, cambia las llamadas para que lo usen y desactiva el comando defectuoso. Fijar la implementación anterior conserva lo que se desplegó; no obliga a mantener disponible un punto de entrada defectuoso.
+
+## Retira comportamientos sin versionar toda la API
+
+**Los contratos antiguos y nuevos pueden coexistir mientras sus usuarios migran.** La aplicación móvil puede seguir ofreciendo la opción de recoger en tienda con `PlaceOrder`, mientras que el sitio web añade la entrega con `PlaceOrderWithContact`. La consulta de existencias y los comandos no relacionados conservan sus nombres y contratos.
+
+Así se evita copiar una API completa a `/v2` porque haya cambiado una operación. Cada comportamiento modificado obtiene su propia identidad. Los usuarios adoptan el reemplazo cuando están preparados, en vez de tener que trasladar todas las operaciones juntas a una nueva versión de la API.
+
+Marca un comando o una consulta antiguos como **obsoletos** cuando quieras que los usuarios nuevos dejen de elegirlos. Cuando el uso demuestre que ya nadie los llama, desactiva o elimina ese punto de entrada. Retirar un comando no borra los eventos que registró ni elimina las definiciones necesarias para interpretar ese historial.
+
+## Por qué el código compartido cambiante genera más trabajo
+
+Considera el mismo requisito de los datos de contacto para la entrega en una aplicación convencional donde la tienda modifica el endpoint `POST /orders` existente y el modelo `Order` compartido. Hacer obligatorio el nuevo campo rompe la compra antigua de la aplicación móvil. Añadirlo al modelo compartido también afecta al editor de pedidos y a la pantalla del personal, aunque ninguno haya pedido una nueva política de pedidos.
+
+A continuación, la tienda cambia la cancelación de un indicador de sí o no a un estado que distingue entre solicitada, aceptada y rechazada. El código que antes comprobaba `cancelled` ahora requiere cambios en el envío, los cálculos de existencias y los correos a los clientes. Una pequeña petición de negocio se extiende por varias features porque todas interpretan el mismo modelo mutable.
+
+**El coste incluye volver a revisar comportamientos que ya funcionaban.** En este gráfico, las letras A a G representan ampliaciones de la aplicación. Cada R es trabajo repetido en un comportamiento anterior. La curva ascendente ilustra el esfuerzo creciente por cambio a medida que se acumulan esas dependencias.
+
+<GrowthComparison mode="rework" />
+
+## Mantén el crecimiento cerca de lo lineal
+
+En NeoHaskell, el requisito de los datos de contacto para la entrega añade un comando con nombre y sus reglas junto al contrato de pedidos fijado. El comportamiento de la compra anterior se conserva. Una nueva política de cancelación obtiene del mismo modo un slice y un contrato explícitos, con las consultas y las integraciones afectadas visibles en el modelo de eventos.
+
+**Los contratos estables impiden que un nuevo requisito cambie silenciosamente el comportamiento de todos los usuarios existentes.** Los slices acotan el trabajo de implementación, los capítulos conservan el contexto de negocio y el modelo muestra dónde se conecta un nuevo comportamiento con el resto de la aplicación. NeoHaskell proporciona una estructura repetible para que crear el reemplazo resulte más barato que desenredar una y otra vez el código compartido.
+
+<GrowthComparison mode="bounded" />
+
+Un esfuerzo aproximadamente constante por ampliación hace que el esfuerzo total de desarrollo crezca de forma casi lineal: otro slice comparable añade otra cantidad de trabajo comparable. Este es el patrón de desarrollo que NeoHaskell está diseñado para facilitar.
+
+La cancelación sigue teniendo que coordinarse con el envío para determinar cuándo se puede cancelar un pedido. Ese acuerdo forma parte de los contratos y las reglas de los slices afectados. El desarrollador puede nombrar la dependencia, inspeccionarla y probarla, en vez de descubrirla cuando se rompe el recorrido del cliente.
+
+## Usa el modelo para entender el código
+
+**El IDE de NeoHaskell muestra la estructura de la aplicación.** Abre una feature para ver sus capítulos y slices, y sigue las conexiones entre comandos, eventos, consultas e integraciones. Puedes explorar el modelo de la tienda de tazas en la interfaz real del IDE:
+
+<IdeScreenshot />
+
+Para modificar una cancelación, empieza por el capítulo Cancel order. Localiza el comando que la solicita, el evento que produce y la consulta de existencias que consume ese evento. Esos nombres identifican las declaraciones correspondientes en el código fuente. El mismo recorrido resulta útil al hacerte cargo de un proyecto existente o revisar un cambio escrito por un agente de IA.
+
+El modelo visual se deriva de las declaraciones del código fuente. Cuando esas declaraciones cambian, el IDE actualiza el modelo. Un comando renombrado o una nueva conexión con una consulta forman parte de la estructura de la aplicación y aparecen en el diagrama sin que nadie tenga que mantener otro dibujo a mano.
+
+## Mantén la especificación en la aplicación
+
+**La especificación forma parte del código.** El DSL del modelo de eventos de NeoHaskell declara features, capítulos, slices, comandos, eventos, consultas e integraciones. Las reglas junto a un slice describen el comportamiento requerido, incluidos los casos Given, When y Then.
+
+Este es el capítulo de cancelación del modelo de la tienda. El ejemplo utiliza los tipos `Order`, de comando, de evento y de consulta de la tienda, definidos en otro lugar:
+
+```haskell
+orders =
+  feature "Orders" do
+    chapter "Cancel order" do
+      slice "Cancel before dispatch" do
+        entity @Order do
+          command @CancelOrder do
+            produces @OrderCancelled
+
+        rule "Cancel before dispatch" do
+          orderId <- requestValue @Uuid
+          given do
+            event OrderPlaced {
+              orderId = orderId,
+              quantity = 1
+            }
+          when CancelOrder { orderId = orderId }
+          therefore do
+            event OrderCancelled {
+              orderId = orderId,
+              quantity = 1
+            }
+
+      slice "Show restored stock" do
+        query @AvailableMugs do
+          readsFrom @Order do
+            onEvent @OrderPlaced
+            onEvent @OrderCancelled
+```
+
+**La jerarquía del diagrama es la jerarquía del código.** El capítulo contiene un slice de comando y otro de consulta. `produces` declara el evento del comando; `readsFrom` y `onEvent` declaran qué historial proporciona la consulta. La consulta de existencias escucha los pedidos realizados y cancelados para que su respuesta refleje ambos cambios.
+
+La regla está junto al comando que especifica. `requestValue` pide al ejecutor de reglas un ID de pedido de ejemplo tipado. `given` proporciona el historial del pedido aceptado, `when` proporciona el comando de cancelación y `therefore` corresponde al Then del DSL: el evento `OrderCancelled` esperado. La implementación de la decisión tiene un caso concreto que debe satisfacer.
+
+Una segunda regla cubre un pedido que ya se ha enviado: la cancelación debe rechazarse y las existencias deben permanecer iguales. El slice de consulta de existencias comprueba por separado que una cancelación aceptada restaure la cantidad disponible. Cada caso pertenece al comportamiento que especifica.
+
+Un archivo Markdown o una página de Confluence independientes pueden quedar obsoletos porque alguien tiene que actualizarlos después de cambiar la aplicación. En NeoHaskell, el modelo declarado y las reglas ya están en el código fuente. La documentación que describe esa especificación se puede derivar de esas declaraciones, en vez de convertirse en otra fuente de autoridad que haya que mantener.

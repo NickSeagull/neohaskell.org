@@ -1,6 +1,6 @@
 ---
-title: Déployer et exploiter
-description: "Plan de page. Prévoir un déploiement reproductible et vérifier les dépendances persistantes et les défaillances."
+title: "Déployer une application"
+description: "Plan de page. Que faut-il configurer et persister pour exécuter cette application ailleurs ?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plan de page
 
-Cette page documentera une procédure de déploiement après vérification de ses commandes et de son environnement par rapport à une révision du projet externe. Elle couvrira la construction de l’application, la configuration requise, les dépendances persistantes, les vérifications au démarrage, l’examen des défaillances et la reprise. Une figure compacte montrera les composants en cours d’exécution, et des paires de commandes et de résultats illustreront un démarrage réussi ainsi qu’une défaillance concrète. Le guide distinguera un exemple de déploiement vérifié des garanties de production et renverra vers [Configuration](/reference/configuration/) et [Erreurs et dépannage](/reference/errors/).
+Cette page assemblera un exemple de déploiement reproductible pour une application et une révision de framework figées, en indiquant l’exécutable, la configuration d’exécution, la base de données et les chemins de fichiers. Un diagramme de déploiement distinguera les services persistants du processus applicatif et montrera la frontière HTTP publique. La vérification couvrira le démarrage, une commande acceptée, une requête et un redémarrage, tout en indiquant les éléments d’hébergement et de supervision des processus propres à chaque environnement que le dépôt ne fournit pas.

@@ -1,6 +1,6 @@
 ---
-title: Ligar serviços externos
-description: "Plano da página. Planear efeitos externos e ligações a fornecedores sem os esconder nas decisões."
+title: "Invoque um serviço externo"
+description: "Plano da página. Como executo um efeito externo depois de uma decisão?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plano da página
 
-Esta página mostrará como ligar um serviço externo suportado, mantendo os efeitos de rede e as credenciais fora da lógica de decisão pura. Um exemplo baseado no código-fonte abrangerá a ligação ao fornecedor, o efeito solicitado pela aplicação e o tratamento do sucesso ou da falha. Uma figura sequencial mostrará que componente executa cada ação; rastos emparelhados explicarão uma chamada bem-sucedida e um fornecedor indisponível. O guia incluirá ligações para [Decisões puras e efeitos](/concepts/pure-decisions/) sobre este limite e [Configuração](/reference/configuration/) sobre os valores necessários.
+Esta página ligará um evento aceite a um processador de saída tipado, fará uma chamada HTTP e transformará a resposta do fornecedor num comando de seguimento. Os percursos de sucesso e de falha mostrarão a fronteira entre uma decisão pura e um efeito externo. O exemplo usará uma chave de idempotência e explicará as definições de repetição separadas para HTTP e para o distribuidor, sem prometer entrega duradoura ou execução exatamente uma vez.

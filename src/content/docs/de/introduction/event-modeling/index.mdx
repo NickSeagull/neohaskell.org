@@ -1,0 +1,144 @@
+---
+title: Den gesamten Prozess verbinden
+description: Ein Ereignismodell in Slices und Kapitel gliedern, bereitgestellte Verträge weiterentwickeln und die Spezifikation im Code halten.
+sidebar:
+  label: Den gesamten Prozess modellieren
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: true
+next: true
+---
+
+import GrowthComparison from '@components/learn/GrowthComparison.astro';
+import ShopEventModel from '@components/learn/ShopEventModel.astro';
+import IdeScreenshot from '@components/learn/IdeScreenshot.astro';
+
+Betrachte den Tassenladen aus [Die Arbeit hinter dem Code](/introduction/#the-questions-that-change-the-software). Wenn eine Bestellung angenommen wird, werden die gewünschten Tassen für den Kunden zurückgelegt. Um die Anwendung zu entwerfen, müssen wir das gesamte Erlebnis verbinden: Ein Kunde sieht den Bestand, bestellt eine Tasse und erfährt, ob der Laden die Bestellung angenommen hat.
+
+[Änderungen schützen und Fragen beantworten](/learn/) erklärt die einzelnen Teile: Ein Kommando fordert eine Änderung an, ein Ereignis hält eine angenommene Tatsache fest und eine Abfrage liefert eine Antwort.
+
+**Ereignismodellierung verbindet diese Teile zu einem Prozess, den alle gemeinsam untersuchen können.** Bildschirme, Kommandos, Ereignisse und Abfragen stehen in einem Modell. Ihre Verbindungen zeigen, woher Informationen stammen, wo sie gebraucht werden und welche fachlichen Fragen noch beantwortet werden müssen. NeoHaskell verwendet dieselbe Struktur, um die Entwicklung zu organisieren und die Spezifikation im Code zu halten.
+
+## Bestellung und Stornierung verfolgen
+
+Im Laden sind drei Tassen verfügbar. Die Inhaberin möchte, dass Kunden Bestellungen vor dem Versand stornieren können und die Tassen wieder dem verfügbaren Bestand gutgeschrieben werden. Beginne mit dem Ablauf, eine Tasse zu bestellen und anschließend zu stornieren.
+
+Das Modell hat zwei **Kapitel**: Bestellung aufgeben und Bestellung stornieren. Jedes Kapitel gruppiert zwei **Slices**: Eines ändert den Zustand über ein Kommando und das zugehörige angenommene Ereignis. Das andere liefert die Bestandsantwort über eine Abfrage. Vertikale Linien trennen die Entwicklungseinheiten. Jeder Pfeil oben überspannt die Slices des jeweiligen Kapitels.
+
+<ShopEventModel />
+
+Nach Annahme der Bestellung lautet die Antwort der Bestandsabfrage zwei. Nach der Stornierung lautet sie drei. Die wiederholten Knoten „Verfügbare Tassen“ zeigen die Bestandsantwort an diesen beiden Punkten im Prozess.
+
+Die Verbindungen in der Zeichnung machen auch sichtbar, was dieser erste Entwurf noch nicht beantwortet. „Stornierung hinzufügen“ klang nach einer Schaltfläche. Das Modell fragt nach dem restlichen Verhalten:
+
+- Woher erhält das Stornierungskommando die Bestellungs-ID?
+- Was verhindert eine Stornierung nach dem Versand?
+- Welche Antwort zeigt dem Kunden, dass die Stornierung erfolgreich war?
+- Woran erkennen die Mitarbeitenden, dass sie diese Bestellung nicht mehr vorbereiten sollen?
+
+**Jede offene Frage steht für einen Teil der Anwendung, der noch nicht entworfen wurde.** Inhaber und Entwickler können den Prozess gemeinsam betrachten und diese Fragen klären, bevor ein Agent oder eine Person eine Annahme in Code umsetzt.
+
+## Ein Slice nach dem anderen entwickeln
+
+**Ein Slice ist die Entwicklungseinheit.** „Eine Bestellung annehmen“ hat eine Eingabe, eine Entscheidung und ein sichtbares Ergebnis. Die Implementierung prüft die angeforderte Menge und den Bestand; die Regeln legen fest, wann angenommen oder abgelehnt wird. „Verbleibenden Bestand anzeigen“ ist ein eigenes Slice mit einer anderen Aufgabe: die Antwort nach einer Bestellung aktuell zu halten.
+
+Dieselbe Aufteilung gilt für die Stornierung. Ein Slice entscheidet, ob die Bestellung storniert werden kann, und zeichnet das Ergebnis auf. Ein anderes liefert die aktualisierte Bestandsantwort. Das Kapitel hält beide als Teil des Kundenerlebnisses zusammen, ohne sie zu einer einzigen Implementierungsaufgabe zu machen.
+
+Ein **Feature** gruppiert zusammengehörige Kapitel. Hier enthält ein Bestellungen-Feature die Kapitel „Bestellung aufgeben“ und „Bestellung stornieren“. Wenn der Prozess einen externen Effekt benötigt, etwa den Versand einer Bestellbestätigung, erhält eine Integration ein eigenes Slice. Das Modell gibt jeder Aufgabe einen Platz und zeigt, von welchen Verträgen sie abhängt.
+
+## Vertrag bei der Bereitstellung einfrieren
+
+Ein kundenorientiertes Kommando ist ein Versprechen. Wer `PlaceOrder` aufruft, verlässt sich auf dessen erlaubte Eingaben und Verhalten. Die Nutzer einer Abfrage verlassen sich auf die Antwort, die sie liefert. Aufgezeichnete Ereignisse hängen von Definitionen ab, die die Bedeutung dieser Fakten bewahren.
+
+**NeoHaskells Bereitstellungsmodell friert Definitionen und Implementierung beim Bereitstellen ein.** Ein bereitgestelltes Kommando, Ereignis oder eine Abfrage lässt sich nicht unbemerkt unter derselben Identität umschreiben. Eine neue Anforderung oder eine korrigierte Entscheidung wird zu neuem Verhalten neben dem bereits bereitgestellten Verhalten.
+
+Angenommen, der Laden führt einen Versand-Checkout ein, der vor Annahme einer Bestellung Kontaktdaten verlangt. Beim bisherigen Abhol-Checkout wird `PlaceOrder` verwendet, das nur ein Produkt und eine Menge annimmt. Statt es direkt zu bearbeiten, wird das Feature während der Entwicklung dupliziert, das geänderte Verhalten erhält einen neuen Namen wie `PlaceOrderWithContact` und die zusätzliche Prüfung wird implementiert. Auch ein Suffix ist möglich. Entscheidend ist, dass der neue Vertrag eine eigene Identität hat.
+
+Der Versand-Checkout verwendet den neuen Vertrag, während Abholbestellungen weiterhin den ursprünglichen nutzen. NeoHaskell macht diese kleine, explizite Erweiterung zum üblichen Entwicklungsweg: Die bestehende Struktur wird wiederverwendet, das gewünschte Verhalten geändert und anhand seiner Regeln geprüft. Die Arbeit konzentriert sich auf die neue Anforderung, statt jeden Aufrufer einer veränderten Implementierung nachzuverfolgen.
+
+Eine Fehlerbehebung folgt derselben Regel. Wenn `CancelOrder` fälschlich Bestellungen nach dem Versand annimmt, erstelle `CancelUndispatchedOrder`, teste den fehlenden Fall, stelle die Aufrufer um und deaktiviere das fehlerhafte Kommando. Die alte Implementierung einzufrieren bewahrt den bereitgestellten Stand. Das bedeutet nicht, dass der fehlerhafte Einstiegspunkt verfügbar bleiben muss.
+
+## Verhalten außer Betrieb nehmen, ohne die ganze API zu versionieren
+
+**Alte und neue Verträge können nebeneinander bestehen, während ihre Nutzer umsteigen.** Die mobile App kann weiterhin die Abholung über `PlaceOrder` anbieten, während die Website den Versand mit `PlaceOrderWithContact` ergänzt. Die Bestandsabfrage und nicht betroffene Kommandos behalten ihre bisherigen Namen und Verträge.
+
+So muss nicht eine ganze API unter `/v2` kopiert werden, weil sich eine Operation geändert hat. Jedes geänderte Verhalten erhält eine eigene Identität. Die Nutzer übernehmen den Ersatz, wenn sie dazu bereit sind, statt alle Operationen gemeinsam auf eine neue API-Version umstellen zu müssen.
+
+Markiere ein altes Kommando oder eine alte Abfrage als **veraltet**, wenn neue Nutzer es nicht mehr auswählen sollen. Sobald die Nutzung zeigt, dass niemand es mehr aufruft, kann der Einstiegspunkt deaktiviert oder entfernt werden. Ein ausgemustertes Kommando löscht weder die von ihm aufgezeichneten Ereignisse noch die Definitionen, die zum Interpretieren dieses Verlaufs benötigt werden.
+
+## Warum Änderungen an gemeinsamem Code mehr Arbeit verursachen
+
+Betrachte dieselbe Anforderung nach Kontaktdaten für den Versand in einer herkömmlichen Anwendung, in der der Laden den vorhandenen Endpunkt `POST /orders` und das gemeinsame Modell `Order` ändert. Ein neues Pflichtfeld macht den bisherigen mobilen Checkout unbrauchbar. Wird das Feld dem gemeinsamen Modell hinzugefügt, betrifft das auch den Bestellungseditor und die Mitarbeiteransicht, obwohl keine dieser Funktionen eine neue Bestellregel verlangt hat.
+
+Als Nächstes ändert der Laden die Stornierung von einem Ja-Nein-Flag in einen Status, der angefordert, angenommen und abgelehnt unterscheidet. Code, der zuvor `cancelled` prüfte, muss nun beim Versand, bei Bestandsberechnungen und Kunden-E-Mails angepasst werden. Eine kleine fachliche Anforderung breitet sich über mehrere Features aus, weil sie alle dasselbe veränderliche Modell interpretieren.
+
+**Zu den Kosten gehört auch, bereits funktionierendes Verhalten erneut prüfen zu müssen.** In dieser Darstellung stehen A bis G für Erweiterungen der Anwendung. Jedes R steht für wiederholte Arbeit an einem früheren Verhalten. Die steigende Kurve zeigt den wachsenden Aufwand pro Änderung, während sich diese Abhängigkeiten ansammeln.
+
+<GrowthComparison mode="rework" />
+
+## Wachstum nahe an linear halten
+
+In NeoHaskell ergänzt die Anforderung nach Kontaktdaten für den Versand ein benanntes Kommando und seine Regeln neben dem eingefrorenen Bestellungsvertrag. Der bisherige Checkout behält sein Verhalten. Eine neue Stornierungsregel erhält ebenso ein eigenes Slice und einen eigenen Vertrag. Betroffene Abfragen und Integrationen bleiben im Ereignismodell sichtbar.
+
+**Stabile Verträge verhindern, dass eine neue Anforderung unbemerkt alle vorhandenen Nutzer verändert.** Slices begrenzen die Implementierungsarbeit, Kapitel bewahren den fachlichen Zusammenhang und das Modell zeigt, wo ein neues Verhalten mit dem Rest der Anwendung verbunden ist. NeoHaskell stellt die wiederkehrende Struktur bereit, damit das Erstellen des Ersatzes weniger Aufwand verursacht als das wiederholte Entwirren gemeinsam genutzten Codes.
+
+<GrowthComparison mode="bounded" />
+
+Ein ungefähr gleichbleibender Aufwand pro Erweiterung lässt den Gesamtaufwand annähernd linear wachsen: Ein weiteres vergleichbares Slice fügt einen weiteren vergleichbaren Arbeitsblock hinzu. Dieses Entwicklungsmuster soll NeoHaskell unterstützen.
+
+Bei der Stornierung muss weiterhin klar sein, wann eine Bestellung im Verhältnis zum Versand storniert werden kann. Diese Abstimmung gehört in die Verträge und Regeln der betroffenen Slices. Entwickler können die Abhängigkeit benennen, untersuchen und testen, statt sie erst durch einen unterbrochenen Kundenablauf zu entdecken.
+
+## Mit dem Modell den Code verstehen
+
+**Die NeoHaskell-IDE macht die Anwendungsstruktur sichtbar.** Öffne ein Feature, um seine Kapitel und Slices zu sehen, und folge dann den Verbindungen zwischen Kommandos, Ereignissen, Abfragen und Integrationen. Das Modell des Tassenladens lässt sich in der tatsächlichen IDE-Oberfläche erkunden:
+
+<IdeScreenshot />
+
+Beginne bei einer Änderung an der Stornierung mit dem Kapitel „Cancel order“. Suche das entsprechende Kommando, das Ereignis, das es erzeugt, und die Bestandsabfrage, die dieses Ereignis verarbeitet. Diese Namen geben die zugehörigen Deklarationen im Quellcode an. Derselbe Weg hilft bei der Übernahme eines bestehenden Projekts und beim Prüfen einer Änderung, die ein KI-Agent geschrieben hat.
+
+Das visuelle Modell wird aus den Quelldeklarationen abgeleitet. Ändern sich die Deklarationen, aktualisiert die IDE das Modell. Ein umbenanntes Kommando oder eine neue Abfrageverbindung gehört zur Anwendungsstruktur und erscheint deshalb im Diagramm, ohne dass jemand eine zweite Zeichnung von Hand pflegen muss.
+
+## Die Spezifikation in der Anwendung halten
+
+**Die Spezifikation ist Teil des Codes.** Die DSL für NeoHaskell-Ereignismodelle deklariert Features, Kapitel, Slices, Kommandos, Ereignisse, Abfragen und Integrationen. Die Regeln neben einem Slice beschreiben das erwartete Verhalten, einschließlich Given-, When- und Then-Fällen.
+
+Hier ist das Stornierungskapitel aus dem Modell des Ladens. Das Beispiel verwendet die bereits an anderer Stelle definierten Typen `Order`, Kommando, Ereignis und Abfrage des Ladens:
+
+```haskell
+orders =
+  feature "Orders" do
+    chapter "Cancel order" do
+      slice "Cancel before dispatch" do
+        entity @Order do
+          command @CancelOrder do
+            produces @OrderCancelled
+
+        rule "Cancel before dispatch" do
+          orderId <- requestValue @Uuid
+          given do
+            event OrderPlaced {
+              orderId = orderId,
+              quantity = 1
+            }
+          when CancelOrder { orderId = orderId }
+          therefore do
+            event OrderCancelled {
+              orderId = orderId,
+              quantity = 1
+            }
+
+      slice "Show restored stock" do
+        query @AvailableMugs do
+          readsFrom @Order do
+            onEvent @OrderPlaced
+            onEvent @OrderCancelled
+```
+
+**Die Hierarchie im Diagramm ist dieselbe wie im Code.** Das Kapitel enthält ein Kommando-Slice und ein Abfrage-Slice. `produces` deklariert das Ereignis des Kommandos; `readsFrom` und `onEvent` deklarieren, aus welchem Verlauf die Abfrage ihre Daten bezieht. Die Bestandsabfrage verarbeitet sowohl aufgegebene als auch stornierte Bestellungen, damit ihre Antwort beide Änderungen widerspiegelt.
+
+Die Regel steht neben dem Kommando, das sie beschreibt. `requestValue` bittet den Regel-Runner um eine typisierte Beispiel-Bestellungs-ID. `given` liefert den Verlauf mit der angenommenen Bestellung, `when` das Stornierungskommando und `therefore` das Then der DSL: das erwartete Ereignis `OrderCancelled`. Die Implementierung der Entscheidung muss einen konkreten Fall erfüllen.
+
+Eine zweite Regel behandelt eine bereits versandte Bestellung: Die Stornierung muss abgelehnt werden und der Bestand unverändert bleiben. Das Abfrage-Slice für den Bestand prüft separat, ob eine angenommene Stornierung den verfügbaren Bestand wieder erhöht. Jeder Fall gehört zu dem Verhalten, das er spezifiziert.
+
+Eine separate Markdown-Datei oder Confluence-Seite kann veralten, weil sie nach Änderungen an der Anwendung von Hand aktualisiert werden muss. In NeoHaskell liegen das deklarierte Modell und die Regeln bereits im Quellcode. Ein Dokument mit dieser Spezifikation lässt sich aus den Deklarationen ableiten, statt zu einer weiteren zu pflegenden Informationsquelle zu werden.

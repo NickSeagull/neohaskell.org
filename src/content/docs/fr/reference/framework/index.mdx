@@ -1,6 +1,6 @@
 ---
-title: Composants du framework
-description: "Plan de page. Consulter les définitions reliant le modèle de l’application au code du framework."
+title: "Modèles d’événements et fonctionnalités"
+description: "Plan de page. Comment les fonctionnalités déclarées deviennent-elles une application en cours d’exécution ?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plan de page
 
-Cette page reliera les entités, commandes, décisions, événements, requêtes et la composition de l’application aux définitions vérifiées du framework. Chaque entrée indiquera sa responsabilité, les types associés, les champs requis et le plus petit exemple complet de code source illustrant son rôle. Une figure compacte présentera les relations entre les composants tout en distinguant les événements enregistrés des résultats des requêtes. Les entrées renverront vers [Concepts fondamentaux](/learn/) pour les explications et vers le [tutoriel sur la première fonctionnalité](/tutorial/first-feature/) pour voir leur utilisation dans une application.
+Cette page reliera `EventModel`, `FeatureAction`, `chapter`, `slice`, `entity`, `command`, `produces`, `query` et `readsFrom` à la fonctionnalité `Counter` définie dans les sources. Un petit diagramme des relations montrera la déclaration, la validation et l’assemblage à l’exécution sans confondre l’historique des événements avec les lignes de `query`. Les signatures des constructeurs et les contraintes d’ordre accompagneront le modèle. L’assemblage direct de `Service.Application` sera une section avancée avec lien ; son statut public sera préservé, mais l’architecture actuelle du projet de départ sera présentée en premier.

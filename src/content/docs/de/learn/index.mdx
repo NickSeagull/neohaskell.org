@@ -1,103 +1,78 @@
 ---
-title: Grundkonzepte
-description: Lerne Befehle, Entscheidungen, Ereignisse und Abfragen kennen, indem du eine Bestellung in einem kleinen Onlineshop verfolgst.
+title: Änderungen schützen und Fragen beantworten
+description: Fordere Änderungen mit Kommandos an, schütze fachliche Versprechen mit Entscheidungen und gib jedem Bildschirm die benötigten Antworten über Abfragen.
+sidebar:
+  label: Kommandos und Abfragen
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 2
-prev: false
+prev: true
 next: true
 ---
 
-<p class="docs-lead">Verstehe, wie eine Anwendung entscheidet, was geschehen kann, festhält, was geschehen ist, und Fragen zu ihrem Zustand beantwortet.</p>
+import EventModelTour from '@components/learn/EventModelTour.astro';
 
-NeoHaskell ist eine KI-orientierte Programmiersprache und ein Framework, mit denen du Anwendungen mithilfe eines KI-Agenten entwickeln und ihr Verhalten nachvollziehen kannst. Du beschreibst dieses Verhalten mit **Befehlen, Entscheidungen, Ereignissen und Abfragen**. Die Sprache und das Framework geben diesen Konzepten eine gemeinsame Struktur.
+Der Tassenladen aus [Die Fakten hinter den Zahlen bewahren](/introduction/history/#record-what-happened) zeichnet angenommene Bestellungen als Ereignisse auf und berechnet daraus den verfügbaren Bestand.
 
-Diese Anleitung beschreibt einen kleinen Shop mit drei Keramiktassen auf Lager. Ein Kunde bestellt eine Tasse. Du kannst das Modell verstehen, bevor du NeoHaskell installierst oder einen KI-Agenten verwendest.
+Ein Ereignis ist eine von der Anwendung angenommene Tatsache. Deshalb ist die Grenze darum wichtig: Ein Kunde kann nicht einfach ein Ereignis `OrderPlaced` senden und damit erklären, dass der Laden eine Bestellung angenommen hat.
 
-| Konzept | Zweck | Beispiel aus dem Shop |
-| --- | --- | --- |
-| [Befehl](#commands) | Drückt eine Absicht aus | Eine Bestellung aufgeben |
-| [Entscheidung](#decisions) | Nimmt an oder lehnt ab | Verfügbaren Bestand prüfen |
-| [Ereignis](#events) | Hält fest, was geschehen ist | Bestellung aufgegeben |
-| [Abfrage](#queries) | Liest den aktuellen Zustand | Zwei Tassen übrig |
+Ein Kunde möchte vier Tassen bestellen, obwohl nur drei verfügbar sind. **Eine Bestellung anzufragen und eine angenommene Bestellung zu haben, sind zwei verschiedene Dinge.** Die Anwendung braucht eine Möglichkeit, die Anfrage zu erhalten, zu prüfen und abzulehnen, ohne Bestand zu verbrauchen.
 
-## Befehle
+## Mit einem Kommando eine Änderung anfordern
 
-Ein **Befehl** beschreibt, was eine Person oder ein Prozess von der Anwendung erwartet. Er drückt eine Absicht aus. Das bedeutet noch nicht, dass die Aktion bereits ausgeführt wurde.
+Ein **Kommando** drückt die Absicht aus, den Zustand der Anwendung zu ändern. `PlaceOrder` enthält die nötigen Informationen, um eine Bestellung anzufragen. Für eine Tasse sehen diese Informationen so aus:
 
-Um eine Tasse zu bestellen, gibt der Kunde Produkt und Menge an. Die Anwendung muss noch entscheiden, ob sie diese Absicht erfüllen kann.
-
-```text title="Beispielbefehl"
-PlaceOrder
-  product: Keramiktasse
-  quantity: 1
+```haskell
+PlaceOrder {
+  product = "ceramic mug",
+  quantity = 1
+}
 ```
 
-Die Beispiele in dieser Anleitung beschreiben das Modell in einfacher Textform. Sie sind weder ausführbarer NeoHaskell-Code noch API-Nutzdaten.
+Eine **Entscheidung** bewertet dieses Kommando anhand des aktuellen Zustands und der Regeln des Ladens. Die Menge muss positiv und ausreichend Bestand verfügbar sein. Bei drei vorrätigen Tassen wird eine Bestellung über eine angenommen, eine Bestellung über vier abgelehnt.
 
-## Entscheidungen
+<EventModelTour kind="decision" />
 
-Eine **Entscheidung** prüft einen Befehl anhand des aktuellen Zustands und der Bedingungen, die deine Anwendung durchsetzen muss. Sie bestimmt, ob der Befehl angenommen oder abgelehnt wird.
+Bei Annahme wird `OrderPlaced` aufgezeichnet. Bei Ablehnung bleibt der Bestand unverändert und es wird kein Ereignis `OrderPlaced` aufgezeichnet. **Das Kommando enthält die Absicht; das Ereignis hält die angenommene Tatsache fest.**
 
-In diesem Shop muss die Menge positiv sein und genug Bestand verfügbar sein. Bei drei Tassen auf Lager kann eine Bestellung über eine Tasse angenommen werden. Eine Bestellung über vier Tassen kann nicht angenommen werden.
+NeoHaskell stellt den Ausführungsweg bereit: den relevanten Zustand abrufen, die Entscheidung auswerten und angenommene Ereignisse anhängen. Die Entwicklerin oder der Entwickler schreibt die Bedingungen, die das Versprechen des Ladens ausdrücken. Eine Website und ein KI-Tool können dasselbe Kommando senden und dieselbe Entscheidung verwenden.
 
-| Befehl | Verfügbarer Bestand | Entscheidung |
-| --- | --- | --- |
-| 1 Tasse bestellen | 3 Tassen | Annehmen |
-| 4 Tassen bestellen | 3 Tassen | Ablehnen |
+## Fachliche Entscheidungen rein halten
 
-Diese Bedingungen gehören zum Verhalten der Anwendung. Ein KI-Agent kann dir bei ihrer Implementierung helfen, trifft aber zur Laufzeit nicht die Entscheidungen.
+**NeoHaskell stellt reinen Code in den Mittelpunkt der Anwendungsentwicklung.** Die Geschäftslogik beschreibt anhand der erhaltenen Informationen, was passieren soll. Eine Entscheidung prüft das Kommando und den aktuellen Zustand und beschreibt anschließend Annahme oder Ablehnung. Sie kann keine Datenbankverbindung öffnen, keine Bestätigungs-E-Mail senden und keine Datei aufrufen.
 
-## Ereignisse
+Für die Bestandsregel des Ladens führt dieselbe Bestellung bei demselben verfügbaren Bestand zur selben Annahme oder Ablehnung. Ein Test, ob sich vier Tassen bei einem Bestand von drei bestellen lassen, erzeugt keine Bestellung in einer Datenbank. Er berechnet die Antwort der Entscheidung.
 
-Ein **Ereignis** hält eine Tatsache über etwas fest, das geschehen ist. Wenn der Shop die Bestellung annimmt, erfasst er ein Ereignis `OrderPlaced`.
+Diese Grenze verändert die tägliche Entwicklung:
 
-```text title="Erfasstes Ereignis"
-OrderPlaced
-  product: Keramiktasse
-  quantity: 1
-```
+- **Tausende Fälle ohne externe Auswirkungen testen.** Erzeuge Kombinationen aus Bestand und angeforderter Menge, einschließlich null, negativer Werte und der letzten verfügbaren Tasse. Prüfe Entscheidungen ohne Datenbank, Netzwerkverbindung oder E-Mail-Konto.
+- **Fehler reproduzieren.** Bewahre die Eingaben auf, die eine fehlerhafte Bestandsregel sichtbar gemacht haben, und führe sie erneut aus. Die Untersuchung dieser Regel hängt weder von einem verfügbaren Anbieter noch von den richtigen Inhalten einer Testdatenbank ab.
+- **Auf beobachtbares Verhalten hin refaktorieren.** Gib der alten und der neuen Bestandsregel dieselben Fälle und vergleiche ihre Entscheidungen. Von Hand oder mit einem KI-Agenten geschriebene Änderungen lassen sich an den Versprechen des Ladens prüfen.
+- **Infrastruktur ändern, ohne die Regeln umzuschreiben.** Die Bestandsregel enthält weder SQL noch Aufrufe eines E-Mail-Anbieters. Der Austausch von Speicher oder E-Mail-Dienst lässt die Bedingungen für die Annahme einer Bestellung unberührt.
+- **Logik verstehen und wiederverwenden.** Lies die Eingaben und das Ergebnis der Entscheidung, ohne versteckte Schreibvorgänge in anderen Diensten nachzuverfolgen. Eine Berechnung lässt sich herauslösen oder eine Regel wiederverwenden, ohne eine Datenbankverbindung mitzuführen.
 
-Achte auf den Unterschied im Namen: `PlaceOrder` drückt eine Absicht aus, `OrderPlaced` beschreibt eine angenommene Tatsache. Das Ereignis wird Teil der Historie der Anwendung.
+**Reine Anwendungslogik ist die übliche Entwicklungsweise in NeoHaskell.** Die Entwicklerin oder der Entwickler schreibt Regeln und Berechnungen; die Sprache stellt die Mechanismen bereit, die den Zustand laden und angenommene Änderungen aufzeichnen. Um das fachliche Verhalten zu testen, muss nicht jede Regel von diesen Mechanismen umgeben sein.
 
-In diesem Beispiel wird durch die angenommene Bestellung eine Tasse aus dem Bestand entnommen. Das Ereignis hält die Bestellung fest. Der verbleibende Bestand ist ein Zustand, der aus dieser Historie abgeleitet wird. In anderen Anwendungen kann ein Befehl unterschiedlich viele Ereignisse erzeugen. Dieses Beispiel beschreibt eine Bestellung und ein Ereignis.
+## Wie erledigt die Anwendung nützliche Arbeit?
 
-## Abfragen
+Für eine angenommene Bestellung muss weiterhin eine Bestätigungs-E-Mail versendet werden. **Integrationen führen Effekte außerhalb der Anwendungslogik aus.** Sie verpacken diese Arbeit separat, damit die Entscheidungen des Ladens nicht vom ausführenden Anbieter abhängen.
 
-Eine **Abfrage** liest den Zustand der Anwendung, ohne ihn zu ändern. Sie beantwortet eine Frage anhand des Zustands, der aus erfassten Ereignissen abgeleitet wird.
+Ein Integrations-Worker weiß, wie er seine Aufgabe erledigt. Ein E-Mail-Worker erhält Empfänger und Nachricht und versendet sie. Er entscheidet weder, ob eine Bestellung erlaubt ist, noch wie viel Bestand bleibt oder welche Kunden eine Bestätigung erhalten sollen. Diese Entscheidungen gehören zur reinen Logik der Anwendung.
 
-Nach der angenommenen Bestellung liefert eine Abfrage des Bestands zwei Tassen zurück: die drei Tassen zu Beginn minus die bestellte Tasse.
+Nach der Aufzeichnung von `OrderPlaced` kann die Anwendung diese Arbeit anfordern. Ist der E-Mail-Anbieter nicht verfügbar, bleibt die Bestellung angenommen. Wird die Zustellung der E-Mail geändert, betrifft das die Integration, nicht die Bestandsregel. Die [Integrationsleitfäden](/guides/integrations/) erklären, wie diese Worker konfiguriert und ausgeführt werden.
 
-```text title="Abfrage und Ergebnis"
-Verbleibender Bestand an Keramiktassen
-2
-```
+## Jedem Bildschirm die benötigte Antwort geben
 
-Das Ereignis und das Abfrageergebnis erfüllen unterschiedliche Zwecke. `OrderPlaced` bleibt als Aufzeichnung der Bestellung in der Historie. Eine Bestandsabfrage liefert die aktuelle Antwort, die sich ändern kann, wenn weitere Bestellungen angenommen werden.
+Nach Annahme einer Bestellung brauchen verschiedene Personen unterschiedliche Antworten. Der nächste Kunde braucht den verfügbaren Bestand. Der Kunde mit der Bestellung benötigt eine Bestätigung. Die Mitarbeitenden müssen wissen, wie viele Bestellungen auf ihre Bearbeitung warten.
 
-## Abgelehnte Befehle
+Eine **Abfrage** pflegt nützliche, aus dem Anwendungszustand abgeleitete Informationen und stellt einem Aufrufer eine Antwort bereit. Für den Laden mit drei Tassen und ohne Bestellungen entstehen bei Annahme einer Bestellung über eine Tasse folgende Antworten:
 
-Ein Befehl kann als Absicht gültig sein und dennoch abgelehnt werden. Wenn im Shop keine Tassen mehr vorrätig sind, erfüllt eine Bestellung über eine Tasse die Bestandsbedingung nicht.
+<EventModelTour kind="queries" />
 
-Für diese abgelehnte Bestellung wird kein Ereignis `OrderPlaced` erfasst. Eine Abfrage liefert weiterhin null Tassen zurück. Der Versuch wurde nicht zu einer angenommenen Bestellung und der Bestand hat sich nicht geändert.
+Das Lesen der Bestandsantwort gibt keine weitere Bestellung auf. Außerdem muss dafür nicht bei jedem Seitenaufruf der gesamte Ereignisverlauf durchsucht werden: NeoHaskell aktualisiert den Abfragezustand, sobald Änderungen eintreffen, und der Bildschirm liest diese gepflegte Antwort.
 
-| Anfangsbestand | Befehl | Erfasstes Ereignis | Bestand danach |
-| --- | --- | --- | --- |
-| 3 Tassen | 1 Tasse bestellen | `OrderPlaced` | 2 Tassen |
-| 0 Tassen | 1 Tasse bestellen | Keines | 0 Tassen |
+**Dieselben Fakten können unterschiedliche Fragen beantworten.** Eine Kundenanzeige und ein Mitarbeiterbericht können verschieden aufgebaut sein, ohne dass es mehrere konkurrierende Berichte über das Geschehene geben muss. Ein neuer Bericht kann den bewahrten Verlauf verwenden, um eine andere Antwort zu berechnen.
 
-Dieses Modell umfasst Bestellungen und Bestand. Zahlungen, Versand und gleichzeitige Bestellungen gehören nicht zu diesem ersten Beispiel.
+Eine angezeigte Antwort kann einer neuen Änderung hinterherhinken. Deshalb ist der auf einem Bildschirm angezeigte Bestand keine Erlaubnis, eine Bestellung aufzugeben: Die Entscheidung des Kommandos prüft den relevanten Zustand, sobald die Anfrage eintrifft.
 
-## Mit dem Entwickeln beginnen
-
-Bevor du einen Agenten bittest, eine Funktion zu entwickeln, beschreibe den Befehl, die Bedingungen für seine Annahme, die zu erfassenden Ereignisse und die Fragen, die die Anwendung beantworten soll. Füge auch einen Fall hinzu, der abgelehnt werden sollte.
-
-Wenn du beide Ergebnisse für diesen Shop erklären kannst, fahre mit [Agent einrichten](/getting-started/) fort.
-
-<section class="docs-plan" data-pagefind-ignore>
-
-## Seitenplan
-
-Diese Seite wird den kleinen Shop als Einführung in Kommandos, Entscheidungen, Ereignisse und Abfragen beibehalten. Ihre Beispiele helfen den Lesenden, die einzelnen Konzepte zu erkennen und eine angenommene oder abgelehnte Bestellung vorherzusagen, bevor sie etwas installieren. Eine kompakte statische Abbildung trennt Kommando, Entscheidung, aufgezeichnetes Ereignis und Abfrageergebnis. Die vorhandenen Vergleichstabellen unterstützen sie dabei. Anschließend können die Lesenden mit [Deinen Agenten einrichten](/getting-started/) ein funktionierendes Projekt erstellen oder die Konzepte in [Die erste Funktion modellieren](/tutorial/) auf eine Spezifikation anwenden.
-
-</section>
+Die Trennung von Änderungen und Fragen heißt **CQRS**. Kommandos und Entscheidungen steuern, was passieren darf; Abfragen ordnen, was Menschen wissen müssen. Event Sourcing stellt den Verlauf bereit, aus dem die Anwendung ihren Zustand ableitet.

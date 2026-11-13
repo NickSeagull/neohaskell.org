@@ -1,6 +1,6 @@
 ---
-title: Bausteine des Frameworks
-description: "Seitenplan. Definitionen nachschlagen, die das Anwendungsmodell mit dem Framework-Code verbinden."
+title: "Ereignismodelle und Features"
+description: "Seitenplan. Wie werden die deklarierten Features zu einer laufenden Anwendung?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Seitenplan
 
-Diese Seite ordnet Entitäten, Kommandos, Entscheidungen, Ereignisse, Abfragen und die Zusammensetzung der Anwendung den geprüften Definitionen des Frameworks zu. Jeder Eintrag nennt seine Aufgabe, relevante Typen, erforderliche Felder und das kleinste vollständige Quelltextbeispiel, das seine Rolle zeigt. Eine kompakte Abbildung stellt die Zusammenhänge dar und hält Ereignisaufzeichnungen von Abfrageergebnissen getrennt. Für Erklärungen verweisen die Einträge auf [Kernkonzepte](/learn/) und für ihre Verwendung in einer Anwendung auf das [Tutorial zur ersten Funktion](/tutorial/first-feature/).
+Diese Seite ordnet `EventModel`, `FeatureAction`, `chapter`, `slice`, `entity`, `command`, `produces`, `query` und `readsFrom` dem quellnahen `Counter`-Feature zu. Eine kompakte Beziehungsabbildung zeigt Deklaration, Validierung und Laufzeitaufbau, ohne Ereignisverlauf und `query`-Zeilen zu vermischen. Builder-Signaturen und Reihenfolgebedingungen stehen beim Modell. Der direkte Aufbau mit `Service.Application` wird als erweiterter Abschnitt verlinkt. Der aktuelle Aufbau des Starters bleibt der Einstieg, während der öffentliche Status dieser API erhalten bleibt.

@@ -1,103 +1,78 @@
 ---
-title: Conceitos fundamentais
-description: Compreenda comandos, decisões, eventos e consultas acompanhando uma encomenda numa pequena loja online.
+title: Proteja alterações e responda a perguntas
+description: Use comandos para pedir alterações, decisões para proteger as promessas de negócio e consultas para fornecer a cada ecrã as respostas de que precisa.
+sidebar:
+  label: Comandos e consultas
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 2
-prev: false
+prev: true
 next: true
 ---
 
-<p class="docs-lead">Compreenda como uma aplicação decide o que pode acontecer, regista o que aconteceu e responde a perguntas sobre o seu estado.</p>
+import EventModelTour from '@components/learn/EventModelTour.astro';
 
-NeoHaskell é uma linguagem de programação pensada para IA desde o início, que permite criar aplicações com um agente de IA sem deixar de compreender o seu comportamento. Descreve esse comportamento através de **comandos, decisões, eventos e consultas**. A linguagem e a framework dão a estes conceitos uma estrutura comum.
+A loja de canecas em [Guarde os factos por detrás dos números](/introduction/history/#record-what-happened) regista as encomendas aceites como eventos e usa-os para calcular o stock disponível.
 
-Este guia acompanha uma pequena loja com três canecas de cerâmica em stock. Um cliente encomenda uma caneca. Pode compreender o modelo antes de instalar o NeoHaskell ou utilizar um agente de IA.
+Um evento é um facto que a aplicação aceitou. Por isso, a fronteira que o delimita é importante: um cliente não pode declarar que a loja aceitou uma encomenda enviando simplesmente um evento `OrderPlaced`.
 
-| Conceito | Finalidade | Exemplo da loja |
-| --- | --- | --- |
-| [Comando](#commands) | Expressar uma intenção | Fazer uma encomenda |
-| [Decisão](#decisions) | Aceitar ou rejeitar a intenção | Verificar o stock disponível |
-| [Evento](#events) | Registar o que aconteceu | Encomenda efetuada |
-| [Consulta](#queries) | Ler o estado atual | Duas canecas restantes |
+Considere um cliente que pede quatro canecas quando só restam três. **Pedir uma encomenda e ter uma encomenda aceite são coisas diferentes.** A aplicação precisa de um modo de receber o pedido, verificá-lo e recusá-lo sem consumir stock.
 
-## Comandos
+## Peça uma alteração com um comando
 
-Um **comando** expressa algo que uma pessoa ou um processo pretende que a aplicação faça. Descreve uma intenção; não significa que a ação já tenha acontecido.
+Um **comando** exprime a intenção de alterar a aplicação. `PlaceOrder` transporta a informação necessária para pedir uma encomenda. Para uma caneca, essa informação é assim:
 
-Para encomendar uma caneca, o cliente indica o produto e a quantidade. A aplicação ainda tem de decidir se pode concretizar essa intenção.
-
-```text title="Exemplo de comando"
-PlaceOrder
-  product: caneca de cerâmica
-  quantity: 1
+```haskell
+PlaceOrder {
+  product = "ceramic mug",
+  quantity = 1
+}
 ```
 
-Os exemplos deste guia descrevem o modelo em texto simples. Não são código NeoHaskell executável nem dados para uma API.
+Uma **decisão** avalia esse comando face ao estado atual e à política da loja. A quantidade tem de ser positiva e tem de haver canecas suficientes. Com três em stock, uma encomenda de uma caneca é aceite e uma encomenda de quatro é rejeitada.
 
-## Decisões
+<EventModelTour kind="decision" />
 
-Uma **decisão** avalia um comando com base no estado atual e nas condições que a aplicação tem de impor. Determina se o comando é aceite ou rejeitado.
+A aceitação regista `OrderPlaced`. A rejeição mantém o stock inalterado e não regista nenhum evento `OrderPlaced`. **O comando transporta a intenção; o evento regista o facto aceite.**
 
-Nesta loja, a quantidade tem de ser positiva e tem de haver stock suficiente. Com três canecas em stock, é possível aceitar uma encomenda de uma. Não é possível aceitar uma encomenda de quatro.
+NeoHaskell fornece o percurso de execução: obtém o estado relevante, avalia a decisão e acrescenta os eventos aceites. O programador escreve as condições que exprimem a promessa da loja. Um site e uma ferramenta de IA podem enviar o mesmo comando e usar essa mesma decisão.
 
-| Comando | Stock disponível | Decisão |
-| --- | --- | --- |
-| Encomendar 1 caneca | 3 canecas | Aceitar |
-| Encomendar 4 canecas | 3 canecas | Rejeitar |
+## Mantenha puras as decisões de negócio
 
-Estas condições fazem parte do comportamento da aplicação. Um agente de IA pode ajudar a implementá-las, mas não é quem toma decisões em tempo de execução.
+**NeoHaskell coloca o código puro no centro do desenvolvimento de aplicações.** A lógica de negócio descreve o que deve acontecer com base na informação que recebe. Uma decisão verifica o comando e o estado atual e, em seguida, descreve a aceitação ou a rejeição. Não pode abrir uma ligação à base de dados, enviar um email de confirmação nem invocar um fornecedor de pagamentos.
 
-## Eventos
+Para a regra de stock da loja, a mesma encomenda e o mesmo stock disponível produzem sempre a mesma aceitação ou rejeição. Verificar se é possível encomendar quatro canecas quando há três em stock não cria uma encomenda na base de dados. Calcula a resposta da decisão.
 
-Um **evento** regista um facto sobre algo que aconteceu. Quando a loja aceita a encomenda, regista um evento `OrderPlaced`.
+Essa fronteira altera o trabalho quotidiano:
 
-```text title="Evento registado"
-OrderPlaced
-  product: caneca de cerâmica
-  quantity: 1
-```
+- **Teste milhares de casos sem consequências externas.** Gere combinações de stock e quantidades pedidas, incluindo zero, valores negativos e a última caneca disponível. Verifique as decisões sem uma base de dados, ligação de rede ou conta de email.
+- **Reproduza falhas.** Guarde as entradas que revelaram uma regra de stock incorreta e volte a executá-las. Investigar essa regra não depende da disponibilidade de um fornecedor nem dos dados corretos numa base de dados de teste.
+- **Refatore com base no comportamento observável.** Aplique os mesmos casos às regras de stock antigas e novas e compare as decisões. As alterações escritas à mão ou por um agente de IA podem ser verificadas face às promessas da loja.
+- **Altere a infraestrutura sem reescrever a política.** A regra de stock não contém SQL nem chamadas a fornecedores de email. Substituir o armazenamento ou o serviço de email mantém intactas as condições para aceitar uma encomenda.
+- **Compreenda e reutilize a lógica.** Leia as entradas e a decisão resultante sem rastrear escritas ocultas noutros serviços. Extraia um cálculo ou reutilize uma regra sem levar consigo uma ligação à base de dados.
 
-Repare na diferença entre os nomes: `PlaceOrder` expressa uma intenção; `OrderPlaced` descreve um facto aceite. O evento passa a fazer parte do histórico da aplicação.
+**A lógica pura da aplicação é a forma normal de criar em NeoHaskell.** O programador escreve as regras e os cálculos; a linguagem fornece os mecanismos que carregam o estado e registam as alterações aceites. Não é necessário executar esses mecanismos em torno de cada regra para testar o comportamento de negócio.
 
-Neste exemplo, aceitar a encomenda consome uma caneca. O evento regista a encomenda, enquanto o stock restante é um estado derivado desse histórico. Noutras aplicações, um comando pode produzir um número diferente de eventos; este exemplo acompanha uma encomenda e um evento.
+## Como executa a aplicação trabalho útil?
 
-## Consultas
+Uma encomenda aceite ainda precisa de um email de confirmação. **As integrações executam efeitos fora da lógica da aplicação.** Agrupam esse trabalho separadamente, para que as decisões da loja não dependam do fornecedor que o executa.
 
-Uma **consulta** lê o estado da aplicação sem o alterar. Responde a uma pergunta com base no estado derivado dos eventos registados.
+Um processo de integração sabe executar a sua tarefa. Um processo de email recebe o destinatário e a mensagem e envia-os. Não decide se uma encomenda é permitida, quanto stock resta nem que clientes devem receber uma confirmação. Essas escolhas pertencem à lógica pura da aplicação.
 
-Após a encomenda aceite, uma consulta do stock devolve duas canecas: as três iniciais menos a que foi encomendada.
+A aplicação pode pedir esse trabalho depois de registar `OrderPlaced`. Se o fornecedor de email estiver indisponível, a encomenda continua aceite. Alterar a forma de entrega do email altera a integração, não a política de stock. Os [guias de integrações](/guides/integrations/) explicam como configurar e executar estes processos.
 
-```text title="Consulta e resultado"
-Stock restante da caneca de cerâmica
-2
-```
+## Dê a cada ecrã a resposta de que precisa
 
-O evento e o resultado da consulta têm finalidades diferentes. `OrderPlaced` permanece no histórico como registo da encomenda. Uma consulta do stock dá a resposta atual, que pode mudar à medida que são aceites mais encomendas.
+Depois de a encomenda ser aceite, diferentes pessoas precisam de respostas diferentes. O próximo cliente precisa de saber o stock disponível. O cliente que fez a encomenda precisa de uma confirmação. A equipa precisa de saber quantas encomendas requerem atenção.
 
-## Comandos rejeitados
+Uma **consulta** mantém informação útil derivada do estado da aplicação e disponibiliza uma resposta a quem a pede. Para a loja que começou com três canecas e nenhuma encomenda, aceitar uma encomenda de uma caneca produz estas respostas:
 
-Um comando pode expressar uma intenção válida e, ainda assim, ser rejeitado. Se a loja não tiver canecas, uma encomenda de uma não satisfaz a condição de stock.
+<EventModelTour kind="queries" />
 
-Não é registado qualquer evento `OrderPlaced` para essa encomenda rejeitada. Uma consulta continua a devolver zero canecas. A tentativa não se tornou uma encomenda aceite e o stock não mudou.
+Ler a resposta do stock não faz outra encomenda. Também não exige percorrer o histórico completo de eventos em cada visita à página: NeoHaskell atualiza o estado da consulta à medida que chegam alterações e o ecrã lê a resposta mantida.
 
-| Stock inicial | Comando | Evento registado | Stock final |
-| --- | --- | --- | --- |
-| 3 canecas | Encomendar 1 caneca | `OrderPlaced` | 2 canecas |
-| 0 canecas | Encomendar 1 caneca | Nenhum | 0 canecas |
+**Os mesmos factos podem responder a perguntas diferentes.** O ecrã do cliente e o relatório da equipa podem ter estruturas diferentes sem precisarem de relatos concorrentes do que aconteceu. Um novo relatório pode usar o histórico retido para calcular outra resposta.
 
-Este modelo abrange encomendas e stock. Pagamentos, envios e encomendas simultâneas ficam fora deste primeiro exemplo.
+Uma resposta apresentada pode atrasar-se relativamente a uma nova alteração. Por isso, o stock mostrado num ecrã não dá autorização para fazer uma encomenda: a decisão do comando verifica o estado relevante quando o pedido chega.
 
-## Comece a criar
-
-Antes de pedir a um agente que crie uma funcionalidade, descreva o comando, as condições para o aceitar, os eventos que deve registar e as perguntas a que a aplicação tem de responder. Inclua um caso que deva ser rejeitado.
-
-Quando conseguir explicar os dois resultados para esta loja, avance para [configurar o seu agente](/getting-started/).
-
-<section class="docs-plan" data-pagefind-ignore>
-
-## Plano da página
-
-Esta página continuará a usar a pequena loja para introduzir comandos, decisões, eventos e consultas. Os seus exemplos ajudarão os leitores a reconhecer cada conceito e a prever uma encomenda aceite ou rejeitada antes de instalar qualquer coisa. Uma figura estática e compacta separará o comando, a decisão, o evento registado e o resultado da consulta, com o apoio das tabelas comparativas existentes. Os leitores poderão continuar para [Configurar o agente](/getting-started/) para preparar um projeto funcional ou para [Modelar a primeira funcionalidade](/tutorial/) para aplicar os conceitos a uma especificação.
-
-</section>
+Separar alterações de perguntas chama-se **CQRS**. Os comandos e as decisões controlam o que pode acontecer; as consultas organizam aquilo que as pessoas precisam de saber. Event Sourcing fornece o histórico a partir do qual a aplicação deriva o seu estado.

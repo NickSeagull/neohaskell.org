@@ -1,0 +1,17 @@
+---
+title: "Abfrageergebnisse beschränken"
+description: "Seitenplan. Wer darf eine Abfrage und ihre einzelnen Ergebnisse lesen?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Seitenplan
+
+Diese Seite wendet vor dem Abruf der Daten eine Zugriffsprüfung auf Abfrageebene und für einzelne Ergebnisse eine Besitzprüfung an. Sie vergleicht dieselbe Abfrage für den Eigentümer, eine andere authentifizierte Person und einen anonymen Aufrufer. Dabei wird auch ein paginiertes Ergebnis einbezogen. Eine kurze Entscheidungstabelle zeigt, wo die einzelnen Prüfungen stattfinden. So lässt sich der Zugriff auf zurückgegebene Daten beschränken, ohne anzunehmen, dass Kommando-Berechtigungen automatisch auch Abfrage-Endpunkte schützen.

@@ -1,0 +1,17 @@
+---
+title: "Genera un documento"
+description: "Plan de la página. ¿Cómo conservo un archivo generado en el servidor para su propietario?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Plan de la página
+
+Esta página seguirá una petición de documento a través de un manejador saliente que genera bytes, guarda un archivo retenido propiedad de un usuario y emite un comando que registra su referencia. Un ejemplo de reintento reutilizará una clave de creación estable y comparará el contenido coincidente con un intento en conflicto. El diagrama distinguirá los documentos retenidos de las cargas pendientes y mostrará por qué tanto el directorio de blobs como los metadatos de archivos necesitan almacenamiento duradero.

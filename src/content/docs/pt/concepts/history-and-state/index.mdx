@@ -1,6 +1,6 @@
 ---
-title: Histórico e estado atual
-description: "Plano da página. Compreender a diferença entre factos registados, estado da aplicação e respostas a consultas."
+title: "Histórico e estado atual"
+description: "Plano da página. Por que razão manter eventos quando a aplicação já tem o estado atual?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plano da página
 
-Esta página explicará por que motivo um evento registado e o resultado de uma consulta atual são coisas diferentes. Alinhará um breve histórico de eventos com o estado dele derivado e mostrará como outro comando aceite altera a resposta sem reescrever factos anteriores. Um registo identificado e uma tabela de estado sustentarão a explicação. Um controlo comparativo opcional poderá revelar estados sucessivos, com todos os resultados também disponíveis como texto estático. A configuração e os procedimentos de reinício ficarão em [Manter os dados após reinícios](/guides/storage/).
+Esta página distinguirá os factos registados num fluxo de eventos do estado da entidade obtido ao aplicá-los por ordem. Um registo `Counter` alinhado com uma tabela de estado mostrará como o mesmo histórico reconstrói a mesma entidade através da sua função de atualização. Explicará que a reprodução deriva o estado a partir de factos registados, em vez de voltar a executar os comandos originais, e remeterá a reconstrução de consultas para a respetiva página e a configuração da persistência para o guia de armazenamento.

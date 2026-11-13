@@ -1,0 +1,17 @@
+---
+title: "任务与副作用"
+description: "页面计划。如何串联可能失败的工作？"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## 页面计划
+
+本页将介绍 `Task error value`、成功构造、带类型的失败、链式调用、`do` 记法、恢复，以及转换为 `Result`。一段简短流程会展示哪些步骤会运行，以及失败后会发生什么；签名表会区分构造任务与在程序边界执行任务。清理和取消会链接到高级条目，并明确将 `Decision` 交叉链接为处理业务接受和拒绝的独立契约。

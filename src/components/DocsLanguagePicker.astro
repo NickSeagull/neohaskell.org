@@ -1,5 +1,6 @@
 ---
 import LanguagePicker from './LanguagePicker.astro';
-const locale = Astro.locals.starlightRoute.locale ?? 'en';
+const route = Astro.locals.starlightRoute;
+const locale = route.locale ?? 'en';
 ---
-<LanguagePicker locale={locale} />
+<LanguagePicker locale={locale} path={route.id === '404' ? '/' : undefined} />

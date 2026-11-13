@@ -1,0 +1,17 @@
+---
+title: "Persister et reconstruire les requêtes"
+description: "Plan de page. Comment les résultats des requêtes sont-ils restaurés après un redémarrage ou une modification de projection ?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Plan de page
+
+Cette page configurera le stockage persistant des requêtes séparément de l’historique des événements, puis suivra la reprise à partir d’un point de contrôle et une reconstruction vérifiée explicitement. Elle expliquera que le hachage actuel de la requête est dérivé de son nom : une modification du seul code de projection n’invalide donc pas automatiquement la progression enregistrée. Une chronologie montrera les événements en direct qui arrivent pendant la relecture et le moment où la requête devient disponible. L’échec d’une reconstruction reliera les éléments de diagnostic à la reprise, qui dépend d’un historique utilisable et n’annule pas les effets externes.

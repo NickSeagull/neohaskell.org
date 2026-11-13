@@ -1,6 +1,6 @@
 ---
-title: HTTP- und MCP-Schnittstellen bereitstellen
-description: "Seitenplan. Planen, wie sich dasselbe Anwendungsverhalten über unterstützte Transportschnittstellen bereitstellen lässt."
+title: "HTTP-API bereitstellen"
+description: "Seitenplan. Wie rufe ich meine Kommandos und Abfragen über HTTP auf?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Seitenplan
 
-Diese Seite erklärt, wie sich Anwendungsverhalten über HTTP und MCP bereitstellen lässt. Dazu gehören Konfiguration und Verträge, die für die dokumentierte Framework-Version geprüft wurden. Sie zeigt ein Kommando und eine Abfrage anhand von Anfrage-und-Antwort-Paaren sowie gleichwertigen Tool-Aufrufen und enthält ein Beispiel zur Prüfung des generierten OpenAPI. Ein kleines Grenzdiagramm trennt Transportschnittstellen von Entscheidungen. Statische Beispiele zeigen sowohl Erfolg als auch Ablehnung. Ein Live-Widget für Anfragen kommt erst infrage, wenn eine unterstützte isolierte Laufzeitumgebung verfügbar ist.
+Diese Seite stellt ein vorhandenes Feature über den Web-Transport bereit und untersucht die erzeugten Routen und den OpenAPI-Vertrag. Eine Kommandoanfrage, eine abgelehnte Eingabe und eine Abfrageantwort verbinden die Anwendungsdefinition mit beobachtbarem HTTP-Verhalten. Filterung und Seitennummerierung folgen dem [Abfragevertrag](/reference/framework/queries/). Die Beispiele umfassen die Transportregistrierung und die Konfiguration des Browser-Ursprungs. Vor dem Öffnen der Schnittstelle für nicht vertrauenswürdige Aufrufer wird auf die Authentifizierung verwiesen.

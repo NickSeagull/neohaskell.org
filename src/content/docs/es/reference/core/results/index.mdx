@@ -1,0 +1,17 @@
+---
+title: "Maybe y Result"
+description: "Plan de la página. ¿Cómo represento la ausencia o un fallo recuperable?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Plan de la página
+
+Esta página comparará `Nothing` y `Just` con `Err` y `Ok`, y mostrará cuándo la ausencia no necesita explicación y cuándo hace falta un error tipado. Firmas compactas y casos emparejados cubrirán `map`, `andThen`, `withDefault`, `mapError` y las conversiones entre ambos contenedores. Un ejemplo de análisis o búsqueda conservará el error hasta que quien lo llama decida gestionarlo y enlazará el tratamiento de errores con efectos a `Task`.

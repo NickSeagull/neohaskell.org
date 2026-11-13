@@ -1,6 +1,6 @@
 ---
-title: Dateien speichern und abrufen
-description: "Seitenplan. Dateibesitz, Speicherkonfiguration und erlaubten Abruf planen."
+title: "Dateien hochladen und abrufen"
+description: "Seitenplan. Wie hänge ich eine Benutzerdatei an und beschränke ihren Abruf?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Seitenplan
 
-Diese Seite erklärt den dokumentierten Ablauf zur Dateispeicherung, einschließlich Besitz, Konfiguration, Upload oder Erstellung und Abruf. Sie verfolgt eine Datei anhand einer kleinen Ablaufabbildung und zeigt gezielte Quelltext- sowie Anfrage-und-Antwort-Beispiele. Erlaubter Abruf, verweigerter Zugriff und fehlende Dateien stehen zusammen, damit die lesende Person das vorgesehene Verhalten prüfen kann. Der Leitfaden verweist für Berechtigungen auf [Zugriff steuern](/guides/authorization/) und für dauerhafte Speicherung auf [Daten über Neustarts hinweg beibehalten](/guides/storage/), ohne eine Datei als Ereignisaufzeichnung zu behandeln.
+Diese Seite konfiguriert Dateimetadaten und Blob-Speicher, lädt ein Dokument hoch, hängt seine Dateireferenz an ein Kommando und ruft es als Eigentümer ab. Eine Sequenz unterscheidet ausstehende Uploads, bestätigte Anhänge, den Ablauf und fehlende Blobs. Zwei Anfragen zeigen erlaubten und abgelehnten Abruf. Bei der Speicherung bleiben Dateiinhalte, Besitzmetadaten und Anwendungsereignisse getrennt.

@@ -1,0 +1,17 @@
+---
+title: "neo.jsonと依存関係"
+description: "ページ案。生成されるビルドファイルとフレームワークのバージョンを制御するプロジェクト設定は何か。"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## ページ案
+
+このページでは、`neo.json`のname、version、neo-version、project type、メタデータ、ライセンスの既定値、依存関係の項目を説明し、ランタイム環境の設定と区別します。完全なマニフェストの簡単な例とフィールド表を示し、生成されるCabalおよびNixファイルの管理方法を説明して、対応する依存関係の形式に案内します。ソースの選択では、ローカルのフレームワーク上書きを開発者向けの高度な設定として紹介します。mainを公開済みのバージョンと同一視せず、リリースとの互換性を明示します。

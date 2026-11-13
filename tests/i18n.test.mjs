@@ -60,8 +60,8 @@ test('validation rejects changed code, links, identifiers, markup and incomplete
   assert.doesNotThrow(() => validateTranslation(source, source.content.replace('Prepare your environment', 'Prepara tu entorno')));
   for (const changed of [source.content.replace("npx skills add", 'npm install'), source.content.replace('/introduction/', '/evil/'), source.content.replace('`OrderPlaced`', '`Pedido`'), source.content + '\n<script>attack()</script>']) assert.throws(() => validateTranslation(source, changed));
   const concepts = originals.find(({ path }) => path.includes('learn/index'));
-  assert.throws(() => validateTranslation(concepts, concepts.content.replace('PlaceOrder\n', 'RealizarPedido\n')));
-  assert.throws(() => validateTranslation(concepts, concepts.content.replace('quantity: 1', 'quantity: 9')));
+  assert.throws(() => validateTranslation(concepts, concepts.content.replace('PlaceOrder {', 'RealizarPedido {')));
+  assert.throws(() => validateTranslation(concepts, concepts.content.replace('quantity = 1', 'quantity = 9')));
   assert.doesNotThrow(() => validateTranslation(source, source.content.replace('one ceramic mug', '1 ceramic mug')));
   assert.doesNotThrow(() => validateTranslation(source, source.content.replace('The **Neo CLI**', '**Neo CLI**')));
   const json = { path: 'site.json', content: '{"title":"<span>Hi</span>","count":"[COUNT] results"}' };
@@ -139,7 +139,23 @@ test('saved responses apply without Codex and cannot cross language or source re
   const apply = (locale) => spawnSync(process.execPath, [join(root, 'scripts/i18n.mjs'), 'apply', '--locale', locale, '--from', saved], { encoding: 'utf8', env: { ...process.env, CODEX_BIN: '/does-not-exist' } });
   assert.equal(apply('ru').status, 1);
   assert.equal(apply('es').status, 0);
+  const response = JSON.parse(await readFile(join(saved, 'response.json'), 'utf8'));
+  response.files.find(({ path }) => path === 'src/i18n/en/site.json').content = '{"title":"Hola"}';
+  await writeFile(join(saved, 'response.json'), JSON.stringify(response));
+  await writeFile(join(root, 'src/i18n/es/site.json'), '{"title":"Hola"}');
+  const unchanged = await readFile(join(root, 'src/content/docs/es/learn.mdx'), 'utf8');
+  assert.equal(apply('es').status, 0, 'a reviewed full batch can revalidate a single modified destination');
+  assert.equal(await readFile(join(root, 'src/content/docs/es/learn.mdx'), 'utf8'), unchanged);
+  assert.ok((await status(root, [{ code: 'es' }])).reports[0].entries.every(({ state }) => state === 'current'));
   await writeFile(join(root, 'src/i18n/en/site.json'), '{"title":"Changed source"}');
   assert.equal(apply('es').status, 1);
   assert.match(apply('es').stderr, /pending English revision/);
+});
+
+test('sidebar text can be translated while navigation configuration stays protected', () => {
+  const source = { path: 'guide.mdx', content: '---\ntitle: Guide\ndescription: A guide\nsidebar:\n  label: History\n  order: 2\nnext: true\n---\n\nRecorded facts.\n' };
+  const translated = source.content.replace('label: History', 'label: Historia');
+  assert.doesNotThrow(() => validateTranslation(source, translated));
+  assert.throws(() => validateTranslation(source, translated.replace('order: 2', 'order: 1')), /frontmatter configuration/);
+  assert.throws(() => validateTranslation(source, translated.replace('label: Historia', 'label: ""')), /missing sidebar label/);
 });

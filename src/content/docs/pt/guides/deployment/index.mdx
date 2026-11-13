@@ -1,6 +1,6 @@
 ---
-title: Implementar e operar
-description: "Plano da página. Planear uma implementação reproduzível e verificações de dependências persistentes e falhas."
+title: "Implemente uma aplicação"
+description: "Plano da página. O que tem de ser configurado e persistido para executar esta aplicação noutro local?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plano da página
 
-Esta página documentará um percurso de implementação depois de os comandos e o ambiente terem sido verificados numa revisão upstream. Abrangerá a compilação da aplicação, a configuração necessária, as dependências persistentes, as verificações de arranque, a inspeção de falhas e a recuperação. Uma figura de implementação compacta mostrará os componentes em execução, enquanto pares de comandos e resultados demonstrarão um arranque bem-sucedido e uma falha concreta. O guia distinguirá uma implementação de exemplo verificada das garantias de produção e incluirá ligações para [Configuração](/reference/configuration/) e [Erros e resolução de problemas](/reference/errors/).
+Esta página reunirá um exemplo de implementação reproduzível para uma aplicação e uma revisão fixadas do framework, indicando o executável, a configuração de execução, a base de dados e os caminhos dos ficheiros. Uma figura de implementação distinguirá os serviços persistentes do processo da aplicação e mostrará a fronteira HTTP pública. A verificação abrangerá o arranque, um comando aceite, uma consulta e um reinício, identificando ainda o alojamento e a supervisão de processos específicos do ambiente que o repositório não fornece.

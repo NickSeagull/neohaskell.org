@@ -1,6 +1,6 @@
 ---
-title: Zugriff steuern
-description: "Seitenplan. Identitäts- und Berechtigungsprüfungen für Kommandos, Abfragen und eigene Daten planen."
+title: "Kommando autorisieren"
+description: "Seitenplan. Wer darf dieses Kommando für diese Entität ausführen?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Seitenplan
 
-Diese Seite unterscheidet, wer handelt und was diese Person oder dieser Prozess tun darf. Sie zeigt die dokumentierten Identitäts- und Autorisierungsmechanismen des Frameworks anhand eines erlaubten Kommandos, eines abgelehnten Kommandos und einer Abfrage mit eingeschränktem Zugriff. Eine Entscheidungstabelle vergleicht Akteur, Ressource, Berechtigung und Ergebnis, ohne sich auf Farben zu stützen. Kurze Quelltextauszüge und Tests zeigen, wo Zugriffskontrollen hingehören. Unter [Ressourcen](/resources/#before-relying-on-an-application) finden sich die vorhandenen Anleitungen zur Autorisierung.
+Diese Seite schützt ein Kommando mit einer deklarierten Zugriffsrichtlinie und einer Entscheidung, die den relevanten Besitz der Entität prüft. Eine Tabelle vergleicht anonyme Aufrufer, authentifizierte Eigentümer, andere Benutzer und einen vertrauenswürdigen lokalen Aufruf. Die zugehörigen Tests prüfen, dass abgelehnte Kommandos die Entscheidung nicht erreichen und keine Ereignisse anhängen. Außerdem zeigen sie, warum Authentifizierung aktiviert sein muss, damit die HTTP-Richtlinienprüfung greift.

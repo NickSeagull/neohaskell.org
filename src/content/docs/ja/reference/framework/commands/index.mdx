@@ -1,0 +1,17 @@
+---
+title: "コマンドと判断"
+description: "ページ案。コマンドで定義すべきものと、判断が返せるものは何か。"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## ページ案
+
+このページではコマンドレコード、`EntityOf`、`getEntityId`、`decide`、`RequestContext`、トランスポートの権限、導出ヘルパーを規定し、記述する関数を公開の`Command`メソッドに対応づけます。`acceptNew`、`acceptExisting`、`acceptAny`、`acceptAfter`、`reject`を簡潔な結果表で比較します。`Counter`の判断例を使って、受理と拒否の動作を説明します。マルチテナントのシグネチャと認可フックにはアンカーを付け、実装とアクセス方針の詳しい説明はタスクガイドに委ねます。

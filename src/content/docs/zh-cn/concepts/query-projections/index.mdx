@@ -1,0 +1,17 @@
+---
+title: "查询投影与重放"
+description: "页面计划。同一段历史如何回答不同问题？查询又如何追上进度？"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## 页面计划
+
+本页将说明，查询状态是从选定事件源推导并单独维护的答案。购物车与库存活动查询将展示，查询可以组合多个实体，而不合并它们的命令边界。图示会区分事件历史、投影更新和持久化检查点位置。页面会对比继续兼容的进度与重建已更改的查询状态，并说明重放期间的就绪状态，但不会把说明写成恢复操作手册。

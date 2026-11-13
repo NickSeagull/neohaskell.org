@@ -1,6 +1,6 @@
 ---
-title: Verlauf und aktueller Zustand
-description: "Seitenplan. Den Unterschied zwischen aufgezeichneten Fakten, Anwendungszustand und Abfrageergebnissen verstehen."
+title: "Verlauf und aktueller Zustand"
+description: "Seitenplan. Warum Ereignisse behalten, wenn die Anwendung den aktuellen Zustand bereits kennt?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Seitenplan
 
-Diese Seite erklärt, warum ein aufgezeichnetes Ereignis und das Ergebnis einer aktuellen Abfrage verschiedene Dinge sind. Sie stellt einen kurzen Ereignisverlauf dem daraus abgeleiteten Zustand gegenüber und zeigt dann, wie ein weiteres angenommenes Kommando das Ergebnis ändert, ohne frühere Fakten umzuschreiben. Ein beschriftetes Kassenbuch und eine Zustandstabelle veranschaulichen die Erklärung. Ein optionaler Vergleichsregler könnte künftig aufeinanderfolgende Zustände zeigen. Jedes Ergebnis wird zusätzlich als statischer Text bereitgestellt. Konfiguration und Neustartverfahren gehören in [Daten über Neustarts hinweg beibehalten](/guides/storage/).
+Diese Seite unterscheidet die Fakten, die in einem Ereignisstream aufgezeichnet sind, vom Entitätszustand, der entsteht, wenn sie der Reihe nach angewendet werden. Ein abgestimmtes `Counter`-Ereignisjournal und eine Zustandstabelle zeigen, wie derselbe Verlauf die Entität über ihre Aktualisierungsfunktion rekonstruiert. Die Seite erklärt, dass die Wiedergabe den Zustand aus aufgezeichneten Fakten ableitet, statt die ursprünglichen Kommandos erneut auszuführen. Der Neuaufbau von Abfragen wird auf eine eigene Seite verwiesen, die Einrichtung der Speicherung auf den Speicherleitfaden.

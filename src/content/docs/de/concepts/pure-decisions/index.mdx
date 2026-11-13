@@ -1,6 +1,6 @@
 ---
-title: Reine Entscheidungen und Effekte
-description: "Seitenplan. Deterministische Entscheidungslogik und die Abgrenzung zu externen Effekten verstehen."
+title: "Reine Entscheidungen und Effekte"
+description: "Seitenplan. Was bedeutet Reinheit, wenn eine Entscheidung Kontext oder generierte Werte benötigt?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Seitenplan
 
-Diese Seite erklärt, welche Eingaben eine Entscheidung erhält, was sie zurückgibt und warum externe Effekte außerhalb dieser Berechnung liegen. Sie vergleicht dieselbe zweimal ausgewertete Eingabe mit einem angenommenen und einem abgelehnten Kommando. Dazu nutzt sie minimale, überprüfte Quelltextbeispiele und zeigt die Ergebnisse ausdrücklich. Eine Abbildung grenzt reine Logik von Netzwerk-, Speicher- und Dateioperationen ab. Die Erklärung stellt den Zusammenhang zwischen Typprüfungen und den Fehlern her, die sie aufdecken können, und lässt die fachliche Absicht in der Verantwortung der lesenden Person. Anschließend verweist sie auf [Externe Dienste anbinden](/guides/integrations/).
+Diese Seite unterscheidet das Erstellen einer Entscheidung von ihrer Auswertung und der Ausführung von Effekten. Eine Grenzabbildung stellt Kommandodaten, den aktuellen Entitätszustand und den Anfragekontext neben die Entscheidungsbeschreibung. UUID-Erzeugung und geschützte Wertoperationen liegen im Interpreter. Die Seite erklärt, welche Eingaben für wiederholbare Tests kontrolliert werden müssen und warum Reinheit das beabsichtigte fachliche Verhalten nicht beweist. Netzwerk-Integrationen führen zur Erklärung von Workflows und zum Aufgabenleitfaden.

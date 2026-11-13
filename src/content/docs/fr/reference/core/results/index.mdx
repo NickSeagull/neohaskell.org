@@ -1,0 +1,17 @@
+---
+title: "Maybe et Result"
+description: "Plan de page. Comment représenter une absence ou un échec récupérable ?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Plan de page
+
+Cette page comparera `Nothing` et `Just` à `Err` et `Ok`, pour montrer quand l’absence n’a pas besoin d’explication et quand une erreur typée est nécessaire. Des signatures compactes et des cas associés couvriront `map`, `andThen`, `withDefault`, `mapError` et les conversions entre les deux conteneurs. Un exemple d’analyse ou de recherche conservera l’erreur jusqu’à ce que l’appelant la traite explicitement, et renverra la gestion des échecs avec effets à `Task`.

@@ -1,6 +1,6 @@
 ---
-title: Historique et état actuel
-description: "Plan de page. Comprendre la différence entre les faits enregistrés, l’état de l’application et les réponses aux requêtes."
+title: "Historique et état actuel"
+description: "Plan de page. Pourquoi conserver les événements alors que l’application dispose déjà de son état actuel ?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plan de page
 
-Cette page expliquera pourquoi un événement enregistré et le résultat d’une requête actuelle sont deux choses différentes. Elle mettra en regard un bref historique d’événements et l’état qui en est dérivé, puis montrera comment une autre commande acceptée modifie la réponse sans réécrire les faits antérieurs. Un registre annoté et un tableau d’état porteront l’explication. Un éventuel contrôle de comparaison pourra révéler les états successifs, chaque résultat restant aussi disponible sous forme de texte statique. La configuration et les procédures de redémarrage seront présentées dans [Conserver les données après un redémarrage](/guides/storage/).
+Cette page distinguera les faits enregistrés dans un flux d’événements de l’état de l’entité obtenu en les appliquant dans l’ordre. Un registre `Counter` et un tableau d’état alignés montreront comment le même historique reconstruit la même entité à l’aide de sa fonction de mise à jour. La page expliquera que la relecture dérive l’état des faits enregistrés au lieu de réexécuter les commandes d’origine, puis renverra la reconstruction des requêtes à sa propre page et la configuration de la persistance au guide du stockage.

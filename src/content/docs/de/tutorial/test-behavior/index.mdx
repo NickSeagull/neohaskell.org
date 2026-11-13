@@ -1,6 +1,6 @@
 ---
-title: Das Verhalten testen
-description: "Seitenplan. Angenommene und abgelehnte Kommandos sowie Abfrageergebnisse anhand der Spezifikation prüfen."
+title: "Ladenverhalten testen"
+description: "Seitenplan. Welche Prüfungen zeigen, dass sich der Laden wie vorgegeben verhält?"
 tableOfContents: false
 pagefind: false
 prev: true
@@ -14,4 +14,4 @@ head:
 
 ## Seitenplan
 
-Diese Seite prüft die Funktion aus [Die Funktion implementieren](/tutorial/first-feature/) anhand ihrer ursprünglichen Spezifikation. Sie zeigt angenommene und abgelehnte Bestellungen, ungültige Mengen, aufgezeichnete Ereignisse und die daraus resultierende Bestandsabfrage. Eingabe, erwartetes Ergebnis und beobachtetes Ergebnis stehen gemeinsam in einer Vergleichstabelle. Dazu kommen kurze Testauszüge und eine erklärte Fehlermeldung. Die Lesenden erfahren, welche Belege sie von einem Agenten anfordern sollten, bevor sie mit [Sicher Änderungen vornehmen](/tutorial/change-safely/) fortfahren.
+Diese Seite macht aus der ursprünglichen Tabelle wiederholbare Prüfungen für eine angenommene Bestellung, die Ablehnung bei ausverkauftem Laden, fehlenden Ladenbestand und die daraus entstehende Bestandsabfrage. Die Leserinnen und Leser unterscheiden einen Entscheidungstest von einer Ereigniswiedergabe und einem HTTP-Szenario. Anschließend untersuchen sie einen absichtlichen Fehler und dessen Behebung. Erwartete und beobachtete Ergebnisse stehen nebeneinander. Die Nachweise des Agenten müssen die tatsächlich ausgeführten Prüfungen enthalten und verzögerte Abfrageaktualisierungen berücksichtigen, statt von sofortiger Konsistenz auszugehen.

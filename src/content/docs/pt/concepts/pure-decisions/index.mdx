@@ -1,6 +1,6 @@
 ---
-title: Decisões puras e efeitos
-description: "Plano da página. Compreender a lógica determinística das decisões e os limites dos efeitos externos."
+title: "Decisões puras e efeitos"
+description: "Plano da página. O que significa pureza quando uma decisão precisa de contexto ou de valores gerados?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plano da página
 
-Esta página explicará o que uma decisão recebe, o que devolve e por que motivo os efeitos externos devem ficar fora desse cálculo. Comparará a mesma entrada avaliada duas vezes, um comando aceite e um comando rejeitado, com código-fonte mínimo verificado e resultados explícitos. Uma figura mostrará o limite entre a lógica pura e as operações de rede, armazenamento e ficheiros. A explicação relacionará as verificações de tipos com os erros que podem detetar, deixando a intenção de negócio a cargo do leitor, e incluirá uma ligação para [Ligar serviços externos](/guides/integrations/).
+Esta página separará a construção de uma decisão da sua interpretação e da execução de efeitos. Uma figura de fronteiras colocará os dados do comando, o estado atual da entidade e o contexto do pedido junto à descrição da decisão, deixando a geração de UUID e as operações sobre valores protegidos no interpretador. Explicará quais os dados que têm de ser controlados para obter testes repetíveis e por que razão a pureza não prova que o comportamento de negócio pretendido está correto. As integrações de rede remeterão para a explicação dos fluxos de trabalho e para o guia de tarefas.

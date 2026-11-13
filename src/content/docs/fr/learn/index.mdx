@@ -1,103 +1,78 @@
 ---
-title: Concepts fondamentaux
-description: Comprenez les commandes, les décisions, les événements et les requêtes en suivant une commande dans une petite boutique en ligne.
+title: Protéger les modifications et répondre aux questions
+description: Demandez des modifications avec des commandes, protégez les promesses métier avec des décisions et fournissez aux écrans les réponses dont ils ont besoin grâce aux requêtes.
+sidebar:
+  label: Commandes et requêtes
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 2
-prev: false
+prev: true
 next: true
 ---
 
-<p class="docs-lead">Comprenez comment une application décide ce qui peut se passer, enregistre ce qui s'est passé et répond aux questions sur son état.</p>
+import EventModelTour from '@components/learn/EventModelTour.astro';
 
-NeoHaskell est un langage de programmation et un framework pensés pour l'IA dès leur conception. Ils vous permettent de créer des applications avec un agent d'IA tout en gardant leur comportement compréhensible. Vous décrivez ce comportement à l'aide de **commandes, décisions, événements et requêtes**. Le langage et le framework donnent une structure commune à ces concepts.
+La boutique de tasses présentée dans [Garder les faits derrière les nombres](/introduction/history/#record-what-happened) enregistre les commandes acceptées sous forme d’événements et les utilise pour calculer le stock disponible.
 
-Ce guide suit l'exemple d'une petite boutique qui a trois tasses en céramique en stock. Un client en commande une. Vous pouvez comprendre le modèle avant d'installer NeoHaskell ou d'utiliser un agent d'IA.
+Un événement est un fait que l’application a accepté. La frontière qui l’entoure est donc importante : un client ne peut pas déclarer que la boutique a accepté une commande en lui envoyant simplement un événement `OrderPlaced`.
 
-| Concept | Rôle | Exemple dans la boutique |
-| --- | --- | --- |
-| [Commande](#commands) | Exprime une intention | Passer une commande |
-| [Décision](#decisions) | L'accepter ou la rejeter | Vérifier le stock disponible |
-| [Événement](#events) | Enregistre ce qui s'est passé | Commande passée |
-| [Requête](#queries) | Lit l'état actuel | Deux tasses restantes |
+Imaginons qu’un client demande quatre tasses alors qu’il n’en reste que trois. **Demander une commande et obtenir une commande acceptée sont deux choses différentes.** L’application doit pouvoir recevoir la demande, la vérifier et la refuser sans diminuer le stock.
 
-## Commandes
+## Demander une modification avec une commande
 
-Une **commande** exprime ce qu'une personne ou un processus souhaite faire faire à l'application. Elle décrit une intention, mais ne signifie pas encore que l'action a eu lieu.
+Une **commande** exprime l’intention de modifier l’application. `PlaceOrder` transporte les informations nécessaires pour demander une commande. Pour une tasse, elles se présentent ainsi :
 
-Pour commander une tasse, le client indique le produit et la quantité. L'application doit encore décider si elle peut répondre à cette intention.
-
-```text title="Exemple de commande"
-PlaceOrder
-  product: tasse en céramique
-  quantity: 1
+```haskell
+PlaceOrder {
+  product = "ceramic mug",
+  quantity = 1
+}
 ```
 
-Les exemples de ce guide décrivent le modèle en texte brut. Ils ne constituent ni du code NeoHaskell exécutable ni des données destinées à une API.
+Une **décision** évalue cette commande par rapport à l’état actuel et à la règle de la boutique. La quantité doit être positive et le stock doit être suffisant. Avec trois tasses en stock, une commande d’une tasse est acceptée et une commande de quatre tasses est rejetée.
 
-## Décisions
+<EventModelTour kind="decision" />
 
-Une **décision** évalue une commande selon l'état actuel et les conditions que votre application doit respecter. Elle détermine si la commande est acceptée ou rejetée.
+L’acceptation enregistre `OrderPlaced`. Le rejet laisse le stock inchangé et n’enregistre aucun événement `OrderPlaced`. **La commande porte l’intention ; l’événement enregistre le fait accepté.**
 
-Dans cette boutique, la quantité doit être positive et le stock disponible suffisant. Avec trois tasses en stock, une commande d'une tasse peut être acceptée. Une commande de quatre tasses ne le peut pas.
+NeoHaskell fournit le parcours d’exécution : obtenir l’état pertinent, évaluer la décision et ajouter les événements acceptés. Le développeur écrit les conditions qui expriment la promesse de la boutique. Le site et un outil d’IA peuvent envoyer la même commande et utiliser la même décision.
 
-| Commande | Stock disponible | Décision |
-| --- | --- | --- |
-| Commander 1 tasse | 3 tasses | Accepter |
-| Commander 4 tasses | 3 tasses | Rejeter |
+## Rendre les décisions métier pures
 
-Ces conditions font partie du comportement de l'application. Un agent d'IA peut vous aider à les implémenter, mais il ne prend pas les décisions à l'exécution.
+**NeoHaskell place le code pur au cœur du développement applicatif.** La logique métier décrit ce qui doit se passer à partir des informations reçues. Une décision vérifie la commande et l’état actuel, puis décrit l’acceptation ou le rejet. Elle ne peut pas ouvrir une connexion à une base de données, envoyer un courriel de confirmation ni appeler un prestataire de paiement.
 
-## Événements
+Pour la règle de stock de la boutique, une même commande et un même stock disponible produisent la même acceptation ou le même rejet. Vérifier si une commande de quatre tasses peut être passée lorsque le stock en compte trois ne crée pas de commande dans une base de données. Cela calcule la réponse de la décision.
 
-Un **événement** enregistre un fait survenu. Lorsque la boutique accepte la commande, elle enregistre un événement `OrderPlaced`.
+Cette frontière change le travail quotidien :
 
-```text title="Événement enregistré"
-OrderPlaced
-  product: tasse en céramique
-  quantity: 1
-```
+- **Tester des milliers de cas sans conséquence externe.** Générez des combinaisons de stocks et de quantités demandées, notamment zéro, des valeurs négatives et la dernière tasse disponible. Vérifiez les décisions sans base de données, connexion réseau ou compte de messagerie.
+- **Reproduire les échecs.** Conservez les entrées qui ont révélé une erreur dans la règle de stock et réutilisez-les. L’examen de cette règle ne dépend ni de la disponibilité d’un fournisseur ni du contenu d’une base de test.
+- **Refactoriser à partir du comportement observable.** Soumettez les anciennes et les nouvelles règles de stock aux mêmes cas et comparez leurs décisions. Les modifications écrites à la main ou par un agent d’IA peuvent être vérifiées par rapport aux promesses de la boutique.
+- **Modifier l’infrastructure sans réécrire la règle.** La règle de stock ne contient ni SQL ni appels à un fournisseur de messagerie. Remplacer le stockage ou le service de messagerie ne modifie pas les conditions d’acceptation d’une commande.
+- **Comprendre et réutiliser la logique.** Lisez les entrées et la décision obtenue sans suivre des écritures cachées dans d’autres services. Extrayez un calcul ou réutilisez une règle sans devoir lui fournir une connexion à la base de données.
 
-Remarquez la différence de nom : `PlaceOrder` exprime une intention, tandis que `OrderPlaced` décrit un fait correspondant à une commande acceptée. L'événement rejoint l'historique de l'application.
+**La logique applicative pure est la manière habituelle de construire avec NeoHaskell.** Le développeur écrit les règles et les calculs ; le langage fournit les mécanismes de chargement de l’état et d’enregistrement des modifications acceptées. Tester le comportement métier n’exige pas d’exécuter ces mécanismes autour de chaque règle.
 
-Dans cet exemple, l'acceptation de la commande consomme une tasse. L'événement enregistre la commande, tandis que le stock restant est un état calculé à partir de cet historique. Dans d'autres applications, une commande peut produire un nombre différent d'événements. Cet exemple suit une commande et un événement.
+## Comment l’application réalise-t-elle un travail utile ?
 
-## Requêtes
+Une commande acceptée doit tout de même déclencher un courriel de confirmation. **Les intégrations réalisent les effets qui se produisent en dehors de la logique de l’application.** Elles isolent ce travail pour que les décisions de la boutique ne dépendent pas du fournisseur qui l’effectue.
 
-Une **requête** lit l'état de l'application sans le modifier. Elle répond à une question à partir de l'état calculé à partir des événements enregistrés.
+Un travailleur d’intégration sait exécuter sa tâche. Le travailleur de messagerie reçoit le destinataire et le message, puis les envoie. Il ne décide pas si une commande est autorisée, combien de stock reste ni quels clients doivent recevoir une confirmation. Ces choix relèvent de la logique pure de l’application.
 
-Après l'acceptation de la commande, une requête sur le stock renvoie deux tasses : les trois initiales, moins celle qui a été commandée.
+L’application peut demander ce travail après l’enregistrement de `OrderPlaced`. Si le fournisseur de messagerie est indisponible, la commande reste acceptée. Modifier le mode d’envoi du courriel change l’intégration, pas la règle de stock. Les [guides des intégrations](/guides/integrations/) expliquent comment configurer et exécuter ces travailleurs.
 
-```text title="Requête et résultat"
-Stock restant pour la tasse en céramique
-2
-```
+## Fournir à chaque écran la réponse dont il a besoin
 
-L'événement et le résultat de la requête ont des rôles différents. `OrderPlaced` reste dans l'historique comme trace de la commande. Une requête sur le stock fournit la réponse actuelle, qui peut changer au fil des commandes acceptées.
+Après l’acceptation de la commande, différentes personnes ont besoin de réponses différentes. Le prochain client veut connaître le stock disponible. Le client qui a commandé attend une confirmation. Le personnel doit savoir combien de commandes nécessitent son attention.
 
-## Commandes rejetées
+Une **requête** maintient des informations utiles dérivées de l’état de l’application et fournit une réponse à un appelant. Pour la boutique qui avait trois tasses et aucune commande, l’acceptation d’une commande d’une tasse produit les réponses suivantes :
 
-Une commande peut exprimer une intention valide et tout de même être rejetée. Si la boutique n'a plus de tasses, une commande d'une tasse ne respecte pas la condition de stock.
+<EventModelTour kind="queries" />
 
-Aucun événement `OrderPlaced` n'est enregistré pour cette commande rejetée. Une requête renvoie toujours zéro tasse. La tentative n'est pas devenue une commande acceptée et le stock n'a pas changé.
+Lire la réponse sur le stock ne passe pas une nouvelle commande. Cela n’oblige pas non plus à parcourir tout l’historique des événements à chaque visite : NeoHaskell met l’état des requêtes à jour à mesure que les modifications arrivent et l’écran lit cette réponse maintenue.
 
-| Stock de départ | Commande | Événement enregistré | Stock restant |
-| --- | --- | --- | --- |
-| 3 tasses | Commander 1 tasse | `OrderPlaced` | 2 tasses |
-| 0 tasse | Commander 1 tasse | Aucun | 0 tasse |
+**Les mêmes faits peuvent répondre à différentes questions.** L’affichage destiné aux clients et le rapport du personnel peuvent avoir des formes différentes sans raconter des histoires incompatibles sur ce qui s’est passé. Un nouveau rapport peut calculer une autre réponse à partir de l’historique conservé.
 
-Ce modèle couvre les commandes et le stock. Les paiements, l'expédition et les commandes simultanées ne font pas partie de ce premier exemple.
+Une réponse affichée peut ne pas refléter immédiatement une nouvelle modification. C’est pourquoi le stock affiché à l’écran n’autorise pas à passer une commande : lorsque la demande arrive, la décision de la commande vérifie l’état pertinent.
 
-## Commencez à créer
-
-Avant de demander à un agent de créer une fonctionnalité, décrivez la commande, les conditions de son acceptation, les événements à enregistrer et les questions auxquelles l'application doit répondre. Ajoutez un cas qui doit être rejeté.
-
-Lorsque vous pouvez expliquer les deux résultats pour cette boutique, poursuivez avec [la configuration de votre agent](/getting-started/).
-
-<section class="docs-plan" data-pagefind-ignore>
-
-## Plan de page
-
-Cette page conservera la petite boutique comme introduction aux commandes, décisions, événements et requêtes. Ses exemples aideront les lecteurs à reconnaître chaque concept et à prévoir le résultat d’une commande acceptée ou rejetée avant toute installation. Une figure statique compacte séparera la commande, la décision, l’événement enregistré et le résultat de la requête, avec les tableaux comparatifs existants à l’appui. Les lecteurs pourront ensuite [configurer leur agent](/getting-started/) pour créer un projet fonctionnel ou [modéliser leur première fonctionnalité](/tutorial/) à partir d’une spécification.
-
-</section>
+Séparer les modifications des questions s’appelle **CQRS**. Les commandes et les décisions déterminent ce qui peut se passer ; les requêtes organisent les informations dont les personnes ont besoin. Event Sourcing fournit l’historique à partir duquel l’application dérive son état.

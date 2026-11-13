@@ -1,33 +1,35 @@
 ---
+import { messages } from '../../i18n/runtime';
+const t = messages(Astro.locals.starlightRoute.locale ?? 'en');
 interface Props { kind: 'story' | 'decision' | 'queries'; }
 const { kind } = Astro.props;
 ---
 
 {kind === 'story' && (
-  <figure class="model-tour not-content customer-story" aria-label="A customer orders one of three available mugs. The order is confirmed and two mugs remain.">
-    <div class="shop-screen" data-diagram-role="query"><span>Ceramic mugs</span><strong class="stock-number">3</strong><span>available to order</span></div>
-    <div class="story-action" data-diagram-role="command"><strong>Order one mug</strong><svg class="flow-arrow" viewBox="0 0 48 24" width="48" height="24" fill="none" aria-hidden="true"><path d="M2 12h42m-8-8 8 8-8 8" /></svg></div>
-    <div class="shop-screen confirmed-screen" data-diagram-role="query"><strong>Order confirmed</strong><strong class="stock-number">2</strong><span>mugs still available</span></div>
+  <figure class="model-tour not-content customer-story" aria-label={t("lesson.a-customer-orders-one-of-three-available-mugs-the-order-is-confirmed-and-two-mugs-remain")}>
+    <div class="shop-screen" data-diagram-role="query"><span>{t("lesson.ceramic-mugs")}</span><strong class="stock-number">3</strong><span>{t("lesson.available-to-order")}</span></div>
+    <div class="story-action" data-diagram-role="command"><strong>{t("lesson.order-one-mug")}</strong><svg class="flow-arrow" viewBox="0 0 48 24" width="48" height="24" fill="none" aria-hidden="true"><path d="M2 12h42m-8-8 8 8-8 8" /></svg></div>
+    <div class="shop-screen confirmed-screen" data-diagram-role="query"><strong>{t("lesson.order-confirmed")}</strong><strong class="stock-number">2</strong><span>{t("lesson.mugs-still-available")}</span></div>
   </figure>
 )}
 
 {kind === 'decision' && (
-  <figure class="model-tour not-content decision-flow" aria-label="Command: order one mug. Decision: three are available, so accept. Event: an order for one mug was placed.">
-    <div class="model-node command-node" data-diagram-role="command"><span class="model-role">Command</span><strong>Order one mug</strong></div>
+  <figure class="model-tour not-content decision-flow" aria-label={t("lesson.command-order-one-mug-decision-three-are-available-so-accept-event-an-order-for-one-mug-wa")}>
+    <div class="model-node command-node" data-diagram-role="command"><span class="model-role">{t("lesson.command")}</span><strong>{t("lesson.order-one-mug")}</strong></div>
     <svg class="flow-arrow" viewBox="0 0 48 24" width="32" height="24" fill="none" aria-hidden="true"><path d="M2 12h42m-8-8 8 8-8 8" /></svg>
-    <div class="model-node decision-node"><span class="model-role">Decision</span><strong>Enough stock</strong><span>3 available, 1 needed</span></div>
+    <div class="model-node decision-node"><span class="model-role">{t("lesson.decision")}</span><strong>{t("lesson.enough-stock")}</strong><span>{t("lesson.3-available-1-needed")}</span></div>
     <svg class="flow-arrow" viewBox="0 0 48 24" width="32" height="24" fill="none" aria-hidden="true"><path d="M2 12h42m-8-8 8 8-8 8" /></svg>
-    <div class="model-node event-node" data-diagram-role="event"><span class="model-role">Event</span><strong>Order placed</strong><span>1 ceramic mug</span></div>
+    <div class="model-node event-node" data-diagram-role="event"><span class="model-role">{t("lesson.event")}</span><strong>{t("lesson.order-placed")}</strong><span>{t("lesson.1-ceramic-mug")}</span></div>
   </figure>
 )}
 
 {kind === 'queries' && (
-  <figure class="model-tour not-content query-flow" aria-label="Starting with three mugs, one recorded order for one mug gives two query answers: two mugs available and one confirmed order.">
-    <div class="model-history"><p class="opening-stock">Opening stock: 3 mugs</p><div class="model-node event-node" data-diagram-role="event"><span class="model-role">Recorded event</span><strong>Order placed</strong><span>1 ceramic mug</span></div></div>
+  <figure class="model-tour not-content query-flow" aria-label={t("lesson.starting-with-three-mugs-one-recorded-order-for-one-mug-gives-two-query-answers-two-mugs-a")}>
+    <div class="model-history"><p class="opening-stock">{t("lesson.opening-stock-3-mugs")}</p><div class="model-node event-node" data-diagram-role="event"><span class="model-role">{t("lesson.recorded-event")}</span><strong>{t("lesson.order-placed")}</strong><span>{t("lesson.1-ceramic-mug")}</span></div></div>
     <svg class="flow-arrow" viewBox="0 0 48 24" width="32" height="24" fill="none" aria-hidden="true"><path d="M2 12h42m-8-8 8 8-8 8" /></svg>
     <div class="query-answers">
-      <div class="query-answer" data-diagram-role="query"><span class="model-role">Query</span><strong>Available mugs</strong><span class="query-value">2</span></div>
-      <div class="query-answer" data-diagram-role="query"><span class="model-role">Query</span><strong>Confirmed orders</strong><span class="query-value">1</span></div>
+      <div class="query-answer" data-diagram-role="query"><span class="model-role">{t("lesson.query")}</span><strong>{t("lesson.available-mugs")}</strong><span class="query-value">2</span></div>
+      <div class="query-answer" data-diagram-role="query"><span class="model-role">{t("lesson.query")}</span><strong>{t("lesson.confirmed-orders")}</strong><span class="query-value">1</span></div>
     </div>
   </figure>
 )}

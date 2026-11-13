@@ -1,0 +1,144 @@
+---
+title: Ligue todo o processo
+description: Divida um modelo de eventos em fatias e capítulos, faça evoluir contratos implementados e mantenha a especificação no código.
+sidebar:
+  label: Modele todo o processo
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: true
+next: true
+---
+
+import GrowthComparison from '@components/learn/GrowthComparison.astro';
+import ShopEventModel from '@components/learn/ShopEventModel.astro';
+import IdeScreenshot from '@components/learn/IdeScreenshot.astro';
+
+Considere a loja de canecas introduzida em [O trabalho por detrás do código](/introduction/#the-questions-that-change-the-software). Aceitar uma encomenda reserva as canecas pedidas para o cliente. Para conceber a aplicação, temos de ligar toda a experiência: o cliente vê o stock, encomenda uma caneca e fica a saber se a loja aceitou a encomenda.
+
+[Proteja alterações e responda a perguntas](/learn/) explica as partes individuais: um comando pede uma alteração, um evento regista um facto aceite e uma consulta fornece uma resposta.
+
+**A modelação de eventos liga essas partes num processo que as pessoas podem analisar em conjunto.** Reúne ecrãs, comandos, eventos e consultas num modelo. As ligações revelam de onde vem a informação, onde é necessária e que questões de negócio ainda precisam de resposta. NeoHaskell usa essa mesma estrutura para organizar o desenvolvimento e manter a especificação no código.
+
+## Acompanhe uma encomenda e um cancelamento
+
+A loja tem três canecas disponíveis. O proprietário quer permitir que os clientes cancelem uma encomenda antes da expedição e devolvam as canecas ao stock disponível. Comece pela jornada de encomendar uma caneca e depois cancelá-la.
+
+O modelo tem dois **capítulos**, Efetuar encomenda e Cancelar encomenda. Cada capítulo agrupa duas **fatias**: uma altera o estado através de um comando e do respetivo evento aceite; a outra fornece a resposta do stock através de uma consulta. As linhas verticais separam as unidades de desenvolvimento. Cada seta na parte superior abrange as fatias pertencentes ao seu capítulo.
+
+<ShopEventModel />
+
+Depois de a encomenda ser aceite, a consulta do stock responde dois. Depois do cancelamento, responde três. Os nós Canecas disponíveis repetidos mostram a resposta do stock nesses dois momentos do processo.
+
+Desenhar as ligações também revela o que este primeiro esboço ainda não esclarece. «Adicionar cancelamento» parecia um botão. O modelo pergunta o que falta do comportamento:
+
+- De onde obtém o comando de cancelamento a identidade da encomenda?
+- O que impede o cancelamento depois da expedição?
+- Que resposta informa o cliente de que o cancelamento foi bem-sucedido?
+- O que diz à equipa para parar de preparar essa encomenda?
+
+**Cada pergunta sem resposta é uma parte da aplicação ainda por conceber.** O proprietário e o programador podem resolvê-la enquanto analisam o mesmo processo, antes de um agente ou de uma pessoa transformar uma suposição em código.
+
+## Desenvolva uma fatia de cada vez
+
+**Uma fatia é a unidade de desenvolvimento.** «Aceitar uma encomenda» tem uma entrada, uma decisão e um resultado observável. A implementação verifica a quantidade pedida e o stock, e as suas regras especificam quando deve aceitar ou rejeitar. «Mostrar o stock restante» é uma fatia separada, com outra função: manter a resposta atualizada depois de fazer uma encomenda.
+
+A mesma divisão aplica-se ao cancelamento. Uma fatia decide se a encomenda pode ser cancelada e regista o resultado. Outra fornece a resposta atualizada do stock. O capítulo mantém-nas juntas como uma parte da experiência do cliente, sem as transformar numa única tarefa de implementação.
+
+Uma **funcionalidade** agrupa capítulos relacionados. Neste caso, uma funcionalidade Orders contém Efetuar encomenda e Cancelar encomenda. Uma integração tem a sua própria fatia quando o processo precisa de um efeito externo, como enviar a confirmação da encomenda. O modelo atribui um lugar a cada tarefa e mostra os contratos de que depende.
+
+## Fixe o contrato quando é implementado
+
+Um comando apresentado ao cliente é uma promessa. Quem invoca `PlaceOrder` depende das entradas e do comportamento que este aceita. Os consumidores de uma consulta dependem da resposta que fornece. Os eventos registados dependem de definições que preservem o significado desses factos.
+
+**O modelo de implementação de NeoHaskell fixa as definições e a implementação quando são implementadas.** Um comando, evento ou consulta implementado não pode ser reescrito silenciosamente com a mesma identidade. Um novo requisito ou uma decisão corrigida torna-se um novo comportamento, ao lado do comportamento implementado.
+
+Suponha que a loja adiciona uma finalização de compra com entrega que exige dados de contacto antes de aceitar uma encomenda. A finalização para recolha existente usa `PlaceOrder`, que aceita apenas um produto e uma quantidade. Em vez de a editar no local, duplique a funcionalidade em desenvolvimento, dê um novo nome ao comportamento alterado, como `PlaceOrderWithContact`, e implemente a verificação adicional. Também pode usar um sufixo. O que importa é que o novo contrato tenha identidade própria.
+
+A finalização com entrega usa o novo contrato, enquanto as encomendas para recolha continuam a usar o original. NeoHaskell torna esta pequena adição explícita o percurso normal de desenvolvimento: reutilize a estrutura estabelecida, altere o comportamento pretendido e verifique as respetivas regras. O trabalho concentra-se no novo requisito, em vez de exigir o rastreio de todas as chamadas a uma implementação alterada.
+
+Uma correção de erro segue a mesma regra. Se `CancelOrder` aceitar incorretamente encomendas expedidas, crie `CancelUndispatchedOrder` corrigido, teste o caso em falta, transfira para ele os chamadores e desative o comando com erro. Fixar a implementação antiga preserva o que foi implementado; não obriga a manter disponível um ponto de entrada com erros.
+
+## Retire comportamentos sem versionar toda a API
+
+**Os contratos antigos e novos podem coexistir enquanto os respetivos consumidores migram.** A aplicação móvel pode continuar a disponibilizar a recolha através de `PlaceOrder`, enquanto o site acrescenta a entrega através de `PlaceOrderWithContact`. A consulta do stock e os comandos não relacionados mantêm os nomes e contratos existentes.
+
+Assim, uma operação alterada não obriga a copiar uma API inteira para `/v2`. Cada comportamento alterado recebe a sua própria identidade. Os consumidores adotam a substituição quando estiverem prontos, em vez de terem de transferir todas as operações em simultâneo para uma nova versão da API.
+
+Marque um comando ou uma consulta antiga como **obsoleto** quando os novos consumidores já não o devem escolher. Quando a utilização mostrar que ninguém o chama, desative ou remova esse ponto de entrada. Retirar um comando não apaga os eventos que registou nem remove as definições necessárias para interpretar esse histórico.
+
+## Por que razão alterar código partilhado dá mais trabalho
+
+Considere o mesmo requisito de dados de contacto para a entrega numa aplicação convencional, em que a loja altera o ponto de acesso existente `POST /orders` e o modelo `Order` partilhado. Tornar obrigatório o novo campo quebra a antiga finalização de compra móvel. Acrescentá-lo ao modelo partilhado afeta depois o editor de encomendas e o ecrã da equipa, embora nenhum deles tenha pedido uma nova política de encomendas.
+
+A seguir, a loja altera o cancelamento de uma indicação sim ou não para um estado que distingue pedido, aceite e recusado. O código que antes verificava `cancelled` precisa agora de atenção na expedição, nos cálculos de stock e nos emails aos clientes. Um pequeno pedido de negócio espalha-se por várias funcionalidades porque todas interpretam o mesmo modelo mutável.
+
+**O custo inclui rever comportamentos que já funcionavam.** Neste gráfico, as letras A a G representam adições à aplicação. Cada R representa trabalho repetido num comportamento anterior. A curva ascendente ilustra o aumento do esforço por alteração à medida que essas dependências se acumulam.
+
+<GrowthComparison mode="rework" />
+
+## Mantenha o crescimento próximo do linear
+
+Em NeoHaskell, o requisito dos dados de contacto para a entrega acrescenta um comando nomeado e as respetivas regras junto ao contrato de encomendas fixado. A finalização antiga mantém o seu comportamento. Uma nova política de cancelamento também recebe uma fatia e um contrato explícitos, com as consultas e integrações afetadas visíveis no modelo de eventos.
+
+**Contratos estáveis impedem que um novo requisito altere silenciosamente todos os consumidores existentes.** As fatias delimitam o trabalho de implementação, os capítulos mantêm o contexto de negócio e o modelo mostra onde um novo comportamento se liga ao resto da aplicação. NeoHaskell fornece a estrutura recorrente para que criar a substituição custe menos do que desenredar repetidamente código partilhado.
+
+<GrowthComparison mode="bounded" />
+
+O esforço aproximadamente constante por adição faz com que o esforço total de desenvolvimento cresça quase linearmente: outra fatia comparável acrescenta outra porção de trabalho comparável. Este é o padrão de desenvolvimento que NeoHaskell foi concebida para apoiar.
+
+O cancelamento continua a ter de estar de acordo com a expedição sobre quando se pode cancelar uma encomenda. Esse acordo pertence aos contratos e regras das fatias afetadas. O programador pode identificar e inspecionar a dependência e testá-la, em vez de a descobrir através de uma jornada do cliente interrompida.
+
+## Use o modelo para compreender o código
+
+**O IDE de NeoHaskell torna visível a estrutura da aplicação.** Abra uma funcionalidade para ver os respetivos capítulos e fatias e, em seguida, siga as ligações entre comandos, eventos, consultas e integrações. Pode explorar o modelo da loja de canecas na interface real do IDE:
+
+<IdeScreenshot />
+
+Para uma alteração ao cancelamento, comece pelo capítulo Cancelar encomenda. Localize o comando que o pede, o evento que produz e a consulta do stock que consome esse evento. Esses nomes identificam as declarações correspondentes no código-fonte. O mesmo percurso ajuda a assumir a manutenção de um projeto existente ou a rever uma alteração escrita por um agente de IA.
+
+O modelo visual deriva das declarações do código-fonte. Quando essas declarações mudam, o IDE atualiza o modelo. Um comando renomeado ou uma nova ligação a uma consulta pertencem à estrutura da aplicação e aparecem no diagrama sem que alguém tenha de manter manualmente um segundo desenho.
+
+## Mantenha a especificação na aplicação
+
+**A especificação faz parte do código.** A DSL do modelo de eventos de NeoHaskell declara funcionalidades, capítulos, fatias, comandos, eventos, consultas e integrações. As regras junto de uma fatia descrevem o comportamento necessário, incluindo casos Given, When, Then.
+
+Segue-se o capítulo de cancelamento do modelo da loja. O exemplo usa os tipos `Order`, de comando, de evento e de consulta da loja, já definidos noutro local:
+
+```haskell
+orders =
+  feature "Orders" do
+    chapter "Cancel order" do
+      slice "Cancel before dispatch" do
+        entity @Order do
+          command @CancelOrder do
+            produces @OrderCancelled
+
+        rule "Cancel before dispatch" do
+          orderId <- requestValue @Uuid
+          given do
+            event OrderPlaced {
+              orderId = orderId,
+              quantity = 1
+            }
+          when CancelOrder { orderId = orderId }
+          therefore do
+            event OrderCancelled {
+              orderId = orderId,
+              quantity = 1
+            }
+
+      slice "Show restored stock" do
+        query @AvailableMugs do
+          readsFrom @Order do
+            onEvent @OrderPlaced
+            onEvent @OrderCancelled
+```
+
+**A hierarquia do diagrama é a hierarquia do código.** O capítulo contém uma fatia de comando e uma fatia de consulta. `produces` declara o evento do comando; `readsFrom` e `onEvent` declaram qual o histórico que fornece os dados à consulta. A consulta do stock acompanha as encomendas feitas e canceladas, para que a resposta reflita ambas as alterações.
+
+A regra fica junto do comando que especifica. `requestValue` pede ao executor de regras um exemplo tipado de ID de encomenda. `given` fornece o histórico da encomenda aceite, `when` fornece o comando de cancelamento e `therefore` corresponde ao Then da DSL: o evento `OrderCancelled` esperado. A implementação da decisão tem um caso concreto a satisfazer.
+
+Uma segunda regra cobre uma encomenda já expedida: o cancelamento tem de ser rejeitado e o stock tem de permanecer igual. A fatia da consulta do stock verifica separadamente se um cancelamento aceite repõe a quantidade disponível. Cada caso pertence ao comportamento que especifica.
+
+Um ficheiro Markdown separado ou uma página Confluence pode ficar desatualizado, porque alguém tem de o atualizar quando a aplicação muda. Em NeoHaskell, o modelo declarado e as regras já fazem parte do código-fonte. É possível gerar um documento que descreva essa especificação a partir das declarações, em vez de criar outra fonte de verdade que tenha de ser mantida.

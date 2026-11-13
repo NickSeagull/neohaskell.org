@@ -3,7 +3,7 @@
   "search.label": "Buscar",
   "search.ctrlKey": "Ctrl",
   "search.cancelLabel": "Cancelar",
-  "search.devWarning": "La búsqueda solo está disponible en las compilaciones de producción. \nPrueba a compilar y previsualizar el sitio para probarla en local.",
+  "search.devWarning": "La búsqueda solo está disponible en las compilaciones de producción. \nPrueba a compilar y previsualizar el sitio para comprobarla en local.",
   "themeSelect.accessibleLabel": "Seleccionar tema",
   "themeSelect.dark": "Oscuro",
   "themeSelect.light": "Claro",
@@ -13,7 +13,7 @@
   "sidebarNav.accessibleLabel": "Principal",
   "tableOfContents.onThisPage": "En esta página",
   "tableOfContents.overview": "Resumen",
-  "i18n.untranslatedContent": "Este contenido todavía no está disponible en tu idioma.",
+  "i18n.untranslatedContent": "Este contenido aún no está disponible en tu idioma.",
   "page.editLink": "Editar página",
   "page.lastUpdated": "Última actualización:",
   "page.previousLink": "Anterior",
@@ -26,7 +26,7 @@
   "aside.danger": "Peligro",
   "fileTree.directory": "Directorio",
   "builtWithStarlight.label": "Creado con Starlight",
-  "heading.anchorLabel": "Sección titulada “{{title}}”",
+  "heading.anchorLabel": "Sección titulada «{{title}}»",
   "pagefind.clear_search": "Borrar búsqueda",
   "pagefind.load_more": "Cargar más resultados",
   "pagefind.search_label": "Buscar",
@@ -39,5 +39,5 @@
   "expressiveCode.copyButtonTooltip": "Copiar al portapapeles",
   "expressiveCode.terminalWindowFallbackTitle": "Terminal",
   "pagefind.alt_search": "No hay resultados para [SEARCH_TERM]. Se muestran resultados para [DIFFERENT_TERM] en su lugar",
-  "pagefind.search_suggestion": "No hay resultados para [SEARCH_TERM]. Prueba alguna de estas búsquedas:"
+  "pagefind.search_suggestion": "No hay resultados para [SEARCH_TERM]. Prueba una de estas búsquedas:"
 }

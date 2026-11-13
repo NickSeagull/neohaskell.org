@@ -1,6 +1,6 @@
 ---
-title: Konfiguration
-description: "Seitenplan. Erforderliche Werte, Standardwerte, Überschreibungen und Konfigurationsgrenzen nachschlagen."
+title: "Laufzeitkonfiguration"
+description: "Seitenplan. Welcher Wert gilt, wenn Standardwerte, Umgebung und Argumente voneinander abweichen?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Seitenplan
 
-Diese Seite listet geprüfte Konfigurationsfelder, Standardwerte, erforderliche Werte und Umgebungsüberschreibungen für die dokumentierte Framework-Version auf. Sie behandelt Transportschnittstellen, Ereignis- und Abfragespeicher, Dienstverbindungen und geheime Werte, ohne echte Zugangsdaten anzuzeigen. Eine einheitliche Tabelle und kurze vollständige Konfigurationen zeigen, wie die Werte zusammenwirken. Ungültige Beispiele enthalten, sofern geprüft, die tatsächliche Diagnose und ihre Korrektur. Die Einträge verweisen auf die passenden Aufgabenleitfäden, statt deren vollständige Abläufe zu wiederholen.
+Diese Seite definiert `Config`-Felder, erforderliche Dokumentation, Standardwerte, Pflichtwerte, Umgebungsvariablen, Kommandozeilen-Flags, verschachtelte Records und das Ausblenden von Geheimnissen. Eine einzige Rangfolgetabelle zeigt Kommandozeile, Prozessumgebung, dotenv und anschließend Standardwert anhand eines kleinen hypothetischen Portbeispiels. Sie erklärt das Laden beim Start, Konfigurationsfabriken, Registrierungsreihenfolge und getrennte Speicherauswahl. Anbieterspezifische Einstellungen werden auf Aufgabenleitfäden verwiesen; die Build-Konfiguration `neo.json` erhält eine eigene Seite.

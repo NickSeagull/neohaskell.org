@@ -1,6 +1,6 @@
 ---
-title: Décisions pures et effets
-description: "Plan de page. Comprendre la logique de décision déterministe et la frontière des effets externes."
+title: "Décisions pures et effets"
+description: "Plan de page. Que signifie la pureté lorsqu’une décision a besoin d’un contexte ou de valeurs générées ?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plan de page
 
-Cette page expliquera ce qu’une décision reçoit, ce qu’elle renvoie et pourquoi les effets externes doivent rester en dehors de ce calcul. Elle comparera une même entrée évaluée deux fois, une commande acceptée et une commande rejetée, à l’aide de code source minimal vérifié et de résultats explicites. Une figure de délimitation séparera la logique pure des opérations réseau, de stockage et sur les fichiers. L’explication montrera comment les vérifications de types permettent de détecter des erreurs tout en laissant au lecteur la responsabilité de l’intention métier, puis renverra vers [Connecter des services externes](/guides/integrations/).
+Cette page distinguera la construction d’une décision, son interprétation et la réalisation d’effets. Un diagramme de frontière placera les données de la commande, l’état actuel de l’entité et le contexte de la requête à côté de la description de la décision, et la génération d’UUID et les opérations sur les valeurs protégées dans l’interpréteur. La page expliquera quelles entrées doivent être contrôlées pour obtenir des tests reproductibles et pourquoi la pureté ne prouve pas que le comportement métier attendu est respecté. Les intégrations réseau renverront à l’explication des flux de travail et au guide des tâches.

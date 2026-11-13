@@ -1,6 +1,6 @@
 ---
-title: Manter os dados após reinícios
-description: "Plano da página. Planear o histórico persistente de eventos e o armazenamento de consultas, com verificações após reinícios."
+title: "Mantenha os eventos entre reinícios"
+description: "Plano da página. Como mantenho o histórico registado da aplicação quando o processo termina?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plano da página
 
-Esta página distinguirá o histórico de eventos do armazenamento de consultas e mostrará como configurar as opções de persistência suportadas. Comparará um exemplo em memória com uma configuração persistente e, em seguida, verificará o que sobrevive a um reinício usando comandos explícitos e resultados esperados. Um pequeno diagrama manterá separados o armazenamento de eventos e o estado das consultas. Os exemplos de falhas abrangerão configurações em falta e armazenamento indisponível, com ligações para [Histórico e estado atual](/concepts/history-and-state/) sobre o modelo subjacente e [Recursos](/resources/#language-and-framework) sobre as orientações upstream existentes.
+Esta página substituirá a configuração de memória do projeto inicial por um armazenamento de eventos persistente e verificará o mesmo comportamento registado antes e depois de um reinício. Uma comparação distinguirá a persistência em disco de `SimpleEventStore` da configuração PostgreSQL, enquanto um diagrama separará o histórico de eventos do estado derivado das consultas. O exemplo usará uma configuração completa para a revisão do framework selecionada e explicará quais os caminhos de armazenamento ou volumes da base de dados que têm de sobreviver.

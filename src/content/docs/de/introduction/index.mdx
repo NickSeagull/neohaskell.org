@@ -1,0 +1,50 @@
+---
+title: Die Arbeit hinter dem Code
+description: Warum das Urteilsvermögen von Entwicklern mit KI wichtiger wird und warum NeoHaskell einer Person ermöglicht, eine ganze Anwendung umzusetzen.
+sidebar:
+  label: Die Arbeit hinter dem Code
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: false
+next: true
+---
+
+**Der Wert von Entwicklern lag nie darin, APIs auswendig zu kennen oder Syntax fehlerfrei zu schreiben.** Er liegt darin, ein Problem gut genug zu verstehen, um etwas zu bauen, das es löst. Dazu gehört, Fragen zu stellen, Widersprüche zu finden und den unbequemen Details nachzugehen, die verändern, was die Software tun muss.
+
+KI macht es einfacher, eine Implementierung zu schreiben. Dadurch wird dieses Urteilsvermögen wertvoller. Ein Agent kann anhand einer kurzen Beschreibung eine Checkout-Seite erzeugen. Um zu entscheiden, was der Laden verspricht, wenn jemand auf die Schaltfläche klickt, muss man jedoch das Geschäft verstehen.
+
+NeoHaskell baut auf diesem Verständnis von Entwicklung auf. **Eine Person sollte eine ganze Anwendung verstehen und bauen können**, mit Werkzeugen, die ihr Urteilsvermögen unterstützen und die Arbeit angenehm machen. Deshalb enthält die Sprache die Werkzeuge für den Bau einer Anwendung und stellt KI in den Mittelpunkt ihres Designs.
+
+## Die Fragen, die die Software verändern
+
+Ein Ladenbesitzer bittet um Online-Bestellungen. Drei Keramiktassen stehen noch im Regal. Die Anfrage klingt einfach, bis eine Entwicklerin oder ein Entwickler fragt, was es tatsächlich bedeutet, eine Tasse zu kaufen:
+
+- Wird eine Tasse für andere Kunden unverfügbar, sobald sie in den Warenkorb gelegt wird?
+- Verspricht der Laden die Tasse bei Annahme der Bestellung oder erst nach Eingang der Zahlung?
+- Wann wird eine Tasse wieder verfügbar, wenn eine Bestellung storniert wird?
+- Was soll passieren, wenn ein Kunde mehr Tassen bestellt, als noch vorhanden sind?
+
+Diese Fragen gehen über eine Checkout-Seite hinaus. Sie verbinden die Erwartungen des Kunden mit der Arbeit der Person, die Bestellungen verpackt, und des Ladenbesitzers, der Rückerstattungen bearbeitet. Diese Personen können dasselbe Wort „Bestellung“ für unterschiedliche Momente im Ablauf verwenden.
+
+**Diese Meinungsverschiedenheit aufzudecken und zu klären, ist Softwareentwicklung.** Die Antwort bestimmt, woran sich die Anwendung erinnern, was sie verhindern und was sie den einzelnen Personen mitteilen muss. Wer Code schreibt, bevor diese Frage gestellt wird, versteckt eine unausgesprochene Geschäftsentscheidung in der Implementierung.
+
+Das ist anspruchsvolle Arbeit. Sie verlangt, zuzuhören, Annahmen zu hinterfragen und einen Prozess bis zu seinen Ausnahmen zu verfolgen. Ein Agent erleichtert es, auf Grundlage dieses Verständnisses zu handeln. Das Verständnis ist es, was der entstehenden Software ihren Wert gibt.
+
+## Eine Sprache, die die Zusammensetzung übernimmt
+
+Dieses Urteilsvermögen verdient Aufmerksamkeit. Wer es wiederholt darauf verwendet, zu entscheiden, wie Änderungen gespeichert, Bibliotheken verbunden und neue Features organisiert werden, hat weniger Zeit für die Anwendung selbst.
+
+NeoHaskell übernimmt diese wiederkehrenden technischen Entscheidungen. Die Sprache bietet einen gemeinsamen Weg, vorgeschlagene Änderungen zu prüfen, Geschehenes aufzuzeichnen und die auf Bildschirmen angezeigten Antworten zu aktualisieren. Die Entwicklerin oder der Entwickler definiert die Regeln des Ladens; NeoHaskell stellt die Mechanismen bereit, die sie anwenden.
+
+Eine Bestandsregel sollte beispielsweise nur eine Implementierung haben, auch wenn Bestellungen über eine Website und ein KI-Tool eingehen. NeoHaskell führt diese Schnittstellen durch dieselbe fachliche Entscheidung. Eine weitere Schnittstelle hinzuzufügen bedeutet nicht, einen zusätzlichen Ort zur Durchsetzung der Regeln zu erfinden.
+
+**Wir integrieren diese Fähigkeiten in die Sprache, weil niemand zum Spezialisten für jede Schicht werden sollte, nur um eine nützliche Anwendung zu bauen.** Gemeinsame Konventionen geben einem Agenten außerdem eine Struktur für seine Arbeit und der Entwicklerin oder dem Entwickler eine Struktur, um Änderungen zu prüfen.
+
+## Freude daran haben, etwas Verständliches zu bauen
+
+NeoHaskell behandelt die Zufriedenheit von Entwicklern als wichtiges Designziel. Es macht Freude, einen schwierigen Prozess zu entwirren, klar auszudrücken und die Anwendung wie beabsichtigt arbeiten zu sehen. Die Werkzeuge sollten mehr Raum für diese Arbeit lassen.
+
+Damit das fachliche Verständnis nah an der Implementierung bleibt, verwendet NeoHaskell eine Methode namens **Ereignismodellierung**. Sie verbindet, was Menschen tun möchten, was tatsächlich geschieht und was sie anschließend sehen müssen. Dieselben Konzepte gliedern die Anwendung. Dadurch hat das mit dem Ladenbesitzer vereinbarte Vorgehen einen erkennbaren Platz im Code.
+
+Ob ein Agent die Implementierung schreibt oder eine Entwicklerin beziehungsweise ein Entwickler sie von Hand verfasst: Die Grundlage zur Beurteilung des Ergebnisses bleibt konkret. Es geht um die Anfrage des Kunden, das Versprechen des Ladens und das vereinbarte Verhalten. So kann eine Entwicklerin oder ein Entwickler eine generierte Änderung verstehen und verantworten.

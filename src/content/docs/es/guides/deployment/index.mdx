@@ -1,6 +1,6 @@
 ---
-title: Despliega y opera
-description: "Plan de la página. Planifica un despliegue reproducible y comprobaciones de dependencias persistentes y fallos."
+title: "Despliega una aplicación"
+description: "Plan de la página. ¿Qué hay que configurar y persistir para ejecutar esta aplicación en otro lugar?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plan de la página
 
-Esta página documentará un proceso de despliegue después de verificar sus comandos y su entorno con una revisión del proyecto original. Cubrirá la compilación de la aplicación, la configuración necesaria, las dependencias persistentes, las comprobaciones de inicio, la inspección de fallos y la recuperación. Una figura de despliegue compacta mostrará las partes en ejecución, mientras que pares de comandos y resultados demostrarán un inicio correcto y un fallo concreto. La guía distinguirá entre un ejemplo de despliegue verificado y las garantías de producción, y enlazará a [Configuración](/reference/configuration/) y [Errores y solución de problemas](/reference/errors/).
+Esta página reunirá un ejemplo de despliegue reproducible para una aplicación y una revisión del framework fijadas, e indicará el ejecutable, la configuración en tiempo de ejecución, la base de datos y las rutas de archivos. Un diagrama de despliegue distinguirá los servicios persistentes del proceso de la aplicación y mostrará el límite HTTP público. Las comprobaciones cubrirán el inicio, un comando aceptado, una consulta y un reinicio, y señalarán qué tareas de alojamiento y supervisión de procesos dependen del entorno y no las proporciona el repositorio.

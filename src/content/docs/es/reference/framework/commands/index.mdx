@@ -1,0 +1,17 @@
+---
+title: "Comandos y decisiones"
+description: "Plan de la página. ¿Qué debe definir un comando y qué puede devolver una decisión?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Plan de la página
+
+Esta página especificará el registro del comando, `EntityOf`, `getEntityId`, `decide`, `RequestContext`, los permisos de transporte y las funciones auxiliares de derivación, y relacionará las funciones implementadas por el desarrollador con los métodos públicos de `Command`. Comparará `acceptNew`, `acceptExisting`, `acceptAny`, `acceptAfter` y `reject` mediante una tabla compacta de resultados. Los casos de decisión de `Counter` servirán para concretar el comportamiento aceptado y rechazado. Las firmas multiusuario y los puntos de conexión de autorización tendrán sus propias anclas; las guías de tareas cubrirán las implementaciones y la aplicación de políticas de acceso con más detalle.

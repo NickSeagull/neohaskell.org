@@ -1,23 +1,25 @@
 ---
+import { messages } from '../../i18n/runtime';
+const t = messages(Astro.locals.starlightRoute.locale ?? 'en');
 const behaviors = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 interface Props { mode: 'rework' | 'bounded' }
 const { mode } = Astro.props;
 const explicit = mode === 'bounded';
 const cases = [{
-  title: explicit ? 'Add behavior beside stable contracts' : 'Change shared code and revisit its callers',
+  title: explicit ? t("lesson.add-behavior-beside-stable-contracts") : t("lesson.change-shared-code-and-revisit-its-callers"),
   rework: explicit ? [0, 0, 0, 0, 0, 0, 0] : [0, 0, 0, 1, 1, 2, 3],
   explicit,
 }];
 const summary = explicit
-  ? 'Conceptual plot of added slices beside stable contracts. Each new behavior adds a similar block of work, keeping total effort close to linear. This is an intended pattern, not a measurement.'
-  : 'Conceptual plot of changing shared behavior in place. Later changes require increasing rework in existing behavior, marked R. The curve shows rising effort per change, not measured data.';
+  ? t("lesson.conceptual-plot-of-added-slices-beside-stable-contracts-each-new-behavior-adds-a-similar-b")
+  : t("lesson.conceptual-plot-of-changing-shared-behavior-in-place-later-changes-require-increasing-rewo");
 ---
 <figure class="growth-comparison not-content" aria-label={summary} data-growth-mode={mode}>
   {cases.map(scenario => (
     <div class:list={['growth-case', { 'explicit-contracts': scenario.explicit }]}>
       <strong class="case-title">{scenario.title}</strong>
       <div class="growth-chart">
-        <span class="effort-axis">Effort per change</span>
+        <span class="effort-axis">{t("lesson.effort-per-change")}</span>
         <div class="growth-plot">
           <svg class="effort-curve" viewBox="0 0 320 224" preserveAspectRatio="none" fill="none" aria-hidden="true">
             {scenario.explicit ? <path d="M8 155 C110 154 210 150 303 144 m-10-6 10 6-9 8" /> : <path d="M8 155 C120 147 230 98 303 30 m-13 2 13-2-3 13" />}
@@ -26,8 +28,8 @@ const summary = explicit
             {behaviors.map((behavior, index) => <div class="behavior-stack"><span class="behavior-block">{behavior}</span>{Array.from({ length: scenario.rework[index] }, () => <span class="rework-block">R</span>)}</div>)}
           </div>
         </div>
-        <div class="contract-label">{scenario.explicit && <span>Stable contracts</span>}</div>
-        <span class="behavior-axis">Behaviors added</span>
+        <div class="contract-label">{scenario.explicit && <span>{t("lesson.stable-contracts")}</span>}</div>
+        <span class="behavior-axis">{t("lesson.behaviors-added")}</span>
       </div>
     </div>
   ))}
@@ -37,8 +39,9 @@ const summary = explicit
   :global([data-theme='light']) .growth-comparison { --rework-ink: #963b50; --rework-surface: #fbeaf0; }
   .growth-comparison :is(div, span, strong, svg) { margin: 0; }
   .case-title { display: block; min-height: 3rem; font-weight: 650; }
-  .growth-chart { display: grid; grid-template-columns: 1.75rem 1fr; grid-template-rows: 14rem 2rem auto; }
+  .growth-chart { display: grid; grid-template-columns: max-content minmax(0, 1fr); grid-template-rows: 14rem 2rem auto; column-gap: .25rem; }
   .effort-axis { writing-mode: vertical-rl; transform: rotate(180deg); justify-self: start; align-self: center; color: var(--sl-color-gray-2); }
+  .effort-axis:lang(ja), .effort-axis:lang(zh) { transform: none; }
   .growth-plot { position: relative; grid-column: 2; border-inline-start: 1px solid var(--sl-color-gray-3); border-bottom: 1px solid var(--sl-color-gray-3); }
   .effort-curve { position: absolute; width: 100%; height: 100%; color: var(--rework-ink); }
   .effort-curve path { stroke: currentColor; stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }

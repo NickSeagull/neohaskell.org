@@ -1,0 +1,17 @@
+---
+title: "Conecta una cuenta externa"
+description: "Plan de la página. ¿Cómo autoriza un usuario el acceso a una cuenta de un proveedor?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Plan de la página
+
+Esta página registrará un proveedor OAuth y seguirá a un usuario autenticado durante la conexión, la devolución de llamada, el uso y la renovación del token, y la desconexión. Un diagrama de secuencia separará la identidad de la aplicación de las credenciales del proveedor y del estado temporal de la conexión. Explicará el almacén de secretos persistente proporcionado por quien usa la biblioteca y el almacén actual en memoria para las transacciones de devolución de llamada, incluidos los efectos de reiniciar antes de terminar una conexión o de que otra instancia reciba una solicitud.

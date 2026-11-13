@@ -11,7 +11,7 @@ import GithubSlugger from 'github-slugger';
 import { toString } from 'mdast-util-to-string';
 import { targetLocales, localePath, localeByCode } from '../src/i18n/locales.mjs';
 
-export const policyVersion = 1;
+export const policyVersion = 2;
 export const hash = (text) => createHash('sha256').update(text).digest('hex');
 export const parser = unified().use(remarkParse).use(remarkMdx).use(remarkGfm);
 export function markdown(text) {
@@ -118,6 +118,10 @@ export function validateTranslation(source, translated) {
   for (const field of ['title', 'description']) {
     if (typeof to.frontmatter[field] !== 'string' || !to.frontmatter[field].trim()) throw new Error(`${source.path}: missing ${field}`);
     from.frontmatter[field] = to.frontmatter[field];
+  }
+  if (typeof from.frontmatter.sidebar?.label === 'string') {
+    if (typeof to.frontmatter.sidebar?.label !== 'string' || !to.frontmatter.sidebar.label.trim()) throw new Error(`${source.path}: missing sidebar label`);
+    from.frontmatter.sidebar.label = to.frontmatter.sidebar.label;
   }
   if (!isDeepStrictEqual(from.frontmatter, to.frontmatter)) throw new Error(`${source.path}: changed frontmatter configuration`);
   if (!isDeepStrictEqual(structure(from.tree), structure(to.tree))) throw new Error(`${source.path}: changed document structure, links, identifiers, or executable code`);

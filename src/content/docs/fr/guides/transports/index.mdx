@@ -1,6 +1,6 @@
 ---
-title: Exposer des interfaces HTTP et MCP
-description: "Plan de page. Prévoir comment exposer le même comportement d’application au moyen des transports pris en charge."
+title: "Exposer une API HTTP"
+description: "Plan de page. Comment appeler mes commandes et mes requêtes sur HTTP ?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plan de page
 
-Cette page expliquera comment exposer le comportement de l’application via HTTP et MCP, notamment la configuration et les contrats vérifiés pour la version documentée du framework. Elle montrera une commande et une requête au moyen de paires de requêtes et réponses et d’appels d’outils équivalents, avec un exemple d’inspection d’OpenAPI généré. Un petit diagramme de délimitation séparera les transports des décisions. Les exemples statiques couvriront la réussite et le rejet. Un composant de requête interactif ne sera envisagé que lorsqu’un environnement d’exécution isolé pris en charge sera disponible.
+Cette page exposera une fonctionnalité existante via le transport Web et examinera ses routes générées et son contrat OpenAPI. Une requête de commande, une entrée rejetée et une réponse de requête relieront la définition de l’application au comportement HTTP observable. Le filtrage et la pagination renverront au [contrat des requêtes](/reference/framework/queries/). Les exemples incluront l’enregistrement du transport et la configuration de l’origine du navigateur, puis renverront à l’authentification avant d’ouvrir l’interface à des appelants non fiables.

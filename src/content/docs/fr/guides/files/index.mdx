@@ -1,6 +1,6 @@
 ---
-title: Stocker et récupérer des fichiers
-description: "Plan de page. Prévoir la propriété des fichiers, la configuration du stockage et les modalités de récupération autorisées."
+title: "Téléverser et récupérer des fichiers"
+description: "Plan de page. Comment joindre le fichier d’un utilisateur et limiter sa récupération ?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plan de page
 
-Cette page expliquera la procédure documentée de stockage des fichiers, notamment leur propriété, la configuration, l’envoi ou la génération et la récupération. Elle suivra un fichier dans une petite figure séquentielle et présentera des exemples ciblés de code source et de requêtes et réponses. Les cas de récupération autorisée, d’accès refusé et de fichier manquant seront réunis pour permettre au lecteur de vérifier le comportement attendu. Le guide renverra vers [Contrôler les accès](/guides/authorization/) pour les autorisations et [Conserver les données après un redémarrage](/guides/storage/) pour la persistance, sans assimiler un fichier à un événement enregistré.
+Cette page configurera les métadonnées des fichiers et le stockage des fichiers binaires, téléversera un document, joindra sa référence à une commande et permettra à son propriétaire de le récupérer. Un diagramme séquentiel distinguera les téléversements en attente, les pièces jointes confirmées, l’expiration et les fichiers binaires manquants. Des requêtes jumelées montreront les récupérations autorisées et refusées, tandis que la discussion sur la persistance séparera le contenu des fichiers, les métadonnées de propriété et les événements de l’application.

@@ -1,0 +1,17 @@
+---
+title: "擦除受保护的值"
+description: "页面计划。如何让所有者的受保护值无法读取，同时不删除历史？"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## 页面计划
+
+本页将使用 PostgreSQL 支持的受保护值机制，介绍一项范围明确的擦除任务。页面会跟踪经过授权的所有者请求、删除一条受保护的引用、由此产生的命令，以及一次明确的重试。前后对比图会区分保留的事件记录与无法获取的受保护内容，并说明检查预期结果时，还必须分别考虑查询和外部副本。

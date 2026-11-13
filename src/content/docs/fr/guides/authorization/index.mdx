@@ -1,6 +1,6 @@
 ---
-title: Contrôler les accès
-description: "Plan de page. Prévoir les vérifications d’identité et d’autorisation pour les commandes, les requêtes et les données détenues."
+title: "Autoriser une commande"
+description: "Plan de page. Qui peut exécuter cette commande sur cette entité ?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plan de page
 
-Cette page distinguera l’identité de la personne ou du processus qui agit de ce qu’il a le droit de faire. Elle présentera les mécanismes d’identité et d’autorisation documentés par le framework à travers une commande autorisée, une commande refusée et une requête à accès restreint. Un tableau de décision comparera l’acteur, la ressource, l’autorisation et le résultat sans s’appuyer sur la couleur. De courts extraits de code source et des tests montreront où placer les vérifications d’accès, tandis que [Ressources](/resources/#before-relying-on-an-application) donnera accès aux conseils existants sur l’autorisation.
+Cette page protégera une commande à l’aide d’une règle d’accès déclarée et d’une décision qui vérifie la propriété de l’entité concernée. Un tableau comparera les appelants anonymes, les propriétaires authentifiés, les autres utilisateurs et un appel local de confiance. Les tests associés vérifieront que les commandes refusées n’atteignent pas la décision et n’ajoutent pas d’événements. Ils montreront aussi pourquoi l’authentification doit être activée pour que la vérification des règles HTTP s’applique.

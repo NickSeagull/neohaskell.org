@@ -1,0 +1,56 @@
+---
+title: Die Fakten hinter den Zahlen bewahren
+description: Zeichne die fachlichen Fakten auf, die eine Änderung erklären, und nutze den Verlauf, um den Anwendungszustand zu verstehen und wiederherzustellen.
+sidebar:
+  label: Ereignisse und Verlauf
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: true
+next: true
+---
+
+import EventModelTour from '@components/learn/EventModelTour.astro';
+import EventHistoryReplay from '@components/learn/EventHistoryReplay.astro';
+
+Der Lagerbestand verrät dem nächsten Kunden, wie viele Tassen verfügbar sind. **Ereignisse erklären, wodurch sich diese Zahl geändert hat.**
+
+Betrachte den Tassenladen aus [Die Arbeit hinter dem Code](/introduction/#the-questions-that-change-the-software), in dem die Anfrage nach Online-Bestellungen Fragen zu den Versprechen des Ladens an seine Kunden aufwarf.
+
+Hier hat der Laden drei Tassen. Wird eine Bestellung über eine Tasse angenommen, ist diese für den Kunden reserviert und zwei Tassen bleiben verfügbar.
+
+<EventModelTour kind="story" />
+
+Der Lagerbestand liefert dem nächsten Kunden eine hilfreiche Antwort. **Er erklärt aber nicht, warum sich die Zahl geändert hat.** Auch eine zerbrochene Tasse würde den Bestand von drei auf zwei senken, doch der Laden hätte dann keine Bestellung, die er vorbereiten müsste.
+
+## Aufzeichnen, was passiert ist
+
+Wird nur der letzte Bestandswert gespeichert, geht dieser Unterschied verloren. NeoHaskell zeichnet die fachliche Tatsache auf, die die Änderung verursacht hat: Eine Bestellung für eine Keramiktasse wurde aufgegeben. Diese aufgezeichnete Tatsache ist ein **Ereignis**.
+
+Der Ereignisname trägt Bedeutung. `OrderPlaced` sagt der Anwendung, dass der Laden eine Bestellung angenommen hat. Ein Bruch benötigt ein anderes Ereignis, weil er andere Arbeit bedeutet, selbst wenn sich der verfügbare Bestand genauso verändert.
+
+**Aufgezeichnete Ereignisse bewahren die fachliche Bedeutung einer Änderung.** Die Entwicklerin oder der Entwickler legt diese Bedeutung ausdrücklich fest, statt sie später aus einer Bestandszahl rekonstruieren zu müssen.
+
+## Die Gegenwart aus der Vergangenheit berechnen
+
+In NeoHaskell sind **Ereignisse die maßgebliche Quelle für den Anwendungszustand**. Beginne für die Berechnung des verfügbaren Bestands ohne Tassen und verfolge, was passiert ist: Der Laden erhielt drei, dann nahm er eine Bestellung über eine Tasse an. Das Ergebnis sind zwei verfügbare Tassen. Den Zustand aus aufgezeichneten Ereignissen abzuleiten, heißt **Event Sourcing**.
+
+Angenommen, der Kunde storniert die Bestellung vor dem Versand und der Laden legt die Tasse zurück in den verfügbaren Bestand. Die Anwendung zeichnet `OrderCancelled` auf, wodurch der verfügbare Bestand wieder drei beträgt. Auch das ursprüngliche Bestellungsereignis bleibt erhalten. Der Verlauf einer stornierten Bestellung unterscheidet sich vom Verlauf einer Bestellung, die es nie gab.
+
+<EventHistoryReplay />
+
+Korrekturen folgen demselben Prinzip: Die Korrektur wird aufgezeichnet und ihre Wirkung angewendet. Um die Gegenwart zu ändern, muss der Bericht darüber, wie es dazu kam, nicht umgeschrieben werden.
+
+Dieser Verlauf macht Berechnungen außerdem reparierbar. Enthält die Bestandsberechnung einen Fehler, lässt sich der abgeleitete Zustand nach der Korrektur durch erneute Anwendung des Verlaufs wiederherstellen. **Bei der Wiedergabe wird der Zustand neu berechnet**; die Bestellung wird weder erneut aufgegeben noch dem Kunden ein zweites Mal etwas berechnet.
+
+## Wird das nicht langsam, wenn der Verlauf wächst?
+
+Der Verlauf wächst, während Menschen die Anwendung nutzen. **NeoHaskell beginnt jedoch nicht bei jeder Operation mit dem ersten Ereignis.** Es bewahrt den bereits berechneten Zustand auf und wendet spätere Änderungen ab dort an. Eine Antwort wird aus gepflegten Daten gelesen, statt bei jedem Seitenaufruf den gesamten Verlauf erneut abzuspielen.
+
+Diese Arbeit wird intern erledigt. Die Anwendung bewahrt ihren Bericht über das Geschehene, ohne bei jeder neuen Bestellung alle vorherigen Bestellungen neu berechnen zu müssen.
+
+## Die Fakten für künftige Fragen bewahren
+
+Mit Ereignissen für Bestellung und Stornierung kann der Laden Verkäufe von Stornierungen unterscheiden, selbst wenn beide am Ende denselben Bestand ergeben wie gar keine Aktivität. Er kann eine Bestellung untersuchen oder aus den aufgezeichneten Fakten einen neuen Bericht erstellen.
+
+Damit gehören Ereignisse zum Verständnis des Geschäfts. Müssen die Mitarbeitenden wissen, wer eine Ausnahme genehmigt hat, muss das Ereignis diese Information enthalten. **Die hilfreiche Frage lautet, was jemand später erklären können muss.** Die Antwort bestimmt, woran sich die Anwendung heute erinnert.

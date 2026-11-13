@@ -2,7 +2,7 @@
 
 Current direction on 13 November 2026: the Model the whole process page shows vertical slices and spanning chapter arrows, explains additive contract evolution through the owner-approved target deployment model, separates the growth plots with their concrete arguments, and connects the real visual IDE with the specification in source. Existing direct-entry context and the accepted event-history bump remain.
 
-Earlier on the same date, the owner accepted the revised Start here prose as much better and specified that NeoHaskell is presented as a language, with integrated application capabilities. The One Person Framework philosophy remains the reference for one developer understanding and building the whole application with AI or by hand. The language identity supersedes the earlier language-and-framework pitch. Translation and deployment remain postponed.
+Earlier on the same date, the owner accepted the revised Start here prose as much better and specified that NeoHaskell is presented as a language, with integrated application capabilities. The One Person Framework philosophy remains the reference for one developer understanding and building the whole application with AI or by hand. The language identity supersedes the earlier language-and-framework pitch. The owner subsequently authorized translation and deployment on the same date.
 
 ## Guide and navigation
 
@@ -40,9 +40,9 @@ Most other destinations remain one-paragraph page plans, excluded from Pagefind 
 
 ## Translation and delivery
 
-Saved translations and their manifest remain untouched. Draft locale docs use native English fallback; no translation model is invoked. English homepage prose and metadata now use the language identity; saved localized homepage values remain unchanged while translation is paused. README owns restoration of the normal loader and freshness gate.
+On 13 November 2026, after accepting the revised documentation, the owner authorized all translation processes followed by deployment. The normal documentation loader and strict translation freshness gate are restored. Shared diagram text and sidebar labels join the translated prose; executable examples retain the English source verbatim. README owns the maintained translation and deployment workflow.
 
-Keep one development server at http://127.0.0.1:4323/introduction/ from the canonical checkout `/Users/nick/egregoreOS/repos/neohaskell.org`. The owner's 13 November correction requires restarting it after every completed batch of changes, before checking navigation and content on that exact URL. Stop other servers belonging to this repository. README owns the lifecycle commands; a build does not require a separate production-preview server. Do not deploy this authoring iteration.
+Keep one development server at http://127.0.0.1:4323/introduction/ from the canonical checkout `/Users/nick/egregoreOS/repos/neohaskell.org`. The owner's 13 November correction requires restarting it after every completed batch of changes, before checking navigation and content on that exact URL. Stop other servers belonging to this repository. README owns the lifecycle commands; a build does not require a separate production-preview server. Publish this accepted iteration after translation and verification, as explicitly requested by the owner.
 
 ## History
 

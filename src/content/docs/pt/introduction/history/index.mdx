@@ -1,0 +1,56 @@
+---
+title: Guarde os factos por detrás dos números
+description: Registe os factos de negócio que explicam uma alteração e use esse histórico para compreender e reconstruir o estado da aplicação.
+sidebar:
+  label: Eventos e histórico
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: true
+next: true
+---
+
+import EventModelTour from '@components/learn/EventModelTour.astro';
+import EventHistoryReplay from '@components/learn/EventHistoryReplay.astro';
+
+A quantidade de stock diz ao próximo cliente quantas canecas estão disponíveis. **Os eventos explicam o que aconteceu para esse número mudar.**
+
+Considere a loja de canecas introduzida em [O trabalho por detrás do código](/introduction/#the-questions-that-change-the-software), onde um pedido de encomendas online levantou questões sobre as promessas da loja aos clientes.
+
+Aqui, a loja tem três canecas. Ao aceitar uma encomenda de uma, reserva essa caneca para o cliente e deixa duas disponíveis.
+
+<EventModelTour kind="story" />
+
+A quantidade de stock dá ao próximo cliente uma resposta útil. **Não explica por que razão essa resposta mudou.** Uma caneca partida também reduziria o stock de três para duas, mas não daria à loja uma encomenda para preparar.
+
+## Registe o que aconteceu
+
+Guardar apenas a quantidade de stock mais recente perde essa distinção. NeoHaskell regista o facto de negócio que causou a alteração: foi feita uma encomenda de uma caneca de cerâmica. Este facto registado é um **evento**.
+
+O nome do evento transmite significado. `OrderPlaced` diz à aplicação que a loja aceitou uma encomenda. Uma quebra precisa de outro evento, porque representa trabalho diferente, mesmo quando o efeito sobre o stock disponível é igual.
+
+**Registar eventos preserva o significado de negócio da alteração.** O programador escolhe explicitamente esse significado, em vez de deixar que alguém o reconstrua mais tarde a partir de uma quantidade de stock.
+
+## Calcule o presente a partir do passado
+
+Em NeoHaskell, **os eventos são a fonte de verdade do estado da aplicação**. Para calcular o stock disponível, comece sem canecas e acompanhe o que aconteceu: a loja recebeu três e depois aceitou uma encomenda de uma. O resultado são duas canecas disponíveis. Derivar o estado a partir de eventos registados chama-se **Event Sourcing**.
+
+Suponha que o cliente cancela antes da expedição e a loja devolve a caneca ao stock disponível. A aplicação regista `OrderCancelled`, fazendo a disponibilidade voltar a três. Mantém também o evento da encomenda original. Uma encomenda cancelada tem um histórico diferente de uma encomenda que nunca existiu.
+
+<EventHistoryReplay />
+
+As correções seguem o mesmo princípio: registe a correção e aplique o respetivo efeito. Alterar o presente não exige reescrever o relato de como aconteceu.
+
+Este histórico também permite reparar cálculos. Se houver um erro num cálculo de stock, corrigi-lo e voltar a aplicar o histórico reconstrói o estado derivado. **A reprodução recalcula o estado**; não volta a fazer a encomenda nem a cobrar ao cliente.
+
+## O processo não fica lento à medida que o histórico cresce?
+
+O histórico cresce à medida que as pessoas usam a aplicação, mas **NeoHaskell não começa pelo primeiro evento em cada operação**. Mantém o estado já calculado e aplica as alterações seguintes a partir desse ponto. Para ler uma resposta, usa dados mantidos e não reproduz todo o histórico sempre que alguém visita uma página.
+
+Esse trabalho é tratado internamente. A aplicação mantém o seu registo do que aconteceu sem recalcular todas as encomendas anteriores ao aceitar cada nova encomenda.
+
+## Guarde os factos de que as perguntas futuras precisam
+
+Com eventos de encomenda e cancelamento, a loja consegue distinguir vendas de cancelamentos, mesmo quando ambos acabam com o mesmo stock final que não ter havido qualquer atividade. Pode investigar uma encomenda ou criar um novo relatório a partir desses factos registados.
+
+Assim, a conceção dos eventos faz parte da compreensão do negócio. Se a equipa precisar de saber quem aprovou uma exceção, o evento tem de guardar essa informação. **A pergunta útil é o que alguém precisará de explicar mais tarde.** A resposta determina o que a aplicação guarda hoje.

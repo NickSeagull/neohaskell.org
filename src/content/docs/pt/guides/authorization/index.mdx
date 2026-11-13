@@ -1,6 +1,6 @@
 ---
-title: Controlar o acesso
-description: "Plano da página. Planear verificações de identidade e permissões para comandos, consultas e dados próprios."
+title: "Autorize um comando"
+description: "Plano da página. Quem pode executar este comando nesta entidade?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plano da página
 
-Esta página distinguirá quem está a agir daquilo que essa pessoa ou processo pode fazer. Apresentará os mecanismos de identidade e autorização documentados pelo framework através de um comando permitido, um comando negado e uma consulta com acesso restrito. Uma tabela de decisões comparará o interveniente, o recurso, a permissão e o resultado sem depender da cor. Pequenos excertos de código-fonte e testes mostrarão onde devem ficar as verificações de acesso, enquanto [Recursos](/resources/#before-relying-on-an-application) fornece as orientações de autorização existentes.
+Esta página protegerá um comando com uma política de acesso declarada e uma decisão que verifica a titularidade da entidade relevante. Uma tabela comparará quem faz pedidos anonimamente, os proprietários autenticados, outros utilizadores e uma invocação local de confiança. Os testes correspondentes verificarão que os comandos não autorizados não chegam à decisão nem acrescentam eventos, e mostrarão por que razão é necessário ativar a autenticação para aplicar a barreira da política HTTP.

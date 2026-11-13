@@ -1,0 +1,17 @@
+---
+title: "Vérifier l’identité de l’appelant"
+description: "Plan de page. Comment mon application HTTP reconnaît-elle un appelant ?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Plan de page
+
+Cette page connectera une application à un émetteur OIDC, configurera l’audience de jeton attendue lorsque nécessaire et examinera les revendications utilisateur accessibles à une commande. Une comparaison de requêtes couvrira un jeton valide, un jeton invalide et un appelant anonyme. Un petit diagramme de frontière séparera la vérification de l’identité de l’autorisation d’une commande et de la connexion de l’appelant à un fournisseur OAuth externe.

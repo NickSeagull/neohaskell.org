@@ -1,0 +1,17 @@
+---
+title: "Entitäten und Ereignisstreams"
+description: "Seitenplan. Welche Fakten muss eine Entscheidung gemeinsam berücksichtigen, und was passiert, wenn Kommandos konkurrieren?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Seitenplan
+
+Diese Seite erklärt eine Entität als Zustand, der aus einem eindeutig bestimmten Ereignisstream rekonstruiert wird, und als Grenze, innerhalb derer ein Kommando seine Bedingungen prüft. Zwei konkurrierende Bestandsreservierungen veranschaulichen eine veraltete Entscheidung, einen Konflikt beim Anhängen und die erneute Auswertung anhand des aktualisierten Zustands. Eine Sequenzgrafik mit zwei Bahnen hält Warenkorb- und Bestandsverläufe getrennt. Die Grenze wird erklärt, ohne eine atomare Transaktion über beide Entitäten hinweg zu versprechen.

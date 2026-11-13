@@ -1,6 +1,6 @@
 ---
-title: Componentes fundamentais do framework
-description: "Plano da página. Consultar as definições que ligam o modelo da aplicação ao código do framework."
+title: "Modelos de eventos e funcionalidades"
+description: "Plano da página. Como se transformam as funcionalidades declaradas numa aplicação em execução?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plano da página
 
-Esta página relacionará entidades, comandos, decisões, eventos, consultas e composição da aplicação com as definições verificadas do framework. Cada entrada indicará a sua responsabilidade, os tipos relevantes, os campos obrigatórios e o exemplo completo mais pequeno que demonstre o seu papel. Uma figura compacta das relações mostrará como as peças se ligam, mantendo separados os registos de eventos e os resultados das consultas. As entradas incluirão ligações para [Conceitos fundamentais](/learn/) para explicações e para o [tutorial da primeira funcionalidade](/tutorial/first-feature/) para ver a utilização numa aplicação.
+Esta página relacionará `EventModel`, `FeatureAction`, `chapter`, `slice`, `entity`, `command`, `produces`, `query` e `readsFrom` com a funcionalidade local `Counter` no código-fonte. Uma figura compacta das relações mostrará a declaração, a validação e a montagem em execução sem confundir o histórico de eventos com as linhas de `query`. As assinaturas dos construtores e as restrições de ordem aparecerão junto ao modelo. A montagem direta de `Service.Application` será uma secção avançada ligada, preservando o seu estatuto público e dando prioridade à arquitetura atual do projeto inicial.

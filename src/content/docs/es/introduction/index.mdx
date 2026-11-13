@@ -1,0 +1,50 @@
+---
+title: El trabajo que hay detrás del código
+description: Por qué el criterio del desarrollador importa más con la IA y por qué NeoHaskell permite a una sola persona construir una aplicación completa.
+sidebar:
+  label: El trabajo que hay detrás del código
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: false
+next: true
+---
+
+**El valor de un desarrollador nunca ha estado en memorizar API ni en acertar con la sintaxis.** Está en comprender un problema lo bastante bien como para crear algo que lo resuelva. Eso implica hacer preguntas, detectar contradicciones y profundizar en los detalles incómodos que cambian lo que debe hacer el software.
+
+La IA facilita la escritura de una implementación. Eso hace que el criterio sea más valioso. Un agente puede crear una pantalla de pago a partir de una descripción breve; decidir qué promete la tienda cuando alguien pulsa el botón requiere comprender el negocio.
+
+NeoHaskell está construido en torno a esta forma de entender el desarrollo. **Una persona debería poder comprender y construir una aplicación completa**, con herramientas que apoyen su criterio y hagan agradable el trabajo. Por eso el lenguaje incluye las herramientas para crear una aplicación y por eso la IA ocupa un lugar central en su diseño.
+
+## Las preguntas que cambian el software
+
+Imagina que el propietario de una tienda pide vender por Internet. Quedan tres tazas de cerámica en la estantería. La petición parece sencilla hasta que el desarrollador pregunta qué significa realmente comprar una:
+
+- ¿Deja de estar disponible para otros clientes una taza que se añade a una cesta?
+- ¿La tienda reserva la taza cuando acepta el pedido o cuando recibe el pago?
+- Si se cancela un pedido, ¿cuándo vuelve a estar disponible su taza?
+- ¿Qué debe ocurrir cuando un cliente pide más tazas de las que quedan?
+
+Estas preguntas van más allá de la pantalla de pago. Conectan las expectativas del cliente con el trabajo de la persona que prepara los pedidos y del propietario que gestiona los reembolsos. Es posible que esas personas usen la misma palabra, «pedido», para referirse a momentos distintos del proceso.
+
+**Descubrir y resolver ese desacuerdo es desarrollar software.** La respuesta determina qué debe recordar la aplicación, qué debe impedir y qué debe comunicar a cada persona. Escribir código antes de plantear la pregunta simplemente esconde una decisión de negocio no expresada dentro de la implementación.
+
+Es un trabajo exigente. Requiere escuchar, cuestionar suposiciones y seguir el proceso hasta sus excepciones. Un agente facilita actuar a partir de esa comprensión. Esa comprensión es lo que da valor al software resultante.
+
+## Un lenguaje que se ocupa del trabajo de ensamblaje
+
+Ese criterio merece atención. Dedicarlo una y otra vez a decidir cómo guardar cambios, conectar bibliotecas y organizar cada nueva feature deja menos tiempo para la propia aplicación.
+
+NeoHaskell toma esas decisiones técnicas repetitivas. Proporciona una forma común de comprobar un cambio propuesto, registrar lo ocurrido y actualizar las respuestas que muestran las pantallas. El desarrollador define la política de la tienda; NeoHaskell proporciona los mecanismos para aplicarla.
+
+Por ejemplo, la política de existencias debe tener una sola implementación aunque los pedidos lleguen desde un sitio web o una herramienta de IA. NeoHaskell ofrece a esas interfaces una vía compartida para llegar a la misma decisión de negocio. Añadir una interfaz no implica crear otro lugar donde aplicar la política.
+
+**Integramos estas capacidades en el lenguaje porque una persona no debería tener que especializarse en todas las capas para crear una aplicación útil.** Las convenciones compartidas también proporcionan al agente una estructura de trabajo y al desarrollador una estructura para revisar sus cambios.
+
+## Disfruta al construir algo que tenga sentido
+
+NeoHaskell considera la satisfacción del desarrollador una prioridad de diseño. Resolver un proceso difícil, expresarlo con claridad y ver que la aplicación hace lo previsto resulta gratificante. Las herramientas deberían dejar más espacio para ese trabajo.
+
+Para mantener la comprensión del negocio cerca de la implementación, NeoHaskell usa un método llamado **modelado de eventos**. Conecta lo que las personas quieren hacer, lo que ocurre realmente y lo que necesitan ver después. Esos mismos conceptos organizan la aplicación, por lo que las decisiones acordadas con el propietario de la tienda tienen un lugar reconocible en el código.
+
+Tanto si un agente escribe la implementación como si lo hace un desarrollador a mano, el criterio para valorar el resultado sigue siendo concreto: la petición del cliente, la promesa de la tienda y el comportamiento acordado. Eso permite que un desarrollador comprenda un cambio generado y se responsabilice de él.

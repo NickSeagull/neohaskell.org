@@ -1,6 +1,6 @@
 ---
-title: Bloques básicos del framework
-description: "Plan de la página. Consulta las definiciones que conectan el modelo de aplicación con el código del framework."
+title: "Modelos de eventos y features"
+description: "Plan de la página. ¿Cómo se convierten las features declaradas en una aplicación en ejecución?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plan de la página
 
-Esta página relacionará las entidades, los comandos, las decisiones, los eventos, las consultas y la composición de aplicaciones con sus definiciones verificadas en el framework. Cada entrada indicará su responsabilidad, los tipos pertinentes, los campos obligatorios y el ejemplo mínimo completo de código fuente que muestra su función. Una figura compacta de relaciones mostrará cómo se conectan las piezas y mantendrá separados los registros de eventos de los resultados de las consultas. Las entradas enlazarán a [Conceptos básicos](/learn/) para la explicación y al [tutorial de la primera funcionalidad](/tutorial/first-feature/) para ver su uso en una aplicación.
+Esta página relacionará `EventModel`, `FeatureAction`, `chapter`, `slice`, `entity`, `command`, `produces`, `query` y `readsFrom` con la feature `Counter` definida en el mismo archivo. Un diagrama compacto de relaciones mostrará la declaración, la validación y el ensamblaje en tiempo de ejecución, sin mezclar el historial de eventos con las filas de `query`. Las firmas de los constructores y las restricciones de orden aparecerán junto al modelo. El ensamblaje directo de `Service.Application` se enlazará en una sección avanzada, conservando su condición de API pública y dando prioridad a la arquitectura actual del proyecto inicial.

@@ -1,6 +1,6 @@
 ---
-title: Daten über Neustarts hinweg beibehalten
-description: "Seitenplan. Persistenten Ereignisverlauf und Abfragespeicher planen und Neustarts prüfen."
+title: "Ereignisse über Neustarts hinweg behalten"
+description: "Seitenplan. Wie bewahre ich den aufgezeichneten Anwendungsverlauf, wenn der Prozess endet?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Seitenplan
 
-Diese Seite unterscheidet Ereignisverlauf und Abfragespeicher und zeigt, wie sich unterstützte Optionen für dauerhafte Speicherung konfigurieren lassen. Sie vergleicht ein Beispiel mit Speicherung im Arbeitsspeicher mit einer persistenten Konfiguration und prüft anschließend anhand konkreter Befehle und erwarteter Ergebnisse, welche Daten einen Neustart überstehen. Ein kleines Diagramm hält Ereignisspeicher und Abfragezustand getrennt. Beispiele für Fehler behandeln fehlende Konfiguration und nicht verfügbaren Speicher. Links führen zum zugrunde liegenden Modell unter [Verlauf und aktueller Zustand](/concepts/history-and-state/) und zu vorhandenen Upstream-Anleitungen unter [Ressourcen](/resources/#language-and-framework).
+Diese Seite ersetzt die Speicher-Konfiguration des Starters durch einen dauerhaften Ereignisspeicher und prüft dasselbe aufgezeichnete Verhalten vor und nach einem Neustart. Ein Vergleich unterscheidet die dauerhafte Speicherung auf Datenträger mit `SimpleEventStore` von der PostgreSQL-Konfiguration. Ein Diagramm trennt den Ereignisverlauf vom abgeleiteten Abfragezustand. Das Beispiel verwendet eine vollständige Konfiguration für die ausgewählte Framework-Revision und erklärt, welche Speicherpfade oder Datenbank-Volumes erhalten bleiben müssen.

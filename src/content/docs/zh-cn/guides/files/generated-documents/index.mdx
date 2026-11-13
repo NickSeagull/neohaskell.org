@@ -1,0 +1,17 @@
+---
+title: "生成文档"
+description: "页面计划。如何为文件所有者保留服务器生成的文件？"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## 页面计划
+
+本页将跟踪一项文档请求：出站处理器生成字节、存储一份归属用户且保留的文件，然后发出一个记录其引用的命令。重试示例会复用稳定的创建键，并比较内容相符和冲突的尝试。图示会区分保留的文档与待处理上传，并说明为什么 blob 目录和文件元数据都需要持久化存储。

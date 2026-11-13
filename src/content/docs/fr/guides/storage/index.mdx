@@ -1,6 +1,6 @@
 ---
-title: Conserver les données après un redémarrage
-description: "Plan de page. Prévoir le stockage persistant de l’historique des événements et des requêtes, avec des vérifications au redémarrage."
+title: "Conserver les événements après un redémarrage"
+description: "Plan de page. Comment conserver l’historique enregistré de l’application lorsque le processus s’arrête ?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plan de page
 
-Cette page distinguera l’historique des événements du stockage des requêtes et montrera comment configurer les options de persistance prises en charge. Elle comparera un exemple en mémoire à une configuration persistante, puis vérifiera ce qui subsiste après un redémarrage à l’aide de commandes explicites et de résultats attendus. Un petit diagramme séparera le magasin d’événements de l’état des requêtes. Les exemples de défaillance couvriront une configuration manquante et un stockage indisponible. La page renverra vers [Historique et état actuel](/concepts/history-and-state/) pour le modèle sous-jacent et vers [Ressources](/resources/#language-and-framework) pour les ressources externes existantes.
+Cette page remplacera la configuration en mémoire du projet de départ par un magasin d’événements persistant et vérifiera le même comportement enregistré avant et après un redémarrage. Une comparaison distinguera la persistance sur disque de `SimpleEventStore` de la configuration PostgreSQL, tandis qu’un diagramme séparera l’historique des événements de l’état dérivé des requêtes. L’exemple utilisera une configuration complète correspondant à la révision choisie du framework et expliquera quels chemins de stockage ou volumes de base de données doivent être conservés.

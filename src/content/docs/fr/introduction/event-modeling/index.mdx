@@ -1,0 +1,144 @@
+---
+title: Relier le processus dans son ensemble
+description: Divisez un modèle d’événements en tranches et en chapitres, faites évoluer les contrats déployés et gardez la spécification dans le code.
+sidebar:
+  label: Modéliser le processus dans son ensemble
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: true
+next: true
+---
+
+import GrowthComparison from '@components/learn/GrowthComparison.astro';
+import ShopEventModel from '@components/learn/ShopEventModel.astro';
+import IdeScreenshot from '@components/learn/IdeScreenshot.astro';
+
+Reprenons la boutique de tasses présentée dans [Le travail derrière le code](/introduction/#the-questions-that-change-the-software). Accepter une commande réserve les tasses demandées pour le client. Pour concevoir l’application, il faut relier toute l’expérience : le client consulte le stock, commande une tasse et découvre si la boutique a accepté sa commande.
+
+[Protéger les modifications et répondre aux questions](/learn/) explique les éléments individuels : une commande demande une modification, un événement enregistre un fait accepté et une requête fournit une réponse.
+
+**La modélisation des événements relie ces éléments dans un processus que les personnes peuvent examiner ensemble.** Elle rassemble les écrans, les commandes, les événements et les requêtes dans un même modèle. Les liens montrent d’où vient l’information, où elle est nécessaire et quelles questions métier attendent encore une réponse. NeoHaskell utilise cette même structure pour organiser le développement et garder la spécification dans le code.
+
+## Suivre une commande et une annulation
+
+La boutique dispose de trois tasses. Le propriétaire veut permettre aux clients d’annuler une commande avant son expédition et de remettre les tasses en stock. Commençons par le parcours qui consiste à commander une tasse, puis à l’annuler.
+
+Le modèle comporte deux **chapitres** : Passer une commande et Annuler une commande. Chaque chapitre regroupe deux **tranches** : l’une modifie l’état par une commande et son événement accepté ; l’autre fournit la réponse sur le stock avec une requête. Les lignes verticales séparent les unités de développement. Chaque flèche en haut couvre les tranches de son chapitre.
+
+<ShopEventModel />
+
+Après l’acceptation de la commande, la requête de stock renvoie deux. Après l’annulation, elle renvoie trois. Les nœuds répétés « Tasses disponibles » montrent la réponse sur le stock à ces deux étapes du processus.
+
+Tracer les liens révèle aussi les questions auxquelles cette première esquisse ne répond pas. « Ajouter une annulation » semblait vouloir dire ajouter un bouton. Le modèle met en évidence la suite du comportement à définir :
+
+- Où la commande d’annulation trouve-t-elle l’identifiant de la commande ?
+- Qu’est-ce qui empêche l’annulation après l’expédition ?
+- Quelle réponse indique au client que l’annulation a réussi ?
+- Qu’est-ce qui indique au personnel qu’il faut arrêter de préparer cette commande ?
+
+**Chaque question sans réponse correspond à une partie de l’application qui n’a pas encore été conçue.** Le propriétaire et le développeur peuvent la résoudre en examinant le même processus, avant qu’un agent ou une personne ne transforme une hypothèse en code.
+
+## Développer une tranche à la fois
+
+**Une tranche est l’unité de développement.** « Accepter une commande » a une entrée, une décision et un résultat observable. Son implémentation vérifie la quantité demandée et le stock ; ses règles précisent les conditions d’acceptation ou de rejet. « Afficher le stock restant » est une tranche distincte, avec un autre rôle : maintenir la réponse après une commande.
+
+La même séparation s’applique à l’annulation. Une tranche décide si la commande peut être annulée et enregistre le résultat. Une autre fournit la réponse actualisée sur le stock. Le chapitre les réunit dans une partie de l’expérience client sans en faire une seule tâche d’implémentation.
+
+Une **fonctionnalité** regroupe des chapitres liés. Ici, une fonctionnalité Orders contient Passer une commande et Annuler une commande. Si le processus nécessite un effet externe, par exemple l’envoi d’une confirmation, l’intégration dispose de sa propre tranche. Le modèle donne sa place à chaque tâche et montre les contrats dont elle dépend.
+
+## Figer le contrat au déploiement
+
+Une commande destinée au client est une promesse. L’appelant de `PlaceOrder` dépend de ses entrées acceptées et de son comportement. Les consommateurs d’une requête dépendent de la réponse qu’elle fournit. Les événements enregistrés dépendent de définitions qui préservent le sens de ces faits.
+
+**Le modèle de déploiement de NeoHaskell fige les définitions et leur implémentation lors de leur déploiement.** Une commande, un événement ou une requête déployés ne peuvent pas être réécrits discrètement sous la même identité. Une nouvelle exigence ou une décision corrigée devient un nouveau comportement qui coexiste avec le comportement déployé.
+
+Supposons que la boutique ajoute un paiement de livraison qui exige des coordonnées avant l’acceptation d’une commande. Le retrait en boutique existant utilise `PlaceOrder`, qui n’accepte qu’un produit et une quantité. Au lieu de le modifier sur place, dupliquez la fonctionnalité en développement, donnez un nouveau nom au comportement modifié, par exemple `PlaceOrderWithContact`, puis implémentez sa vérification supplémentaire. Un suffixe est aussi possible. L’essentiel est que le nouveau contrat ait sa propre identité.
+
+Le retrait en boutique utilise le nouveau contrat tandis que les commandes avec livraison continuent d’utiliser l’ancien. NeoHaskell fait de cet ajout limité et explicite le parcours normal de développement : réutiliser la structure existante, modifier le comportement voulu et vérifier ses règles. Le travail porte sur la nouvelle exigence au lieu de retracer chaque appelant d’une implémentation modifiée.
+
+Une correction de bogue suit la même règle. Si `CancelOrder` accepte par erreur les commandes déjà expédiées, créez `CancelUndispatchedOrder`, testez le cas manquant, migrez les appelants vers cette commande et désactivez celle qui était erronée. Figer l’ancienne implémentation préserve ce qui a été déployé ; cela n’oblige pas à garder disponible un point d’entrée défectueux.
+
+## Retirer un comportement sans versionner toute l’API
+
+**Les anciens et les nouveaux contrats peuvent coexister pendant la migration de leurs consommateurs.** L’application mobile peut continuer à proposer le retrait avec `PlaceOrder` tandis que le site ajoute la livraison avec `PlaceOrderWithContact`. La requête de stock et les commandes sans rapport gardent leurs noms et contrats existants.
+
+Il n’est ainsi pas nécessaire de recopier une API complète dans `/v2` parce qu’une opération a changé. Chaque comportement modifié reçoit sa propre identité. Les consommateurs adoptent le remplacement lorsqu’ils sont prêts, sans devoir migrer toutes les opérations vers une nouvelle version d’API en même temps.
+
+Marquez une ancienne commande ou requête comme **obsolète** lorsque les nouveaux consommateurs ne doivent plus la choisir. Dès que l’usage montre que plus personne ne l’appelle, désactivez ou supprimez ce point d’entrée. Le retrait d’une commande n’efface pas les événements qu’elle a enregistrés et ne supprime pas les définitions nécessaires à l’interprétation de cet historique.
+
+## Pourquoi modifier le code partagé demande plus de travail
+
+Imaginons la même exigence de coordonnées pour la livraison dans une application classique où la boutique modifie son point de terminaison `POST /orders` et son modèle partagé `Order`. Rendre le nouveau champ obligatoire casse l’ancien parcours de paiement mobile. Ajouter ce champ au modèle partagé touche ensuite l’éditeur de commandes et l’écran du personnel, même si aucun des deux ne demandait une nouvelle règle de commande.
+
+Ensuite, la boutique remplace l’indicateur oui/non d’annulation par un statut qui distingue les demandes, les acceptations et les refus. Le code qui vérifiait auparavant `cancelled` doit maintenant être réexaminé pour l’expédition, les calculs de stock et les courriels aux clients. Une petite demande métier se répand dans plusieurs fonctionnalités parce qu’elles interprètent toutes le même modèle modifiable.
+
+**Le coût comprend la révision de comportements qui fonctionnaient déjà.** Dans ce graphique, A à G représentent des ajouts à l’application. Chaque R correspond à du travail répété dans un comportement antérieur. La courbe ascendante illustre l’augmentation du travail nécessaire pour chaque modification à mesure que les dépendances s’accumulent.
+
+<GrowthComparison mode="rework" />
+
+## Garder une croissance presque linéaire
+
+Dans NeoHaskell, l’exigence de coordonnées pour la livraison ajoute une commande nommée et ses règles à côté du contrat de commande figé. L’ancien mode de retrait conserve son comportement. Une nouvelle règle d’annulation reçoit également sa tranche et son contrat explicites, et le modèle d’événements montre les requêtes et les intégrations concernées.
+
+**Des contrats stables empêchent une nouvelle exigence de modifier discrètement tous les consommateurs existants.** Les tranches délimitent le travail d’implémentation, les chapitres conservent le contexte métier et le modèle montre où un nouveau comportement se rattache au reste de l’application. NeoHaskell fournit une structure réutilisable : créer le remplacement coûte moins que démêler à répétition du code partagé.
+
+<GrowthComparison mode="bounded" />
+
+Un effort à peu près constant par ajout fait croître l’effort total de développement presque linéairement : une tranche comparable ajoute une quantité de travail comparable. C’est le modèle de développement que NeoHaskell est conçu pour prendre en charge.
+
+L’annulation doit toujours s’accorder avec l’expédition sur le moment où une commande peut être annulée. Cet accord relève des contrats et des règles des tranches concernées. Le développeur peut nommer cette dépendance, l’examiner et la tester, au lieu de la découvrir dans un parcours client qui ne fonctionne plus.
+
+## Utiliser le modèle pour comprendre le code
+
+**L’IDE NeoHaskell rend visible la structure de l’application.** Ouvrez une fonctionnalité pour voir ses chapitres et ses tranches, puis suivez les liens entre commandes, événements, requêtes et intégrations. Vous pouvez explorer le modèle de la boutique de tasses dans l’interface réelle de l’IDE :
+
+<IdeScreenshot />
+
+Pour modifier l’annulation, commencez par le chapitre Cancel order. Repérez la commande qui la demande, l’événement qu’elle produit et la requête de stock qui consomme cet événement. Ces noms identifient les déclarations correspondantes dans les sources. Le même parcours aide à reprendre un projet existant ou à examiner une modification écrite par un agent d’IA.
+
+Le modèle visuel est dérivé des déclarations des sources. Lorsque celles-ci changent, l’IDE actualise le modèle. Une commande renommée ou un nouveau lien de requête fait partie de la structure de l’application et apparaît donc dans le diagramme sans qu’il soit nécessaire de tenir à jour un second dessin à la main.
+
+## Garder la spécification dans l’application
+
+**La spécification fait partie du code.** Le DSL du modèle d’événements de NeoHaskell déclare les fonctionnalités, les chapitres, les tranches, les commandes, les événements, les requêtes et les intégrations. Les règles associées à une tranche décrivent le comportement attendu, notamment avec des cas Given, When, Then.
+
+Voici le chapitre d’annulation du modèle de la boutique. L’exemple utilise les types `Order`, de commande, d’événement et de requête de la boutique, déjà définis ailleurs :
+
+```haskell
+orders =
+  feature "Orders" do
+    chapter "Cancel order" do
+      slice "Cancel before dispatch" do
+        entity @Order do
+          command @CancelOrder do
+            produces @OrderCancelled
+
+        rule "Cancel before dispatch" do
+          orderId <- requestValue @Uuid
+          given do
+            event OrderPlaced {
+              orderId = orderId,
+              quantity = 1
+            }
+          when CancelOrder { orderId = orderId }
+          therefore do
+            event OrderCancelled {
+              orderId = orderId,
+              quantity = 1
+            }
+
+      slice "Show restored stock" do
+        query @AvailableMugs do
+          readsFrom @Order do
+            onEvent @OrderPlaced
+            onEvent @OrderCancelled
+```
+
+**La hiérarchie du diagramme est celle du code.** Le chapitre contient une tranche de commande et une tranche de requête. `produces` déclare l’événement de la commande ; `readsFrom` et `onEvent` déclarent quel historique alimente la requête. La requête de stock écoute les commandes passées et annulées pour que sa réponse reflète les deux modifications.
+
+La règle se trouve à côté de la commande qu’elle spécifie. `requestValue` demande au lanceur de règles un exemple typé d’identifiant de commande. `given` fournit l’historique de la commande acceptée, `when` fournit la commande d’annulation et `therefore` correspond au Then du DSL : l’événement `OrderCancelled` attendu. L’implémentation de la décision doit satisfaire un cas concret.
+
+Une deuxième règle couvre une commande déjà expédiée : l’annulation doit être rejetée et le stock doit rester inchangé. La tranche de requête de stock vérifie séparément qu’une annulation acceptée rétablit le nombre de tasses disponibles. Chaque cas va avec le comportement qu’il spécifie.
+
+Un fichier Markdown ou une page Confluence distincte peut devenir obsolète, car quelqu’un doit la mettre à jour après chaque changement de l’application. Dans NeoHaskell, le modèle déclaré et les règles se trouvent déjà dans les sources. Il est possible de produire un document décrivant cette spécification à partir de ces déclarations, au lieu d’en faire une autre référence à maintenir.

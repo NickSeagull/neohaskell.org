@@ -1,0 +1,56 @@
+---
+title: Conserva los hechos que hay detrás de los números
+description: Registra los hechos de negocio que explican un cambio y luego usa ese historial para entender y reconstruir el estado de la aplicación.
+sidebar:
+  label: Eventos e historial
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: true
+next: true
+---
+
+import EventModelTour from '@components/learn/EventModelTour.astro';
+import EventHistoryReplay from '@components/learn/EventHistoryReplay.astro';
+
+El recuento de existencias indica al próximo cliente cuántas tazas hay disponibles. **Los eventos explican qué ha ocurrido para que cambie ese número.**
+
+Piensa en la tienda de tazas presentada en [El trabajo que hay detrás del código](/introduction/#the-questions-that-change-the-software), donde una petición para vender por Internet planteó preguntas sobre las promesas de la tienda a sus clientes.
+
+Aquí, la tienda tiene tres tazas. Aceptar un pedido de una reserva esa taza para el cliente y deja dos disponibles.
+
+<EventModelTour kind="story" />
+
+El número de existencias da una respuesta útil al próximo cliente. **No explica por qué ha cambiado la respuesta.** Una taza rota también reduciría las existencias de tres a dos, pero no daría a la tienda un pedido que preparar.
+
+## Registra lo que ha ocurrido
+
+Guardar únicamente el valor más reciente de las existencias hace que se pierda esa diferencia. NeoHaskell registra el hecho de negocio que causó el cambio: se hizo un pedido de una taza de cerámica. Este hecho registrado es un **evento**.
+
+El nombre del evento tiene significado. `OrderPlaced` indica a la aplicación que la tienda aceptó un pedido. Una rotura necesita un evento distinto porque representa un trabajo diferente, aunque el efecto sobre las existencias disponibles sea idéntico.
+
+**Registrar eventos conserva el significado de negocio del cambio.** El desarrollador elige ese significado de forma explícita, en vez de dejar que alguien tenga que reconstruirlo más tarde a partir de un número de existencias.
+
+## Calcula el presente a partir del pasado
+
+En NeoHaskell, **los eventos son la fuente de verdad del estado de la aplicación**. Para calcular las existencias disponibles, empieza sin tazas y sigue lo ocurrido: la tienda recibió tres y luego aceptó un pedido de una. El resultado son dos tazas disponibles. Derivar el estado a partir de eventos registrados se llama **Event Sourcing**.
+
+Supongamos que el cliente cancela antes del envío y la tienda devuelve la taza a las existencias disponibles. La aplicación registra `OrderCancelled` y las existencias vuelven a ser tres. También conserva el evento del pedido original. Un pedido cancelado tiene un historial distinto del de un pedido que nunca existió.
+
+<EventHistoryReplay />
+
+Las correcciones siguen el mismo principio: registra la corrección y aplica su efecto. Cambiar el presente no requiere reescribir el relato de cómo ocurrió.
+
+Este historial también permite reparar los cálculos. Si hay un error en el cálculo de las existencias, al corregirlo y aplicar de nuevo el historial se reconstruye el estado derivado. **La reproducción vuelve a calcular el estado**; no vuelve a hacer el pedido ni a cobrar al cliente.
+
+## ¿No se volverá lento a medida que crezca el historial?
+
+El historial crece a medida que se usa la aplicación, pero **NeoHaskell no parte del primer evento para cada operación**. Conserva el estado ya calculado y aplica desde ahí los cambios posteriores. Al leer una respuesta se usan datos mantenidos, en vez de reproducir todo el historial en cada visita a una página.
+
+Ese trabajo se gestiona internamente. La aplicación conserva su registro de lo ocurrido sin tener que volver a calcular todos los pedidos anteriores cada vez que recibe uno nuevo.
+
+## Conserva los hechos que necesitan las preguntas futuras
+
+Con los eventos de pedido y de cancelación, la tienda puede distinguir las ventas de las cancelaciones, aunque ambas dejen las mismas existencias finales que la ausencia total de actividad. Puede investigar un pedido o crear un informe nuevo a partir de esos hechos registrados.
+
+Por eso, diseñar eventos forma parte de entender el negocio. Si el personal necesita saber quién aprobó una excepción, el evento debe conservar esa información. **La pregunta útil es qué necesitará explicar alguien más adelante.** La respuesta determina qué recuerda hoy la aplicación.

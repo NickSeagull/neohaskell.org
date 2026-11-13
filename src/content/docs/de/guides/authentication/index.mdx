@@ -1,0 +1,17 @@
+---
+title: "Identität des Aufrufers überprüfen"
+description: "Seitenplan. Wie erkennt meine HTTP-Anwendung einen Aufrufer?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Seitenplan
+
+Diese Seite verbindet eine Anwendung mit einem OIDC-Aussteller, konfiguriert bei Bedarf die erwartete Token-Audience und untersucht die Benutzer-Claims, die einem Kommando zur Verfügung stehen. Ein Anfragenvergleich behandelt ein gültiges Token, ein ungültiges Token und einen anonymen Aufrufer. Eine kleine Grenzabbildung unterscheidet die Überprüfung der Identität von der Berechtigung für ein Kommando und vom Verbinden des Aufrufers mit einem externen OAuth-Anbieter.

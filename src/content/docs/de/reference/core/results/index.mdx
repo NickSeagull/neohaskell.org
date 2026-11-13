@@ -1,0 +1,17 @@
+---
+title: "Maybe und Result"
+description: "Seitenplan. Wie stelle ich Abwesenheit oder einen behebbaren Fehler dar?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Seitenplan
+
+Diese Seite vergleicht `Nothing` und `Just` mit `Err` und `Ok` und zeigt, wann für Abwesenheit keine Erklärung nötig ist und wann ein typisierter Fehler gebraucht wird. Kompakte Signaturen und passende Fallpaare behandeln `map`, `andThen`, `withDefault`, `mapError` und Konvertierungen zwischen den beiden Containern. Ein Parser- oder Suchbeispiel bewahrt den Fehler, bis der Aufrufer ihn ausdrücklich behandelt, und verweist die Behandlung von Effekten und Fehlern auf `Task`.

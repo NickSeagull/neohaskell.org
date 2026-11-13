@@ -1,0 +1,17 @@
+---
+title: "Kommandos und Entscheidungen"
+description: "Seitenplan. Was muss ein Kommando definieren, und was kann eine Entscheidung zurückgeben?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Seitenplan
+
+Diese Seite spezifiziert den Kommando-Record, `EntityOf`, `getEntityId`, `decide`, `RequestContext`, Transportberechtigungen und Ableitungshelfer. Dabei ordnet sie selbstgeschriebene Funktionen den öffentlichen Methoden von `Command` zu. Eine kompakte Ergebnistabelle vergleicht `acceptNew`, `acceptExisting`, `acceptAny`, `acceptAfter` und `reject`. Konkrete Entscheidungsfälle für `Counter` veranschaulichen Annahme und Ablehnung. Signaturen für mehrere Mandanten und Autorisierungshooks erhalten eigene Anker. Die längeren Implementierungs- und Zugriffsrichtlinien bleiben den Aufgabenleitfäden vorbehalten.

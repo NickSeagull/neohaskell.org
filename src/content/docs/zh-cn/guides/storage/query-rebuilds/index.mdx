@@ -1,0 +1,17 @@
+---
+title: "持久化并重建查询"
+description: "页面计划。重启或投影变更后，查询结果如何恢复？"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## 页面计划
+
+本页将分别配置查询存储和事件历史，并跟踪检查点续跑和经过明确验证的重建过程。页面会说明，当前查询哈希根据查询名称生成，因此仅更改投影代码不会自动使已保存的进度失效。时间线会展示重放期间到达的实时事件，以及何时可以使用查询。重建失败时，将根据诊断证据采取恢复措施；恢复依赖可用的历史记录，也不会撤销外部副作用。

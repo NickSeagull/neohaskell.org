@@ -1,15 +1,18 @@
 ---
+import { messages } from '../../i18n/runtime';
+const locale = Astro.locals.starlightRoute.locale ?? 'en';
+const t = messages(locale);
 const events = [
-  { name: 'Stock received', detail: '3 ceramic mugs' },
-  { name: 'Order placed', detail: '1 ceramic mug' },
-  { name: 'Order cancelled', detail: '1 ceramic mug' },
+  { name: t("lesson.stock-received"), detail: t("lesson.3-ceramic-mugs") },
+  { name: t("lesson.order-placed"), detail: t("lesson.1-ceramic-mug") },
+  { name: t("lesson.order-cancelled"), detail: t("lesson.1-ceramic-mug") },
 ];
 ---
 
-<event-history-replay>
-  <figure class="history-replay not-content" aria-label="Replaying recorded events from zero stock: receiving three mugs gives three available, placing an order for one leaves two, and cancelling that order restores three.">
+<event-history-replay style={locale === 'hy' ? '--history-row-height: 8rem' : undefined}>
+  <figure class="history-replay not-content" aria-label={t("lesson.replaying-recorded-events-from-zero-stock-receiving-three-mugs-gives-three-available-placi")}>
     <div class="history-replay-heading">
-      <span>Recorded events</span>
+      <span>{t("lesson.recorded-events")}</span>
     </div>
     <div class="history-replay-layout">
       <div class="history-event-stack">
@@ -24,8 +27,8 @@ const events = [
         <svg class="history-cursor" width="16" height="20" viewBox="0 0 16 20" aria-hidden="true"><path d="m2 3 10 7-10 7Z" /></svg>
       </div>
       <div class="history-stock" data-diagram-role="query">
-        <span>Available mugs</span>
-        <output data-stock-value aria-label="Available mugs" aria-live="off">3</output>
+        <span>{t("lesson.available-mugs")}</span>
+        <output data-stock-value aria-label={t("lesson.available-mugs")} aria-live="off">3</output>
       </div>
     </div>
   </figure>
@@ -138,17 +141,17 @@ const events = [
 </script>
 
 <style>
-  event-history-replay { display: block; --replay-step: 3; }
+  event-history-replay { display: block; --replay-step: 3; --history-row-height: 6rem; }
   .history-replay { margin: 2rem 0; color: var(--sl-color-white); font-size: 1rem; line-height: 1.5; }
   .history-replay :is(div, ol, li, strong, span, output) { margin: 0; }
   .history-replay .history-replay-heading { margin-bottom: .75rem; }
   .history-replay-layout { display: grid; grid-template-columns: minmax(0, 1fr) clamp(6.5rem, 28%, 12rem); gap: clamp(.75rem, 3vw, 2rem); align-items: center; padding-left: 1.25rem; }
   .history-event-stack { position: relative; }
   .history-events { display: grid; gap: .75rem; padding: 0; list-style: none; }
-  .history-events li { display: flex; flex-direction: column; justify-content: center; gap: .25rem; height: 6rem; padding: .75rem; border: 1px solid var(--diagram-line); border-radius: .5rem; background: var(--diagram-surface); line-height: 1.5; }
+  .history-events li { display: flex; flex-direction: column; justify-content: center; gap: .25rem; height: var(--history-row-height); padding: .75rem; border: 1px solid var(--diagram-line); border-radius: .5rem; background: var(--diagram-surface); line-height: 1.5; }
   .history-events strong { color: var(--diagram-ink); font-weight: 650; }
   .history-events [data-current='true'] { outline: 2px solid var(--diagram-event-ink); outline-offset: 2px; }
-  .history-cursor { position: absolute; top: 0; left: -1.25rem; color: var(--diagram-event-ink); fill: currentColor; transform: translateY(calc((var(--replay-step) - 1) * 6.75rem + 3rem - 10px)); }
+  .history-cursor { position: absolute; top: 0; left: -1.25rem; color: var(--diagram-event-ink); fill: currentColor; transform: translateY(calc((var(--replay-step) - 1) * (var(--history-row-height) + .75rem) + var(--history-row-height) / 2 - 10px)); }
   [data-animated='true'] .history-cursor { transition: transform 240ms ease; }
   [data-phase='0'] .history-cursor { visibility: hidden; transition: none; }
   [data-phase='1'] .history-cursor { transition: none; }

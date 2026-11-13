@@ -1,0 +1,17 @@
+---
+title: "呼び出し元の本人を確認する"
+description: "ページ案。HTTPアプリケーションが呼び出し元を認識する方法。"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## ページ案
+
+このページでは、アプリケーションをOIDC発行者に接続し、必要に応じて想定するトークンのaudienceを設定し、コマンドから利用できるユーザーのクレームを確認します。有効なトークン、無効なトークン、匿名の呼び出し元を比較するリクエスト例も扱います。簡潔な境界図で、本人確認とコマンドの権限確認、外部OAuthプロバイダーへの接続を分けて示します。

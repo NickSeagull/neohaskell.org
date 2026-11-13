@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Astro with Starlight is the website framework. The repository now contains a custom homepage and static documentation entry pages. GitHub Pages is the configured hosting target; deployment has not been run from this checkout.
+Astro with Starlight is the website framework. The repository contains a custom homepage and static documentation pages in nine languages. The GitHub Pages workflow publishes at `https://nickseagull.dev/neohaskell.org/` using the `/neohaskell.org/` base path. Local development uses `http://127.0.0.1:4323/` without that base path.
 
 ## Users
 

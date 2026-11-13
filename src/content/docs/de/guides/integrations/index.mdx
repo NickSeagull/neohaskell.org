@@ -1,6 +1,6 @@
 ---
-title: Externe Dienste anbinden
-description: "Seitenplan. Externe Effekte und Dienstverbindungen planen, ohne sie in Entscheidungen zu verbergen."
+title: "Externen Dienst aufrufen"
+description: "Seitenplan. Wie führe ich nach einer Entscheidung einen externen Effekt aus?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Seitenplan
 
-Diese Seite zeigt, wie sich ein unterstützter externer Dienst anbinden lässt, während Netzwerkeffekte und Zugangsdaten außerhalb der reinen Entscheidungslogik bleiben. Ein durch Quelltext belegtes Beispiel behandelt die Dienstverbindung, den angeforderten Effekt der Anwendung und den Umgang mit Erfolg oder Fehler. Eine Ablaufabbildung zeigt, welche Komponente jede Aktion ausführt. Zwei Ablaufspuren erklären einen erfolgreichen Aufruf und einen nicht verfügbaren Dienst. Der Leitfaden verweist für die Abgrenzung auf [Reine Entscheidungen und Effekte](/concepts/pure-decisions/) und für erforderliche Werte auf [Konfiguration](/reference/configuration/).
+Diese Seite verbindet ein angenommenes Ereignis mit einem typisierten ausgehenden Handler, führt einen HTTP-Aufruf aus und wandelt die Antwort des Anbieters in ein Folgekommando um. Erfolgs- und Fehlerabläufe zeigen die Grenze zwischen einer reinen Entscheidung und einem externen Effekt. Das Beispiel verwendet einen Idempotenzschlüssel und erklärt die getrennten Wiederholungseinstellungen für HTTP und Dispatcher, ohne dauerhafte Zustellung oder genau-einmalige Ausführung zu versprechen.
