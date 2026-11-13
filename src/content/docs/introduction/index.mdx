@@ -1,8 +1,8 @@
 ---
-title: Design an application you understand
-description: Follow a visual tour from a customer's intention to recorded facts, useful answers, and small behaviors you can build and change.
+title: The work behind the code
+description: How developer judgment, shared conventions, and AI fit together when building software.
 sidebar:
-  label: Design your application
+  label: The work behind the code
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 2
@@ -11,77 +11,34 @@ next: true
 ---
 
 import EventModelTour from '../../../components/learn/EventModelTour.astro';
-import GrowthComparison from '../../../components/learn/GrowthComparison.astro';
-import ShopEventModel from '../../../components/learn/ShopEventModel.astro';
 
-A shop owner wants customers to order ceramic mugs. Before writing code, the owner and developers need to agree when an order uses stock and what happens when there are no mugs left.
+A developer's work begins with understanding what people need to accomplish and which promises a business makes. Knowledge of APIs and syntax helps turn that understanding into software. The harder contribution is often asking the uncomfortable question: what happens when the business cannot keep a promise, who may make an exception, and which part of the process nobody has agreed on yet?
 
-The shop starts with three mugs and no orders. For this example, accepting an order immediately uses the requested stock. A customer orders one:
+AI can generate an implementation, suggest alternatives, and help explore unfamiliar code. It cannot resolve a disagreement about how the business should work merely by producing a program that builds. The developer still has to map the process, recognize missing decisions, and judge whether the result solves the intended problem.
+
+NeoHaskell is an AI-first language and framework built around that responsibility. Its aim is to make developing software enjoyable: understanding a difficult process, expressing it clearly, and seeing it work as intended. Its conventions and tools shorten the distance between those business decisions and their implementation. The same structure supports reviewing a change, tracing an unexpected result, and deciding what should happen next, whether the code is written with an agent or by hand.
+
+## A shop with three mugs
+
+A shop owner asks for online orders. The shop has three ceramic mugs available. Before choosing a database or generating a checkout screen, several questions affect the design:
+
+- Does adding a mug to a basket make it unavailable to other customers?
+- Does the shop promise the mug when it accepts the order or when payment arrives?
+- If an order is cancelled, when does its mug become available again?
+- What should happen when a customer orders more mugs than remain?
+
+For this first example, accepting an order immediately uses the requested stock. The quantity must be positive, and enough stock must be available. The shop starts with no orders. Accepting an order for one mug leaves two available.
 
 <EventModelTour kind="story" />
 
-This picture already makes a business choice visible: stock changes when the order is accepted. Choosing a different moment, such as payment, would change the application. Agreeing that behavior is part of designing the software.
+These are choices for this shop, not universal rules of online commerce.
 
-**Event Modeling** gives these conversations a common visual language. It connects what people want to do, the facts that follow, and the information they need next. The same picture helps you plan a new application or understand one that already exists.
+## Why NeoHaskell makes technical choices
 
-## Separate an intention from what happened
+NeoHaskell makes several recurring architecture choices in advance. It keeps a history of business changes, separates the decision to accept a change from work with external systems, and provides a common structure for changing and reading application state. The starting point is the shop's behavior; the framework supplies the path for recording its accepted changes and keeping its answers up to date.
 
-A **command** expresses an intention: order one mug. It gives the application something to consider. The command alone does not mean an order exists.
+A team can build the same approach with another language and selected libraries. It must then choose and maintain the conventions that join those parts. NeoHaskell makes those choices part of the framework, so a developer or agent does not have to invent a new arrangement for each feature.
 
-A **decision** checks the conditions for accepting it. Here, the quantity must be positive and enough stock must be available. With three mugs in stock, an order for one passes those checks.
+For example, adding a second interface should reuse the shop's stock policy. The framework already gives that policy a place shared by its interfaces. A developer or agent can concentrate on the condition to check and its expected result. Storage configuration, permissions, and the business policy still need deliberate choices; the conventions reduce the surrounding assembly work.
 
-An **event** records the accepted fact: an order for one mug was placed. Its name describes something that has happened, so other parts of the application can use that fact.
-
-<EventModelTour kind="decision" />
-
-If the shop has no mugs, the same command is rejected. No order-placed event is recorded and stock stays at zero. Drawing that boundary helps everyone distinguish a customer's intention from a promise the shop has actually made.
-
-## Turn recorded facts into useful answers
-
-After accepting the order, the customer needs confirmation and the next visitor needs the remaining stock. A **query** answers a question from the application's state without changing it.
-
-The recorded order tells us one mug was taken from the opening stock of three. We can use that fact to answer different questions:
-
-<EventModelTour kind="queries" />
-
-The event remains part of the history. The answers can change as more orders are accepted. This separation lets you trace a displayed number back to the behavior that produced it, and decide what information a new screen needs.
-
-Payment and delivery are outside this first order story. Each can become another behavior with its own intentions, decisions, facts, and answers.
-
-## Keep growth close to linear
-
-Adding a behavior can require revisiting several existing ones when their shared assumptions are hidden. In the comparison below, A through G represent added behaviors. Each R represents rework in earlier behavior.
-
-<GrowthComparison />
-
-If each added behavior takes roughly similar effort, total effort grows roughly in proportion to the number of behaviors. Event Modeling aims for this by making inputs, outcomes, and shared contracts explicit, so the team can implement and test a bounded change.
-
-The curves illustrate that aim, not measured costs or a guarantee. Shared contracts still require coordination. For example, cancellation and dispatch must agree on what an order's status means. Changing that meaning can affect both, even when their implementations are separate.
-
-## Connect the steps in an event model
-
-An **event model** connects the screens people use, the commands they submit, the events that are recorded, and the queries that supply the next screen. The connections show where information comes from and where it goes.
-
-Extend the shop with cancellation. For this example, cancelling an order before dispatch returns its mug to available stock. The diagram follows two accepted commands: placing the order and then cancelling it.
-
-<ShopEventModel />
-
-The first screen sends the order command. After the order is accepted, the stock query returns two available mugs and supplies the order screen. That screen lets the customer request cancellation. Once accepted, the cancellation is recorded as another event and the stock query returns three mugs again. The original order event stays in the history.
-
-A missing connection identifies an unanswered question. If the cancellation event is recorded but no query uses it, which screen will tell the customer that the cancellation succeeded? These questions let the owner and developers check the behavior before implementing it.
-
-## Use the model to understand what you already have
-
-In an existing application, follow one real task through the same four questions: what was asked, which conditions were checked, what happened, and what information was shown afterward.
-
-Put the business explanation beside the application's actual behavior. A disagreement becomes specific: perhaps the shop owner expects a cancellation to restore stock, but the current application only changes the order status. The model gives both sides a precise place to discuss the missing behavior.
-
-Your contribution is turning assumptions into shared, testable decisions. An AI agent can help implement them; the people who understand the business decide what those decisions should be.
-
-## Carry the picture into NeoHaskell
-
-NeoHaskell is an AI-first language and framework built around commands, decisions, events, and queries. These become explicit parts of the application. Its visual IDE shows their relationships, so you can inspect the model while understanding or changing the software.
-
-Event Modeling supplies the shared design. Event Sourcing supplies a way to retain events and derive state from their history. You can understand the design before choosing storage or installing tools.
-
-Continue to [Core concepts](/learn/) to look more closely at the same shop and the accepted and rejected outcomes that its implementation must preserve.
+The first of those choices concerns what the application remembers. Continue to [Keep the facts](/introduction/history/).

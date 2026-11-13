@@ -37,3 +37,14 @@ Owner terminology governs explanatory labels. Exact API identifiers retain their
 [Query.Core](https://github.com/neohaskell/NeoHaskell/blob/033ae4a570686cd885ca14c6595997d9498d5287/core/service/Service/Query/Core.hs) defines `Query`, `QueryOf`, and `combine`. Query projection describes the mechanism that maintains query state; it is not a replacement domain label. [Integration](https://github.com/neohaskell/NeoHaskell/blob/033ae4a570686cd885ca14c6595997d9498d5287/core/service/Integration.hs) defines inbound and outbound APIs. These sources were inspected, not executed.
 
 Keep ordinary meanings such as HTTP request, browser view, SQL view, language translation, and business rule when they name those actual things. When comparing another method, introduce its term explicitly and then use the NeoHaskell term for the application. Do not perform global word substitutions on source, quotations, localization workflows, or historical records.
+
+## Concepts introduced progressively
+
+| Term | Meaning and distinction |
+| --- | --- |
+| Event Sourcing | Derive application state from retained business events. It describes the authoritative history, not a guarantee of infinite or undeletable storage. |
+| Snapshot | A derived state saved at a known history position. NeoHaskell uses snapshots to avoid replaying earlier events on each fetch. Stock snapshots alone cannot explain the business reason for a change; richer snapshots retain only the meaning actually modeled. |
+| CQRS | Separate the handling of requested changes from the handling of questions. NeoHaskell uses commands for the former and queries for the latter. Query maintenance and reading an answer are distinct operations. |
+| Event Modeling | Design and examine a process by connecting screens, commands, events, and queries. It is a modeling method, distinct from event-based storage and separate read/write responsibilities. |
+
+The [progressive-introduction source review](.impeccable/reviews/progressive-intro-2026-11-13/source-review.md) records the exact implementation boundaries at revision 033ae4a. Describe decisions as separating business logic from arbitrary external actions, without claiming their interpreter performs no effects at all.

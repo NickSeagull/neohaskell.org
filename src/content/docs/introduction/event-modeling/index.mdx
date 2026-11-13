@@ -1,0 +1,54 @@
+---
+title: Connect the whole process
+description: Connect screens, commands, events, and queries in an Event Model and use it to review application changes.
+sidebar:
+  label: Model the whole process
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: true
+next: true
+---
+
+import GrowthComparison from '../../../../components/learn/GrowthComparison.astro';
+import ShopEventModel from '../../../../components/learn/ShopEventModel.astro';
+
+An accepted order connects several things: a customer sees available stock, submits an intention, receives confirmation, and changes what the next customer can order. Describing each part separately can leave gaps between them.
+
+**Event Modeling** lays out the process as connected screens, commands, events, and queries. It helps people examine where information originates, what changes it, and where it is needed next. It is a design method, distinct from Event Sourcing's choice of history and CQRS's separation of changes and questions.
+
+## Follow an order and a cancellation
+
+Extend the shop with one policy: cancelling an order before dispatch returns its mug to available stock. The customer first orders one mug, then cancels that order.
+
+<ShopEventModel />
+
+The order command leads to an accepted order event. The stock query then answers two. The order screen supplies the identity needed to request cancellation. After an accepted cancellation, another event records that fact and the stock answer returns to three. Both events remain in the history.
+
+Following the connections exposes questions that a list of features might hide. Where does the cancellation command obtain the order identity? Which condition prevents cancellation after dispatch? Which query supplies the confirmation that cancellation succeeded?
+
+These questions can be discussed with the people running the shop before their answers become code. Staff may expect cancellation to restore stock while the current system only changes an order status.
+
+## Keep a change understandable
+
+Adding cancellation does not require inventing a new way to describe behavior. It needs an intention, acceptance conditions, a recorded outcome, and answers that reflect the change. This repeated structure gives a developer or agent a specific set of things to implement and check.
+
+## How change effort grows
+
+In the comparison below, A through G represent added behaviors. Each R represents rework in earlier behavior caused by hidden dependencies. The second plot keeps shared contracts visible as new behaviors are added.
+
+<GrowthComparison />
+
+If new behaviors take roughly similar effort, total effort grows roughly in proportion to their number. Reusing the same structure and keeping dependencies visible supports that aim. The graph compares this aim with repeated changes to earlier behavior; it shows a conceptual comparison, not measured costs.
+
+Some changes still cross boundaries. Cancellation and dispatch must agree on which order states permit each action. Making that dependency visible identifies the behavior and tests that need review. It does not make every new feature equally cheap or eliminate coordination.
+
+## Keep the model connected to the application
+
+NeoHaskell carries these concepts into typed application declarations. Its visual IDE reads the source model and displays the relationships between behaviors. When investigating an existing application or reviewing an agent's change, this provides a place to locate the relevant command, its recorded outcome, and the queries that depend on it.
+
+The connections point to concrete review questions. If a new cancellation restores stock, does the stock answer change as expected? If cancellation is forbidden after dispatch, does the decision reject that case? The diagram helps locate the behavior; decisions and tests check it. The people running the shop still decide whether that policy is the right one.
+
+The design now contains a concrete accepted case and a rejected case: ordering one mug from three leaves two; ordering when none remain is refused and leaves zero. Those examples provide observable results for the first implementation, whether written by hand or with an agent.
+
+Continue to [Install NeoHaskell](/getting-started/installation/) to prepare the development environment. The first-project pages are still being written; [Resources](/resources/#start-building) links to the available setup instructions.

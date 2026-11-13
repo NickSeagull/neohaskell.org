@@ -1,0 +1,49 @@
+---
+title: Keep the facts behind the numbers
+description: Why current values and snapshots do not always explain a business change, and how NeoHaskell uses events.
+sidebar:
+  label: Events and history
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 2
+prev: true
+next: true
+---
+
+The shop had three mugs available. Now it has two. That number answers how many remain, but it does not explain what happened.
+
+Perhaps a customer ordered one mug. Perhaps one broke. Perhaps a stock count found that the original number was wrong. All three situations can produce the same change from three to two. They have different consequences: an order creates work for dispatch, breakage is a stock loss, and a counting correction should not become a sale.
+
+## A value, a snapshot, and a fact
+
+An application can replace its stored stock value with two. To explain the change later, it must retain additional information somewhere else.
+
+Keeping successive snapshots preserves more: stock was three, then two. Comparing these two snapshots reveals a decrease of one. The numbers alone still cannot distinguish an order from a broken mug. A snapshot that also contains an order record retains more meaning because that meaning was explicitly modeled. Saving versions of the stock value alone cannot supply it.
+
+An event records the business fact. `OrderPlaced` says that an order was accepted, with its product and quantity. A different kind of fact would describe breakage or a corrected count. The meaning is recorded when the change happens, rather than guessed later from the difference between two values.
+
+| Information retained | What it establishes |
+| --- | --- |
+| Current stock: 2 | Two mugs are available now. |
+| Stock snapshots: 3, then 2 | Stock decreased by one. |
+| Order placed: 1 ceramic mug | An order was accepted; the shop has an order to prepare. |
+
+This does not mean an ordinary database cannot preserve history. It can store events, audit records, and snapshots. The difference is which records the application treats as authoritative and whether they retain the business meaning needed later.
+
+## Derive the present from the history
+
+NeoHaskell treats recorded business events as the source of truth for application state. The current state is derived from those events. This approach is called **Event Sourcing**. In this small example, the agreed opening stock is three. Applying the accepted order for one produces a current stock of two.
+
+A later cancellation can record another event and return the mug to available stock. The order event stays in the history. The application can distinguish an order that was cancelled from an order that never existed.
+
+This also separates the facts from a particular calculation. If a stock calculation contains a bug, correcting that calculation and applying the retained history again can rebuild the derived state. Replaying an order does not mean placing it again, charging a customer again, or undoing an external payment.
+
+NeoHaskell also uses snapshots to avoid recalculating a whole history each time. They save a derived state at a known point, allowing later events to be applied from there. Snapshots and business events serve different purposes and can be used together.
+
+## Remember enough to answer later
+
+History only contains what was recorded. An event with a product and quantity cannot explain who approved an exception unless that information was also retained. Event design therefore returns to business questions: which facts will staff need when investigating an order or explaining a decision?
+
+Keeping history also creates work. Old event shapes must remain understandable, and a corrected interpretation must be checked against existing records. Retention and privacy policies decide which records and protected values remain available. The benefit is a retained account of business changes, with enough information to calculate useful answers again.
+
+Before a fact can enter that history, the application must decide whether the proposed change is allowed. Continue to [Protect changes and answer questions](/learn/).

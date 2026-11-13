@@ -8,7 +8,7 @@ Finish each task with the applicable checks and a local commit in English. Durin
 
 # Copy and auxiliary text
 
-Write primary content, necessary labels, and direct actions. Documentation starts with its subject or a concrete example. Remove promotional lead paragraphs and generic motivational slogans instead of replacing them with new taglines. Follow `$nick-plain-copy` for this editorial rule. Keep substantive explanations in the main prose and place source links inline where they support a claim.
+Write primary content, necessary labels, and direct actions. An introductory lesson can begin with developer motivation when it explains concrete work, judgment, or tradeoffs. Build a reason for each concept before naming it. Remove generic motivational slogans instead of replacing them with new taglines. Follow `$nick-plain-copy` for this editorial rule. Keep substantive explanations in the main prose and place source links inline where they support a claim.
 
 Do not add footnotes, caption bars, widget identity labels, language badges, or explanatory rows around examples and actions. Remove redundant reassurance beneath buttons and text that merely describes the component beside it. Use standard visual affordances for scrolling instead of instruction sentences. Keep accessible control names and meaningful domain labels.
 
@@ -38,6 +38,8 @@ For NeoHaskell homepage work, product explanations, metadata, or capability evid
 # Documentation direction
 
 For NeoHaskell documentation pages, examples, navigation, or styling, load `$neohaskell-docs`. For a rejected direction, corrected feedback scope, conflicting constraints, or ambiguous design reference, load `$design-feedback`. Both use the existing repository records; later explicit user direction can supersede the baseline within its stated scope. If discovery has not refreshed, read `${CODEX_HOME:-$HOME/.codex}/skills/<skill-name>/SKILL.md`.
+
+For conceptual lessons, load `$neohaskell-progressive-explanations`. New or substantially rewritten arguments require its fresh adversarial reader review, checking the causal progression and concrete value relative to other development approaches. Combine that review with the teaching-example review when both apply.
 
 # Diagram colors and terminology
 

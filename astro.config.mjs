@@ -35,7 +35,8 @@ export default defineConfig({
     locales: Object.fromEntries(locales.map(({ code, label, lang }) => [code === 'en' ? 'root' : code, { label, lang }])),
     components: { Head: './src/components/DocsHead.astro', LanguageSelect: './src/components/DocsLanguagePicker.astro' },
     sidebar: [
-      group('docs.start', ['introduction', 'learn', 'getting-started/installation', 'getting-started/create-project', 'getting-started/run', 'getting-started/first-response', 'getting-started/project-files', 'getting-started', 'getting-started/troubleshooting', 'docs']),
+      group('docs.start', ['introduction', 'introduction/history', 'learn', 'introduction/event-modeling']),
+      group('docs.first-project', ['getting-started/installation', 'getting-started/create-project', 'getting-started/run', 'getting-started/first-response', 'getting-started/project-files', 'getting-started', 'getting-started/troubleshooting']),
       group('docs.tutorial', ['tutorial', 'tutorial/first-feature', 'tutorial/decide-orders', 'tutorial/stock-query', 'tutorial/http-orders', 'tutorial/test-behavior', 'tutorial/change-safely']),
       group('docs.guides', [
         group('docs.guides.interfaces', ['guides/ai-workflow', 'guides/transports', 'guides/transports/mcp', 'guides/transports/cli']),
@@ -50,7 +51,7 @@ export default defineConfig({
         group('docs.reference.core', ['reference/core', 'reference/core/containers', 'reference/core/results', 'reference/core/tasks', 'reference/core/json']),
         group('docs.reference.framework', ['reference/framework', 'reference/framework/commands', 'reference/framework/entities', 'reference/framework/queries', 'reference/framework/transports']),
         group('docs.reference.tooling', ['reference/cli', 'reference/cli/model-tools', 'reference/cli/agent-commands', 'reference/configuration', 'reference/configuration/project']),
-        group('docs.reference.help', ['reference/errors', 'reference/errors/runtime', 'resources']),
+        group('docs.reference.help', ['reference/errors', 'reference/errors/runtime', 'resources', 'docs']),
       ]),
     ],
     editLink: undefined,
