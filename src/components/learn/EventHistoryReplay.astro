@@ -1,0 +1,144 @@
+---
+const events = [
+  { name: 'Stock received', detail: '3 ceramic mugs' },
+  { name: 'Order placed', detail: '1 ceramic mug' },
+  { name: 'Order cancelled', detail: '1 ceramic mug' },
+];
+---
+
+<event-history-replay>
+  <figure class="history-replay not-content" aria-label="Replaying recorded events from zero stock: receiving three mugs gives three available, placing an order for one leaves two, and cancelling that order restores three.">
+    <div class="history-replay-heading">
+      <span>Recorded events</span>
+      <button type="button" class="replay-toggle" aria-label="Pause animation" title="Pause animation" hidden>
+        <svg class="pause-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 4v12M13 4v12" /></svg>
+        <svg class="play-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m6 3 10 7-10 7Z" /></svg>
+      </button>
+    </div>
+    <div class="history-replay-layout">
+      <div class="history-event-stack">
+        <ol class="history-events">
+          {events.map((event, index) => (
+            <li data-history-event data-diagram-role="event" data-current={index === 2 ? 'true' : 'false'}>
+              <strong>{event.name}</strong>
+              <span>{event.detail}</span>
+            </li>
+          ))}
+        </ol>
+        <svg class="history-cursor" width="16" height="20" viewBox="0 0 16 20" aria-hidden="true"><path d="m2 3 10 7-10 7Z" /></svg>
+      </div>
+      <div class="history-stock" data-diagram-role="query">
+        <span>Available mugs</span>
+        <output data-stock-value aria-label="Available mugs" aria-live="off">3</output>
+        <span data-stock-calculation>2 + 1 = 3</span>
+      </div>
+    </div>
+  </figure>
+</event-history-replay>
+
+<script>
+  class EventHistoryReplay extends HTMLElement {
+    private phase = 3;
+    private paused = false;
+    private visible = false;
+    private timer: ReturnType<typeof setTimeout> | undefined;
+    private motion = matchMedia('(prefers-reduced-motion: reduce)');
+    private observer: IntersectionObserver | undefined;
+    private button: HTMLButtonElement | null = null;
+
+    connectedCallback() {
+      this.button = this.querySelector('button');
+      this.button?.addEventListener('click', this.toggle);
+      this.motion.addEventListener('change', this.setMotion);
+      document.addEventListener('visibilitychange', this.schedule);
+      this.setMotion();
+      this.observer = new IntersectionObserver(([entry]) => {
+        this.visible = entry.isIntersecting && entry.intersectionRatio >= 0.4;
+        this.schedule();
+      }, { threshold: 0.4 });
+      this.observer.observe(this);
+    }
+
+    disconnectedCallback() {
+      clearTimeout(this.timer);
+      this.observer?.disconnect();
+      this.button?.removeEventListener('click', this.toggle);
+      this.motion.removeEventListener('change', this.setMotion);
+      document.removeEventListener('visibilitychange', this.schedule);
+    }
+
+    private render() {
+      const values = ['0', '3', '2', '3'];
+      const calculations = ['0', '0 + 3 = 3', '3 - 1 = 2', '2 + 1 = 3'];
+      this.dataset.phase = String(this.phase);
+      this.style.setProperty('--replay-step', String(this.phase));
+      this.querySelectorAll<HTMLElement>('[data-history-event]').forEach((row, index) => {
+        row.dataset.current = String(index === this.phase - 1);
+      });
+      const value = this.querySelector('[data-stock-value]');
+      const calculation = this.querySelector('[data-stock-calculation]');
+      if (value) value.textContent = values[this.phase];
+      if (calculation) calculation.textContent = calculations[this.phase];
+    }
+
+    private schedule = () => {
+      clearTimeout(this.timer);
+      if (this.paused || this.motion.matches || !this.visible || document.hidden) return;
+      const delay = this.phase === 0 ? 1000 : this.phase === 3 ? 3200 : 2200;
+      this.timer = setTimeout(() => {
+        this.phase = (this.phase + 1) % 4;
+        this.render();
+        this.schedule();
+      }, delay);
+    };
+
+    private setMotion = () => {
+      this.phase = this.motion.matches ? 3 : 0;
+      this.dataset.animated = String(!this.motion.matches);
+      if (this.button) this.button.hidden = this.motion.matches;
+      this.render();
+      this.schedule();
+    };
+
+    private toggle = () => {
+      this.paused = !this.paused;
+      this.dataset.paused = String(this.paused);
+      const label = this.paused ? 'Resume animation' : 'Pause animation';
+      this.button?.setAttribute('aria-label', label);
+      this.button?.setAttribute('title', label);
+      this.schedule();
+    };
+  }
+
+  if (!customElements.get('event-history-replay')) {
+    customElements.define('event-history-replay', EventHistoryReplay);
+  }
+</script>
+
+<style>
+  event-history-replay { display: block; --replay-step: 3; }
+  .history-replay { margin: 2rem 0; color: var(--sl-color-white); font-size: 1rem; line-height: 1.5; }
+  .history-replay :is(div, ol, li, strong, span, output) { margin: 0; }
+  .history-replay-heading { display: flex; align-items: center; justify-content: space-between; min-height: 2.75rem; margin-bottom: .75rem; }
+  .replay-toggle { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; padding: 0; color: var(--sl-color-gray-2); background: transparent; border: 1px solid var(--docs-line); border-radius: .375rem; cursor: pointer; }
+  .replay-toggle[hidden] { display: none; }
+  .replay-toggle:hover { color: var(--sl-color-white); border-color: var(--sl-color-gray-3); }
+  .replay-toggle svg { grid-area: 1 / 1; }
+  .replay-toggle path { stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .play-icon, [data-paused='true'] .pause-icon { display: none; }
+  [data-paused='true'] .play-icon { display: block; }
+  .history-replay-layout { display: grid; grid-template-columns: minmax(0, 1fr) clamp(6.5rem, 28%, 12rem); gap: clamp(.75rem, 3vw, 2rem); align-items: center; padding-left: 1.25rem; }
+  .history-event-stack { position: relative; }
+  .history-events { display: grid; gap: .75rem; padding: 0; list-style: none; }
+  .history-events li { display: flex; flex-direction: column; justify-content: center; gap: .25rem; height: 6rem; padding: .75rem; border: 1px solid var(--diagram-line); border-radius: .5rem; background: var(--diagram-surface); line-height: 1.5; }
+  .history-events strong { color: var(--diagram-ink); font-weight: 650; }
+  .history-events [data-current='true'] { outline: 2px solid var(--diagram-event-ink); outline-offset: 2px; }
+  .history-cursor { position: absolute; top: 0; left: -1.25rem; color: var(--diagram-event-ink); fill: currentColor; transform: translateY(calc((var(--replay-step) - 1) * 6.75rem + 3rem - 10px)); }
+  [data-animated='true'] .history-cursor { transition: transform 240ms ease; }
+  [data-phase='0'] .history-cursor { visibility: hidden; transition: none; }
+  [data-phase='1'] .history-cursor { transition: none; }
+  .history-stock { display: grid; justify-items: center; gap: .5rem; text-align: center; font-variant-numeric: tabular-nums; color: var(--diagram-ink); }
+  .history-stock output { font-size: clamp(2.5rem, 7vw, 4rem); line-height: 1.2; font-weight: 650; }
+  .history-stock [data-stock-calculation] { white-space: nowrap; }
+  @media (prefers-reduced-motion: reduce) { .history-cursor { transition: none; } }
+</style>

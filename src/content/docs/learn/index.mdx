@@ -12,7 +12,9 @@ next: true
 
 import EventModelTour from '../../../components/learn/EventModelTour.astro';
 
-Events record facts the application has accepted. That makes the boundary around them important: a customer cannot declare that the shop accepted an order simply by sending an `OrderPlaced` event.
+The mug shop in [Keep the facts behind the numbers](/introduction/history/#record-what-happened) records accepted orders as events and uses them to calculate available stock.
+
+An event is a fact the application has accepted. That makes the boundary around it important: a customer cannot declare that the shop accepted an order simply by sending an `OrderPlaced` event.
 
 Consider a customer asking for four mugs when only three remain. **Asking for an order and having an accepted order are different things.** The application needs a way to hear the request, check it, and refuse it without consuming stock.
 

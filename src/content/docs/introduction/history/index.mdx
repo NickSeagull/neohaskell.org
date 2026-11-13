@@ -11,8 +11,13 @@ next: true
 ---
 
 import EventModelTour from '../../../../components/learn/EventModelTour.astro';
+import EventHistoryReplay from '../../../../components/learn/EventHistoryReplay.astro';
 
-The shop's questions determine what the application needs to remember. Consider an accepted order: the shop starts with three mugs, and accepting an order for one commits that mug to the customer. Two remain available.
+A stock count tells the next customer how many mugs are available. **Events explain what happened to make that number change.**
+
+Consider the mug shop introduced in [The work behind the code](/introduction/#the-questions-that-change-the-software), where a request for online orders raised questions about the shop's promises to its customers.
+
+Here, the shop has three mugs. Accepting an order for one commits that mug to the customer, leaving two available.
 
 <EventModelTour kind="story" />
 
@@ -24,29 +29,25 @@ Saving only the latest stock value loses that distinction. NeoHaskell records th
 
 The event's name carries meaning. `OrderPlaced` tells the application that the shop accepted an order. Breakage needs a different event because it represents different work, even when the effect on available stock is identical.
 
-| Information retained | What it establishes |
-| --- | --- |
-| Current stock: 2 | Two mugs are available now. |
-| Stock snapshots: 3, then 2 | Stock decreased by one. |
-| Order placed: 1 ceramic mug | An order was accepted; the shop has an order to prepare. |
-
-Keeping versions of the stock value preserves the difference between two numbers. **Recording events preserves the business meaning of the change.** The developer chooses that meaning explicitly instead of leaving someone to reconstruct it later.
+**Recording events preserves the business meaning of the change.** The developer chooses that meaning explicitly instead of leaving someone to reconstruct it later from a stock number.
 
 ## Calculate the present from the past
 
-In NeoHaskell, **events are the source of truth for application state**. Starting with the shop's opening stock of three, applying the accepted order for one produces the current stock of two. Deriving state from recorded events is called **Event Sourcing**.
+In NeoHaskell, **events are the source of truth for application state**. To calculate available stock, start with no mugs and follow what happened: the shop received three, then accepted an order for one. The result is two available mugs. Deriving state from recorded events is called **Event Sourcing**.
 
 Suppose the customer then cancels before dispatch, and the shop returns the mug to available stock. The application records `OrderCancelled`, bringing availability back to three. It keeps the original order event as well. An order that was cancelled is a different history from an order that never existed.
+
+<EventHistoryReplay />
 
 Corrections follow the same principle: record the correction and apply its effect. Changing the present does not require rewriting the account of how it happened.
 
 This history also makes calculations repairable. If a stock calculation contains a bug, fixing it and applying the history again rebuilds the derived state. **Replay recalculates state**; it does not place the order or charge the customer again.
 
-## A snapshot saves a calculation
+## Won't this get slow as the history grows?
 
-Recalculating from the first event on every operation would repeat work. NeoHaskell uses **snapshots** to save derived state at a known point in the history, then applies later events from there.
+The history grows as people use the application, but **NeoHaskell does not start from the first event for every operation**. It keeps already-calculated state and applies later changes from that point. Reading an answer uses maintained data instead of replaying the entire history for each page visit.
 
-A snapshot answers what the state was at that point. Events explain the business changes that led to it. Saving more versions of a stock number cannot recover a reason that was never recorded.
+That work is handled internally. The application keeps its account of what happened without making every new order recalculate all the orders that came before it.
 
 ## Keep the facts future questions need
 

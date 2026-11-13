@@ -39,6 +39,8 @@ For NeoHaskell homepage work, product explanations, metadata, or capability evid
 
 For NeoHaskell documentation pages, examples, navigation, or styling, load `$neohaskell-docs`. For a rejected direction, corrected feedback scope, conflicting constraints, or ambiguous design reference, load `$design-feedback`. Both use the existing repository records; later explicit user direction can supersede the baseline within its stated scope. If discovery has not refreshed, read `${CODEX_HOME:-$HOME/.codex}/skills/<skill-name>/SKILL.md`.
 
+For documentation page openings and reused examples or concepts, load `$documentation-entry-points`; every page must make sense when reached directly, with named contextual links rather than positional references.
+
 For conceptual lessons, load `$neohaskell-progressive-explanations`. It owns page purpose, editorial conviction, connected examples, and the fresh adversarial reader review required for new or substantially rewritten arguments. Review the page's intended effect and rendered reading rhythm as well as technical accuracy. Comparisons with other development approaches are an internal test, not mandatory public concessions. Combine that review with the teaching-example review when both apply.
 
 # Diagram colors and terminology

@@ -13,7 +13,9 @@ next: true
 import GrowthComparison from '../../../../components/learn/GrowthComparison.astro';
 import ShopEventModel from '../../../../components/learn/ShopEventModel.astro';
 
-The shop now has a way to request changes, record accepted facts, and answer questions. To design the application, those parts need to describe a complete experience: a customer sees stock, orders a mug, and finds out whether the shop accepted the order.
+Consider the mug shop introduced in [The work behind the code](/introduction/#the-questions-that-change-the-software). Accepting an order sets aside the requested mugs for the customer. To design its application, we need to connect the whole experience: a customer sees stock, orders a mug, and finds out whether the shop accepted the order.
+
+[Protect changes and answer questions](/learn/) explains the individual parts: a command requests a change, an event records an accepted fact, and a query supplies an answer.
 
 **Event Modeling connects the parts into a process people can examine together.** It puts screens, commands, events, and queries in one model, showing where information comes from and where it is needed. A missing connection becomes a question to resolve with the people running the business.
 
