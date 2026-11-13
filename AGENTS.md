@@ -53,7 +53,7 @@ For NeoHaskell diagrams, load `$neohaskell-diagram-colors`. For inline Event Mod
 
 When choosing or simplifying a teaching graphic, load `$minimal-teaching-visuals` for representation choice and the test of what each element contributes to the explanation.
 
-In NeoHaskell examples, bind local values with `let` statements inside `do` blocks. Do not use `let ... in` expressions. Use `else do` when an else branch needs a local binding.
+For NeoHaskell code examples, load `$neohaskell-code-examples`. It owns record layout with opening braces beside constructors and commas at field ends, plus local bindings inside `do` blocks.
 
 Whenever creating or materially changing a teaching example, use `$learning-example-review` from the active Codex skills directory. Read its `SKILL.md` and complete its fresh-subagent visual review and simplification loop before finishing. If discovery has not refreshed, resolve it at `${CODEX_HOME:-$HOME/.codex}/skills/learning-example-review/SKILL.md`.
 

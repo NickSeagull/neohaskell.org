@@ -16,7 +16,7 @@ Six top-level sections contain 64 destinations. Start here has four conceptual p
 
 `/introduction/history/` links the originating shop discussion and restates the accepted-order stock policy. The simple customer diagram illustrates the current answer. An animated stack of recorded events replaces the snapshot comparison table: receive three mugs, place an order for one, cancel it. A descending cursor updates the derived stock from zero to three, two, and three. The performance section answers whether growing history makes routine work slow, without teaching snapshots as a user-facing concept.
 
-`/learn/` explains why a requested change cannot declare its own accepted fact. Commands and decisions protect that boundary, integrations separate external work, and queries maintain answers. The stock shown on a screen does not authorize a new order; the decision checks current state. The command block is illustrative plain text.
+`/learn/` explains why a requested change cannot declare its own accepted fact. Its illustrative PlaceOrder value uses Haskell record construction without a type declaration. Pure decisions and their concrete development benefits come before integrations: test coverage, reproducibility, refactoring, independent infrastructure, and local reasoning. A short question then introduces integration workers that only execute their task; the application keeps its business decisions. Implementation-language and HTTP details are deliberately deferred. Queries maintain answers. The stock shown on a screen does not authorize a new order; the decision checks current state.
 
 `/introduction/event-modeling/` connects the parts in an initial order/cancellation sketch and uses its missing information to ask further business questions. The connected Event Model and conceptual effort comparison remain separate sections. Shared cancellation/dispatch contracts explain bounded change; the visual IDE connects the source model to inspecting existing code and generated changes.
 
@@ -30,6 +30,8 @@ The updated progressive-explanations skill owns page purpose, conviction, connec
 
 Current animation evidence is in [history-bump-2026-11-13](../reviews/history-bump-2026-11-13/authoring.md). Its fresh Astra visual review returns keep, with no material corrections; the production build and 32 targeted browser checks pass. The accepted direct-entry revision and its earlier 19 tests and 57 browser checks remain in [history-entry-2026-11-13](../reviews/history-entry-2026-11-13/authoring.md). The earlier prose revision is recorded in [editorial-intro-2026-11-13](../reviews/editorial-intro-2026-11-13/authoring.md). Technical checks, reviewer verdicts, and owner acceptance remain separate records.
 
+The command record and purity-first argument are recorded in [pure-decisions-2026-11-13](../reviews/pure-decisions-2026-11-13/authoring.md). A fresh Astra review returned editorial ready and visual keep. The build, skill validation, and 19 browser checks passed. The neohaskell-code-examples skill owns constructor-line opening braces, field-end commas, and local bindings inside do blocks.
+
 Most other destinations remain one-paragraph page plans, excluded from Pagefind and external indexing. The six substantive pages and planning map are internally searchable; the map remains externally noindexed. Setup and Resources retain their existing content.
 
 ## Translation and delivery
@@ -40,4 +42,4 @@ Keep one development server at http://127.0.0.1:4323/introduction/ from the cano
 
 ## History
 
-The owner accepted the ordinary guide format on 9 November and the concrete index and diagram style on 13 November. The progressive rewrite split Start here from setup. Its later editorial correction supersedes defensive prose, automatic final navigation paragraphs, and a first-page shop example that immediately solved its stock policy. Earlier evidence remains in its dated review folders. The current pre-change checkpoint is `c85efa0fcfa494aa6b5f3eab22bc20420b7b96cf`.
+The owner accepted the ordinary guide format on 9 November and the concrete index and diagram style on 13 November. The progressive rewrite split Start here from setup. Its later editorial correction supersedes defensive prose, automatic final navigation paragraphs, and a first-page shop example that immediately solved its stock policy. Earlier evidence remains in its dated review folders. The current pre-change checkpoint is `0d37dc466b4e42dc300f4364257193c666f2aeb6`.
