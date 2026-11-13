@@ -106,32 +106,33 @@ The visual model is derived from the source declarations. When those declaration
 Here is the cancellation chapter from the shop's model. The example uses the shop's `Order`, command, event, and query types, already defined elsewhere:
 
 ```haskell
-orders = feature "Orders" do
-  chapter "Cancel order" do
-    slice "Cancel before dispatch" do
-      entity @Order do
-        command @CancelOrder do
-          produces @OrderCancelled
+orders =
+  feature "Orders" do
+    chapter "Cancel order" do
+      slice "Cancel before dispatch" do
+        entity @Order do
+          command @CancelOrder do
+            produces @OrderCancelled
 
-      rule "Cancel before dispatch" do
-        orderId <- requestValue @Uuid
-        given do
-          event OrderPlaced {
-            orderId = orderId,
-            quantity = 1
-          }
-        when CancelOrder { orderId = orderId }
-        therefore do
-          event OrderCancelled {
-            orderId = orderId,
-            quantity = 1
-          }
+        rule "Cancel before dispatch" do
+          orderId <- requestValue @Uuid
+          given do
+            event OrderPlaced {
+              orderId = orderId,
+              quantity = 1
+            }
+          when CancelOrder { orderId = orderId }
+          therefore do
+            event OrderCancelled {
+              orderId = orderId,
+              quantity = 1
+            }
 
-    slice "Show restored stock" do
-      query @AvailableMugs do
-        readsFrom @Order do
-          onEvent @OrderPlaced
-          onEvent @OrderCancelled
+      slice "Show restored stock" do
+        query @AvailableMugs do
+          readsFrom @Order do
+            onEvent @OrderPlaced
+            onEvent @OrderCancelled
 ```
 
 **The hierarchy in the diagram is the hierarchy in the code.** The chapter contains a command slice and a query slice. `produces` declares the command's event; `readsFrom` and `onEvent` declare which history supplies the query. The stock query listens to both placed and cancelled orders so its answer reflects both changes.
