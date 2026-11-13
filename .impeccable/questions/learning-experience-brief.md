@@ -1,6 +1,6 @@
 # Documentation experience
 
-Current direction on 13 November 2026: every page must work as a direct entry point, using named contextual links and the minimum local recap rather than assuming linear reading. This extends the accepted editorial direction.
+Current direction on 13 November 2026: every page works as a direct entry point, with named contextual links and enough local context. The owner accepted that revision and requested an event bump toward the stock value instead of the arithmetic row, with no pause button.
 
 Earlier on the same date, the owner accepted the revised Start here prose as much better and specified that NeoHaskell is presented as a language, with integrated application capabilities. The One Person Framework philosophy remains the reference for one developer understanding and building the whole application with AI or by hand. The language identity supersedes the earlier language-and-framework pitch. Translation and deployment remain postponed.
 
@@ -20,7 +20,7 @@ Six top-level sections contain 64 destinations. Start here has four conceptual p
 
 `/introduction/event-modeling/` connects the parts in an initial order/cancellation sketch and uses its missing information to ask further business questions. The connected Event Model and conceptual effort comparison remain separate sections. Shared cancellation/dispatch contracts explain bounded change; the visual IDE connects the source model to inspecting existing code and generated changes.
 
-The five preserved diagrams use command blue, event orange, cyan-green queries, and neutral integrations through `src/styles/diagram-colors.css`. The large Event Model retains readable horizontal phone scrolling. The new event-history animation loops while visible, with a pause/resume button and a complete static result for reduced motion or no JavaScript. A whole journey is not presented as one four-primary DSL slice.
+The five preserved diagrams use command blue, event orange, cyan-green queries, and neutral integrations through `src/styles/diagram-colors.css`. The large Event Model retains readable horizontal phone scrolling. The event-history animation loops while visible. Each selected event nudges toward the stock value, which changes at impact and briefly responds. The arithmetic row and pause button are removed at the owner's request. Reduced motion and no JavaScript retain the complete static result. A whole journey is not presented as one four-primary DSL slice.
 
 ## Evidence and editorial review
 
@@ -28,7 +28,7 @@ The [source review](../reviews/progressive-intro-2026-11-13/source-review.md) pi
 
 The updated progressive-explanations skill owns page purpose, conviction, connected examples, and adversarial reader review. The documentation-entry-points skill owns direct-entry context and stable named links; it is applied to the history, commands, and modeling openings. Comparison with another competent development approach is an internal test, not a compulsory public concession. Product convictions remain firm; capability claims remain grounded. The docs skill owns prose rhythm and semantic emphasis. Plain-copy owns endings without duplicated navigation.
 
-Current animation and direct-entry evidence is in [history-entry-2026-11-13](../reviews/history-entry-2026-11-13/authoring.md). Its fresh Astra review returns editorial ready and visual keep, with no material findings. The current build, 19 tests, and 57 targeted browser checks pass. The accepted prose revision and its earlier checks remain recorded in [editorial-intro-2026-11-13](../reviews/editorial-intro-2026-11-13/authoring.md). Technical checks, reviewer verdicts, and owner acceptance remain separate records.
+Current animation evidence is in [history-bump-2026-11-13](../reviews/history-bump-2026-11-13/authoring.md). Its fresh Astra visual review returns keep, with no material corrections; the production build and 32 targeted browser checks pass. The accepted direct-entry revision and its earlier 19 tests and 57 browser checks remain in [history-entry-2026-11-13](../reviews/history-entry-2026-11-13/authoring.md). The earlier prose revision is recorded in [editorial-intro-2026-11-13](../reviews/editorial-intro-2026-11-13/authoring.md). Technical checks, reviewer verdicts, and owner acceptance remain separate records.
 
 Most other destinations remain one-paragraph page plans, excluded from Pagefind and external indexing. The six substantive pages and planning map are internally searchable; the map remains externally noindexed. Setup and Resources retain their existing content.
 
@@ -36,8 +36,8 @@ Most other destinations remain one-paragraph page plans, excluded from Pagefind 
 
 Saved translations and their manifest remain untouched. Draft locale docs use native English fallback; no translation model is invoked. English homepage prose and metadata now use the language identity; saved localized homepage values remain unchanged while translation is paused. README owns restoration of the normal loader and freshness gate.
 
-Keep http://127.0.0.1:4324/introduction/ available from the canonical checkout `/Users/nick/egregoreOS/repos/neohaskell.org` so MDX changes reload through the Work-directory symlink. Do not deploy this authoring iteration.
+Keep the active development preview at http://127.0.0.1:4323/introduction/ available from the canonical checkout `/Users/nick/egregoreOS/repos/neohaskell.org` so MDX changes reload through the Work-directory symlink. Do not deploy this authoring iteration.
 
 ## History
 
-The owner accepted the ordinary guide format on 9 November and the concrete index and diagram style on 13 November. The progressive rewrite split Start here from setup. Its later editorial correction supersedes defensive prose, automatic final navigation paragraphs, and a first-page shop example that immediately solved its stock policy. Earlier evidence remains in its dated review folders. The current pre-change checkpoint is `021247a0d318eedd5ad52d90bd12beb55622cf1f`.
+The owner accepted the ordinary guide format on 9 November and the concrete index and diagram style on 13 November. The progressive rewrite split Start here from setup. Its later editorial correction supersedes defensive prose, automatic final navigation paragraphs, and a first-page shop example that immediately solved its stock policy. Earlier evidence remains in its dated review folders. The current pre-change checkpoint is `c85efa0fcfa494aa6b5f3eab22bc20420b7b96cf`.
