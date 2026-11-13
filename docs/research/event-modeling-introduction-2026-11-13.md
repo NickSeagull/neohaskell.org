@@ -1,5 +1,7 @@
 # Event Modeling introduction
 
+Historical research and first editorial draft. The later [visual-tour correction](event-modeling-tour-2026-11-13.md) supersedes the public title, author mentions, table, and paper exercise below. The primary-source evidence remains relevant.
+
 Research and editorial proposal, 13 November 2026. Website checkpoint: `46f9c39551ab4c8807a810b7f69ea9bddc63a208`. Framework source inspected at `033ae4a570686cd885ca14c6595997d9498d5287`. This record proposes English content only. It does not report a rendered teaching-example review or an executed NeoHaskell application.
 
 ## Recommendation

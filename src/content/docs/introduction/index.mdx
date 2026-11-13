@@ -1,8 +1,8 @@
 ---
-title: Understand the application together
-description: Use Event Modeling to agree how an application should behave before you build or change it.
+title: Design an application you understand
+description: Follow a visual tour from a customer's intention to recorded facts, useful answers, and small behaviors you can build and change.
 sidebar:
-  label: Start with Event Modeling
+  label: Design your application
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 2
@@ -10,53 +10,68 @@ prev: false
 next: true
 ---
 
-Your value as a developer starts with helping people agree what their application should do. The people running a business know its work, its exceptions, and what customers need. You help turn that knowledge into behavior everyone can discuss and check.
+import EventModelTour from '../../../components/learn/EventModelTour.astro';
 
-Consider a shop owner asking, "Let customers order mugs online." That sounds clear until you ask when a mug stops being available. When someone adds it to a basket? When the shop accepts the order? When payment arrives? Each answer describes a different application.
+<p class="docs-lead">See what your application does. Agree what should change. Give the next behavior a clear place to belong.</p>
 
-**Event Modeling gives that conversation a shared picture.** You lay out what someone sees, what they try to do, what happens, and what information becomes available next. You can use it to design a new application or understand one your business already relies on.
+The most useful conversation starts with the work people need to do. A shop owner wants customers to order ceramic mugs. You help turn that intention into a story the owner, the developers, and a coding agent can all follow.
 
-## Follow one order
+The shop starts with three mugs and no orders. For this example, accepting an order immediately uses the requested stock. A customer orders one:
 
-Our shop has three ceramic mugs available. The owner chooses a simple policy: accepting an order uses the requested stock immediately.
+<EventModelTour kind="story" />
 
-| Moment | What happens |
-| --- | --- |
-| Before ordering | The customer sees three mugs available. |
-| Customer action | The customer asks to order one mug. |
-| Shop decision | Enough stock is available, so the shop accepts the order. |
-| Recorded fact | An order for one mug has been placed. |
-| After ordering | The customer sees confirmation. The available stock is now two. |
+This picture already makes a business choice visible: stock changes when the order is accepted. Choosing a different moment, such as payment, would change the application. Agreeing that behavior is part of designing the software.
 
-Read this story with the shop owner. The important work is agreeing what each step means. Does "available" include mugs already promised to another customer? What should the customer see when an order cannot be accepted?
+**Event Modeling** gives these conversations a common visual language. It connects what people want to do, the facts that follow, and the information they need next. The same picture helps you plan a new application or understand one that already exists.
 
-For this first model, if no mugs remain, the shop rejects the order and explains that it is sold out. There is no accepted order to record, and stock stays at zero. Payment and delivery are separate behaviors we can model later.
+## Separate an intention from what happened
 
-[Adam Dymitruk's introduction to Event Modeling](https://eventmodeling.org/posts/what-is-event-modeling/) connects a timeline of facts with the actions and screens around them. That connection gives both business people and developers something concrete to question.
+A **command** expresses an intention: order one mug. It gives the application something to consider. The command alone does not mean an order exists.
 
-## Find the missing decision
+A **decision** checks the conditions for accepting it. Here, the quantity must be positive and enough stock must be available. With three mugs in stock, an order for one passes those checks.
 
-A model becomes useful when it reveals something you have not agreed yet. Suppose the owner now says, "Customers should be able to cancel." Follow the story again: does accepting a cancellation make that mug available to sell? What must the customer see afterward?
+An **event** records the accepted fact: an order for one mug was placed. Its name describes something that has happened, so other parts of the application can use that fact.
 
-Write the unanswered question beside the step it affects. Ask the person responsible for that policy and update the story together. An AI agent can suggest cases and help implement the answer, but the business decision still belongs to you and the people who know the work.
+<EventModelTour kind="decision" />
 
-For an existing application, begin with a real customer task and describe what happens today. Compare that story with someone who uses or supports the application. Mark any behavior you have assumed and check it against the running system. [Martin Dilger recommends starting with one small part of a system](https://eventmodelers.ai/docs/blog/bring-event-modeling-company/) to uncover differences in how a team understands it.
+If the shop has no mugs, the same command is rejected. No order-placed event is recorded and stock stays at zero. Drawing that boundary helps everyone distinguish a customer's intention from a promise the shop has actually made.
 
-## Try it on paper
+## Turn recorded facts into useful answers
 
-Take five minutes with one behavior from your own work, such as approving an expense or booking an appointment.
+After accepting the order, the customer needs confirmation and the next visitor needs the remaining stock. A **query** answers a question from the application's state without changing it.
 
-1. Write what the person needs to see before acting.
-2. Add the action, the fact that should follow, and what they see afterward.
-3. Describe one situation where the action should be refused. Write the expected response.
-4. Review the story with someone who knows the work. Record one unanswered question or confirm one assumption together.
+The recorded order tells us one mug was taken from the opening stock of three. We can use that fact to answer different questions:
 
-For our shop, a checkable example is: "With three mugs available, accepting an order for one leaves two. With no mugs available, the order is rejected and stock stays at zero."
+<EventModelTour kind="queries" />
 
-## Carry the story into NeoHaskell
+The event remains part of the history. The answers can change as more orders are accepted. This separation lets you trace a displayed number back to the behavior that produced it, and decide what information a new screen needs.
 
-Event Modeling helps you describe behavior. Event Sourcing is a way to implement an application by retaining its events and deriving state from that history. You can model a process before choosing how to store its data.
+Payment and delivery are outside this first order story. Each can become another behavior with its own intentions, decisions, facts, and answers.
 
-NeoHaskell is an AI-first language and framework that carries this way of thinking into the application. Commands express intentions, decisions enforce the agreed conditions, events record what happened, and queries answer questions about the resulting state. Its visual IDE lets you inspect the event model as a diagram as you work on the application.
+## Keep growth close to linear
 
-That gives you and your agent a concrete behavior to build and a result you can check. Continue to [Core concepts](/learn/) to follow the same order through those four parts before installing NeoHaskell.
+As an application grows, hidden dependencies can turn one new feature into changes across several old ones. Event Modeling aims to keep growth closer to linear: add a small behavior with explicit inputs and outputs, then use the same pattern again.
+
+We call one of these bounded behaviors a **slice**. Placing, cancelling, and dispatching an order are different slices. Each has its own decision and outcome. Cancellation and dispatch share an order's identity and status, and must agree on what cancelled means.
+
+<EventModelTour kind="growth" />
+
+The useful unit of work becomes one behavior you can explain and test. You can discuss cancellation without reopening every detail of ordering, and give an agent a focused change with a checkable result.
+
+That depends on clear boundaries and stable shared contracts. Changing what an order means can still affect several slices. The model makes that coordination visible so the team can plan it, rather than discover it accidentally while changing code.
+
+## Use the model to understand what you already have
+
+In an existing application, follow one real task through the same four questions: what was asked, which conditions were checked, what happened, and what information was shown afterward.
+
+Put the business explanation beside the application's actual behavior. A disagreement becomes specific: perhaps the shop owner expects a cancellation to restore stock, but the current application only changes the order status. The model gives both sides a precise place to discuss the missing behavior.
+
+Your contribution is turning assumptions into shared, testable decisions. An AI agent can help implement them; the people who understand the business decide what those decisions should be.
+
+## Carry the picture into NeoHaskell
+
+NeoHaskell is an AI-first language and framework built around commands, decisions, events, and queries. These become explicit parts of the application. Its visual IDE shows their relationships, so you can inspect the model while understanding or changing the software.
+
+Event Modeling supplies the shared design. Event Sourcing supplies a way to retain events and derive state from their history. You can understand the design before choosing storage or installing tools.
+
+Continue to [Core concepts](/learn/) to look more closely at the same shop and the accepted and rejected outcomes that its implementation must preserve.

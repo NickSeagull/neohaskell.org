@@ -1,6 +1,6 @@
 # Documentation experience
 
-Status on 13 November 2026: the owner accepted the concrete 61-page navigation, requested every sidebar group expanded on entry, and asked for a motivating Event Modeling introduction before code or installation. Translation is explicitly postponed until the documentation is complete. The current implementation has 62 pages, an English introduction, and native English fallback at the other locale routes. The introduction received an independent Astra teaching-review verdict of keep. Owner acceptance of this new introductory article remains unrecorded.
+Status on 13 November 2026: the owner accepted the concrete 61-page navigation, requested every sidebar group expanded on entry, and asked for a motivating Event Modeling introduction before code or installation. Translation is explicitly postponed until the documentation is complete. The current implementation has 62 pages, an English introduction, and native English fallback at the other locale routes. The owner subsequently corrected the initial table-and-exercise introduction toward a visual tour. The current article uses four static diagrams, removes author mentions and the paper exercise, and introduces terminology through the example. Its fresh rendered review and targeted verification are recorded separately from the earlier navigation pass.
 
 ## Current direction
 
@@ -12,9 +12,9 @@ The desktop sidebar is 18rem wide. Links and disclosure controls retain minimum 
 
 ## Entry and content
 
-The homepage's main documentation links enter `/introduction/`, labeled Start with Event Modeling in navigation. The article motivates the developer's role in agreeing application behavior with business people. One mug-order story and a four-step paper exercise help readers identify a missing policy, describe success and refusal, and investigate an existing application. It credits original posts by Adam Dymitruk and Martin Dilger, distinguishes Event Modeling from Event Sourcing, and connects the shared model to NeoHaskell's implemented visual IDE. It contains no code or installation prerequisites.
+The homepage's main documentation links enter `/introduction/`, labeled Design your application in navigation. The article motivates the developer's role in agreeing application behavior with business people. Four diagrams follow the customer's order, explain command/decision/event, derive useful query answers, and show bounded behavior slices. The prose explains linear growth as a design aim dependent on explicit contracts, covers understanding an existing application, and connects the shared model to NeoHaskell's implemented visual IDE. Author references remain in research records; the public article has no paper exercise. It contains no code or installation prerequisites.
 
-The [research and draft](../../docs/research/event-modeling-introduction-2026-11-13.md) pin the IDE and framework evidence to source revision 033ae4a. Code-to-model synchronization and diagram inspection are implemented; diagram-to-Haskell field generation is not implied. No NeoHaskell runtime was executed.
+The [source research](../../docs/research/event-modeling-introduction-2026-11-13.md) and [visual-tour correction](../../docs/research/event-modeling-tour-2026-11-13.md) pin the IDE and framework evidence to source revision 033ae4a. Code-to-model synchronization and diagram inspection are implemented; diagram-to-Haskell field generation is not implied. No NeoHaskell runtime was executed.
 
 The introduction leads into the existing Core concepts article. An eight-page first-project sequence then reaches installation, creation, launch, first response, project files, and agent setup. The shop tutorial remains seven pages. The map and independent pages have no unrelated pagination. Existing Core concepts, setup, and Resources retain their substantive prose and examples; Core concepts gains only the previous-page link for the new introduction.
 
@@ -28,7 +28,7 @@ Do not generate translations during the English authoring phase. Saved translate
 
 ## Verification and acceptance
 
-The [expanded-navigation review](../reviews/sidebar-2026-11-13/expanded-navigation.md) verifies native open defaults and manual keyboard control. The [fresh teaching review](../reviews/event-modeling-2026-11-13/teaching-review.md) approves the rendered introductory story without a correction round. The [verification record](../reviews/event-modeling-2026-11-13/verification.md) records 19 passing tests, a clean production build, 558 documentation locale routes, and 2915 passing browser assertions. Review approval, technical checks, publication, and owner acceptance remain separate.
+The [expanded-navigation review](../reviews/sidebar-2026-11-13/expanded-navigation.md) verifies native open defaults and manual keyboard control. The [earlier teaching review](../reviews/event-modeling-2026-11-13/teaching-review.md) covers the superseded table-and-exercise version. The [tour verification](../reviews/event-modeling-tour-2026-11-13/verification.md) records 24 targeted browser checks, 19 passing tests, a clean 568-page build, and the fresh review. The [verification record](../reviews/event-modeling-2026-11-13/verification.md) records 19 passing tests, a clean production build, 558 documentation locale routes, and 2915 passing browser assertions. Review approval, technical checks, publication, and owner acceptance remain separate.
 
 Any future new or materially changed teaching example requires learning-example-review. Static examples remain the default; interaction must teach a causal relationship and retain keyboard, touch, and static reading access.
 
