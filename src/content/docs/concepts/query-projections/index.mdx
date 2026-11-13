@@ -1,0 +1,17 @@
+---
+title: "Query projections and replay"
+description: "Page plan. How can the same history answer different questions, and how does a query catch up?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Page plan
+
+This page will explain query state as a separately maintained answer derived from selected event sources. The cart and stock activity query will show that a query can combine entities without merging their command boundaries. A diagram will separate event history, projection updates, and persisted checkpoint position. It will compare resuming compatible progress with rebuilding changed query state, including readiness during replay, without turning the explanation into a recovery runbook.

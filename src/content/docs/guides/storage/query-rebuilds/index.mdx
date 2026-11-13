@@ -1,0 +1,17 @@
+---
+title: "Persist and rebuild queries"
+description: "Page plan. How do query results recover after a restart or projection change?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Page plan
+
+This page will configure persistent query storage separately from event history and follow checkpoint resume and an explicitly verified rebuild. It will explain that the current query hash is derived from the query name, so changing projection code alone does not automatically invalidate saved progress. A timeline will show live events arriving during replay and when readiness becomes available. A rebuild failure will connect diagnostic evidence to recovery, which depends on usable history and does not reverse external effects.

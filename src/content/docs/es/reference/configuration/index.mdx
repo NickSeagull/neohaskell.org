@@ -1,6 +1,6 @@
 ---
-title: Configuración
-description: "Plan de la página. Consulta los valores obligatorios, los valores predeterminados, las sobrescrituras y los límites de la configuración."
+title: "Configuración en tiempo de ejecución"
+description: "Plan de la página. ¿Qué valor prevalece cuando no coinciden los valores predeterminados, el entorno y los argumentos?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plan de la página
 
-Esta página enumerará los campos de configuración verificados, los valores predeterminados, los valores obligatorios y las variables de entorno que los sobrescriben para la versión documentada del framework. Cubrirá los transportes, el almacenamiento de eventos y consultas, las conexiones con proveedores y los valores secretos sin mostrar credenciales reales. Una tabla coherente y configuraciones completas pequeñas mostrarán cómo encajan los valores; los ejemplos no válidos incluirán el diagnóstico real y su corrección cuando se hayan verificado. Las entradas enlazarán a la guía práctica correspondiente en vez de repetir todo el procedimiento.
+Esta página definirá los campos de `Config`, la documentación obligatoria, los valores predeterminados, los valores obligatorios, los nombres de entorno, las opciones de comando, los registros anidados y la ocultación de secretos. Una tabla de precedencia mostrará, en este orden, la línea de comandos, el entorno del proceso, dotenv y el valor predeterminado, con un pequeño ejemplo hipotético de puerto. Explicará la carga al inicio, las fábricas de configuración, el orden de registro y las distintas opciones de almacén. Los ajustes específicos de proveedores enlazarán a las guías de tareas, y la configuración de compilación de `neo.json` tendrá su propia página.

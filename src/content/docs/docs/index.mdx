@@ -1,6 +1,6 @@
 ---
 title: Documentation plan
-description: Find existing NeoHaskell guidance and browse the planned tutorials, task guides, explanations, and reference pages.
+description: Find existing NeoHaskell guidance and browse planned installation steps, shop chapters, task guides, concepts, and API reference.
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 2
@@ -13,87 +13,197 @@ head:
       content: noindex
 ---
 
-<p class="docs-lead">Understand the behavior. Build one feature. Check the result.</p>
+<p class="docs-lead">Run a first project. Build a mug shop. Find the task or API you need.</p>
 
-[Core concepts](/learn/), [Set up your agent](/getting-started/), and [Resources](/resources/) contain existing guidance. The other destinations below contain page plans describing the explanations, examples, and figures to be written. For instructions available now, Resources links to upstream syntax, CLI, storage, testing, and authorization guidance.
+[Core concepts](/learn/), [Set up your agent](/getting-started/), and [Resources](/resources/) contain existing guidance. The other destinations contain page plans describing the explanations, examples, and figures to be written. Resources links to instructions available upstream now.
 
-This page will orient readers around a short first journey, independent task guides, deeper explanations, and a predictable reference. It will use a linked reading map to show where each question belongs. The tutorial will follow one shop feature from its specification to a tested backend behavior and callable interface; it will not require a Haskell course. Examples and figures will support the article where they explain a specific idea.
+The first journey will check the Counter starter supplied with NeoHaskell. The tutorial will then build a ceramic-mug shop in that project, from its first decision to a tested HTTP interface. Each task guide will answer an independent question; concepts will explain the design and reference pages will define syntax and API contracts.
 
 ## Start here
 
 <dl class="docs-map">
   <dt><a href="/learn/">Core concepts</a></dt>
-  <dd>Recognize commands, decisions, events, and queries through an order in a small shop.</dd>
+  <dd>What does an application do when an order is accepted or rejected?</dd>
+  <dt><a href="/getting-started/installation/">Install NeoHaskell</a></dt>
+  <dd>What must be installed, and how can I tell the toolchain is available?</dd>
+  <dt><a href="/getting-started/create-project/">Create a project</a></dt>
+  <dd>Where do I run project creation, and what will it produce?</dd>
+  <dt><a href="/getting-started/run/">Run the application</a></dt>
+  <dd>How do I start and stop the starter, and which terminal must remain open?</dd>
+  <dt><a href="/getting-started/first-response/">Check your first response</a></dt>
+  <dd>Is the application actually processing commands and answering queries?</dd>
+  <dt><a href="/getting-started/project-files/">Find your project files</a></dt>
+  <dd>Which file owns the behavior, wiring, configuration, and evidence I am reviewing?</dd>
   <dt><a href="/getting-started/">Set up your agent</a></dt>
-  <dd>Prepare the environment and agent. The planned walkthrough will cover the complete path to a running project and a checked first response.</dd>
+  <dd>How does my coding agent get the project conventions, and what should I ask it to do first?</dd>
+  <dt><a href="/getting-started/troubleshooting/">Fix setup problems</a></dt>
+  <dd>Which setup step failed, and what is the smallest safe correction?</dd>
 </dl>
 
-## Build an application
-
-Follow these four planned chapters in order, using the same shop and the project prepared during setup.
+## Build a mug shop
 
 <dl class="docs-map">
-  <dt><a href="/tutorial/">Model your first feature</a></dt>
-  <dd>Write one specification, including the conditions for acceptance and rejection.</dd>
-  <dt><a href="/tutorial/first-feature/">Implement the feature</a></dt>
-  <dd>Turn the specification into one reviewed backend behavior and callable interface.</dd>
-  <dt><a href="/tutorial/test-behavior/">Test the behavior</a></dt>
-  <dd>Compare events and query results with the intended outcomes.</dd>
-  <dt><a href="/tutorial/change-safely/">Change it safely</a></dt>
-  <dd>Add one requirement and check its effect on existing behavior.</dd>
+  <dt><a href="/tutorial/">Plan the mug shop</a></dt>
+  <dd>What must our one-mug order do?</dd>
+  <dt><a href="/tutorial/first-feature/">Create the shop feature</a></dt>
+  <dd>Where do the shop state and events belong?</dd>
+  <dt><a href="/tutorial/decide-orders/">Accept or reject an order</a></dt>
+  <dd>When should the shop accept or reject an order?</dd>
+  <dt><a href="/tutorial/stock-query/">Query available stock</a></dt>
+  <dd>How do I read the remaining stock?</dd>
+  <dt><a href="/tutorial/http-orders/">Place an order over HTTP</a></dt>
+  <dd>How can I place an order through the running service?</dd>
+  <dt><a href="/tutorial/test-behavior/">Test shop behavior</a></dt>
+  <dd>What checks show that the shop behaves as specified?</dd>
+  <dt><a href="/tutorial/change-safely/">Keep one mug in reserve</a></dt>
+  <dd>How can I change the stock policy without breaking existing behavior?</dd>
 </dl>
 
 ## Solve a task
 
-These planned guides will answer a practical question without requiring the whole tutorial.
+### Agents and interfaces
 
 <dl class="docs-map">
   <dt><a href="/guides/ai-workflow/">Work with an AI agent</a></dt>
-  <dd>Provide context, bound a change, review evidence, and recover from a mistaken implementation.</dd>
-  <dt><a href="/guides/transports/">Expose HTTP and MCP interfaces</a></dt>
-  <dd>Connect application behavior to requests, tool calls, and generated OpenAPI contracts.</dd>
-  <dt><a href="/guides/storage/">Keep data across restarts</a></dt>
-  <dd>Configure persistent event history and query storage, then check a restart.</dd>
-  <dt><a href="/guides/authorization/">Control access</a></dt>
-  <dd>Separate identity from permission and test allowed and denied actions.</dd>
-  <dt><a href="/guides/integrations/">Connect external services</a></dt>
-  <dd>Place provider connections, credentials, and network effects outside pure decisions.</dd>
-  <dt><a href="/guides/files/">Store and retrieve files</a></dt>
-  <dd>Follow file ownership, storage, and permitted access.</dd>
-  <dt><a href="/guides/deployment/">Deploy and operate</a></dt>
-  <dd>Configure the running parts, inspect failures, and verify recovery.</dd>
+  <dd>How do I request and verify a bounded application change?</dd>
+  <dt><a href="/guides/transports/">Expose an HTTP API</a></dt>
+  <dd>How do I call my commands and queries over HTTP?</dd>
+  <dt><a href="/guides/transports/mcp/">Expose MCP tools and resources</a></dt>
+  <dd>How can an agent call this application through MCP?</dd>
+  <dt><a href="/guides/transports/cli/">Run commands from a terminal</a></dt>
+  <dd>How do I invoke my application behavior from a terminal?</dd>
+</dl>
+
+### Data and files
+
+<dl class="docs-map">
+  <dt><a href="/guides/storage/">Keep events across restarts</a></dt>
+  <dd>How do I keep recorded application history when the process stops?</dd>
+  <dt><a href="/guides/storage/query-rebuilds/">Persist and rebuild queries</a></dt>
+  <dd>How do query results recover after a restart or projection change?</dd>
+  <dt><a href="/guides/files/">Upload and retrieve files</a></dt>
+  <dd>How do I attach a user file and restrict its retrieval?</dd>
+  <dt><a href="/guides/files/generated-documents/">Generate a document</a></dt>
+  <dd>How do I keep a server-generated file for its owner?</dd>
+  <dt><a href="/guides/storage/erase-protected-values/">Erase a protected value</a></dt>
+  <dd>How do I make an owned protected value unreadable without deleting history?</dd>
+</dl>
+
+### Identity and access
+
+<dl class="docs-map">
+  <dt><a href="/guides/authentication/">Verify caller identity</a></dt>
+  <dd>How does my HTTP application recognize a caller?</dd>
+  <dt><a href="/guides/authorization/">Authorize a command</a></dt>
+  <dd>Who may run this command against this entity?</dd>
+  <dt><a href="/guides/authorization/query-access/">Restrict query results</a></dt>
+  <dd>Who may read a query and its individual results?</dd>
+</dl>
+
+### External systems
+
+<dl class="docs-map">
+  <dt><a href="/guides/integrations/">Call an external service</a></dt>
+  <dd>How do I perform an external effect after a decision?</dd>
+  <dt><a href="/guides/integrations/inbound-workers/">Run an inbound worker</a></dt>
+  <dd>How can a background source send typed application commands?</dd>
+  <dt><a href="/guides/integrations/oauth-connections/">Connect an external account</a></dt>
+  <dd>How does a user authorize access to a provider account?</dd>
+</dl>
+
+### Deployment and recovery
+
+<dl class="docs-map">
+  <dt><a href="/guides/deployment/">Deploy an application</a></dt>
+  <dd>What must be configured and persisted to run this application elsewhere?</dd>
+  <dt><a href="/guides/deployment/readiness-and-failures/">Check readiness and failures</a></dt>
+  <dd>How do I tell whether the application is ready and locate a failed operation?</dd>
 </dl>
 
 ## Understand the design
 
-These planned explanations will explore why the model works and how to choose useful boundaries.
-
 <dl class="docs-map">
-  <dt><a href="/concepts/event-modeling/">Model application behavior</a></dt>
-  <dd>Reason about ambiguous requirements and multi-step workflows.</dd>
+  <dt><a href="/concepts/event-modeling/">Features, chapters, and slices</a></dt>
+  <dd>How does an application story become a model that stays connected to its implementation?</dd>
+  <dt><a href="/concepts/command-outcomes/">Commands, decisions, and outcomes</a></dt>
+  <dd>What can happen when a command reaches the application?</dd>
+  <dt><a href="/concepts/entities-and-streams/">Entities and event streams</a></dt>
+  <dd>Which facts must a decision consider together, and what happens when commands compete?</dd>
   <dt><a href="/concepts/history-and-state/">History and current state</a></dt>
-  <dd>Distinguish recorded facts from reconstructed state and current query answers.</dd>
+  <dd>Why retain events when the application already has current state?</dd>
+  <dt><a href="/concepts/query-projections/">Query projections and replay</a></dt>
+  <dd>How can the same history answer different questions, and how does a query catch up?</dd>
   <dt><a href="/concepts/pure-decisions/">Pure decisions and effects</a></dt>
-  <dd>Understand deterministic logic, type checks, and external effects.</dd>
+  <dd>What does purity mean when a decision needs context or generated values?</dd>
+  <dt><a href="/concepts/event-driven-workflows/">Workflows across entities</a></dt>
+  <dd>How does one recorded fact cause another part of the application to act?</dd>
+  <dt><a href="/concepts/identity-and-permissions/">Identity and permissions</a></dt>
+  <dd>Why does knowing who someone is not decide what they may do or read?</dd>
 </dl>
 
 ## Reference and help
 
-The reference pages are planned. <a href="/resources/">Resources and project status</a> already links to inspected upstream material and places to get help.
+### Language
 
 <dl class="docs-map">
-  <dt><a href="/reference/language/">Language essentials</a></dt>
-  <dd>Find syntax for reading and reviewing application code, with small examples.</dd>
-  <dt><a href="/reference/core/">Core library</a></dt>
-  <dd>Look up common types and operations by signature, result, and edge case.</dd>
-  <dt><a href="/reference/framework/">Framework building blocks</a></dt>
-  <dd>Connect the application model to entities, commands, decisions, events, and queries in source.</dd>
-  <dt><a href="/reference/cli/">Neo CLI</a></dt>
-  <dd>Look up commands, arguments, working directories, and expected outcomes.</dd>
-  <dt><a href="/reference/configuration/">Configuration</a></dt>
-  <dd>Find required values, defaults, environment overrides, and secret-handling requirements.</dd>
-  <dt><a href="/reference/errors/">Errors and troubleshooting</a></dt>
-  <dd>Find a symptom, its cause, the smallest useful fix, and a recovery check.</dd>
+  <dt><a href="/reference/language/">Syntax and expressions</a></dt>
+  <dd>What does this expression mean?</dd>
+  <dt><a href="/reference/language/types/">Types and records</a></dt>
+  <dd>How do I read or define the shapes in a feature?</dd>
+</dl>
+
+### Core library
+
+<dl class="docs-map">
+  <dt><a href="/reference/core/">Values and common types</a></dt>
+  <dd>Which types and operations are already available through Core?</dd>
+  <dt><a href="/reference/core/containers/">Arrays and maps</a></dt>
+  <dd>How do I transform a collection or look up an item?</dd>
+  <dt><a href="/reference/core/results/">Maybe and Result</a></dt>
+  <dd>How do I represent absence or a recoverable failure?</dd>
+  <dt><a href="/reference/core/tasks/">Tasks and effects</a></dt>
+  <dd>How do I sequence work that can fail?</dd>
+  <dt><a href="/reference/core/json/">JSON and schemas</a></dt>
+  <dd>How do typed values become JSON and API schemas?</dd>
+</dl>
+
+### Framework contracts
+
+<dl class="docs-map">
+  <dt><a href="/reference/framework/">Event models and features</a></dt>
+  <dd>How do the declared features become a running application?</dd>
+  <dt><a href="/reference/framework/commands/">Commands and decisions</a></dt>
+  <dd>What must a command define, and what can a decision return?</dd>
+  <dt><a href="/reference/framework/entities/">Entities and events</a></dt>
+  <dd>How is an entity identified and rebuilt from its events?</dd>
+  <dt><a href="/reference/framework/queries/">Queries and projections</a></dt>
+  <dd>What updates a query row, and what may a caller read?</dd>
+  <dt><a href="/reference/framework/transports/">Transport contracts</a></dt>
+  <dd>What interface does a registered command or query expose?</dd>
+</dl>
+
+### Tooling and configuration
+
+<dl class="docs-map">
+  <dt><a href="/reference/cli/">Neo commands</a></dt>
+  <dd>Which command and flags do I need for local development?</dd>
+  <dt><a href="/reference/cli/model-tools/">IDE, inspect, and validate</a></dt>
+  <dd>How do I inspect or validate the model from the command line?</dd>
+  <dt><a href="/reference/cli/agent-commands/">Skills and agent guidance</a></dt>
+  <dd>How do I select installed skills and refresh matching API guidance?</dd>
+  <dt><a href="/reference/configuration/">Runtime configuration</a></dt>
+  <dd>Which value wins when defaults, environment, and arguments disagree?</dd>
+  <dt><a href="/reference/configuration/project/">neo.json and dependencies</a></dt>
+  <dd>Which project settings control generated build files and framework versions?</dd>
+</dl>
+
+### Errors and help
+
+<dl class="docs-map">
+  <dt><a href="/reference/errors/">Setup and build errors</a></dt>
+  <dd>Why did the development command fail, and what should I check next?</dd>
+  <dt><a href="/reference/errors/runtime/">Startup and request errors</a></dt>
+  <dd>Was the failure configuration, access, a business rejection, or infrastructure?</dd>
   <dt><a href="/resources/">Resources and project status</a></dt>
-  <dd>Read existing source and guides, follow releases, and ask for help.</dd>
+  <dd>Where do I find maintained instructions, version history, and help?</dd>
 </dl>

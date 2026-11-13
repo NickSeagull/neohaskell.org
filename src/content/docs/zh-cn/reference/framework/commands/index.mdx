@@ -1,0 +1,17 @@
+---
+title: "命令与决策"
+description: "页面计划。命令必须定义什么？决策可以返回什么？"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## 页面计划
+
+本页将说明命令记录、`EntityOf`、`getEntityId`、`decide`、`RequestContext`、传输权限和派生辅助函数，并将手动编写的函数映射到公开的 `Command` 方法。精简的结果表将对比 `acceptNew`、`acceptExisting`、`acceptAny`、`acceptAfter` 和 `reject`。`Counter` 决策案例将具体展示接受和拒绝行为。多租户签名和授权钩子将设有锚点；较长的实现和访问策略讲解则放在任务指南中。

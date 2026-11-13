@@ -1,6 +1,6 @@
 ---
-title: Pure decisions and effects
-description: "Page plan. Understand deterministic decision logic and the boundary around external effects."
+title: "Pure decisions and effects"
+description: "Page plan. What does purity mean when a decision needs context or generated values?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Page plan
 
-This page will explain what a decision receives, what it returns, and why external effects belong outside that calculation. It will compare the same input evaluated twice, an accepted command, and a rejected command, using minimal verified source and explicit results. A boundary figure will separate pure logic from network, storage, and file operations. The explanation will connect type checks to the mistakes they can catch while keeping business intent the reader's responsibility, then link to [Connect external services](/guides/integrations/).
+This page will separate constructing a decision from interpreting it and performing effects. A boundary figure will place command data, current entity state, and request context beside the decision description, with UUID generation and protected-value operations in the interpreter. It will explain which inputs must be controlled for repeatable tests and why purity does not prove the intended business behavior. Network integrations will lead to the workflow explanation and task guide.

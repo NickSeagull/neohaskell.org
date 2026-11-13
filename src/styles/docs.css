@@ -22,7 +22,7 @@
   --sl-color-bg-nav: #20132c;
   --sl-color-bg-sidebar: #1c1027;
   --sl-color-hairline: #3c2b4b;
-  --sl-sidebar-width: 16rem;
+  --sl-sidebar-width: 18rem;
   --sl-content-width: 48rem;
   --sl-nav-height: 4.5rem;
   --sl-text-body: 1.125rem;
@@ -84,6 +84,8 @@ h1 { font-weight: 700; letter-spacing: -.03em; }
 .expressive-code .frame { box-shadow: none; }
 .sidebar-content { padding-top: 2rem; }
 .sidebar-content .top-level > li + li { margin-top: 1.5rem; }
+.sidebar-content summary { min-height: 2.25rem; line-height: 1.5; }
+.sidebar-content summary .large { font-size: .95rem; }
 .sidebar-content a { font-size: 1rem; line-height: 1.5; padding-block: .375rem; }
 .sidebar-content .top-level > li > details > summary .large { font-size: .95rem; font-weight: 650; }
 .sidebar-content a[aria-current='page'] { background: var(--sl-color-accent-low); color: var(--sl-color-text-accent); font-weight: 650; }
@@ -105,6 +107,7 @@ h1 { font-weight: 700; letter-spacing: -.03em; }
 @media (max-width: 49.99rem) {
   :root { --sl-text-h1: 2rem; --sl-text-h2: 1.5rem; }
   .content-panel:first-child { padding-top: 1.75rem; }
+  .sidebar-content summary { min-height: 2.75rem; }
   .sidebar-content a { padding-block: .625rem; }
   .sl-markdown-content .docs-lead { font-size: 1.125rem; }
   .sl-markdown-content table { display: block; overflow-x: auto; }

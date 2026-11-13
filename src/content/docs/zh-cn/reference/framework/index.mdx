@@ -1,6 +1,6 @@
 ---
-title: 框架构件
-description: "页面规划。查找将应用模型与框架代码联系起来的定义。"
+title: "事件模型与功能"
+description: "页面计划。已声明的功能如何组成正在运行的应用？"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -12,6 +12,6 @@ head:
       content: noindex
 ---
 
-## 页面规划
+## 页面计划
 
-本页将介绍实体、命令、决策、事件、查询和应用组合对应的框架定义，并确保这些定义经过验证。每个条目都会说明其职责、相关类型、必需字段，以及能展示其作用的最小完整源代码示例。一张精简的关系图将展示各部分如何连接，同时将事件记录与查询结果区分开来。条目将链接到[核心概念](/learn/)了解相关说明，并链接到[第一个功能教程](/tutorial/first-feature/)了解如何在一个应用中使用它们。
+本页将把 `EventModel`、`FeatureAction`、`chapter`、`slice`、`entity`、`command`、`produces`、`query` 和 `readsFrom` 映射到源码中的 `Counter` 功能。精简关系图将展示声明、验证和运行时组装，同时避免混淆事件历史与 `query` 行。构建器签名和顺序约束将与模型并列说明。直接组装 `Service.Application` 将作为高级内容链接；本页会保留其公开 API 状态，同时优先介绍当前起始项目的架构。

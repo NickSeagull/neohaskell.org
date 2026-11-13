@@ -1,6 +1,6 @@
 ---
-title: Framework building blocks
-description: "Page plan. Look up the definitions that connect the application model to framework code."
+title: "Event models and features"
+description: "Page plan. How do the declared features become a running application?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Page plan
 
-This page will map entities, commands, decisions, events, queries, and application composition to their verified framework definitions. Each entry will state its responsibility, relevant types, required fields, and the smallest complete source example that demonstrates its role. A compact relationship figure will show how the pieces connect while keeping event records separate from query results. Entries will link to [Core concepts](/learn/) for explanation and the [first-feature tutorial](/tutorial/first-feature/) for their use in one application.
+This page will map `EventModel`, `FeatureAction`, `chapter`, `slice`, `entity`, `command`, `produces`, `query`, and `readsFrom` to the source-local `Counter` feature. A compact relationship figure will show declaration, validation, and runtime assembly without mixing event history with `query` rows. Builder signatures and ordering constraints will sit beside the model. Direct `Service.Application` assembly will be a linked advanced section, preserving its public status while leading with the current starter architecture.

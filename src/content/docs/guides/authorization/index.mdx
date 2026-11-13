@@ -1,6 +1,6 @@
 ---
-title: Control access
-description: "Page plan. Plan identity and permission checks for commands, queries, and owned data."
+title: "Authorize a command"
+description: "Page plan. Who may run this command against this entity?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Page plan
 
-This page will separate who is acting from what that person or process may do. It will show the framework's documented identity and authorization mechanisms through one allowed command, one denied command, and a query with restricted access. A decision table will compare actor, resource, permission, and outcome without relying on color. Small source excerpts and tests will demonstrate where access checks belong, while [Resources](/resources/#before-relying-on-an-application) provides the existing authorization guidance.
+This page will protect one command with a declared access policy and a decision that checks the relevant entity ownership. A table will compare anonymous callers, authenticated owners, other users, and a trusted local invocation. The accompanying tests will verify that denied commands do not reach the decision or append events, and show why enabling authentication is necessary for the HTTP policy gate to apply.

@@ -1,0 +1,17 @@
+---
+title: "Restrict query results"
+description: "Page plan. Who may read a query and its individual results?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Page plan
+
+This page will apply a query-level access check before fetching data and an ownership check for individual results. It will compare the same query for an owner, another authenticated user, and an anonymous caller, including a paginated result. A short decision table will show where each check runs so a reader can protect returned data without assuming that command permissions automatically protect query endpoints.

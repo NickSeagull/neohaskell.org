@@ -1,0 +1,17 @@
+---
+title: "检查就绪状态和故障"
+description: "页面计划。如何确认应用已就绪，并定位失败的操作？"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## 页面计划
+
+本页将对比健康端点与查询就绪状态，并使用请求标识符和结构化日志追踪失败的操作。简短状态图将展示查询的重建中、就绪和失败状态，以及相应的 HTTP 结果。诊断示例将区分存储故障与集成不可用，并根据证据说明恢复步骤，而不会把进程正在运行当作所有查询都可用的证明。

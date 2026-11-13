@@ -1,6 +1,6 @@
 ---
-title: Deploy and operate
-description: "Page plan. Plan a reproducible deployment and checks for persistent dependencies and failures."
+title: "Deploy an application"
+description: "Page plan. What must be configured and persisted to run this application elsewhere?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Page plan
 
-This page will document a deployment path after its commands and environment have been verified against an upstream revision. It will cover the application build, required configuration, persistent dependencies, startup checks, failure inspection, and recovery. A compact deployment figure will show the running parts, while command/output pairs will demonstrate a successful start and a concrete failure. The guide will distinguish a verified example deployment from production guarantees and link to [Configuration](/reference/configuration/) and [Errors and troubleshooting](/reference/errors/).
+This page will assemble a reproducible deployment example for a pinned application and framework revision, naming the executable, runtime configuration, database, and file paths. A deployment figure will distinguish persistent services from the application process and show the public HTTP boundary. Verification will cover startup, an accepted command, a query, and a restart, while identifying environment-specific hosting and process supervision that the repository does not supply.

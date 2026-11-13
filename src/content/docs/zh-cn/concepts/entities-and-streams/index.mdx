@@ -1,0 +1,17 @@
+---
+title: "实体与事件流"
+description: "页面计划。决策必须综合考虑哪些事实？命令发生竞争时会怎样？"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## 页面计划
+
+本页将说明，实体是根据一个已标识的事件流重建的状态，也是命令检查条件的边界。两个相互竞争的库存预留将展示过时的决策、追加冲突，以及基于刷新后的状态重新评估。双泳道时序图将分别呈现购物车和库存的历史记录。本页将解释这一边界，但不会承诺跨两个实体的原子事务。

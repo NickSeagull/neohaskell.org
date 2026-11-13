@@ -1,0 +1,17 @@
+---
+title: "Connect an external account"
+description: "Page plan. How does a user authorize access to a provider account?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Page plan
+
+This page will register an OAuth provider and follow an authenticated user through connect, callback, token use, refresh, and disconnect. A sequence diagram will separate the application identity from provider credentials and temporary connection state. It will explain the consumer-supplied persistent secret store and the current in-memory callback transaction store, including what happens to an unfinished connection after a restart or a request reaches another instance.

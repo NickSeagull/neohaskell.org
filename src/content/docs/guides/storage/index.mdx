@@ -1,6 +1,6 @@
 ---
-title: Keep data across restarts
-description: "Page plan. Plan persistent event history and query storage, with restart checks."
+title: "Keep events across restarts"
+description: "Page plan. How do I keep recorded application history when the process stops?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Page plan
 
-This page will distinguish event history from query storage and show how to configure supported persistence options. It will compare an in-memory example with a persistent configuration, then verify what survives a restart using explicit commands and expected results. A small diagram will keep the event store and query state separate. Failure examples will cover missing configuration and unavailable storage, with links to [History and current state](/concepts/history-and-state/) for the underlying model and [Resources](/resources/#language-and-framework) for existing upstream guidance.
+This page will replace the starter memory configuration with a persistent event store and verify the same recorded behavior before and after a restart. A comparison will distinguish `SimpleEventStore` disk persistence from PostgreSQL configuration, while a diagram separates event history from derived query state. The example will use a complete configuration for the selected framework revision and explain which storage paths or database volumes must survive.

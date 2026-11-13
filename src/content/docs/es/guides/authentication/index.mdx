@@ -1,0 +1,17 @@
+---
+title: "Verifica la identidad de quien llama"
+description: "Plan de la página. ¿Cómo reconoce mi aplicación HTTP a quien realiza la llamada?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Plan de la página
+
+Esta página conectará una aplicación a un emisor OIDC, configurará la audiencia esperada del token cuando sea necesario e inspeccionará las declaraciones del usuario disponibles para un comando. Una comparación de solicitudes abarcará un token válido, uno no válido y una llamada anónima. Un pequeño diagrama de límites separará la verificación de identidad del permiso para ejecutar comandos y de la conexión del usuario con un proveedor OAuth externo.

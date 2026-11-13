@@ -1,6 +1,6 @@
 ---
 title: Recursos y estado del proyecto
-description: Encuentra instrucciones para configurar NeoHaskell, orientación sobre el lenguaje, notas de versión y lugares donde pedir ayuda.
+description: Encuentra instrucciones de configuración de NeoHaskell, documentación del lenguaje, notas de versión y sitios donde pedir ayuda.
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 2
@@ -8,48 +8,48 @@ prev: false
 next: false
 ---
 
-<p class="docs-lead">Encuentra el siguiente paso para tu aplicación y descubre qué puedes inspeccionar hoy.</p>
+<p class="docs-lead">Encuentra el siguiente paso para tu aplicación y descubre qué puedes consultar hoy.</p>
 
-NeoHaskell es un lenguaje de programación con la IA como prioridad y está en desarrollo activo. Empieza con un comportamiento pequeño que puedas describir y comprobar. El proyecto inicial Counter te ofrece una aplicación concreta que puedes inspeccionar antes de ampliarla con tu agente.
+NeoHaskell es un lenguaje de programación concebido desde el principio para la IA y en desarrollo activo. Empieza con un comportamiento sencillo que puedas describir y comprobar. El proyecto inicial Counter te ofrece una aplicación concreta para inspeccionar antes de ampliarla con tu agente.
 
 ## Empieza a crear
 
 Aprende los [conceptos básicos](/learn/) antes de seguir la guía [Configura tu agente](/getting-started/). Puedes leer los conceptos sin instalar nada.
 
-- [Requisitos previos e instalación de la CLI](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites): herramientas necesarias para crear y ejecutar una aplicación.
-- [Crea y ejecuta un proyecto](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md): secuencia para crear, compilar y ejecutar un proyecto.
-- [Guía de inicio rápido del proyecto inicial Counter](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter/README.md#quickstart): la aplicación que aparece en el fragmento de código de la página de inicio, con un flujo de trabajo HTTP e instrucciones de prueba.
+- [Requisitos previos e instalación de la CLI](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/README.md#prerequisites): las herramientas necesarias para crear y ejecutar una aplicación.
+- [Crea y ejecuta un proyecto](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/project-and-cli.md): los pasos para crear, compilar y ejecutar un proyecto.
+- [Guía rápida del proyecto inicial Counter](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/neo/starter/README.md#quickstart): la aplicación que aparece en el fragmento de código de la página de inicio, con un flujo HTTP e instrucciones de pruebas.
 
 ## Lenguaje y framework
 
-La siguiente documentación está publicada en el repositorio de NeoHaskell para quienes crean aplicaciones y para sus agentes de programación. Describe una revisión del código fuente que se ha inspeccionado; usa la revisión correspondiente si tu proyecto fija otra versión.
+La documentación siguiente se publica en el repositorio de NeoHaskell para quienes crean aplicaciones y agentes de programación. Describe una versión inspeccionada del código fuente; si tu proyecto fija otra versión, usa la documentación correspondiente a esa versión.
 
-- [Sintaxis y núcleo](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/syntax-and-core.md): un módulo completo, tipos, operadores y convenciones de la aplicación.
-- [Orientación sobre aplicaciones por tarea](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/index.md): comandos, eventos, consultas, configuración, transportes e integraciones.
+- [Sintaxis y Core](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/syntax-and-core.md): un módulo completo, tipos, operadores y convenciones de aplicaciones.
+- [Instrucciones para aplicaciones por tarea](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/index.md): comandos, eventos, consultas, configuración, transportes e integraciones.
 - [Pruebas](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/testing.md): pruebas de decisiones, escenarios HTTP y comprobación de cambios.
 - [Almacenamiento](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/storage.md): historial de eventos, almacenamiento de consultas y persistencia.
 
 ## Antes de confiar en una aplicación
 
-El proyecto inicial usa por defecto un almacén de eventos en memoria. Los eventos registrados desaparecen cuando termina ese proceso. El historial persistente de eventos y el almacenamiento persistente de consultas son opciones de configuración independientes; consulta la guía de almacenamiento anterior cuando necesites conservar los datos tras reiniciar la aplicación.
+El proyecto inicial usa un almacén de eventos en memoria de forma predeterminada. Los eventos registrados desaparecen cuando termina ese proceso. El historial persistente de eventos y el almacenamiento persistente de consultas son opciones de configuración independientes. Si necesitas conservar los datos tras un reinicio, sigue la guía de almacenamiento anterior.
 
-Tu aplicación también define sus propias reglas de acceso. Lee la [guía de autorización](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/authorization.md) y prueba los casos permitidos y rechazados. Un agente de IA te ayuda a implementar estas reglas, pero no decide las políticas de tu aplicación en tiempo de ejecución.
+Tu aplicación también debe definir sus propias reglas de acceso. Lee las [instrucciones de autorización](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/docs/agent/authorization.md) y prueba los casos permitidos y rechazados. Un agente de IA ayuda a implementar estas reglas, pero no decide las políticas de la aplicación en tiempo de ejecución.
 
-El código fuente publicado y las versiones te permiten inspeccionar lo que está disponible. Por sí solos, no demuestran que tu aplicación esté lista para producción.
+El código fuente publicado y las versiones te permiten inspeccionar lo que está disponible. Por sí solos, no garantizan que tu aplicación esté lista para producción.
 
 La [licencia del código fuente del framework](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/LICENSE) está disponible junto al código. Consulta la licencia de cada herramienta al elegir dependencias.
 
 ## Sigue los cambios y pide ayuda
 
-- [Historial de versiones de la CLI y el framework](https://github.com/neohaskell/NeoHaskell/releases): cambios en las herramientas de aplicación y el framework. La [versión 0.17.1](https://github.com/neohaskell/NeoHaskell/releases/tag/neo-v0.17.1), publicada el 6 de noviembre de 2026, añade almacenamiento de archivos con control de propiedad para los documentos generados.
-- [Versiones de las habilidades para agentes](https://github.com/neohaskell/skills/releases): cambios en la colección independiente de instrucciones para Claude Code y Codex.
+- [Historial de versiones de la CLI y del framework](https://github.com/neohaskell/NeoHaskell/releases): cambios en las herramientas de aplicación y el framework. La [versión 0.17.1](https://github.com/neohaskell/NeoHaskell/releases/tag/neo-v0.17.1), publicada el 6 de noviembre de 2026, añade almacenamiento de archivos generados asignados a sus propietarios.
+- [Versiones de las skills del agente](https://github.com/neohaskell/skills/releases): cambios en la colección independiente de instrucciones para Claude Code y Codex.
 - [Pregunta a la comunidad en Discord](https://discord.com/invite/wDj3UYzec8): comparte lo que intentas crear y dónde te has atascado.
-- [Consulta los problemas notificados](https://github.com/neohaskell/NeoHaskell/issues) o [lee la guía de contribución](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/CONTRIBUTING.md): sigue los problemas conocidos y descubre el proceso de contribución del proyecto.
+- [Consulta los problemas notificados](https://github.com/neohaskell/NeoHaskell/issues) o [lee la guía para contribuir](https://github.com/neohaskell/NeoHaskell/blob/cacc8069070721539ae0aac53286ce9492e906a5/CONTRIBUTING.md): sigue los problemas conocidos y consulta el proceso de colaboración del proyecto.
 
 <section class="docs-plan" data-pagefind-ignore>
 
 ## Plan de la página
 
-Esta página seguirá dirigiendo a las instrucciones originales existentes, al código fuente canónico, a la información de versiones y a la ayuda de la comunidad mientras se redactan las nuevas guías. Añadirá indicaciones de compatibilidad y actualización cuando puedan relacionarse con versiones mantenidas, y mantendrá diferenciadas las versiones del framework, la CLI y las habilidades para agentes. Una comparación compacta de versiones podría ayudar a los lectores a elegir las instrucciones adecuadas. Los enlaces al código fuente seguirán junto a las afirmaciones que respaldan; este directorio no necesita un componente interactivo.
+Esta página conservará la información sustancial existente sobre configuración, código fuente, almacenamiento, autorización, licencias, versiones y comunidad, y enlazará a las referencias más precisas. Sus enlaces al repositorio original seguirán asociados a la versión que describen; la investigación de la rama principal actual se mantendrá separada de las versiones publicadas y de las versiones de las skills del agente. Se podrá añadir una tabla breve de compatibilidad cuando se verifiquen las versiones. No se inventarán nuevos compromisos de asistencia ni afirmaciones sobre verificaciones en tiempo de ejecución.
 
 </section>

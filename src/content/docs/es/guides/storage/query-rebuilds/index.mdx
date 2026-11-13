@@ -1,0 +1,17 @@
+---
+title: "Persiste y reconstruye consultas"
+description: "Plan de la página. ¿Cómo se recuperan los resultados de las consultas tras un reinicio o un cambio de proyección?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Plan de la página
+
+Esta página configurará el almacenamiento persistente de consultas por separado del historial de eventos y explicará cómo continuar desde un punto de control y cómo comprobar explícitamente una reconstrucción. Indicará que el hash actual de una consulta se deriva de su nombre, por lo que cambiar solo el código de proyección no invalida automáticamente el progreso guardado. Una cronología mostrará los eventos que llegan durante la reproducción y cuándo queda disponible la consulta. Un fallo de reconstrucción relacionará las pruebas de diagnóstico con la recuperación, que depende de que el historial esté disponible y no revierte los efectos externos.

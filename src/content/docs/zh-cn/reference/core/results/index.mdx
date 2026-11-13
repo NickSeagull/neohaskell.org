@@ -1,0 +1,17 @@
+---
+title: "Maybe 与 Result"
+description: "页面计划。如何表示缺失值或可恢复的失败？"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## 页面计划
+
+本页将对比 `Nothing` 和 `Just`、`Err` 和 `Ok`，展示什么时候缺失值不需要说明，什么时候需要带类型的错误。精简签名和成对示例将介绍 `map`、`andThen`、`withDefault`、`mapError`，以及这两种容器之间的转换。解析或查找示例将保留错误，直到调用方明确处理它，并将带副作用的失败处理链接到 `Task`。

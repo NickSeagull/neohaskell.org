@@ -1,6 +1,6 @@
 ---
-title: Historial y estado actual
-description: "Plan de la página. Comprender la diferencia entre los hechos registrados, el estado de la aplicación y las respuestas de las consultas."
+title: "Historial y estado actual"
+description: "Plan de la página. ¿Por qué conservar eventos si la aplicación ya tiene un estado actual?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plan de la página
 
-Esta página explicará por qué un evento registrado y el resultado de una consulta actual son cosas distintas. Alineará un breve historial de eventos con el estado que se deriva de él y, después, mostrará cómo otro comando aceptado cambia la respuesta sin reescribir los hechos anteriores. Un libro de registro etiquetado y una tabla de estado guiarán la explicación. En el futuro, un control comparativo opcional podría mostrar los estados sucesivos, con todos los resultados disponibles también como texto estático. La configuración y los procedimientos de reinicio se tratarán en [Conservar los datos tras los reinicios](/guides/storage/).
+Esta página distinguirá los hechos registrados en un flujo de eventos del estado de la entidad que se obtiene al aplicarlos en orden. Un registro de `Counter` alineado con una tabla de estados mostrará cómo el mismo historial reconstruye la misma entidad mediante su función de actualización. Explicará que la reproducción deriva el estado de los hechos registrados, en lugar de volver a ejecutar los comandos originales. También remitirá la reconstrucción de consultas a su propia página y la configuración de persistencia a la guía de almacenamiento.

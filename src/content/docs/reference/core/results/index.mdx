@@ -1,0 +1,17 @@
+---
+title: "Maybe and Result"
+description: "Page plan. How do I represent absence or a recoverable failure?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Page plan
+
+This page will compare `Nothing` and `Just` with `Err` and `Ok`, showing when absence carries no explanation and when a typed error is needed. Compact signatures and paired cases will cover `map`, `andThen`, `withDefault`, `mapError`, and conversions between the two containers. A parsing or lookup example will retain the error until the caller deliberately handles it, and link effectful failure handling to `Task`.

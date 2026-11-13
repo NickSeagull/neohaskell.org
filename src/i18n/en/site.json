@@ -78,8 +78,18 @@
   "nav.build": "Build an application",
   "nav.explore": "Explore the project",
   "docs.start": "Start here",
-  "docs.tutorial": "Build an application",
+  "docs.tutorial": "Build a mug shop",
   "docs.guides": "Solve a task",
   "docs.concepts": "Understand the design",
-  "docs.reference": "Reference and help"
+  "docs.reference": "Reference and help",
+  "docs.guides.interfaces": "Agents and interfaces",
+  "docs.guides.storage": "Data and files",
+  "docs.guides.access": "Identity and access",
+  "docs.guides.integrations": "External systems",
+  "docs.guides.operations": "Deployment and recovery",
+  "docs.reference.language": "Language",
+  "docs.reference.core": "Core library",
+  "docs.reference.framework": "Framework contracts",
+  "docs.reference.tooling": "Tooling and configuration",
+  "docs.reference.help": "Errors and help"
 }

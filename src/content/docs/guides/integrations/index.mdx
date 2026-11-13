@@ -1,6 +1,6 @@
 ---
-title: Connect external services
-description: "Page plan. Plan external effects and provider connections without hiding them inside decisions."
+title: "Call an external service"
+description: "Page plan. How do I perform an external effect after a decision?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Page plan
 
-This page will show how to connect a supported external service while keeping network effects and credentials outside pure decision logic. A source-backed example will cover the provider connection, the application's requested effect, and success or failure handling. A sequence figure will show which component performs each action; paired traces will explain a successful call and an unavailable provider. The guide will link to [Pure decisions and effects](/concepts/pure-decisions/) for the boundary and [Configuration](/reference/configuration/) for required values.
+This page will connect an accepted event to a typed outbound handler, perform an HTTP call, and turn the provider response into a follow-up command. Success and failure traces will show the boundary between a pure decision and an external effect. The example will use an idempotency key and explain the separate HTTP and dispatcher retry settings, without promising durable delivery or exactly-once execution.

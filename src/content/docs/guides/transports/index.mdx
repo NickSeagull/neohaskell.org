@@ -1,6 +1,6 @@
 ---
-title: Expose HTTP and MCP interfaces
-description: "Page plan. Plan how to expose the same application behavior through supported transports."
+title: "Expose an HTTP API"
+description: "Page plan. How do I call my commands and queries over HTTP?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Page plan
 
-This page will explain how application behavior is exposed through HTTP and MCP, including the configuration and contracts verified for the documented framework version. It will show a command and query through request/response pairs and equivalent tool calls, with an example of inspecting generated OpenAPI. A small boundary diagram will separate transports from decisions. Static examples will include both success and rejection; a live request widget will only be considered once a supported isolated runtime is available.
+This page will expose an existing feature through the Web transport and inspect its generated routes and OpenAPI contract. A command request, rejected input, and query response will connect the application definition to observable HTTP behavior. Filtering and pagination will follow the [query contract](/reference/framework/queries/). The examples will include transport registration and browser-origin configuration, then link to authentication before opening the interface to untrusted callers.

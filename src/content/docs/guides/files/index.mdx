@@ -1,6 +1,6 @@
 ---
-title: Store and retrieve files
-description: "Page plan. Plan file ownership, storage configuration, and permitted retrieval."
+title: "Upload and retrieve files"
+description: "Page plan. How do I attach a user file and restrict its retrieval?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Page plan
 
-This page will explain the documented file-storage workflow, including ownership, configuration, upload or generation, and retrieval. It will follow one file through a small sequence figure and show focused source and request/response examples. Allowed retrieval, denied access, and missing-file cases will appear together so the reader can check the intended behavior. The guide will link to [Control access](/guides/authorization/) for permissions and [Keep data across restarts](/guides/storage/) for persistence, without treating a file as an event record.
+This page will configure file metadata and blob storage, upload a document, attach its file reference to a command, and retrieve it as its owner. A sequence will distinguish pending uploads, confirmed attachments, expiration, and missing blobs. Paired requests will demonstrate permitted and denied retrieval, while the persistence discussion will keep the file bytes, ownership metadata, and application events separate.

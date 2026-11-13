@@ -10,11 +10,11 @@ const catalogs = Object.fromEntries(targetLocales.map(({ code }) => {
   const path = new URL(`./src/i18n/${code}/site.json`, import.meta.url);
   return [code, existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')) : english];
 }));
-const group = (key, slugs) => ({
+const group = (key, items) => ({
   label: english[key],
   translations: Object.fromEntries(targetLocales.map(({ code, lang }) => [lang, catalogs[code][key] ?? english[key]])),
   collapsed: true,
-  items: slugs.map((slug) => ({ slug })),
+  items: items.map((item) => typeof item === 'string' ? { slug: item } : item),
 });
 
 export default defineConfig({
@@ -35,11 +35,23 @@ export default defineConfig({
     locales: Object.fromEntries(locales.map(({ code, label, lang }) => [code === 'en' ? 'root' : code, { label, lang }])),
     components: { Head: './src/components/DocsHead.astro', LanguageSelect: './src/components/DocsLanguagePicker.astro' },
     sidebar: [
-      group('docs.start', ['docs', 'learn', 'getting-started']),
-      group('docs.tutorial', ['tutorial', 'tutorial/first-feature', 'tutorial/test-behavior', 'tutorial/change-safely']),
-      group('docs.guides', ['guides/ai-workflow', 'guides/transports', 'guides/storage', 'guides/authorization', 'guides/integrations', 'guides/files', 'guides/deployment']),
-      group('docs.concepts', ['concepts/event-modeling', 'concepts/history-and-state', 'concepts/pure-decisions']),
-      group('docs.reference', ['reference/language', 'reference/core', 'reference/framework', 'reference/cli', 'reference/configuration', 'reference/errors', 'resources']),
+      group('docs.start', ['docs', 'learn', 'getting-started/installation', 'getting-started/create-project', 'getting-started/run', 'getting-started/first-response', 'getting-started/project-files', 'getting-started', 'getting-started/troubleshooting']),
+      group('docs.tutorial', ['tutorial', 'tutorial/first-feature', 'tutorial/decide-orders', 'tutorial/stock-query', 'tutorial/http-orders', 'tutorial/test-behavior', 'tutorial/change-safely']),
+      group('docs.guides', [
+        group('docs.guides.interfaces', ['guides/ai-workflow', 'guides/transports', 'guides/transports/mcp', 'guides/transports/cli']),
+        group('docs.guides.storage', ['guides/storage', 'guides/storage/query-rebuilds', 'guides/files', 'guides/files/generated-documents', 'guides/storage/erase-protected-values']),
+        group('docs.guides.access', ['guides/authentication', 'guides/authorization', 'guides/authorization/query-access']),
+        group('docs.guides.integrations', ['guides/integrations', 'guides/integrations/inbound-workers', 'guides/integrations/oauth-connections']),
+        group('docs.guides.operations', ['guides/deployment', 'guides/deployment/readiness-and-failures']),
+      ]),
+      group('docs.concepts', ['concepts/event-modeling', 'concepts/command-outcomes', 'concepts/entities-and-streams', 'concepts/history-and-state', 'concepts/query-projections', 'concepts/pure-decisions', 'concepts/event-driven-workflows', 'concepts/identity-and-permissions']),
+      group('docs.reference', [
+        group('docs.reference.language', ['reference/language', 'reference/language/types']),
+        group('docs.reference.core', ['reference/core', 'reference/core/containers', 'reference/core/results', 'reference/core/tasks', 'reference/core/json']),
+        group('docs.reference.framework', ['reference/framework', 'reference/framework/commands', 'reference/framework/entities', 'reference/framework/queries', 'reference/framework/transports']),
+        group('docs.reference.tooling', ['reference/cli', 'reference/cli/model-tools', 'reference/cli/agent-commands', 'reference/configuration', 'reference/configuration/project']),
+        group('docs.reference.help', ['reference/errors', 'reference/errors/runtime', 'resources']),
+      ]),
     ],
     editLink: undefined,
   })],

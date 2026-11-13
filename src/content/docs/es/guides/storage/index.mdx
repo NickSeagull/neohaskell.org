@@ -1,6 +1,6 @@
 ---
-title: Conserva los datos tras los reinicios
-description: "Plan de la página. Planifica el historial persistente de eventos y el almacenamiento de consultas, con comprobaciones tras reiniciar."
+title: "Conserva los eventos tras reiniciar"
+description: "Plan de la página. ¿Cómo conservo el historial registrado cuando se detiene el proceso?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Plan de la página
 
-Esta página distinguirá el historial de eventos del almacenamiento de consultas y mostrará cómo configurar las opciones de persistencia compatibles. Comparará un ejemplo en memoria con una configuración persistente y, después, comprobará qué datos sobreviven a un reinicio mediante comandos explícitos y resultados esperados. Un diagrama pequeño mantendrá separados el almacén de eventos y el estado de las consultas. Los ejemplos de fallos cubrirán la configuración ausente y el almacenamiento no disponible, con enlaces a [Historial y estado actual](/concepts/history-and-state/) para consultar el modelo subyacente y a [Recursos](/resources/#language-and-framework) para acceder a la orientación original existente.
+Esta página sustituirá la configuración en memoria del proyecto inicial por un almacén de eventos persistente y comprobará el mismo comportamiento registrado antes y después de un reinicio. Una comparación distinguirá la persistencia en disco de `SimpleEventStore` de la configuración de PostgreSQL, mientras que un diagrama separará el historial de eventos del estado derivado de las consultas. El ejemplo usará una configuración completa para la versión seleccionada del framework y explicará qué rutas de almacenamiento o volúmenes de base de datos deben conservarse.

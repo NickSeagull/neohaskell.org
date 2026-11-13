@@ -1,6 +1,6 @@
 ---
-title: Model application behavior
-description: "Page plan. Reason about boundaries and ambiguous requirements in a multi-step workflow."
+title: "Features, chapters, and slices"
+description: "Page plan. How does an application story become a model that stays connected to its implementation?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Page plan
 
-This page will explain how to choose useful commands, decisions, events, and queries when a domain story has several steps or competing interpretations. It will compare alternative boundaries and make the assumptions behind each model explicit. A small sequence of static figures will show how the model changes as the requirements become clearer. [Core concepts](/learn/) will own the definitions, and [Model your first feature](/tutorial/) will supply the concrete shop specification; this explanation will focus on the reasoning behind those choices.
+This page will explain how an `Event` Model groups application behavior into features, chapters, and slices, and why each slice has a focused responsibility. An annotated `Counter` feature tree will connect a command slice and a query slice to their declared events. It will contrast organizing a story with enforcing an entity boundary, then link to the tutorial for implementation and framework reference for the DSL.

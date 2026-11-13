@@ -1,0 +1,17 @@
+---
+title: "Erase a protected value"
+description: "Page plan. How do I make an owned protected value unreadable without deleting history?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Page plan
+
+This page will introduce a narrowly scoped erasure task using the PostgreSQL-backed protected-value mechanism. It will follow an authorized owner request, deletion of one protected reference, the resulting command, and an explicit retry. A before-and-after figure will distinguish the retained event record from the unavailable protected content, and explain how queries and external copies must be considered separately when checking the intended outcome.

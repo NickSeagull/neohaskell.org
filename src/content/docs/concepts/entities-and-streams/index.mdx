@@ -1,0 +1,17 @@
+---
+title: "Entities and event streams"
+description: "Page plan. Which facts must a decision consider together, and what happens when commands compete?"
+tableOfContents: false
+pagefind: false
+prev: false
+next: false
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex
+---
+
+## Page plan
+
+This page will explain an entity as state reconstructed from one identified event stream and as the boundary within which a command checks its conditions. Two competing stock reservations will illustrate a stale decision, an append conflict, and evaluation against refreshed state. A two-lane sequence figure will keep cart and stock histories separate. It will explain the boundary without promising an atomic transaction across both entities.

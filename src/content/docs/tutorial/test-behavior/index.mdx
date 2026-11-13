@@ -1,6 +1,6 @@
 ---
-title: Test the behavior
-description: "Page plan. Check accepted commands, rejected commands, and query results against the specification."
+title: "Test shop behavior"
+description: "Page plan. What checks show that the shop behaves as specified?"
 tableOfContents: false
 pagefind: false
 prev: true
@@ -14,4 +14,4 @@ head:
 
 ## Page plan
 
-This page will verify the feature from [Implement the feature](/tutorial/first-feature/) against its original specification. It will show accepted and rejected orders, invalid quantities, recorded events, and the resulting stock query. Input, expected result, and observed result will appear together in a comparison table, with small test excerpts and an explained failure. Readers will learn which evidence to request from an agent before continuing to [Change it safely](/tutorial/change-safely/).
+This page will turn the original shop table into repeatable checks for an accepted order, sold-out rejection, missing shop state, and the resulting stock query. Readers will distinguish a decision test from an event replay check and an HTTP scenario, then inspect one intentional failure and its repair. Expected and observed results will appear together. The agent's evidence must include the actual checks run and account for delayed query updates rather than assuming immediate consistency.

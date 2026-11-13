@@ -1,6 +1,6 @@
 ---
-title: Configuration
-description: "Page plan. Look up required values, defaults, overrides, and configuration boundaries."
+title: "Runtime configuration"
+description: "Page plan. Which value wins when defaults, environment, and arguments disagree?"
 tableOfContents: false
 pagefind: false
 prev: false
@@ -14,4 +14,4 @@ head:
 
 ## Page plan
 
-This page will list verified configuration fields, defaults, required values, and environment overrides for the documented framework version. It will cover transports, event and query storage, provider connections, and secret values without displaying real credentials. A consistent table and small complete configurations will show how values fit together; invalid examples will include the actual diagnostic and its correction when verified. Entries will link to the relevant task guide rather than repeat its full procedure.
+This page will define `Config` fields, required documentation, defaults, required values, environment names, command flags, nested records, and secret redaction. A single precedence table will show command line, process environment, dotenv, then default, with a small hypothetical port example. It will explain startup loading, configuration factories, registration order, and separate store choices, linking provider-specific settings to task guides and keeping `neo.json` build configuration on its own page.
