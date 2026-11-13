@@ -70,7 +70,7 @@ English changes do not block publication. Existing translations remain editable 
 
 ## Deployment
 
-`.github/workflows/deploy.yml` runs tests and the normal build on every push to `main` or manual dispatch, then publishes to the GitHub Pages project URL. CI does not translate content or require all languages to be synchronized. Publication remains paused by owner direction; do not push until publication is requested again. The preview build uses `/neohaskell.org/` as its base path and omits the production `CNAME` and `robots.txt` files from the artifact. Local builds still use `https://neohaskell.org` without a base path. To reproduce the preview build locally, run `GITHUB_PAGES_PREVIEW=true npm run build`.
+`.github/workflows/deploy.yml` runs tests and the normal build on every push to `main` or manual dispatch, then publishes to the GitHub Pages project URL. CI does not translate content or require all languages to be synchronized. Push only when the owner explicitly requests publication. The preview build uses `/neohaskell.org/` as its base path and omits the production `CNAME` and `robots.txt` files from the artifact. Local builds still use `https://neohaskell.org` without a base path. To reproduce the preview build locally, run `GITHUB_PAGES_PREVIEW=true npm run build`.
 
 Framework references: [Starlight custom pages](https://starlight.astro.build/guides/pages/) and [Astro on GitHub Pages](https://docs.astro.build/en/guides/deploy/github/).
 

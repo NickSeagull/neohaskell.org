@@ -610,3 +610,5 @@ The owner stopped publication and selected native Starlight i18n after reviewing
 The translation runner, manifest, recovery protocol, and CI freshness requirement are removed. Relative document links preserve locale and deployment base. Explicit anchors preserve existing section URLs without reading English headings during the build. Missing pages use native English fallback; existing translations can evolve independently. The rendered lessons, code, layout, and accepted semantic colors are preserved.
 
 Checkpoint before migration: `c858a13d982f51f7bc61b1999f1112255651effb`. No publication is authorized by this simplification.
+
+The owner subsequently requested translation and deployment again. This authorizes publishing the completed translations through the existing GitHub Pages workflow, preserving the simplified page-based process and the accepted presentation.
