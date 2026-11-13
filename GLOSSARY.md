@@ -30,7 +30,7 @@ Archived image prompts and prior visual rounds retain their original wording as 
 | Slice | In the inspected DSL, a named unit with exactly one primary command, query, outbound integration, or inbound integration declaration, plus its rules. A whole user journey can cross several slices. |
 | Transport | An interface such as HTTP, MCP, or the application CLI through which a caller accesses application behavior. It is distinct from an integration. |
 
-The introduction's order-and-cancellation journey shows behaviors and their information flow. It does not claim that a single DSL slice contains a command, decision, event, and query as four primary declarations.
+The introduction's order-and-cancellation journey has four vertical slice columns. Place order groups the state-change slice and the stock-query slice; Cancel order groups the corresponding cancellation slices. Each chapter is shown by a left-to-right arrow spanning its slices, with its name above the arrow. The repeated Available mugs nodes show query answers at different points in the process. A single DSL slice does not contain a command, decision, event, and query as four primary declarations.
 
 ## Source names and comparisons
 

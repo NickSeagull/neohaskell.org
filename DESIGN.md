@@ -588,3 +588,9 @@ Checkpoint: `021247a0d318eedd5ad52d90bd12beb55622cf1f`. Current source, captures
 ## Event impact feedback: 13 November 2026
 
 The owner accepted the independently readable history page and requested that the event itself visibly affect the stock number. The arithmetic row and pause button are removed. The cursor selects the next recorded event, that event nudges toward the answer, and the stock changes at the impulse peak with a brief response. Events retain their place in the history. Reduced motion, no JavaScript, and offscreen suspension remain. This narrow correction supersedes the earlier pause-control choice. Checkpoint: `c85efa0fcfa494aa6b5f3eab22bc20420b7b96cf`. Evidence is recorded under `.impeccable/reviews/history-bump-2026-11-13/`; delivery is a local commit and development preview.
+
+## Event Model structure and evolution: 13 November 2026
+
+The owner's latest refinement gives the inline shop model four 172px slice columns on a 688px canvas. Vertical separators run through all model bands; chapter arrows span the first two and last two columns, with names above. The existing role colors, 16px node text, screen sketches, and connections remain. Native horizontal scrolling preserves the model on phones, while the complete model fits the desktop article.
+
+The growth comparison now appears as two separate figures in the argument: shared-code changes and rework first, then additive slices beside stable contracts. Each plot retains its effort-per-change axis; roughly level marginal effort explains the intended linear total growth. A linked capture of the actual NeoHaskell IDE provides full-size access without changing the article layout. Specification and Given/When/Then rules remain in the main prose. Evidence is in `.impeccable/reviews/model-evolution-2026-11-13/`.

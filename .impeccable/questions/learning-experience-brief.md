@@ -1,6 +1,6 @@
 # Documentation experience
 
-Current direction on 13 November 2026: every page works as a direct entry point, with named contextual links and enough local context. The owner accepted that revision and requested an event bump toward the stock value instead of the arithmetic row, with no pause button.
+Current direction on 13 November 2026: the Model the whole process page shows vertical slices and spanning chapter arrows, explains additive contract evolution through the owner-approved target deployment model, separates the growth plots with their concrete arguments, and connects the real visual IDE with the specification in source. Existing direct-entry context and the accepted event-history bump remain.
 
 Earlier on the same date, the owner accepted the revised Start here prose as much better and specified that NeoHaskell is presented as a language, with integrated application capabilities. The One Person Framework philosophy remains the reference for one developer understanding and building the whole application with AI or by hand. The language identity supersedes the earlier language-and-framework pitch. Translation and deployment remain postponed.
 
@@ -18,7 +18,7 @@ Six top-level sections contain 64 destinations. Start here has four conceptual p
 
 `/learn/` explains why a requested change cannot declare its own accepted fact. Its illustrative PlaceOrder value uses Haskell record construction without a type declaration. Pure decisions and their concrete development benefits come before integrations: test coverage, reproducibility, refactoring, independent infrastructure, and local reasoning. A short question then introduces integration workers that only execute their task; the application keeps its business decisions. Implementation-language and HTTP details are deliberately deferred. Queries maintain answers. The stock shown on a screen does not authorize a new order; the decision checks current state.
 
-`/introduction/event-modeling/` connects the parts in an initial order/cancellation sketch and uses its missing information to ask further business questions. The connected Event Model and conceptual effort comparison remain separate sections. Shared cancellation/dispatch contracts explain bounded change; the visual IDE connects the source model to inspecting existing code and generated changes.
+`/introduction/event-modeling/` connects ordering and cancellation through four vertical slices grouped by two chapter arrows. It explains development units, the owner-approved target design for frozen deployed contracts, independently adopted replacements, and deprecation. Concrete shared-model changes precede the rising effort plot; additive slices and stable contracts precede the level-effort plot. The real IDE screenshot and the source-owned specification section connect visual inspection with features, chapters, slices, integrations, and typed behavioral rules. Source support and target deployment behavior remain distinct in the internal evidence record.
 
 The five preserved diagrams use command blue, event orange, cyan-green queries, and neutral integrations through `src/styles/diagram-colors.css`. The large Event Model retains readable horizontal phone scrolling. The event-history animation loops while visible. Each selected event nudges toward the stock value, which changes at impact and briefly responds. The arithmetic row and pause button are removed at the owner's request. Reduced motion and no JavaScript retain the complete static result. A whole journey is not presented as one four-primary DSL slice.
 
@@ -32,6 +32,8 @@ Current animation evidence is in [history-bump-2026-11-13](../reviews/history-bu
 
 The command record and purity-first argument are recorded in [pure-decisions-2026-11-13](../reviews/pure-decisions-2026-11-13/authoring.md). A fresh Astra review returned editorial ready and visual keep. The build, skill validation, and 19 browser checks passed. The neohaskell-code-examples skill owns constructor-line opening braces, field-end commas, and local bindings inside do blocks.
 
+The chapter/slice structure, sequential growth argument, target contract evolution, and actual IDE capture are recorded in [model-evolution-2026-11-13](../reviews/model-evolution-2026-11-13/authoring.md). Astra returned editorial ready and visual keep after resolving policy scope and light separator contrast. Build, skill validation, and 37 browser checks passed. Target deployment behavior remains owner-authorized and distinct from current source verification.
+
 Most other destinations remain one-paragraph page plans, excluded from Pagefind and external indexing. The six substantive pages and planning map are internally searchable; the map remains externally noindexed. Setup and Resources retain their existing content.
 
 ## Translation and delivery
@@ -42,4 +44,4 @@ Keep one development server at http://127.0.0.1:4323/introduction/ from the cano
 
 ## History
 
-The owner accepted the ordinary guide format on 9 November and the concrete index and diagram style on 13 November. The progressive rewrite split Start here from setup. Its later editorial correction supersedes defensive prose, automatic final navigation paragraphs, and a first-page shop example that immediately solved its stock policy. Earlier evidence remains in its dated review folders. The current pre-change checkpoint is `0d37dc466b4e42dc300f4364257193c666f2aeb6`.
+The owner accepted the ordinary guide format on 9 November and the concrete index and diagram style on 13 November. The progressive rewrite split Start here from setup. Its later editorial correction supersedes defensive prose, automatic final navigation paragraphs, and a first-page shop example that immediately solved its stock policy. Earlier evidence remains in its dated review folders. The current pre-change checkpoint is `d580b6fc753cd052fff43752e5dfe71c1951eba7`.

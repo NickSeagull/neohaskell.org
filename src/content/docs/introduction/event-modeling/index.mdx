@@ -1,6 +1,6 @@
 ---
 title: Connect the whole process
-description: Use an Event Model to agree on business behavior, locate changes, and keep a growing application understandable.
+description: Divide an Event Model into slices and chapters, evolve deployed contracts, and keep the specification in the code.
 sidebar:
   label: Model the whole process
 tableOfContents:
@@ -12,52 +12,102 @@ next: true
 
 import GrowthComparison from '../../../../components/learn/GrowthComparison.astro';
 import ShopEventModel from '../../../../components/learn/ShopEventModel.astro';
+import IdeScreenshot from '../../../../components/learn/IdeScreenshot.astro';
 
 Consider the mug shop introduced in [The work behind the code](/introduction/#the-questions-that-change-the-software). Accepting an order sets aside the requested mugs for the customer. To design its application, we need to connect the whole experience: a customer sees stock, orders a mug, and finds out whether the shop accepted the order.
 
 [Protect changes and answer questions](/learn/) explains the individual parts: a command requests a change, an event records an accepted fact, and a query supplies an answer.
 
-**Event Modeling connects the parts into a process people can examine together.** It puts screens, commands, events, and queries in one model, showing where information comes from and where it is needed. A missing connection becomes a question to resolve with the people running the business.
+**Event Modeling connects those parts into a process people can examine together.** It puts screens, commands, events, and queries in one model. The connections reveal where information comes from, where it is needed, and which business questions still need an answer. NeoHaskell uses that same structure to organize development and keep the specification in the code.
 
 ## Follow an order and a cancellation
 
-Consider the next request from the shop owner: customers should be able to cancel before dispatch, returning their mugs to available stock. Start with a first sketch of that journey, from ordering one mug to cancelling it.
+The shop has three mugs available. The owner wants customers to be able to cancel an order before dispatch and return its mugs to available stock. Start with the journey of ordering one mug and then cancelling it.
+
+The model has two **chapters**, Place order and Cancel order. Each chapter groups two **slices**: one changes state through a command and its accepted event; the other supplies the stock answer through a query. Vertical lines separate the development units. Each arrow across the top spans the slices belonging to its chapter.
 
 <ShopEventModel />
 
-The order command leads to an accepted order event. The stock query then answers two. Cancellation needs the identity of the order; the stock answer alone does not supply it. After acceptance, an event records the cancellation and the stock answer returns to three.
+After the order is accepted, the stock query answers two. After cancellation, it answers three. The repeated Available mugs nodes show the stock answer at those two points in the process.
 
-This is where drawing the connections earns its place in the work. "Add cancellation" sounded like a button. The model asks for the rest of the behavior:
+Drawing the connections also exposes what this first sketch has not answered. "Add cancellation" sounded like a button. The model asks for the rest of the behavior:
 
 - Where does the cancellation command get the order identity?
 - What prevents cancellation after dispatch?
 - Which answer tells the customer that cancellation succeeded?
 - What tells staff to stop preparing that order?
 
-**Each unanswered question is a piece of the application that has not been designed yet.** The owner and the developer can resolve it while looking at the same process, before an agent or a person turns an assumption into code.
+**Each unanswered question is a piece of the application that has not been designed yet.** The owner and developer can resolve it while looking at the same process, before an agent or a person turns an assumption into code.
 
-## Give a change a clear boundary
+## Develop one slice at a time
 
-Cancellation has a recognizable set of responsibilities: request the action, check whether it is allowed, record the outcome, and update the answers people use. That gives the developer concrete behavior to implement and cases to test.
+**A slice is the unit of development.** "Accept an order" has an input, a decision, and an observable outcome. Its implementation checks the requested quantity and stock, and its rules specify when to accept or reject. "Show remaining stock" is a separate slice with a different job: maintain the answer after an order is placed.
 
-It also exposes the shared agreement with dispatch. Once an order has been dispatched, cancellation must be refused. Placing those behaviors in the same model makes the dependency visible instead of leaving two features to define "cancelled" independently.
+The same split applies to cancellation. One slice decides whether the order can be cancelled and records the outcome. Another supplies the updated stock answer. The chapter keeps them together as one part of the customer's experience without making them one implementation task.
+
+A **feature** groups related chapters. Here, an Orders feature contains Place order and Cancel order. An integration has its own slice when the process needs an external effect, such as sending the order confirmation. The model gives each task a place and shows the contracts it depends on.
+
+## Freeze the contract when it is deployed
+
+A customer-facing command is a promise. A caller of `PlaceOrder` depends on its accepted inputs and behavior. A query's consumers depend on the answer it supplies. Recorded events depend on definitions that preserve what those facts mean.
+
+**NeoHaskell's deployment model freezes those definitions and their implementation when they are deployed.** A deployed command, event, or query cannot be silently rewritten under the same identity. A new requirement or a corrected decision becomes new behavior alongside the deployed behavior.
+
+Suppose the shop adds a delivery checkout that requires contact details before accepting an order. The existing collection checkout uses `PlaceOrder`, which accepts only a product and quantity. Instead of editing it in place, duplicate the feature in development, give the changed behavior a new name, such as `PlaceOrderWithContact`, and implement its additional check. A suffix is also an option. The important distinction is that the new contract has its own identity.
+
+The delivery checkout uses the new contract while collection orders continue to use the original. NeoHaskell makes the small, explicit addition the normal development path: reuse the established structure, change the intended behavior, and check its rules. The work is focused on the new requirement instead of tracing every caller of an altered implementation.
+
+A bug fix follows the same rule. If `CancelOrder` incorrectly accepts dispatched orders, create the corrected `CancelUndispatchedOrder`, test the missing case, move callers to it, and disable the faulty command. Freezing the old implementation preserves what was deployed; it does not require keeping a faulty entry point available.
+
+## Retire behavior without versioning the whole API
+
+**Old and new contracts can coexist while their consumers migrate.** The mobile app can keep offering collection through `PlaceOrder` while the website adds delivery through `PlaceOrderWithContact`. The stock query and unrelated commands keep their existing names and contracts.
+
+This avoids copying an entire API into `/v2` because one operation changed. Each changed behavior gets its own identity. Consumers adopt the replacement when they are ready, rather than having to move every operation to a new API version together.
+
+Mark an old command or query as **deprecated** when new consumers should stop choosing it. Once usage shows that nobody calls it, disable or remove that entry point. Retiring a command does not erase the events it recorded or remove the definitions needed to interpret that history.
+
+## Why changing shared code creates more work
+
+Consider the same delivery-contact requirement in a conventional application where the shop edits its existing `POST /orders` endpoint and shared `Order` model. Making the new field required breaks the old mobile checkout. Adding it to the shared model then affects the order editor and the staff screen, even though neither asked for a new ordering policy.
+
+Next, the shop changes cancellation from a yes/no flag to a status that distinguishes requested, accepted, and refused. Code that previously checked `cancelled` now needs attention in dispatch, stock calculations, and customer emails. A small business request spreads across features because they all interpret the same mutable model.
+
+**The cost includes revisiting behavior that already worked.** In this plot, A through G represent additions to the application. Each R is work repeated in an earlier behavior. The rising curve illustrates the increasing effort per change as those dependencies accumulate.
+
+<GrowthComparison mode="rework" />
 
 ## Keep growth close to linear
 
-Hidden dependencies make an application progressively harder to change. A new behavior requires adjustments to older behaviors, and those adjustments uncover more assumptions. The work grows beyond the feature being added.
+In NeoHaskell, the delivery-contact requirement adds a named command and its rules beside the frozen ordering contract. The old checkout keeps its existing behavior. A new cancellation policy likewise gets an explicit slice and contract, with the affected queries and integrations visible in the Event Model.
 
-**Event Modeling aims to keep added behavior a bounded piece of work.** When its inputs, outcomes, and shared contracts are visible, the team can identify what needs to change and what needs testing. Similar additions can then take similar effort, so total effort grows roughly with the number of behaviors.
+**Stable contracts keep a new requirement from silently changing every existing consumer.** Slices bound the implementation work, chapters retain the business context, and the model exposes where a new behavior connects to the rest of the application. NeoHaskell supplies the recurring structure so creating the replacement is cheaper than repeatedly untangling shared code.
 
-In the comparison, A through G represent added behaviors. Each R is rework in an earlier behavior. The second plot shows the intended growth pattern when slices and their shared contracts remain visible.
+<GrowthComparison mode="bounded" />
 
-<GrowthComparison />
+The roughly level effort per addition is what makes total development effort grow close to linearly: another comparable slice adds another comparable piece of work. This is the development pattern NeoHaskell is designed to support.
 
-Cancellation and dispatch show what that requires in practice. Their shared order status must agree, so a change to dispatch needs a check against cancellation. Drawing that connection gives the team a specific dependency to manage. The curves illustrate these two ways of accumulating work; they are not benchmark measurements.
+Cancellation still has to agree with dispatch about when an order can be cancelled. That agreement belongs in the contracts and rules of the affected slices. The developer can name the dependency, inspect it, and test it instead of discovering it through a broken customer journey.
 
 ## Use the model to understand the code
 
-NeoHaskell carries these concepts into typed application declarations. Its visual IDE reads the source model and displays the relationships between behaviors. **The model remains useful after the application has been built.** It helps locate a behavior in an unfamiliar project and examine what an agent has changed.
+**The NeoHaskell IDE makes the application's structure visible.** Open a feature to see its chapters and slices, then follow the connections between commands, events, queries, and integrations. The mug-shop model can be explored in the actual IDE interface:
 
-For a cancellation change, that means finding the command, the decision that prevents cancellation after dispatch, the recorded outcome, and the queries that should reflect it. The model guides inspection; tests check the concrete cases: cancellation before dispatch restores stock, and cancellation after dispatch is refused.
+<IdeScreenshot />
 
-The developer can discuss the policy with the shop owner, locate its implementation, and judge a generated change using the same business concepts. That connection is how NeoHaskell keeps a whole application within one person's understanding as its implementation grows.
+For a cancellation change, begin with the Cancel order chapter. Locate the command that requests it, the event it produces, and the stock query that consumes that event. Those names identify the corresponding declarations in the source. The same route helps when taking over an existing project or reviewing a change written by an AI agent.
+
+The visual model is derived from the source declarations. When those declarations change, the IDE refreshes the model. A renamed command or a new query connection belongs to the application structure, so it appears in the diagram without somebody maintaining a second drawing by hand.
+
+## Keep the specification in the application
+
+**The specification is part of the code.** NeoHaskell's Event Model DSL declares features, chapters, slices, commands, events, queries, and integrations. The rules beside a slice describe its required behavior, including Given, When, Then cases.
+
+For cancellation, two rules make the shop's promise concrete:
+
+- **Given** an accepted order for one mug that has not been dispatched, **when** cancellation is requested, **then** record `OrderCancelled`.
+- **Given** an order that has already been dispatched, **when** cancellation is requested, **then** reject it and leave stock unchanged.
+
+The stock-query slice separately checks that the cancellation event restores the available count. These cases belong with the behavior they specify. They give the developer and the agent something concrete to check when writing the decision. The model describes how the parts connect; the rules describe what those parts must do.
+
+A separate Markdown file or Confluence page can become stale because someone has to update it after changing the application. In NeoHaskell, the declared model and rules already live in the source. A document describing that specification can be derived from those declarations instead of becoming another authority to maintain.

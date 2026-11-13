@@ -1,11 +1,18 @@
 ---
 const behaviors = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
-const cases = [
-  { title: 'Implicit dependencies', rework: [0, 0, 0, 1, 1, 2, 3], explicit: false },
-  { title: 'Visible boundaries and contracts', rework: [0, 0, 0, 0, 0, 0, 0], explicit: true },
-];
+interface Props { mode: 'rework' | 'bounded' }
+const { mode } = Astro.props;
+const explicit = mode === 'bounded';
+const cases = [{
+  title: explicit ? 'Add behavior beside stable contracts' : 'Change shared code and revisit its callers',
+  rework: explicit ? [0, 0, 0, 0, 0, 0, 0] : [0, 0, 0, 1, 1, 2, 3],
+  explicit,
+}];
+const summary = explicit
+  ? 'Conceptual plot of added slices beside stable contracts. Each new behavior adds a similar block of work, keeping total effort close to linear. This is an intended pattern, not a measurement.'
+  : 'Conceptual plot of changing shared behavior in place. Later changes require increasing rework in existing behavior, marked R. The curve shows rising effort per change, not measured data.';
 ---
-<figure class="growth-comparison not-content" aria-label="Conceptual comparison. Hidden dependencies add rework to earlier behaviors as new ones are introduced. Visible boundaries and shared contracts aim to keep the effort per added behavior roughly steady. The curves are illustrative, not measurements.">
+<figure class="growth-comparison not-content" aria-label={summary} data-growth-mode={mode}>
   {cases.map(scenario => (
     <div class:list={['growth-case', { 'explicit-contracts': scenario.explicit }]}>
       <strong class="case-title">{scenario.title}</strong>
@@ -19,14 +26,14 @@ const cases = [
             {behaviors.map((behavior, index) => <div class="behavior-stack"><span class="behavior-block">{behavior}</span>{Array.from({ length: scenario.rework[index] }, () => <span class="rework-block">R</span>)}</div>)}
           </div>
         </div>
-        <div class="contract-label">{scenario.explicit && <span>Shared contracts</span>}</div>
+        <div class="contract-label">{scenario.explicit && <span>Stable contracts</span>}</div>
         <span class="behavior-axis">Behaviors added</span>
       </div>
     </div>
   ))}
 </figure>
 <style>
-  .growth-comparison { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: 2rem; margin: 2rem 0; color: var(--sl-color-white); font-size: 1rem; line-height: 1.5; --rework-ink: #f2a6b4; --rework-surface: #3b2130; }
+  .growth-comparison { display: block; max-width: 34rem; margin: 2rem auto; color: var(--sl-color-white); font-size: 1rem; line-height: 1.5; --rework-ink: #f2a6b4; --rework-surface: #3b2130; }
   :global([data-theme='light']) .growth-comparison { --rework-ink: #963b50; --rework-surface: #fbeaf0; }
   .growth-comparison :is(div, span, strong, svg) { margin: 0; }
   .case-title { display: block; min-height: 3rem; font-weight: 650; }

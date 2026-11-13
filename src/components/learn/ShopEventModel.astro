@@ -1,28 +1,39 @@
 ---
+const chapters = [
+  { name: 'Place order', x: 0 },
+  { name: 'Cancel order', x: 344 },
+];
+const slices = ['Accept an order', 'Show remaining stock', 'Cancel before dispatch', 'Show restored stock'];
 const nodes = [
-  { role: 'screen', title: 'Mug shop', detail: '3 available', action: 'Order one mug', x: 0, y: 0 },
-  { role: 'command', title: 'Place order', detail: '1 mug', x: 0, y: 176 },
-  { role: 'event', title: 'Order placed', detail: '1 mug', x: 0, y: 360 },
-  { role: 'query', title: 'Available mugs', detail: '2', x: 180, y: 176 },
-  { role: 'screen', title: 'Your order', detail: '2 available', action: 'Cancel order', x: 360, y: 0 },
-  { role: 'command', title: 'Cancel order', detail: 'This order', x: 360, y: 176 },
-  { role: 'event', title: 'Order cancelled', detail: 'Stock restored', x: 360, y: 360 },
-  { role: 'query', title: 'Available mugs', detail: '3', x: 540, y: 176 },
+  { role: 'screen', title: 'Mug shop', detail: '3 available', action: 'Order one mug', x: 14, y: 152 },
+  { role: 'command', title: 'Place order', detail: '1 mug', x: 14, y: 328 },
+  { role: 'event', title: 'Order placed', detail: '1 mug', x: 14, y: 512 },
+  { role: 'query', title: 'Available mugs', detail: '2', x: 186, y: 328 },
+  { role: 'screen', title: 'Your order', detail: '2 available', action: 'Cancel order', x: 358, y: 152 },
+  { role: 'command', title: 'Cancel order', detail: 'This order', x: 358, y: 328 },
+  { role: 'event', title: 'Order cancelled', detail: 'Stock restored', x: 358, y: 512 },
+  { role: 'query', title: 'Available mugs', detail: '3', x: 530, y: 328 },
 ];
 const connections = [
-  'M72 128 V170 m-5-7 5 7 5-7',
-  'M72 320 V354 m-5-7 5 7 5-7',
-  'M144 432 C214 432 252 380 252 326 m-5 7 5-7 5 7',
-  'M252 176 V150 Q252 144 266 144 H322 Q336 144 336 128 V70 Q336 64 342 64 H354 m-7-5 7 5-7 5',
-  'M432 128 V170 m-5-7 5 7 5-7',
-  'M432 320 V354 m-5-7 5 7 5-7',
-  'M504 432 C574 432 612 380 612 326 m-5 7 5-7 5 7',
+  'M86 280 V322 m-5-7 5 7 5-7',
+  'M86 472 V506 m-5-7 5 7 5-7',
+  'M158 584 C224 584 258 532 258 478 m-5 7 5-7 5 7',
+  'M258 328 V302 Q258 296 272 296 H320 Q334 296 334 280 V222 Q334 216 340 216 H352 m-7-5 7 5-7 5',
+  'M430 280 V322 m-5-7 5 7 5-7',
+  'M430 472 V506 m-5-7 5 7 5-7',
+  'M502 584 C568 584 602 532 602 478 m-5 7 5-7 5 7',
 ];
 ---
-<figure class="shop-event-model not-content" aria-label="The mug-shop screen sends a place-order command. Acceptance records Order placed. The stock query reports two available mugs to the order screen. Cancelling before dispatch records Order cancelled, and the stock query reports three again.">
+<figure class="shop-event-model not-content" aria-label="Four vertical slices form two chapters, Place order and Cancel order. Each chapter contains a state-change slice and a state-view slice. The mug-shop screen sends a place-order command. Acceptance records Order placed. The stock query reports two available mugs to the order screen. Cancelling before dispatch records Order cancelled, and the stock query reports three again.">
   <div class="event-model-scroll" role="region" aria-label="Mug shop event model" tabindex="0">
     <div class="event-model-canvas">
-      <svg class="model-connections" viewBox="0 0 684 504" fill="none" aria-hidden="true">{connections.map(d => <path d={d} />)}</svg>
+      <svg class="model-connections" viewBox="0 0 688 672" fill="none" aria-hidden="true">
+        {[0, 172, 344, 516, 688].map(x => <path class="slice-boundary" d={`M${x} 88 V664`} />)}
+        {chapters.map(chapter => <path class="chapter-arrow" d={`M${chapter.x} 56 H${chapter.x + 344} m-8-5 8 5-8 5`} />)}
+        {connections.map(d => <path class="information-flow" d={d} />)}
+      </svg>
+      {chapters.map(chapter => <strong class="chapter-name" style={{ left: `${chapter.x / 16}rem` }}>{chapter.name}</strong>)}
+      {slices.map((name, index) => <span class="slice-name" style={{ left: `${index * 172 / 16}rem` }}>{name}</span>)}
       {nodes.map(node => node.role === 'screen' ? (
         <div class="model-screen" style={{left: `${node.x / 16}rem`, top: `${node.y / 16}rem`}}>
           <strong class="screen-title">{node.title}</strong>
@@ -46,9 +57,14 @@ const connections = [
   .event-model-scroll::-webkit-scrollbar { height: .5rem; }
   .event-model-scroll::-webkit-scrollbar-track { background: var(--docs-surface); }
   .event-model-scroll::-webkit-scrollbar-thumb { background: var(--sl-color-gray-3); border-radius: .25rem; }
-  .event-model-canvas { position: relative; width: 42.75rem; height: 31.5rem; }
+  .event-model-canvas { position: relative; width: 43rem; height: 42rem; }
   .model-connections { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--sl-color-gray-3); }
   .model-connections path { stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .model-connections .slice-boundary { stroke: var(--sl-color-gray-4); stroke-width: 1; }
+  :global([data-theme='light']) .model-connections .slice-boundary { stroke: var(--sl-color-gray-3); }
+  .model-connections .chapter-arrow { stroke: var(--sl-color-gray-2); }
+  .chapter-name { position: absolute; top: .5rem; width: 21.5rem; text-align: center; font-weight: 650; }
+  .slice-name { position: absolute; top: 5.5rem; width: 10.75rem; padding: .5rem 1rem; color: var(--sl-color-gray-2); }
   .event-model-node, .model-screen { position: absolute; display: flex; flex-direction: column; gap: .25rem; width: 9rem; height: 8rem; padding: .75rem; border: 1px solid var(--docs-line); border-radius: .5rem; }
   .event-model-node { height: 9rem; background: var(--diagram-surface); border-color: var(--diagram-line); }
   .event-model-node[data-diagram-role='command'] { border-style: dashed; }
