@@ -25,3 +25,9 @@ The original approved cinematic cut is preserved separately. This local experime
 - frank-clock: https://tenor.com/view/its-time-to-stop-green-screen-time-filthy-frank-gif-15637535
 - quickscope: https://tenor.com/view/lol-quickscope-load-lockedandloaded-bullet-gif-5359345
 - crowd: https://tenor.com/view/supa-hot-fire-ooooh-rap-battle-jump-crowd-surf-gif-4557024
+
+Frank voice: [actual time-to-stop sample](https://www.myinstants.com/en/instant/its-time-to-stop/), identified against [TooDamnFilthy original](https://www.youtube.com/watch?v=2k0SmqbBIpQ). Ending: [WHERE YOU AT sample](https://www.myinstants.com/en/instant/where-you-at/), matched to the [original Wombo Combo commentary](https://www.youtube.com/watch?v=pD_imYhNoQ4). The HyperFrames confetti component supplies the seeded victory particles.
+
+UAV notification: actual Modern Warfare 2 (2009) HUD from [IGN Flagrunner footage at 46 seconds](https://www.youtube.com/watch?v=eVc47QangEk&t=46s), cropped from the original frame. The game wording is "3 Kill Streak! Press [D-pad] for UAV."
+
+Opening tag: [Damn son, where did you find this](https://www.myinstants.com/en/instant/damn-son-whered-you-find-this/), complete 2.351-second source sample.

@@ -7,5 +7,10 @@
     "brag-approved.mp4": "f82f1a0f4592341db2edffbc75dfadf2a4eb6df4308ccc6fb6c55651a8fe6506",
     "brag.jpg": "f089e0a491599023104e42456c8bf631df1d5a5505e1c209cd7cf58260faba89",
     "brag-approved.jpg": "f089e0a491599023104e42456c8bf631df1d5a5505e1c209cd7cf58260faba89"
+  },
+  "mlgV1": {
+    "commit": "13959167668d2be25ab3cde8bf25f4c93e6f2188",
+    "video": "brag-mlg-v1.mp4",
+    "sha256": "3f95a169612f9b26160382218fc78fcb4c4d3a6762952447a3349d3588f3ef3f"
   }
 }

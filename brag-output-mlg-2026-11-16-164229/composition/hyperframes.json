@@ -35,6 +35,11 @@
       "name": "logo-sting",
       "type": "hyperframes:component",
       "target": "compositions/components/logo-sting.html"
+    },
+    {
+      "name": "confetti",
+      "type": "hyperframes:component",
+      "target": "compositions/components/confetti.html"
     }
   ]
 }
