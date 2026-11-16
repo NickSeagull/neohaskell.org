@@ -41,3 +41,11 @@ The earlier skill discovery problem was real and had been repaired before this r
 The previous skill update also overfit the repair. Positioning prescribed datatype definitions inside ice and a star, while its approved-direction reference incorporated an unaccepted extension. The project surface correctly left acceptance open, but this conflicting durable guidance could bias subsequent work. The correction removes that literal requirement, separates the accepted baseline from pending additions, and requires comparing new work with accepted neighboring sections at the same scale. The learning-example reviewer now checks page fit and the demonstrated relationship before material finish. No new design skill is required.
 
 Active files corrected: `neohaskell-positioning/SKILL.md`, its `references/homepage-direction.md`, and `learning-example-review/SKILL.md`. The skill-creator and writing-for-agents guidance governs these focused changes. The website remains at the reviewed checkpoint during this reassessment; the alternatives are proposals rather than another claimed fix.
+
+## Follow-through correction
+
+The owner rejected the review-only handoff and instructed the agent to build and present the chosen recommendation. The existing compare-and-build workflow already required this. I interpreted stopping an unsuccessful repair loop as stopping the task, then assigned the owner the work of reading composition alternatives. That was an execution error.
+
+`AGENTS.md` now makes the completion criterion explicit: the agent consumes recommendations, chooses a supported direction, implements it, and presents a verified surface. The active `design-feedback` skill distinguishes stopping a failed approach from cancelling an authorized task. A premise reassessment feeds the replacement implementation rather than an automatic permission or reading gate. Its maintained validator passes.
+
+The implementation begun at `457f618c5661545e2f23313754c6d626eadde678` follows the independent recommendation: a wide authentic IDE view, the complete specification excerpt, and a compact caller/contract figure in the established homepage vocabulary. The superseded generated artwork and its shipped sidecars are removed. The previous report remains historical analysis, not the deliverable handed back to the owner.

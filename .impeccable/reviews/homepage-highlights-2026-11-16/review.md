@@ -1,6 +1,14 @@
 # Homepage feature highlights
 
-## Current result after owner corrections
+## Current implementation: native continuity diagram
+
+Checkpoint: `457f618c5661545e2f23313754c6d626eadde678`. The owner instructed the agent to implement and present the reassessed direction. The new homepage uses a wide authentic IDE view, the complete two-slice source example, and a compact native diagram showing existing and updated checkouts connected independently to their command contracts. The phone IDE view supports native horizontal scrolling and keyboard inspection of the connected query. Existing sections from history onward retain their source and styling. The ice/star images and sidecars are removed from shipping assets.
+
+The active design-feedback skill and repository instructions now require consuming review findings, choosing and building the supported direction, and presenting the verified result. The preceding report-only handoff is superseded. Product and surface records separate rejected attempts from the current direction.
+
+Verification: the 586-page build and copy check pass; Astro check reports zero errors, warnings, and hints; all 20 tests pass. Eight responsive/theme checks at 320, 390, 820, and 1440px verify no page or diagram overflow, at least 16px diagram text, preserved section order, and the two specification slices. All four links and their anchors work. Phone keyboard scrolling exposes the query. The detector reports no findings. Final evidence uses `continuity-*.png` and `continuity-checks.json`; an initial light screenshot had a paint artifact and was replaced after decoding and painting the image. The [fresh review](continuity-reviewer.md) records the bounded verdict. No publication is requested.
+
+## Rejected integrated artwork attempt
 
 The final homepage leads with developer gains. The specification paragraph addresses stale Markdown files and separate documents without naming the DSL or IDE. Its eleven-line example includes a command, its produced event, and a separate query slice consuming that event.
 
