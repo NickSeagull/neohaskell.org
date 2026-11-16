@@ -13,6 +13,14 @@ Owner accepted this homepage and its general pitch on 11 November 2026, at imple
 
 The owner's 11 November 2026 request replaces the former code-led homepage with a benefits-led sales page for NeoHaskell as an AI-first language with integrated application capabilities. Preserve the existing palette, type and logo. The supplied Ruby, Phoenix and Laravel screenshots govern the requested craft, visual variety and feature coverage. Documentation remains unchanged. That redesign supersedes earlier homepage composition and source-example requirements below. The scoped 16 November extension and correction are recorded next and take precedence for the new highlights.
 
+## Specification document and ordering refinement, 16 November 2026
+
+Checkpoint: `f9cd95997f54a03238ead4c70ea0f82bd46621bc`. The owner requested moving "The specification is code" immediately before "A language with the essentials built in", and said the snippet felt empty and needed a treatment that felt like a specification. This supersedes the earlier placement among the opening highlights and the bare leading-rule source treatment below.
+
+`HomepageSpecification.astro` now owns the section at its requested position. A document sheet with a restrained surface, thin outline and folded corner encloses the unchanged source. The domain heading "Orders" and a short requirement explain the example in ordinary language before its syntax. There are no mock editor controls, file badges or status claims. Desktop retains source left and benefit right; phones read benefit, document, action. Code remains 16px with native scrolling when needed. The IDE, freezing, history and other accepted sections retain their existing visual treatment.
+
+The document form is the selected response to the owner's request, pending owner inspection. Checks and the fresh learning-example review are recorded in `.impeccable/reviews/homepage-specification-2026-11-16.md`.
+
 ## Homepage-only visual language and content, 16 November 2026
 
 Starting checkpoint: `90af0f12a4231766e2fceebbc50c3cff794ef699`. The owner corrected the scope: "I'm talking about improving the homepage landing only", while asking to retain the completed documentation work. This supersedes cross-surface calibration as the current assignment. The local visual-language skill now keeps homepage requests within the landing page.

@@ -1,6 +1,7 @@
 ---
 import HomepageVisual from './HomepageVisual.astro';
 import HomepageHighlights from './HomepageHighlights.astro';
+import HomepageSpecification from './HomepageSpecification.astro';
 import FeatureIcon from './FeatureIcon.astro';
 import Arrow from './Arrow.astro';
 import VisitorContext from './VisitorContext.astro';
@@ -106,6 +107,8 @@ const capabilities = [
             <HomepageVisual locale={locale} kind="transport" />
           </article>
         </section>
+
+        <HomepageSpecification locale={locale} />
 
         <section class="framework-section" id="framework" aria-labelledby="framework-title">
           <div class="section-heading"><h2 id="framework-title" set:html={t("home.the-frameworkcomes-with-the-language")} /><p set:html={t("home.less-assembly-more-application-the-pieces-you-would-usu")} /></div>
