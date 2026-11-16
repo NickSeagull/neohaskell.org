@@ -13,7 +13,21 @@ Owner accepted this homepage and its general pitch on 11 November 2026, at imple
 
 The owner's 11 November 2026 request replaces the former code-led homepage with a benefits-led sales page for NeoHaskell as an AI-first language with integrated application capabilities. Preserve the existing palette, type and logo. The supplied Ruby, Phoenix and Laravel screenshots govern the requested craft, visual variety and feature coverage. Documentation remains unchanged. That redesign supersedes earlier homepage composition and source-example requirements below. The scoped 16 November extension and correction are recorded next and take precedence for the new highlights.
 
-## Brand hero replacement, 16 November 2026
+## Material relief hero, 16 November 2026
+
+Checkpoint: `12b2da80caab19fb0b24547ce2d1812f0de55e91`. The owner rejected the oversized-logo hero below. Its prior reviewer verdict does not confer acceptance. The replacement uses one full-width typographic scene with a panoramic macro violet relief and a continuous cyan inset channel. The original small navigation logo, approved headline, explanatory sentence, two actions, type families, palette, and lower sections remain unchanged. The current larger HEAD includes unrelated video work and does not replace this task checkpoint.
+
+The research inspected official Awwwards Site of the Day records and actual desktop and phone evidence for Terminal Industries, the original Superlist microsite, and Osmo's awarded 2025 composition. Osmo's award cover is distinguished from its later live redesign. The useful qualities are physical weight, type composed with material, and a deliberate close phone crop. The result is abstract brand material, closest to the Osmo relief reference. It does not explain application behavior, prove developer control, or establish award-level quality. The authentic visual IDE remains the next product evidence.
+
+`HeroArtwork.astro` displays `public/images/home/hero-relief.webp`, a true-alpha 1672 by 941px asset of approximately 102KB, with its prompt and provenance in `public/images/home/hero-relief.webp.json`. Thick satin-violet planes and one pale cyan inset channel frame calm upper-left space for the copy. The image extends to the hero's lower and right edges, with no card, giant logo, added glow, filters, concept labels, or fake interface. A literal architectural maquette was rejected during art review before this macro-relief treatment was selected.
+
+Desktop uses a full-width 760px minimum-height field with 72px top / 96px bottom padding and a headline reaching 112px. From 761px through 1100px, the field has a 680px minimum height, 56px top / 80px bottom padding, and an 80px headline ceiling. At widths of at least 761px and heights of at most 820px, a later rule sets a 620px minimum height, 40px top / 72px bottom padding, and a 96px headline ceiling. At 760px and below, left-aligned copy precedes a 280px full-width crop; headline size is `clamp(44px, 12.8vw, 80px)`. At 480px and below, the crop is 208px tall, with the image enlarged to 135%, bottom-aligned and shifted left by 17.5%. The phone artwork allows local overflow to preserve its angled top; the outer hero clips page overflow. These intentional hero-only values do not change shared tokens or authorize sidecar drift repair.
+
+One 1100ms settling entrance moves the image from a 12px vertical offset and 1.015 scale to its completed position. Reduced motion shows the still immediately. The initial rendered review requested the shorter laptop treatment and the closer 208px phone crop; both are now implemented. The final adversarial review found no remaining material visual blockers after the phone silhouette repair. Owner acceptance remains pending. Research and review evidence are retained in `.impeccable/reviews/homepage-cinematic-hero-2026-11-16/`.
+
+## Historical oversized-logo hero, 16 November 2026
+
+The owner rejected this treatment. The material relief replacement above supersedes its composition, measurements, artwork, and review verdict.
 
 Checkpoint: `5f93f0b4a778fc8b1eb8dd0d227197d9cb43278d`. The owner rejected the shipping-rule card as explaining nothing and requested an "epic hero section similar to laravel or other similar well-funded frameworks". This supersedes the shipping example and earlier opening diagram requirements. Actual Laravel, Next.js, and Nuxt homepages were inspected at 1440px and 390px. The selected direction takes the simple promise and substantial visual presence from Laravel and the confidence in brand scale from Next.js, while preserving NeoHaskell's identity. It does not claim to reproduce Laravel's more complex scene craft.
 
@@ -25,7 +39,7 @@ Reference captures are `/private/tmp/neohaskell-hero-brand/{laravel,next,nuxt}-{
 
 ## Historical hero prerequisite review, 16 November 2026
 
-The shipping-rule direction below is superseded by the owner's rejection and the brand hero replacement above.
+The shipping-rule direction below is historical and superseded by the owner's rejection. The material relief hero above is the current implementation.
 
 Checkpoint: `2ec039501adb030817af17c469b90c4003208db9`. The owner asked for a fresh subagent critique because the hero appeared to introduce too many concepts. The independent review found competing explanations rather than a typography problem: purity, retained history, included services and runtime entry points all required inference, while "AI agents" changed meaning from creation assistance in the headline to runtime callers in the illustration.
 
@@ -69,7 +83,7 @@ OWN-WORLD: The accepted violet workshop, with Sansation, Manrope, one Pixelify e
 
 STORY: Understand the language promise, see how to review an agent's work, share one specification, and grow the app while preserving deployed behavior. Follow with recovery and safeguards, included infrastructure, and documentation to learn and build.
 
-FIRST VIEWPORT: The original promise at substantial scale, with an AI-first programming-language description and the existing actions. The original logo and offset contours occupy the right side on desktop; phones center the copy above the artwork. The visual IDE benefit follows the hero, then code freezing and the existing wide history panel. The specification remains immediately before the included capabilities.
+FIRST VIEWPORT: The original promise at substantial scale, with an AI-first programming-language description and the existing actions in calm upper-left space. A full-width violet material relief and cyan inset channel frame the lower and right edges. Phones retain left-aligned copy above a close material crop. Short-screen treatments bring the next actual-product evidence closer. The visual IDE benefit follows the hero, then code freezing and the existing wide history panel. The specification remains immediately before the included capabilities.
 
 FORM: Continue the accepted workshop identity with an agency-led panel overlapping an authentic IDE view on desktop, one asymmetric source section, and a compact two-lane caller/contract diagram. Existing and updated checkouts connect independently to their contracts. The rejected ice/star execution below is historical evidence. The supplied references and explicit instruction to implement supersede the former comp layout and extra direction approval. Wide history scene, unequal benefit panels, compact capability field, agent workflow and large documentation close create the scroll rhythm.
 

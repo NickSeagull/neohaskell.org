@@ -1,37 +1,24 @@
 ---
-const logo = `${import.meta.env.BASE_URL}logo.svg`;
+const artwork = `${import.meta.env.BASE_URL}images/home/hero-relief.webp`;
 ---
 
 <div class="hero-artwork" aria-hidden="true">
-  <svg class="hero-contours" viewBox="0 0 1080 1080" fill="none">
-    <defs>
-      <path id="hero-lambda" d="M302.156 126.5C302.156 150.439 789 975.695 789 975.695H581.5L420 690.5L302.156 975.695L96.5 971.495L302.156 489.5L96.5 126.5H302.156Z" />
-      <path id="hero-chevron" d="M590.5 975.5L797.5 485L593 127.5H794.5L1001.5 485L800 975.5H590.5Z" />
-    </defs>
-    <g class="contour-far" transform="translate(132 -84)">
-      <use href="#hero-lambda" /><use href="#hero-chevron" />
-    </g>
-    <g class="contour-near" transform="translate(66 -42)">
-      <use href="#hero-lambda" /><use href="#hero-chevron" />
-    </g>
-  </svg>
-  <img class="hero-emblem" src={logo} alt="" width="1080" height="1080" fetchpriority="high" />
+  <img src={artwork} alt="" width="1672" height="941" fetchpriority="high" decoding="async" />
 </div>
 
 <style>
-  .hero-artwork { position: relative; width: 100%; aspect-ratio: 1; margin-left: -8px; transform: rotate(-8deg); }
-  .hero-emblem { position: relative; display: block; width: 100%; height: auto; }
-  .hero-contours { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; stroke: var(--line); stroke-width: 1; }
-  .contour-near { opacity: .65; }
-  .contour-far { opacity: .35; }
+  .hero-artwork { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+  .hero-artwork img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center bottom; }
   @media (prefers-reduced-motion: no-preference) {
-    .hero-emblem { animation: emblem-arrive 900ms cubic-bezier(.16, 1, .3, 1) both; }
-    .hero-contours { animation: contours-arrive 1100ms cubic-bezier(.16, 1, .3, 1) both; }
-    @keyframes emblem-arrive { from { transform: translateY(24px); } to { transform: translateY(0); } }
-    @keyframes contours-arrive { from { transform: translate(-24px, 16px); opacity: 0; } to { transform: translate(0, 0); opacity: 1; } }
+    .hero-artwork img { animation: relief-settle 1100ms cubic-bezier(.16, 1, .3, 1) both; }
+    @keyframes relief-settle { from { transform: translateY(12px) scale(1.015); } to { transform: translateY(0) scale(1); } }
   }
-  @media (max-width: 1100px) { .hero-artwork { margin-left: 0; } }
   @media (max-width: 760px) {
-    .hero-artwork { width: min(72%, 320px); justify-self: center; margin: 0; transform: rotate(-8deg); }
+    .hero-artwork { position: relative; inset: auto; height: 280px; width: calc(100% + var(--hero-gutter) * 2); margin: 0 calc(var(--hero-gutter) * -1); }
+    .hero-artwork img { object-position: 70% bottom; }
+  }
+  @media (max-width: 480px) {
+    .hero-artwork { height: 208px; overflow: visible; }
+    .hero-artwork img { width: 135%; height: 135%; max-width: none; position: absolute; left: -17.5%; bottom: 0; }
   }
 </style>
