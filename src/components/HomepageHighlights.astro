@@ -6,6 +6,7 @@ interface Props { locale?: string; }
 const { locale = 'en' } = Astro.props;
 const t = messages(locale);
 const modelPage = sitePath(locale, '/introduction/event-modeling/');
+const asset = (name: string) => `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/home/${name}`;
 const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/mug-shop-ide.png`;
 ---
 
@@ -27,7 +28,7 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
         <h2 id="spec-title">{t('home.app-spec-title')}</h2>
         <p>{t('home.app-spec-description')}</p>
       </div>
-      <pre class="homepage-spec" tabindex="0" aria-label={t('home.app-spec-code-label')}><code><span class="spec-keyword">feature</span> <span class="spec-string">"Orders"</span> <span class="spec-keyword">do</span>{'\n'}  <span class="spec-keyword">chapter</span> <span class="spec-string">"Place order"</span> <span class="spec-keyword">do</span>{'\n'}    <span class="spec-keyword">slice</span> <span class="spec-string">"Accept order"</span> <span class="spec-keyword">do</span>{'\n'}      <span class="spec-keyword">entity</span> @Order <span class="spec-keyword">do</span>{'\n'}        <span class="spec-keyword">command</span> @PlaceOrder <span class="spec-keyword">do</span>{'\n'}          <span class="spec-keyword">produces</span> @OrderPlaced</code></pre>
+      <pre class="homepage-spec" tabindex="0" aria-label={t('home.app-spec-code-label')}><code><span class="spec-keyword">feature</span> <span class="spec-string">"Orders"</span> <span class="spec-keyword">do</span>{'\n'}  <span class="spec-keyword">chapter</span> <span class="spec-string">"Place order"</span> <span class="spec-keyword">do</span>{'\n'}    <span class="spec-keyword">slice</span> <span class="spec-string">"Accept order"</span> <span class="spec-keyword">do</span>{'\n'}      <span class="spec-keyword">entity</span> @Order <span class="spec-keyword">do</span>{'\n'}        <span class="spec-keyword">command</span> @PlaceOrder <span class="spec-keyword">do</span>{'\n'}          <span class="spec-keyword">produces</span> @OrderPlaced{'\n\n'}    <span class="spec-keyword">slice</span> <span class="spec-string">"Show stock"</span> <span class="spec-keyword">do</span>{'\n'}      <span class="spec-keyword">query</span> @AvailableMugs <span class="spec-keyword">do</span>{'\n'}        <span class="spec-keyword">readsFrom</span> @Order <span class="spec-keyword">do</span>{'\n'}          <span class="spec-keyword">onEvent</span> @OrderPlaced</code></pre>
       <a class="text-link" href={`${modelPage}#keep-the-specification-in-the-application`}>{t('home.app-spec-action')}<Arrow /></a>
     </section>
 
@@ -36,23 +37,14 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
         <h2 id="freeze-title">{t('home.freeze-code-title')}</h2>
         <p>{t('home.freeze-code-description')}</p>
       </div>
-      <div class="freeze-scene" role="img" aria-label={t('home.freeze-code-graphic-label')}>
-        <div class="frozen-contract">
-          <div class="frozen-contract-content">
-            <span class="contract-state">{t('home.frozen-on-deploy')}</span>
-            <code>PlaceOrder</code>
-          </div>
-          <svg class="contract-ice" viewBox="0 0 480 160" preserveAspectRatio="none" fill="none" aria-hidden="true">
-            <path class="ice-body" d="M12 24 36 12 100 18 124 8 182 16 220 10 264 18 308 8 360 16 408 10 464 24 470 54 460 78 472 108 452 128 408 124 384 138 332 128 280 136 224 128 180 136 128 126 80 134 24 124 8 104 16 76 6 48Z" />
-            <path class="ice-facet" fill-rule="evenodd" d="M12 24 36 12 100 18 124 8 182 16 220 10 264 18 308 8 360 16 408 10 464 24 470 54 460 78 472 108 452 128 408 124 384 138 332 128 280 136 224 128 180 136 128 126 80 134 24 124 8 104 16 76 6 48ZM36 40 60 38 100 30 142 42 208 30 264 32 300 34 360 30 396 38 440 40 442 92 426 108 368 110 332 108 284 114 224 108 168 112 128 106 88 110 40 104Z" />
-            <path class="ice-icicles" d="m56 128 8 28 12-26m42-2 6 16 8-17m208 4 8 24 10-22m56-7 8 22 8-24" />
-            <path class="ice-edge" d="m36 12 24 26 40-20m24-10 18 34 40-26m126-8-8 26 60-18m48-6-12 28 68-14m8 84-30-16 10 36m-44-4-24 14-16-28m-88 26 4-22-60 14m-44 8-12-24-40 14m-48 8 8-24-64 14M8 104l28-10-20-18M6 48l28 10-22-34" />
-            <path class="ice-crack" d="m142 42 14 10-6 12m246-26-12 14 8 10M88 110l16-12-4-12m268 24-8-12 10-12" />
-          </svg>
+      <div class="freeze-scene">
+        <div class="contract-artwork frozen-contract">
+          <img src={asset('frozen-code-frame.webp')} width="1024" height="1024" loading="lazy" alt="" />
+          <pre class="contract-code" tabindex="0" aria-label="Frozen PlaceOrder datatype"><code><span class="datatype-keyword">data</span> PlaceOrder ={'\n'}  PlaceOrder {'{'}{'\n'}    product :: Text,{'\n'}    quantity :: Int{'\n'}  {'}'}</code></pre>
         </div>
-        <div class="new-contract">
-          <span class="contract-state">{t('home.new-behavior')}</span>
-          <code>PlaceOrderWithContact</code>
+        <div class="contract-artwork new-contract">
+          <img src={asset('new-code-star.webp')} width="1024" height="1024" loading="lazy" alt="" />
+          <pre class="contract-code" tabindex="0" aria-label="New PlaceOrderWithContact datatype"><code><span class="datatype-keyword">data</span> PlaceOrderWithContact ={'\n'}  PlaceOrderWithContact {'{'}{'\n'}    product :: Text,{'\n'}    quantity :: Int,{'\n'}    email :: Text{'\n'}  {'}'}</code></pre>
         </div>
       </div>
       <a class="text-link" href={`${modelPage}#freeze-the-contract-when-it-is-deployed`}>{t('home.freeze-code-action')}<Arrow /></a>
@@ -67,52 +59,47 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
   .highlight-copy .text-link { margin-top: 24px; }
   .homepage-ide-preview { display: block; min-width: 0; border-radius: 12px; overflow: hidden; cursor: zoom-in; }
   .homepage-ide-preview img { display: block; width: 100%; height: auto; }
-  .spec-freeze-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; padding-top: 64px; border-top: 1px solid var(--rule); }
-  .spec-freeze-pair section { display: flex; flex-direction: column; min-width: 0; }
-  .spec-freeze-pair h2 { font-size: clamp(36px, 3.2vw, 44px); max-width: 18ch; }
-  .spec-freeze-pair .highlight-copy { flex: 1; }
-  .spec-freeze-pair .text-link { margin-top: 24px; align-self: flex-start; }
+  .spec-freeze-pair { padding-top: 64px; border-top: 1px solid var(--rule); }
+  .spec-highlight { display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); gap: 24px 64px; align-items: center; }
+  .spec-highlight .highlight-copy { align-self: end; }
+  .spec-highlight > .text-link { align-self: start; }
+  .spec-highlight .homepage-spec { grid-column: 2; grid-row: 1 / 3; margin: 0; }
+  .freeze-highlight { margin-top: 64px; padding-top: 64px; border-top: 1px solid var(--rule); }
+  .freeze-highlight .highlight-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .freeze-highlight .highlight-copy p { margin-top: 0; }
+  .freeze-highlight > .text-link { margin-top: 24px; }
   .homepage-spec { margin: 32px 0 0; padding: 28px 24px; overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--line) var(--scene); border: 1px solid var(--rule); border-radius: 12px; background: var(--scene); color: var(--ink); font-size: 16px; line-height: 1.8; tab-size: 2; }
   .homepage-spec code { font-family: ui-monospace, monospace; }
   .spec-keyword { color: var(--violet); }
   .spec-string { color: var(--accent); }
-  .freeze-scene { display: grid; gap: 12px; margin-top: 32px; padding: 0 8px; min-height: 230px; }
-  .frozen-contract { position: relative; min-height: 144px; display: grid; place-items: center; }
-  .frozen-contract-content { position: relative; z-index: 1; text-align: center; padding: 36px 32px; }
-  .contract-state { display: block; color: var(--muted); font-size: 16px; margin-bottom: 4px; }
-  .freeze-scene code { font-family: ui-monospace, monospace; font-size: 18px; color: var(--ink); }
-  .contract-ice { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-  .ice-body { fill: #153b52; stroke: #a5e5ef; stroke-width: 1; }
-  .ice-facet { fill: #94dcf1; fill-opacity: .45; }
-  .ice-icicles { fill: #94dcf1; stroke: #a5e5ef; stroke-width: 1; }
-  .ice-edge { stroke: #d1f6ff; stroke-opacity: .8; stroke-width: 1; }
-  .ice-crack { stroke: #a5e5ef; stroke-opacity: .4; }
-  .frozen-contract .contract-state { color: #bbdfeb; }
-  .frozen-contract code { color: #f2fcff; }
-  .new-contract { margin: 0 32px; border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; text-align: center; }
-  :global([data-theme='light']) .ice-body { fill: #edf9fc; stroke: #3e859c; }
-  :global([data-theme='light']) .ice-facet { fill: #7bc6dc; fill-opacity: .45; }
-  :global([data-theme='light']) .ice-icicles { fill: #7bc6dc; stroke: #3e859c; }
-  :global([data-theme='light']) .ice-edge { stroke: #3e859c; stroke-opacity: .6; }
-  :global([data-theme='light']) .ice-crack { stroke: #3e859c; stroke-opacity: .5; }
-  :global([data-theme='light']) .frozen-contract .contract-state { color: #365b6a; }
-  :global([data-theme='light']) .frozen-contract code { color: #153b52; }
+  .freeze-scene { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; margin-top: 32px; }
+  .contract-artwork { position: relative; display: grid; place-items: center; aspect-ratio: 1; min-width: 0; }
+  .frozen-contract::after { content: ''; position: absolute; z-index: 1; inset: 16% 7% 24%; border-radius: 12%; background: #bdeff7; }
+  .contract-artwork img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+  .contract-code { position: relative; z-index: 2; width: max-content; max-width: 80%; margin: 0; padding: 8px 4px; overflow-x: auto; scrollbar-width: thin; scrollbar-color: #73578a transparent; color: #20132b; font-size: 18px; line-height: 1.65; tab-size: 2; }
+  .contract-code code { font-family: ui-monospace, monospace; }
+  .new-contract .contract-code { top: 5%; }
+  .datatype-keyword { color: #63307f; }
   @media (max-width: 1100px) {
     .ide-highlight { gap: 40px; }
-    .spec-freeze-pair { gap: 40px; }
+    .spec-highlight, .freeze-highlight .highlight-copy { gap: 24px 40px; }
     .homepage-spec { padding-inline: 20px; }
+    .contract-code { font-size: 16px; }
   }
   @media (max-width: 760px) {
     .homepage-highlights { padding-bottom: 64px; }
     .ide-highlight { grid-template-columns: 1fr; gap: 32px; padding: 48px 0; }
     .homepage-ide-preview { margin-inline: -8px; }
-    .spec-freeze-pair { grid-template-columns: 1fr; gap: 48px; padding-top: 48px; }
-    .spec-freeze-pair h2 { max-width: 19ch; }
+    .spec-freeze-pair { padding-top: 48px; }
+    .spec-highlight { grid-template-columns: 1fr; gap: 24px; }
+    .spec-highlight .homepage-spec { grid-column: auto; grid-row: auto; }
+    .spec-highlight > .text-link { grid-row: 3; }
     .highlight-copy p { margin-top: 20px; }
-    .freeze-highlight { padding-top: 48px; border-top: 1px solid var(--rule); }
+    .freeze-highlight { margin-top: 48px; padding-top: 48px; }
+    .freeze-highlight .highlight-copy { grid-template-columns: 1fr; gap: 20px; }
     .homepage-spec { padding: 24px 16px; margin-top: 24px; }
-    .freeze-scene { padding: 0; margin-top: 24px; }
-    .new-contract { margin-inline: 12px; }
-    .freeze-scene code { font-size: 16px; }
+    .freeze-scene { grid-template-columns: 1fr; gap: 24px; margin-top: 24px; }
+    .contract-artwork { max-width: 520px; width: 100%; margin-inline: auto; }
+    .contract-code { font-size: 16px; }
   }
 </style>

@@ -78,7 +78,7 @@ Framework references: [Starlight custom pages](https://starlight.astro.build/gui
 
 ## Assets and design
 
-The original NeoHaskell logo is preserved in `public/logo.svg`. Sansation, Manrope, and Pixelify Sans are self-hosted; their open-font licenses are included in `public/fonts/`. Font sources: Google Fonts and its `google/fonts` repository. No generated raster artwork ships in the site.
+The original NeoHaskell logo is preserved in `public/logo.svg`. Sansation, Manrope, and Pixelify Sans are self-hosted; their open-font licenses are included in `public/fonts/`. Font sources: Google Fonts and its `google/fonts` repository. The generated ice and star artwork lives in `public/images/home/`, with generation prompts in adjacent provenance files. The actual IDE screenshot and its provenance remain documented in the model-evolution source evidence.
 
 `GLOSSARY.md` defines canonical vocabulary. The approved scope and direction contract are in `.impeccable/surfaces/src-pages-index-astro.md`. Earlier studies under `.impeccable/diagrams/` are review artifacts, not website features.
 

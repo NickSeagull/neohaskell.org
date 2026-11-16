@@ -318,7 +318,7 @@ The system is spacious and direct. Large headings establish intent; Manrope carr
 
 Source authority is `src/styles/home.css`, `src/pages/index.astro`, `src/components/HomepageVisual.astro`, `src/components/FeatureIcon.astro`, `src/styles/docs.css`, `src/styles/diagram-colors.css`, the articles in `src/content/docs/`, and `astro.config.mjs`. The documentation contract remains at `.impeccable/surfaces/src-components-learn-guidedlesson-astro.md`; its stable filename targets the MDX article. Homepage composition belongs to `.impeccable/surfaces/src-pages-index-astro.md`.
 
-The owner's full homepage redesign on 11 November 2026 supersedes the old active full-width event model, homepage source examples, and single opening animation. The current page leads with benefits and uses static HTML and SVG illustrations. Historical decisions after the canonical sections below remain a record of earlier states. They do not override the current homepage contract or change documentation design.
+The owner's full homepage redesign on 11 November 2026 supersedes the old active full-width event model, homepage source examples, and single opening animation. The current page leads with benefits and retains its static HTML and SVG diagrams. The owner's 16 November extension adds the actual visual IDE screenshot, a compact command/event/query source excerpt, and datatype definitions inside generated ice and star artwork. These scoped additions supersede the source-free and native-only homepage restrictions. Historical decisions after the canonical sections below remain a record of earlier states. They do not override the current homepage contract or change documentation design.
 
 ## Colors
 
@@ -346,7 +346,7 @@ The sidecar's eight-step tonal ramps are generated swatch previews. They are not
 
 **Display Font:** Sansation, with Manrope and sans-serif fallbacks. **Body Font:** Manrope, with sans-serif fallback. **Accent Font:** Pixelify, with monospace fallback.
 
-All three authored families are self-hosted WOFF2 files with `font-display: swap`. Sansation gives headings an open geometric voice. Manrope handles explanations, navigation, and ordinary-language illustration labels. Pixelify appears only on the hero's "control." word. Homepage illustrations contain no source syntax.
+All three authored families are self-hosted WOFF2 files with `font-display: swap`. Sansation gives headings an open geometric voice. Manrope handles explanations, navigation, and ordinary-language illustration labels. Pixelify appears only on the hero's "control." word. The 16 November homepage extension uses system monospace for its compact Event Model DSL excerpt and datatype definitions; the existing diagrams retain ordinary-language labels.
 
 ### Hierarchy
 
@@ -360,7 +360,7 @@ All three authored families are self-hosted WOFF2 files with `font-display: swap
 
 The hero explanation has a 43ch maximum, becoming 46ch on phones. Benefit paragraphs use 47ch; framework and agent introductions use 44ch and 43ch. Documentation uses the `docs-title`, `docs-heading`, `docs-subheading`, `docs-body`, and `docs-lead` roles. Prose and list text use 18px type with 1.8 line height; code and tables use 16px. The native code font remains Starlight/Expressive Code’s monospace font. Below 49.99rem, page titles become 2rem, second-level headings 1.5rem, and lead copy 1.125rem. Topic links use 16px text; the local contents outline uses .9375rem. Keep essential article and example text readable rather than reducing it to fit.
 
-**The Geometric Voice Rule.** Use Sansation for expansive homepage headings, Manrope for explanations and diagram labels, and Pixelify for the single selected display accent. Keep source typography in documentation.
+**The Geometric Voice Rule.** Use Sansation for expansive homepage headings, Manrope for explanations and diagram labels, and Pixelify for the single selected display accent. Keep source typography in documentation and the explicitly requested homepage DSL excerpt and datatype definitions.
 
 ## Layout
 
@@ -387,7 +387,7 @@ The two routes use ordinary browser scrolling. There is no snapping, persistent 
 
 The homepage uses tonal depth without shadows. The application has two offset outlines, displaced by 12px and 24px, behind the primary scene. Its event slips stagger horizontally by 12px. The history and closing sections use a stronger field; the pure boundary uses the quieter scene. Page and illustration borders are 1px; line icons and route strokes use 1.5 SVG units. These are complete static compositions.
 
-**The Flat Field Rule.** Use tonal contrast, offset outlines, and fine strokes for homepage depth. Do not add shadows, glows, or raster decoration to these native illustrations.
+**The Flat Field Rule.** Use tonal contrast, offset outlines, and fine strokes for homepage depth. Do not add shadows, glows, or raster decoration to these native illustrations. The separately requested ice and star use generated material illustrations without changing this treatment of semantic diagrams.
 
 Documentation uses subtle tonal table headings, fine separators, and restrained code frames. Expressive Code frames and pagination links have no box shadow. Starlight retains its surrounding search and navigation behavior.
 
@@ -456,7 +456,7 @@ The documentation relies on native links, search, contents navigation, and copyi
 
 - Don't replace the original logo with a generated interpretation or add raster decoration to the native illustrations.
 - Don't rely on color alone to distinguish transport choice, recorded history, or the current result.
-- Don't restore source lessons, a full-width opening model, or an initial animation to this homepage without a new scope decision.
+- Don't expand the requested compact command/event/query excerpt and datatype comparison into source lessons, restore a full-width opening model, or add an initial animation without a new scope decision.
 - Don't extend Pixelify into body copy or add auxiliary captions, badges, or reassurance beneath actions.
 - Don't bring retired teaching widgets, scroll snapping, or full-screen lesson spacing into the article layout.
 
@@ -612,3 +612,12 @@ The translation runner, manifest, recovery protocol, and CI freshness requiremen
 Checkpoint before migration: `c858a13d982f51f7bc61b1999f1112255651effb`. No publication is authorized by this simplification.
 
 The owner subsequently requested translation and deployment again. This authorizes publishing the completed translations through the existing GitHub Pages workflow, preserving the simplified page-based process and the accepted presentation.
+
+
+## Homepage highlights correction: 16 November 2026
+
+The owner requested visual IDE, specification-as-code, and code-freezing benefits immediately after the existing hero. The corrected extension preserves the accepted palette, logo, typography, and later section order. A wide IDE screenshot row precedes a wide specification row, with prose on the left and code on the right. A full-width freezing section follows with two illustrated datatype definitions side by side. Below 760px, each row and the two artworks stack in reading order. Headings and opening sentences state the developer's gain; specification prose addresses stale Markdown files and separate documents without naming the DSL or IDE. The homepage surface record owns this composition.
+
+The eleven-line DSL excerpt includes the command that produces `OrderPlaced` and a separate `AvailableMugs` query slice that reads it. It uses 16px system monospace with native, keyboard-accessible horizontal scrolling. The freezing example places the actual illustrative `PlaceOrder` datatype inside ice and `PlaceOrderWithContact`, with an added `email` field, inside a shiny gold star. Code remains selectable HTML, at 18px on wide desktops and 16px at 1100px and below, with contained scrolling where needed. A solid pale-cyan CSS face supports contrast inside the ice. There are no detached code icons or deployment-state labels. The existing IDE screenshot opens at full size.
+
+The generated assets are `public/images/home/frozen-code-frame.webp` and `public/images/home/new-code-star.webp`; adjacent JSON sidecars record their prompts. The inspected Duolingo Streak Freeze reference informed illustration craft without supplying shipped artwork or branding. The [retrospective](.impeccable/retrospectives/homepage-highlights-2026-11-16.md) records reference and production provenance. Ice, gold, and their composited code colors are local illustration materials, not new global tokens. Frontmatter and `.impeccable/design.json` remain unchanged. The owner's corrections supersede the initial descriptive copy, command-only excerpt, SVG ice frame, and subsequent detached crystal composition. The [integrated review](.impeccable/reviews/homepage-highlights-2026-11-16/integrated-reviewer.md) records findings for the current composition; owner acceptance remains unrecorded.

@@ -2,7 +2,7 @@
 version: 1
 slug: "src-pages-index-astro"
 primary_target: "src/pages/index.astro"
-related_targets: ["src/components/HomepageVisual.astro","src/components/FeatureIcon.astro","src/styles/home.css"]
+related_targets: ["src/components/Home.astro","src/components/HomepageHighlights.astro","src/components/HomepageVisual.astro","src/components/FeatureIcon.astro","src/styles/home.css"]
 ---
 
 # Homepage
@@ -11,7 +11,7 @@ Mode: Persuade. Target: `src/pages/index.astro`.
 
 Owner accepted this homepage and its general pitch on 11 November 2026, at implementation commit `49d3206a6cd21d0057e1da34899d42308b4a0f55`, and requested that the direction be retained as a skill. Continue from this approved baseline. `$neohaskell-positioning` owns the reusable pitch and homepage principles.
 
-The owner's 11 November 2026 request replaces the former code-led homepage with a benefits-led sales page for NeoHaskell as an AI-first language and framework. Preserve the existing palette, type and logo. The supplied Ruby, Phoenix and Laravel screenshots govern the requested craft, visual variety and feature coverage. Documentation remains unchanged. This latest request supersedes historical homepage composition and source-example requirements below.
+The owner's 11 November 2026 request replaces the former code-led homepage with a benefits-led sales page for NeoHaskell as an AI-first language and framework. Preserve the existing palette, type and logo. The supplied Ruby, Phoenix and Laravel screenshots govern the requested craft, visual variety and feature coverage. Documentation remains unchanged. That redesign supersedes earlier homepage composition and source-example requirements below. The scoped 16 November extension and correction are recorded next and take precedence for the new highlights.
 
 ## Direction contract
 
@@ -19,19 +19,29 @@ THESIS: Build with AI. Keep control. Show the advantages of recorded history, pu
 
 OWN-WORLD: The accepted violet workshop, with Sansation, Manrope, one Pixelify emphasis and the original logo. Crisp native geometry, permanent records and cyan connections carry meaning. Both themes remain supported.
 
-STORY: Understand the language and framework promise, see recovery and safeguards, recognize the included infrastructure, then open documentation to learn and build.
+STORY: Understand the language promise, see how to review an agent's work, share one specification, and grow the app while preserving deployed behavior. Follow with recovery and safeguards, included infrastructure, and documentation to learn and build.
 
-FIRST VIEWPORT: Left-aligned two-line promise with language-and-framework description and documentation action. A large application cutaway on the right connects web and agents to pure business rules, recorded history and infrastructure. The next wide history panel enters the first scroll.
+FIRST VIEWPORT: Left-aligned two-line promise with language-and-framework description and documentation action. A large application cutaway on the right connects web and agents to pure business rules, recorded history and infrastructure. The visual IDE benefit follows the hero, then specification and code freezing, before the existing wide history panel.
 
-FORM: User-directed continuation of the accepted workshop identity. Implementation in native SVG and HTML for responsive, accessible product diagrams. The supplied references and explicit instruction to implement supersede the former comp layout and extra direction approval. Wide history scene, unequal benefit panels, compact capability field, agent workflow and large documentation close create the scroll rhythm.
+FORM: User-directed continuation of the accepted workshop identity. Retain native SVG and HTML for responsive, accessible product diagrams. The requested IDE screenshot, source excerpt, and datatype definitions inside generated ice and star artwork extend that vocabulary within the new highlights. The supplied references and explicit instruction to implement supersede the former comp layout and extra direction approval. Wide history scene, unequal benefit panels, compact capability field, agent workflow and large documentation close create the scroll rhythm.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 
-## Current implementation, 11 November 2026
+## Current extension and correction, 16 November 2026
+
+`HomepageHighlights.astro`, inserted by `Home.astro`, follows the unchanged hero with a wide visual IDE row, a wide specification row, and a full-width freezing section. IDE prose and specification prose occupy the left column of their respective rows; the actual screenshot and eleven-line source excerpt occupy the right. The freezing heading and prose share a row above two illustrated datatype definitions. Below 760px, the additions and both datatype artworks stack in reading order. The existing history, pure-boundary/transport pair, capabilities, agent workflow, and closing action follow in their previous order. The IDE image opens at full size, and each benefit links to the relevant Event Modeling documentation anchor.
+
+The owner rejected the first feature-descriptive copy, command-only excerpt, and crude SVG ice frame. Later feedback acknowledged the crystal's improved quality but required code inside the artwork rather than a detached icon and labels. The current copy leads with understanding the agent's work, preventing a specification from falling behind, and continuing to build while deployed behavior stays stable. Keep "Your app spec is code" and its concrete opening about stale Markdown files or separate documents. Its visible prose does not name the DSL or IDE. The eleven-line source excerpt preserves the feature/chapter/slice hierarchy and connects `PlaceOrder` to `OrderPlaced`, then a separate `AvailableMugs` query slice to that same event. It assumes existing domain types; it is not a complete program. Source remains 16px with native horizontal scrolling and keyboard access.
+
+The freezing artwork contains two native HTML datatype definitions. `PlaceOrder`, with `product` and `quantity`, sits inside generated ice. `PlaceOrderWithContact` retains those fields and adds `email` inside a shiny gold star. The code is part of each composition, not a label beneath an icon. Text is selectable and keyboard-accessible, using 18px type on wide desktops and 16px at 1100px and below with contained scrolling when necessary. A solid pale-cyan CSS face keeps the ice's code background consistent. Do not restore the detached symbol, state labels, captions, or explanatory rows. The star's small static glints are part of the explicitly requested illustration, not a new page decoration or motion treatment.
+
+The generated assets are `public/images/home/frozen-code-frame.webp` and `public/images/home/new-code-star.webp`, each with an adjacent prompt JSON sidecar. The [retrospective](../retrospectives/homepage-highlights-2026-11-16.md) records the inspected Duolingo Streak Freeze reference and production history; its artwork and branding are not shipped. The reused IDE screenshot's provenance remains in [source evidence](../reviews/model-evolution-2026-11-13/source-evidence.md). The original hero, global tokens, type families, logo, existing diagrams, and later sections remain. Artwork and source examples are local exceptions to the earlier source-free and native-only direction. Ice, gold, and composited code colors are illustration materials, not new page or semantic diagram tokens. The [integrated review](../reviews/homepage-highlights-2026-11-16/integrated-reviewer.md) applies to this current composition; earlier review verdicts do not establish acceptance of the later corrections. Owner acceptance and runtime deployment enforcement remain unestablished by these design records.
+
+## Accepted baseline, 11 November 2026
 
 The completed redesign uses a split hero and layered application illustration, one wide history panel, paired pure-boundary and transport benefits, six compact framework capabilities, a three-step agent workflow, and a closing documentation action. The headline is "Build with AI. Keep control." Pixelify emphasizes "control." The hero and close both link "Explore the docs" to `/learn/`; the hero also offers a quiet anchor to the framework section. The close contains only its headline, action, and original logo.
 
-`HomepageVisual.astro` provides four static figures with accessible descriptions. The application uses overlapping outlines and staggered event slips. The history retains stock added, order placed, and order cancelled while showing the resulting stock outside the ledger. Pure decisions stay inside a boundary with database, network, and file effects outside. The transport scene uses a solid active HTTP route and dashed alternate MCP route to express a configuration choice. `FeatureIcon.astro` supplies the shared SVG icon vocabulary. There are no homepage source examples, raster illustrations, or opening animation.
+`HomepageVisual.astro` provides four static figures with accessible descriptions. The application uses overlapping outlines and staggered event slips. The history retains stock added, order placed, and order cancelled while showing the resulting stock outside the ledger. Pure decisions stay inside a boundary with database, network, and file effects outside. The transport scene uses a solid active HTTP route and dashed alternate MCP route to express a configuration choice. `FeatureIcon.astro` supplies the shared SVG icon vocabulary. At this baseline there were no homepage source examples, raster illustrations, or opening animation. The 16 November extension above supersedes the source and raster restrictions for its requested examples.
 
 The 1536px shell and 1:1.08 hero preserve roomy desktop proportions. At 760px major sections stack; the capability grid shifts from three columns to two at 1000px and one at 480px. History and closing panels use the new paired `--field` colors, while application and pure-boundary illustrations use `--scene`. Type, radii, spacing, and theme values are recorded from the implementation in `DESIGN.md`. The new 12px and 16px radii and varied section-heading scales are intentional additions, not a change of identity.
 

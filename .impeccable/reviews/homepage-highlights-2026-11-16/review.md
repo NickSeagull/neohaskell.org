@@ -1,5 +1,19 @@
 # Homepage feature highlights
 
+## Current result after owner corrections
+
+The final homepage leads with developer gains. The specification paragraph addresses stale Markdown files and separate documents without naming the DSL or IDE. Its eleven-line example includes a command, its produced event, and a separate query slice consuming that event.
+
+The freezing section now gives two actual illustrative datatype definitions their own artwork: `PlaceOrder` inside ice and `PlaceOrderWithContact`, adding `email`, inside a shiny star. Both are selectable native HTML code. Generated images provide the surrounding material; a solid CSS face keeps ice text contrast consistent. The spec uses a wide copy/code row, and the two datatype illustrations sit side by side on desktop and stack on phones.
+
+The final build passes copy validation, Astro checking with no errors, warnings or hints, and 586-page generation. All 20 tests pass. Eight initial responsive/theme cases passed; targeted final tablet captures verify both definitions fit at 820px after adopting 16px text at widths up to 1100px. Wide desktops retain 18px datatype text. Phone checks confirm selectable code and keyboard scrolling at 320px. All four new links, documentation anchors and theme switching pass. Two shipping WebP assets have saved prompt provenance. The detector reports only the local illustration colors as advisories.
+
+Current evidence is in `integrated-*.png`, `integrated-checks.json`, and the final `tablet-contracts.json`; the latter supersedes the earlier tablet font measurement. The [integrated review](integrated-reviewer.md) covers this composition. The [retrospective](../../retrospectives/homepage-highlights-2026-11-16.md) records the failure analysis and four improved active skills. The older review sections below describe the rejected first pass and remain historical evidence. No publication was requested.
+
+The fresh integrated review returned **ship** with learning verdict **keep**. Its tablet clipping finding was corrected and visually verified in both themes. User acceptance and runtime freezing enforcement remain separate from that verdict.
+
+## Rejected first pass
+
 Checkpoint: `dea24c3e25831fb1fe98a76e565dfae3561b8a22`. The tree was clean before implementation.
 
 ## Scope and direction
