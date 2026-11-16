@@ -30,4 +30,14 @@ The built-in image generator produced the ice frame and golden star under `publi
 
 The latest spec-copy correction also narrows the message to preventing stale Markdown specifications and separate documents. Tool names were removed from that paragraph, and the active positioning skill records this scope.
 
-Owner acceptance of the integrated result remains open. A fresh review can establish its stated findings, not acceptance on the owner's behalf.
+The owner subsequently rejected the integrated result as out of place and explicitly praised the older sections. The prior review verdict is superseded for visual direction.
+
+## Follow-up: failure to transfer the accepted design
+
+The requested Astra reassessment starts from clean checkpoint `86e450e74301b278b61621f601cda7dda24fe5ef` and compares the rejected highlights with the accepted history and pure/transport sections plus the current Laravel homepage. The [review](../reviews/homepage-highlights-2026-11-16/astra-reassessment.md) owns its findings and alternatives. Three unsuccessful treatments trigger the owner's stopping rule: stop incremental repairs and question whether large literal ice/star containers are the right visual argument.
+
+The earlier skill discovery problem was real and had been repaired before this rejection. It does not explain why the restored guidance still produced a poor composition. Existing instructions already required preserving identity, showing meaningful relationships, and following the accepted page. I optimized the individual asset and literal feedback compliance without testing the section against the strongest neighboring examples. Technical passes and narrow review verdicts could not establish that fit.
+
+The previous skill update also overfit the repair. Positioning prescribed datatype definitions inside ice and a star, while its approved-direction reference incorporated an unaccepted extension. The project surface correctly left acceptance open, but this conflicting durable guidance could bias subsequent work. The correction removes that literal requirement, separates the accepted baseline from pending additions, and requires comparing new work with accepted neighboring sections at the same scale. The learning-example reviewer now checks page fit and the demonstrated relationship before material finish. No new design skill is required.
+
+Active files corrected: `neohaskell-positioning/SKILL.md`, its `references/homepage-direction.md`, and `learning-example-review/SKILL.md`. The skill-creator and writing-for-agents guidance governs these focused changes. The website remains at the reviewed checkpoint during this reassessment; the alternatives are proposals rather than another claimed fix.

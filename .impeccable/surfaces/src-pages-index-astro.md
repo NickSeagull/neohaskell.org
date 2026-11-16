@@ -23,11 +23,17 @@ STORY: Understand the language promise, see how to review an agent's work, share
 
 FIRST VIEWPORT: Left-aligned two-line promise with language-and-framework description and documentation action. A large application cutaway on the right connects web and agents to pure business rules, recorded history and infrastructure. The visual IDE benefit follows the hero, then specification and code freezing, before the existing wide history panel.
 
-FORM: User-directed continuation of the accepted workshop identity. Retain native SVG and HTML for responsive, accessible product diagrams. The requested IDE screenshot, source excerpt, and datatype definitions inside generated ice and star artwork extend that vocabulary within the new highlights. The supplied references and explicit instruction to implement supersede the former comp layout and extra direction approval. Wide history scene, unequal benefit panels, compact capability field, agent workflow and large documentation close create the scroll rhythm.
+FORM: Continue the accepted workshop identity with responsive, accessible product diagrams. The new highlights remain visually unresolved after owner rejection; the ice/star execution below is historical implementation evidence, not a preservation constraint. The supplied references and explicit instruction to implement supersede the former comp layout and extra direction approval. Wide history scene, unequal benefit panels, compact capability field, agent workflow and large documentation close create the scroll rhythm.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 
-## Current extension and correction, 16 November 2026
+## Current feedback, 16 November 2026
+
+The owner rejected the integrated PlaceOrder ice/star section as "completely out of place" and explicitly praised the existing sections from "Your data has a memory" onward. The accepted lower sections are the primary design reference for scale, meaningful diagrams, and reading rhythm. The owner requested an Astra critique and possible Laravel inspiration. The [Astra reassessment](../reviews/homepage-highlights-2026-11-16/astra-reassessment.md) records proposals, not owner acceptance.
+
+The current implementation is preserved at `86e450e74301b278b61621f601cda7dda24fe5ef`. After three unsuccessful treatments, the incremental artwork repair loop is stopped. The doubtful assumption is that literal ice/star containers around datatype definitions communicate the developer gain and fit the established homepage. This review task changes guidance and records, not the UI. Preserve the three benefits, gains-first copy, the two-slice specification example and its stale-document focus. The exact art composition described below is superseded as a direction requirement.
+
+## Rejected extension implementation, 16 November 2026
 
 `HomepageHighlights.astro`, inserted by `Home.astro`, follows the unchanged hero with a wide visual IDE row, a wide specification row, and a full-width freezing section. IDE prose and specification prose occupy the left column of their respective rows; the actual screenshot and eleven-line source excerpt occupy the right. The freezing heading and prose share a row above two illustrated datatype definitions. Below 760px, the additions and both datatype artworks stack in reading order. The existing history, pure-boundary/transport pair, capabilities, agent workflow, and closing action follow in their previous order. The IDE image opens at full size, and each benefit links to the relevant Event Modeling documentation anchor.
 
