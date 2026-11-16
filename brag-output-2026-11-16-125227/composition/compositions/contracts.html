@@ -1,0 +1,18 @@
+<template><link rel="stylesheet" href="assets/film.css"><style>#root{position:absolute;inset:0}
+#contracts-word{position:absolute;left:92px;top:350px;font-size:206px;line-height:.89;z-index:4}#contracts-word span{display:block}#contracts-word .small{font-size:94px;margin-top:30px}#contracts-head{position:absolute;left:96px;top:110px;font-size:65px;z-index:4;max-width:800px}
+#contracts-camera{position:absolute;inset:0;transform-style:preserve-3d}#contracts-code{position:absolute;left:900px;top:250px;width:1220px;height:630px;background:linear-gradient(120deg,#322140,#100719 75%);padding:90px 55px;border-top:5px solid #7df9ff;border-left:3px solid #d9bce9;box-shadow:-12px 12px 0 #352345,-16px 16px 0 #7df9ff,0 0 90px #7df9ff30;transform-style:preserve-3d}#contracts-code pre{font-size:51px;line-height:1.65}
+#contracts-reject{position:absolute;left:98px;top:810px;font-size:40px;font-weight:700;color:#ffb573;display:flex;align-items:center;gap:24px}#contracts-reject svg{width:72px;height:72px;stroke:#ffb573;fill:none;stroke-width:5}
+</style><div id="root" data-composition-id="contracts" data-duration="2.571428571" data-width="1920" data-height="1080"><div class="scene"><div id="contracts-camera"><div id="contracts-code" data-layout-allow-overflow><pre class="code"><span class="kw">decide</span> :: <span class="cmd">ReserveStock</span>
+  -&gt; Maybe StockEntity
+  -&gt; RequestContext
+  -&gt; <span class="event">Decision StockEvent</span></pre></div></div><h2 id="contracts-head" class="title violet">COMPILER-ENFORCED.</h2><p id="contracts-word" class="title"><span>PURE</span><span class="small">DECISIONS.</span></p><div id="contracts-reject"><svg viewBox="0 0 80 80" aria-hidden="true"><path d="M0 40h27m26 0h27M29 26l22 28m0-28L29 54"/></svg><span>Bad wiring won't compile.</span></div></div></div><script>const tl=gsap.timeline({paused:true});
+// beat-locked: 2.571429s. The cut travels from a macro signature to its pure return type.
+tl.fromTo('#contracts-camera',{rotationY:-42,scale:2,x:-1300,y:60},{rotationY:0,scale:1,x:0,y:0,duration:.42,ease:'expo.out'},0);
+tl.fromTo('#contracts-code',{rotationY:-18,rotationZ:3},{rotationY:-8,rotationZ:-2,duration:1.9,ease:'none'},.42);
+tl.fromTo('#contracts-head',{x:-300,opacity:0},{x:0,opacity:1,duration:.17,ease:'expo.out'},.02);
+tl.fromTo('#contracts-word',{scale:1.35,opacity:0},{scale:1,opacity:1,duration:.22,ease:'expo.out'},.08);
+tl.fromTo('#contracts-reject',{x:-100,opacity:0},{x:0,opacity:1,duration:.15,ease:'expo.out'},.35);
+tl.to('#contracts-camera',{z:500,x:-700,rotationY:24,duration:.16,ease:'power3.in'},2.4);
+nhHits(tl,'#contracts-code',18/7,18/7);
+
+window.__timelines=window.__timelines||{};window.__timelines['contracts']=tl;</script></template>

@@ -1,0 +1,21 @@
+<template><link rel="stylesheet" href="assets/film.css"><style>#root{position:absolute;inset:0}
+#brand-depth{position:absolute;inset:0;perspective:1300px;transform-style:preserve-3d}.brand-blade{position:absolute;left:1160px;top:120px;width:800px;height:840px;background:linear-gradient(100deg,#29193b,#120a1d);border-left:5px solid #7df9ff;border-top:2px solid #fcf9ff;box-shadow:-13px 0 0 #352044,-16px 0 0 #c989e7,0 0 80px #7df9ff20;overflow:hidden;padding:45px;transform-style:preserve-3d}.brand-blade pre{font-size:42px;line-height:1.7}.brand-blade img{position:absolute;width:1800px;left:-450px;top:-100px}#brand-identity{position:absolute;inset:0;z-index:3}#brand-logo{position:absolute;width:260px;height:260px;left:114px;top:285px}#brand-name{position:absolute;left:420px;top:295px;font-size:158px;letter-spacing:-.055em}#brand-category{position:absolute;left:430px;top:530px;font-size:60px;color:#d9bce9;font-weight:500;margin:0}#brand-url{position:absolute;left:124px;top:830px;font-size:70px;color:#7df9ff;margin:0}
+</style><div id="root" data-composition-id="brand" data-duration="2.571428571" data-width="1920" data-height="1080"><div class="scene"><div id="brand-depth" data-layout-ignore><div id="brand-blade1" class="brand-blade"><pre class="code"><span class="kw">feature</span> "Stock flow" <span class="kw">do</span>
+  <span class="kw">entity</span> @StockEntity <span class="kw">do</span>
+    <span class="kw">command</span> @ReserveStock <span class="kw">do</span>
+      <span class="kw">produces</span> @StockReservedPayload</pre></div><div id="brand-blade2" class="brand-blade"><img src="assets/mug-shop-ide.png" alt=""></div><div id="brand-blade3" class="brand-blade"><pre class="code"><span class="kw">withAuth</span>
+<span class="kw">withEventStore</span>
+<span class="kw">withFileUpload</span>
+<span class="kw">withOAuth2Provider</span>
+<span class="kw">withTransport</span></pre></div></div><div id="brand-identity"><img id="brand-logo" src="assets/logo.svg" alt=""><h2 id="brand-name" class="title" data-var-text="product">NeoHaskell</h2><p id="brand-category">AI-first language.</p><p id="brand-url" data-var-text="destination">neohaskell.org</p></div></div></div><script>const tl=gsap.timeline({paused:true});
+// beat-locked: 21.428571s. The camera exits the software stack into a readable final identity.
+['#brand-blade1','#brand-blade2','#brand-blade3'].forEach((s,i)=>{
+ tl.fromTo(s,{x:-1500+i*240,z:950-i*320,rotationY:78},{x:180+i*110,z:-1000+i*260,rotationY:55,opacity:.38+i*.08,duration:.58,ease:'expo.out'},i*.06);
+ tl.to(s,{x:100+i*110,rotationY:62,z:-1050+i*260,duration:1.5,ease:'none'},.7);
+});
+tl.fromTo('#brand-logo',{rotationY:-70,scale:2.4,opacity:0},{rotationY:0,scale:1,opacity:1,duration:.28,ease:'expo.out'},.02);
+tl.fromTo('#brand-name',{x:300,opacity:0},{x:0,opacity:1,duration:.24,ease:'expo.out'},.05);
+tl.fromTo('#brand-category',{opacity:0,y:30},{opacity:1,y:0,duration:.18,ease:'expo.out'},.15);
+tl.fromTo('#brand-url',{opacity:0,y:30},{opacity:1,y:0,duration:.18,ease:'expo.out'},.16);
+
+window.__timelines=window.__timelines||{};window.__timelines['brand']=tl;</script></template>

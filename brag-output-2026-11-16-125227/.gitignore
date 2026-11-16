@@ -1,0 +1,11 @@
+*.mp4
+*.jpg
+*.log
+verification/
+composition/.hyperframes/
+composition/.waveform-cache/
+composition/node_modules/
+composition/lint-result.json
+composition/AGENTS.md
+composition/CLAUDE.md
+composition/assets/audio/*.ogg

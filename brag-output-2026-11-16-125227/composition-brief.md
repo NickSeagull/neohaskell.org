@@ -1,0 +1,13 @@
+# Hyperframes composition brief: NeoHaskell full throttle
+
+Implement brag-plan.md as an original 24-second, 1920x1080, 30fps launch film. Output composition/ and brag.mp4 in this directory. This is a complete aesthetic replacement of the rejected slow business presentation. Read the user's feedback and the plan before deciding motion.
+
+Use current hyperframes, hyperframes-cli, hyperframes-registry and media-use skills. Brag owns the workflow: skip generic storyline, SPEC.md, history, feedback, usage and REVIEW.md. Search the registry before hand-building named effects. Keep source editable and runtime assets local. Use real source artifacts, the authentic IDE screenshot and original logo. Original assets/fonts/vendor runtime are available in ../brag-output/composition/assets/ relative to the repository's output directory, or in the website public directory.
+
+Make the visual system feel physical: camera travel through code planes, foreground/background depth, aggressive scale changes, sharp cuts, tightly timed type. Do not make nine identical headline slides. At least five distinct compositions, with real UI/code occupying the frame for the middle. Copy, source boundaries, temporal shape and palette are in brag-plan.md. Brand colors can move toward nearly black for cinematic depth; don't replace the identity with generic green hacker code.
+
+Audio is assets/audio/aggressive-master.wav or the final path in audio-notes.md. Read the exact grid before wiring. 140 BPM provisional, beat 0.428571 seconds, bar 1.714286 seconds. Beat-lock major moments and sequential feature arrivals, with code comments identifying locks. Use the maintained media-use extraction helper and wire energy into at least one brand-specific visual. No visual equalizers, random dust, generic particles or full-screen strobing. Fast movement, impact cuts and bass convey intensity.
+
+The feature count is deliberate. Built-ins can arrive rapidly if they remain visible for the full-set hold. Essential copy needs enough settled time. Main type should generally be 85-170px; evidence code 30-44px; avoid small captions. Use no auxiliary labels, decorative footers, invented badges, or performance statistics. Do not claim a live execution or modify screenshot pixels to imply one.
+
+Run Hyperframes check with snapshots, inspect actual rendered frames and browser preview, fix material issues, then render delivery MP4 locally. The root agent will arrange an independent fresh visual/example review and finalize poster, exports and verification. Do not publish or push. Do not edit website source. Do not commit. Own only composition files except assets/audio, which the audio agent owns.

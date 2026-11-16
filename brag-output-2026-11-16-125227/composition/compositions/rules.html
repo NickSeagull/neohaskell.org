@@ -1,0 +1,31 @@
+<template><link rel="stylesheet" href="assets/film.css"><style>#root{position:absolute;inset:0}
+#rules-camera{position:absolute;inset:0;transform-style:preserve-3d}.rules-source{position:absolute;left:65px;top:95px;width:1150px;height:870px;padding:68px 54px;background:linear-gradient(130deg,#30203c,#130a1e);border-top:5px solid #7df9ff;border-left:3px solid #d9bce9;box-shadow:-12px 14px 0 #4a2a5b,-16px 18px 0 #c989e7,0 0 80px #c989e730;transform-style:preserve-3d}.rules-source pre{font-size:40px;line-height:1.5}#rules-model pre{font-size:41px;line-height:1.75}#rules-head1,#rules-head2{position:absolute;left:1320px;top:230px;width:530px;font-size:118px;line-height:.95;z-index:5}#rules-head1 span,#rules-head2 span{display:block}#rules-head1 .big,#rules-head2 .big{font-size:156px;margin-top:22px}#rules-rule{border-top-color:#ffb573}
+</style><div id="root" data-composition-id="rules" data-duration="3.428571429" data-width="1920" data-height="1080"><div class="scene"><div id="rules-camera"><div class="rules-source" id="rules-model"><pre class="code">orders =
+  <span class="kw">feature</span> "Orders" <span class="kw">do</span>
+    <span class="kw">chapter</span> "Cancel order" <span class="kw">do</span>
+      <span class="kw">slice</span> "Cancel before dispatch" <span class="kw">do</span>
+        <span class="kw">entity</span> @Order <span class="kw">do</span>
+          <span class="kw">command</span> @<span class="cmd">CancelOrder</span> <span class="kw">do</span>
+            <span class="kw">produces</span> @<span class="event">OrderCancelled</span></pre></div><div class="rules-source" id="rules-rule"><pre class="code"><span class="kw">given</span> <span class="kw">do</span>
+  <span class="kw">event</span> <span class="event">OrderPlaced</span> {
+    orderId = orderId,
+    quantity = 1
+  }
+<span class="kw">when</span> <span class="cmd">CancelOrder</span> { orderId = orderId }
+<span class="kw">therefore</span> <span class="kw">do</span>
+  <span class="kw">event</span> <span class="event">OrderCancelled</span> {
+    orderId = orderId,
+    quantity = 1
+  }</pre></div></div><h2 class="title" id="rules-head1"><span>YOUR</span><span>SPEC</span><span>IS</span><span class="accent big">CODE.</span></h2><h2 class="title" id="rules-head2"><span>RULES</span><span>YOU</span><span>CAN</span><span class="accent big">RUN.</span></h2></div></div><script>const tl=gsap.timeline({paused:true});
+// beat-locked: 13.714286s and 15.428571s. Opposite camera travel through the two source surfaces.
+tl.fromTo('#rules-model',{rotationY:45,z:600,x:-900},{rotationY:-5,z:0,x:0,duration:.3,ease:'expo.out'},0);
+tl.to('#rules-model',{rotationY:3,x:12,duration:1.2,ease:'none'},.3);
+tl.fromTo('#rules-head1',{y:120,opacity:0},{y:0,opacity:1,duration:.18,ease:'expo.out'},.03);
+tl.set('#rules-rule',{opacity:0},0);tl.set('#rules-head2',{opacity:0},0);
+tl.to('#rules-model',{x:-1800,rotationY:-55,duration:.16,ease:'power3.in'},1.554286);tl.set('#rules-head1',{opacity:0},1.714286);
+tl.fromTo('#rules-rule',{x:1800,z:300,rotationY:45,opacity:1},{x:0,z:0,rotationY:-3,opacity:1,duration:.25,ease:'expo.out',immediateRender:false},1.714286);
+tl.fromTo('#rules-head2',{opacity:0,y:-100},{opacity:1,y:0,duration:.16,ease:'expo.out',immediateRender:false},1.714286);
+tl.to('#rules-rule',{rotationY:4,x:15,duration:1.15,ease:'none'},1.964286);
+tl.to('#rules-camera',{scale:1.7,x:-600,rotationZ:-8,duration:.18,ease:'power3.in'},3.248571);
+
+window.__timelines=window.__timelines||{};window.__timelines['rules']=tl;</script></template>
