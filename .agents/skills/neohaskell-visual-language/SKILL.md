@@ -13,6 +13,10 @@ Read [authority and baseline](references/baseline.md), then the current surface 
 
 State the visitor's intended outcome and the visual question in one sentence each. The homepage persuades a developer to explore NeoHaskell; documentation helps a reader understand or do something. Both express the same identity, with different density and reading rhythm. For a skill-structure discussion, use [the hosq comparison](references/hosq-comparison.md); it is research context, not NeoHaskell's style guide.
 
+Keep calibration inside the requested surface. Homepage landing work uses homepage examples and ends with the landing page. Consult or change documentation only when the task explicitly includes it; a reusable visual-language rule does not expand the assignment.
+
+For homepage headings, lead with the concrete benefit or subject. Read the full heading sequence together and remove repeated possessive openings such as "Your app", "Your data", and "Your ideas". Use "your" when ownership changes the meaning, rather than as a default way to address the visitor. Preserve natural direct address in body copy and necessary domain labels. This is a heading-rhythm rule, not a word blacklist or permission to translate other locales.
+
 Classify each decision used by the task as owner-accepted, implemented, or proposed. Record its source and scope. An existing CSS value establishes what is rendered, not that the owner wants it preserved forever. A reviewer verdict establishes an inspected result, not owner acceptance. Resolve conflicting records against the latest applicable owner direction before treating them as review criteria.
 
 ## Develop a rule
@@ -23,7 +27,7 @@ Classify each decision used by the task as owner-accepted, implemented, or propo
 4. Apply [the review lenses](references/review.md). Repair findings by cause and inspect the affected result again. Follow the repository's three-failed-fixes rule when the premise needs replacement. Finish with a working, verified result when implementation is in scope.
 5. Record the resulting rule in its existing owner: design rationale in `DESIGN.md`, surface-specific composition in its surface brief, values in the owning styles, and behavior in its component. Include scope, reason, evidence, and decision status. Consolidate superseded active guidance within the authorized edit. Keep experiment notes distinct from the canonical rule.
 
-For a new language-wide decision, begin with the calibration set in the baseline reference. For a local refinement, select only the affected lenses and occurrences. Broader testing follows shared impact, not the number of critique roles available. A structural skill review does not establish visual quality or complete the calibration step.
+For a new language-wide decision, select the examples within the authorized scope from the calibration set in the baseline reference. For a local refinement, select only the affected lenses and occurrences. Broader testing follows shared impact, not the number of critique roles available. A structural skill review does not establish visual quality or complete the calibration step.
 
 ## Return a decision
 

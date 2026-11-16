@@ -10,6 +10,8 @@ Keep exactly one local server for this repository, at `http://127.0.0.1:4323`. A
 
 # Copy and auxiliary text
 
+For homepage and documentation writing, use the repository-local [neohaskell-content-review](.agents/skills/neohaskell-content-review/SKILL.md) to check concepts against what the reader has learned, starting from the homepage and following the intended documentation sequence. Keep the review and edits within the requested surface.
+
 Write primary content, necessary labels, and direct actions. Preserve NeoHaskell's opinionated voice and approved developer-centered philosophy through `$neohaskell-positioning`; generic restraint against marketing must not dilute those convictions. Follow `$nick-plain-copy` for substantive prose and endings without duplicated navigation. Keep substantive explanations in the main prose and place source links inline where they support a claim.
 
 Do not add footnotes, caption bars, widget identity labels, language badges, or explanatory rows around examples and actions. Remove redundant reassurance beneath buttons and text that merely describes the component beside it. Use standard visual affordances for scrolling instead of instruction sentences. Keep accessible control names and meaningful domain labels.

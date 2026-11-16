@@ -17,12 +17,12 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
         <h2 id="ide-title">{t('home.visual-ide-title')}</h2>
         <div class="highlight-copy">
           <p>{t('home.visual-ide-description')}</p>
-          <a class="text-link" href={`${modelPage}#use-the-model-to-understand-the-code`}>{t('home.visual-ide-action')}<Arrow /></a>
+          <a class="text-link" href={modelPage}>{t('home.visual-ide-action')}<Arrow /></a>
         </div>
       </div>
       <div class="homepage-ide-preview" tabindex="0" role="region" aria-label="Order process in the NeoHaskell visual IDE">
         <a class="homepage-ide-image" href={screenshot} aria-label={t('lesson.open-the-full-size-neohaskell-ide-screenshot')}>
-          <img src={screenshot} width="2880" height="1700" loading="lazy" alt="The visual IDE connects PlaceOrder and CancelOrder to their recorded events and AvailableMugs queries." />
+          <img src={screenshot} width="2880" height="1700" loading="lazy" alt="The order and cancellation process shown as connected parts in NeoHaskell's visual IDE." />
         </a>
       </div>
     </div>
@@ -35,7 +35,7 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
         <p>{t('home.app-spec-description')}</p>
       </div>
       <pre class="homepage-spec" tabindex="0" aria-label={t('home.app-spec-code-label')}><code><span class="spec-keyword">feature</span> <span class="spec-string">"Orders"</span> <span class="spec-keyword">do</span>{'\n'}  <span class="spec-keyword">chapter</span> <span class="spec-string">"Place order"</span> <span class="spec-keyword">do</span>{'\n'}    <span class="spec-keyword">slice</span> <span class="spec-string">"Accept order"</span> <span class="spec-keyword">do</span>{'\n'}      <span class="spec-keyword">entity</span> @Order <span class="spec-keyword">do</span>{'\n'}        <span class="spec-keyword">command</span> @PlaceOrder <span class="spec-keyword">do</span>{'\n'}          <span class="spec-keyword">produces</span> @OrderPlaced{'\n\n'}    <span class="spec-keyword">slice</span> <span class="spec-string">"Show stock"</span> <span class="spec-keyword">do</span>{'\n'}      <span class="spec-keyword">query</span> @AvailableMugs <span class="spec-keyword">do</span>{'\n'}        <span class="spec-keyword">readsFrom</span> @Order <span class="spec-keyword">do</span>{'\n'}          <span class="spec-keyword">onEvent</span> @OrderPlaced</code></pre>
-      <a class="text-link" href={`${modelPage}#keep-the-specification-in-the-application`}>{t('home.app-spec-action')}<Arrow /></a>
+      <a class="text-link" href={modelPage}>{t('home.app-spec-action')}<Arrow /></a>
     </section>
 
     <section class="freeze-highlight" aria-labelledby="freeze-title">
@@ -70,45 +70,45 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
   .homepage-highlights { padding-bottom: 96px; }
   .ide-highlight { padding: 64px 0 80px; border-top: 1px solid var(--rule); }
   .ide-stage { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: center; }
-  .ide-intro { position: relative; z-index: 1; grid-column: 1 / 6; grid-row: 1; padding: 40px; border-radius: 16px; background: var(--field); }
+  .ide-intro { position: relative; z-index: 1; grid-column: 1 / 5; grid-row: 1; padding: 32px; border-radius: 16px; background: var(--field); }
   .ide-intro h2 { max-width: 12ch; }
   .highlight-copy p { margin-top: 24px; max-width: 48ch; }
   .ide-intro p { margin-top: 24px; }
   .highlight-copy .text-link { margin-top: 24px; }
-  .homepage-ide-preview { display: block; position: relative; grid-column: 3 / -1; grid-row: 1; min-width: 0; aspect-ratio: 1.72; border-radius: 12px; overflow: hidden; cursor: zoom-in; }
-  .homepage-ide-image { display: block; }
-  .homepage-ide-preview img { display: block; width: 100%; height: auto; }
+  .homepage-ide-preview { display: block; position: relative; grid-column: 4 / -1; grid-row: 1; min-width: 0; aspect-ratio: 44 / 21; border-radius: 12px; overflow: hidden; cursor: zoom-in; }
+  .homepage-ide-image { display: block; position: absolute; inset: 0; overflow: hidden; }
+  /* Frame the actual model at source coordinates 650,310 through 2850,1360. */
+  .homepage-ide-preview img { display: block; position: absolute; width: 130.909%; max-width: none; height: auto; left: -29.545%; top: -29.524%; }
   .spec-freeze-pair { border-top: 1px solid var(--rule); }
-  .spec-highlight { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 24px 64px; align-items: center; padding: 80px 0; }
-  .spec-highlight .highlight-copy { align-self: end; }
-  .spec-highlight > .text-link { align-self: start; }
-  .spec-highlight .homepage-spec { grid-column: 2; grid-row: 1 / 3; margin: 0; }
-  .homepage-spec { padding: 32px; overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--line) var(--scene); border-radius: 12px; background: var(--scene); color: var(--ink); font-size: 16px; line-height: 1.8; tab-size: 2; }
+  .spec-highlight { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 80px; align-items: center; padding: 80px 0; }
+  .spec-highlight .highlight-copy { grid-column: 2; align-self: end; }
+  .spec-highlight > .text-link { grid-column: 2; align-self: start; }
+  .spec-highlight .homepage-spec { grid-column: 1; grid-row: 1 / 3; margin: 0; }
+  .homepage-spec { width: fit-content; max-width: 100%; padding: 24px 32px; overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--line) var(--ground); border-left: 1px solid var(--line); color: var(--ink); font-size: 16px; line-height: 1.8; tab-size: 2; }
   .homepage-spec code, .contract-fields { font-family: ui-monospace, monospace; }
   .spec-keyword { color: var(--violet); }
   .spec-string { color: var(--accent); }
-  .freeze-highlight { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: center; gap: 64px; padding-top: 80px; border-top: 1px solid var(--rule); }
-  .freeze-highlight h2 { max-width: 16ch; }
-  .freeze-scene { display: grid; gap: 32px; padding: 24px 0 24px 24px; }
-  .contract-lane { display: grid; grid-template-columns: 104px 64px minmax(0, 1fr); align-items: center; }
+  .freeze-highlight { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 80px; padding-top: 80px; border-top: 1px solid var(--rule); }
+  .freeze-highlight h2 { max-width: 12ch; }
+  .freeze-scene { display: grid; gap: 24px; width: 100%; max-width: 600px; justify-self: end; padding-block: 16px; }
+  .contract-lane { display: grid; grid-template-columns: 104px 48px minmax(0, 1fr); align-items: center; }
   .checkout { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; color: var(--muted); font-size: 16px; line-height: 1.5; }
   .checkout :global(svg) { width: 32px; height: 32px; color: var(--ink); }
   .contract-route { width: 100%; height: 24px; color: var(--muted); }
   .contract-route path { stroke: currentColor; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
   .contract { min-width: 0; padding: 20px 24px; border: 1px solid var(--diagram-line); border-radius: 8px; color: var(--diagram-ink); background: var(--diagram-surface); }
-  .contract-name { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .contract-name { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; min-height: 54px; }
   .contract-name strong { font-weight: 500; font-size: 20px; line-height: 1.35; }
   .contract-lock { flex-shrink: 0; }
-  .contract-fields { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 16px; font-size: 16px; line-height: 1.5; }
-  .added-field { flex-basis: 100%; font-weight: 600; }
+  .contract-fields { display: grid; grid-template-columns: max-content max-content; grid-template-rows: repeat(2, 24px); gap: 4px 24px; margin-top: 16px; font-size: 16px; line-height: 1.5; }
+  .added-field { grid-column: 1 / -1; font-weight: 600; }
   @media (max-width: 1100px) {
     .spec-highlight, .freeze-highlight { gap: 32px; }
     .ide-stage { display: block; }
     .ide-intro { padding: 32px; border-radius: 16px 16px 0 0; }
     .ide-intro h2 { max-width: none; }
     .ide-intro p { max-width: 62ch; }
-    .homepage-ide-preview { aspect-ratio: 2.12; border-radius: 0 0 12px 12px; }
-    .freeze-scene { padding-left: 0; }
+    .homepage-ide-preview { border-radius: 0 0 12px 12px; }
     .contract-lane { grid-template-columns: 88px 40px minmax(0, 1fr); }
     .contract { padding: 20px 16px; }
     .contract-name strong { font-size: 18px; }
@@ -121,11 +121,12 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
     .ide-intro h2 { max-width: 12ch; }
     .spec-highlight, .freeze-highlight { grid-template-columns: 1fr; gap: 32px; }
     .spec-highlight { padding: 48px 0; }
+    .spec-highlight .highlight-copy, .spec-highlight > .text-link { grid-column: auto; }
     .spec-highlight .homepage-spec { grid-column: auto; grid-row: auto; }
     .spec-highlight > .text-link { grid-row: 3; }
     .highlight-copy p { margin-top: 20px; }
     .ide-intro p { margin-top: 24px; }
-    .homepage-spec { padding: 24px 16px; }
+    .homepage-spec { width: 100%; padding: 24px 0; border-left: 0; border-block: 1px solid var(--rule); }
     .freeze-highlight { padding-top: 48px; }
     .freeze-scene { width: 100%; max-width: 520px; margin-inline: auto; padding: 0; gap: 24px; }
     .contract-lane { grid-template-columns: 88px 40px minmax(0, 1fr); }
@@ -138,6 +139,6 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
     .contract { padding: 16px 12px; }
     .contract-name { gap: 8px; }
     .contract-name strong { font-size: 18px; }
-    .contract-fields { display: grid; gap: 4px; margin-top: 12px; }
+    .contract-fields { grid-template-columns: 1fr; grid-template-rows: repeat(3, 24px); gap: 4px; margin-top: 12px; }
   }
 </style>

@@ -13,7 +13,19 @@ Owner accepted this homepage and its general pitch on 11 November 2026, at imple
 
 The owner's 11 November 2026 request replaces the former code-led homepage with a benefits-led sales page for NeoHaskell as an AI-first language with integrated application capabilities. Preserve the existing palette, type and logo. The supplied Ruby, Phoenix and Laravel screenshots govern the requested craft, visual variety and feature coverage. Documentation remains unchanged. That redesign supersedes earlier homepage composition and source-example requirements below. The scoped 16 November extension and correction are recorded next and take precedence for the new highlights.
 
-## Copy and image refinement, 16 November 2026
+## Homepage-only visual language and content, 16 November 2026
+
+Starting checkpoint: `90af0f12a4231766e2fceebbc50c3cff794ef699`. The owner corrected the scope: "I'm talking about improving the homepage landing only", while asking to retain the completed documentation work. This supersedes cross-surface calibration as the current assignment. The local visual-language skill now keeps homepage requests within the landing page.
+
+The selected refinement focuses on the three newer sections. The desktop IDE composition crops the authentic image around the connected order model while retaining the opaque overlapping copy panel and full-original link. The source moves to the left of its copy and loses its large rounded container. The frozen-contract lanes retain independent paths and now align their unchanged fields within equal-height cards. The hero, accepted lower illustrations, capability layout and closing composition remain the baseline.
+
+The owner called the revised AI-review section "much better", requested an abstract explanation rather than commands, events or queries, then asked for a title emphasizing the included visual IDE. The selected heading is **"A visual IDE, built in."** The paragraph explains the difficulty of reviewing growing AI-generated code and identifies the IDE as a way to understand the application and judge changes against intent. This is a tool for human review, not a correctness guarantee. It supersedes "Your app. Your call." and the interim review and trust titles. The accessible screenshot description also uses ordinary application behavior; identifiers inside the authentic screenshot remain intact.
+
+The owner also requested removing repeated "Your" headings and saving that guidance in a skill. Homepage headings now lead with the subject or gain. The repository-local visual-language skill owns that heading-rhythm rule. The newly requested local `neohaskell-content-review` skill checks required concepts against the reader's prior explanations, beginning at the homepage and following the introductory documentation sequence. This does not authorize editing documentation or translating other locales during the landing-page pass.
+
+The source of the IDE image is unchanged. The final composition and content review are recorded in `.impeccable/reviews/homepage-landing-2026-11-16/review.md`. Owner approval of the improved section and requested copy is distinct from final verification of the complete candidate.
+
+## Earlier copy and image refinement, 16 November 2026
 
 Starting checkpoint: `9fe17a0a1fb0da0e2a372b117f55825fc0e8e460`. The owner requested explicit outdated-spec run prevention, a witty positive stone metaphor, and motivating IDE copy composed with the image. "Your app. Your call." gives the agent implementation work while keeping decisions with the developer. "Set in stone. Free to grow." presents the frozen original contract as a foundation for growth. "Your app spec is code" now opens with "Your app won't run with an outdated spec." This is the owner-authorized target-product promise recorded in `PRODUCT.md`, not newly executed runtime evidence.
 
