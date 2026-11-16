@@ -1,22 +1,10 @@
 ---
 import FeatureIcon from './FeatureIcon.astro';
 import { messages } from '../i18n/runtime';
-interface Props { locale?: string; kind: 'application' | 'history' | 'pure' | 'transport'; }
+interface Props { locale?: string; kind: 'history' | 'pure' | 'transport'; }
 const { kind, locale = 'en' } = Astro.props;
 const t = messages(locale);
 ---
-{kind === 'application' && (
-  <figure class="application-scene" lang="en" aria-label={t('visual.shipping-rule-example')}>
-    <div class="application-core">
-      <h3 class="app-rule-title">{t('visual.shipping-an-order')}</h3>
-      <p class="app-rule-statement">{t('visual.orders-ship-only-after-payment')}</p>
-      <dl class="app-rule-outcomes">
-        <div><dt>{t('visual.paid-order')}</dt><dd><FeatureIcon name="check" />{t('visual.can-ship')}</dd></div>
-        <div><dt>{t('visual.unpaid-order')}</dt><dd>{t('visual.cannot-ship')}</dd></div>
-      </dl>
-    </div>
-  </figure>
-)}
 {kind === 'history' && (
   <figure class="history-scene" aria-label={t("visual.example-shop-history-twelve-mugs-added-one-ordered-then")}>
     <div class="history-ledger" data-diagram-role="event">

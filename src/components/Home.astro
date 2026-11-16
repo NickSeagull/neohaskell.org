@@ -1,5 +1,6 @@
 ---
 import HomepageVisual from './HomepageVisual.astro';
+import HeroArtwork from './HeroArtwork.astro';
 import HomepageHighlights from './HomepageHighlights.astro';
 import HomepageSpecification from './HomepageSpecification.astro';
 import FeatureIcon from './FeatureIcon.astro';
@@ -78,7 +79,7 @@ const capabilities = [
             <p class="hero-description" set:html={t("home.an-ai-first-language-and-framework-for-turning-your-ide")} />
             <div class="hero-actions"><a href={path("/introduction/")} class="primary-link">{t("home.explore-the-docs")}<Arrow /></a><a href="#framework" class="secondary-link">{t("home.see-what-s-included")}</a></div>
           </div>
-          <HomepageVisual locale={locale} kind="application" />
+          <HeroArtwork />
         </section>
 
         <HomepageHighlights locale={locale} />

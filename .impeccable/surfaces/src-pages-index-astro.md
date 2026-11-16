@@ -2,7 +2,7 @@
 version: 1
 slug: "src-pages-index-astro"
 primary_target: "src/pages/index.astro"
-related_targets: ["src/components/Home.astro","src/components/HomepageHighlights.astro","src/components/HomepageVisual.astro","src/components/FeatureIcon.astro","src/styles/home.css"]
+related_targets: ["src/components/Home.astro","src/components/HeroArtwork.astro","src/components/HomepageHighlights.astro","src/components/HomepageVisual.astro","src/components/FeatureIcon.astro","src/styles/home.css"]
 ---
 
 # Homepage
@@ -13,11 +13,23 @@ Owner accepted this homepage and its general pitch on 11 November 2026, at imple
 
 The owner's 11 November 2026 request replaces the former code-led homepage with a benefits-led sales page for NeoHaskell as an AI-first language with integrated application capabilities. Preserve the existing palette, type and logo. The supplied Ruby, Phoenix and Laravel screenshots govern the requested craft, visual variety and feature coverage. Documentation remains unchanged. That redesign supersedes earlier homepage composition and source-example requirements below. The scoped 16 November extension and correction are recorded next and take precedence for the new highlights.
 
-## Hero prerequisite review, 16 November 2026
+## Brand hero replacement, 16 November 2026
+
+Checkpoint: `5f93f0b4a778fc8b1eb8dd0d227197d9cb43278d`. The owner rejected the shipping-rule card as explaining nothing and requested an "epic hero section similar to laravel or other similar well-funded frameworks". This supersedes the shipping example and earlier opening diagram requirements. Actual Laravel, Next.js, and Nuxt homepages were inspected at 1440px and 390px. The selected direction takes the simple promise and substantial visual presence from Laravel and the confidence in brand scale from Next.js, while preserving NeoHaskell's identity. It does not claim to reproduce Laravel's more complex scene craft.
+
+The original "Build with AI. Keep control." promise, Sansation, Manrope, Pixelify emphasis, palette, original logo, and both actions remain. `HeroArtwork.astro` places the unchanged `public/logo.svg` beside the copy, with two native copies of its paths as fine offset contours. Enlarged headline type reaches 112px on desktop, caps at 80px through the intermediate layout, and uses a 44px to 88px fluid range on phones and small tablets. These are intentional hero-only measurements, not new global tokens or authority to repair unrelated sidecar drift.
+
+The desktop opening uses a 1.2:1 split. At 760px and below, copy and actions center above the smaller logo composition. One coordinated entrance settles the emblem over 900ms and the contours over 1100ms. Reduced motion shows the completed artwork immediately. The artwork is decorative, with no labels, explanatory card, teaching interaction, or runtime claim. The plain category description identifies an AI-first programming language for applications the developer can understand, review, and change. The existing lower sections retain their composition and content.
+
+Reference captures are `/private/tmp/neohaskell-hero-brand/{laravel,next,nuxt}-{1440,390}.png`. Candidate evidence is `/private/tmp/neohaskell-hero-brand/final-{fold,hero,next}-{1440,390}-{dark,light}.png`; final review and checks belong in `.impeccable/reviews/homepage-brand-hero-2026-11-16.md`. The independent review returned **ship** for local presentation after inspecting desktop and phone compositions in both themes. Its verdict does not establish owner acceptance or an observed motion check; the implementing agent owns those behavioral checks. Unrelated launch-video work is outside this change.
+
+## Historical hero prerequisite review, 16 November 2026
+
+The shipping-rule direction below is superseded by the owner's rejection and the brand hero replacement above.
 
 Checkpoint: `2ec039501adb030817af17c469b90c4003208db9`. The owner asked for a fresh subagent critique because the hero appeared to introduce too many concepts. The independent review found competing explanations rather than a typography problem: purity, retained history, included services and runtime entry points all required inference, while "AI agents" changed meaning from creation assistance in the headline to runtime callers in the illustration.
 
-The selected implementation preserves "Build with AI. Keep control.", the programming-language category, both actions and the established identity. Supporting copy now leads with applications the developer can understand, review and change. One shipping rule and its paid/unpaid outcomes replace the architecture inventory. The familiar layered scene remains; the outcomes use neutral text rather than semantic event colors. Later sections retain their existing explanations and visual treatments.
+The now-superseded implementation preserved "Build with AI. Keep control.", the programming-language category, both actions and the established identity. Supporting copy now leads with applications the developer can understand, review and change. One shipping rule and its paid/unpaid outcomes replace the architecture inventory. The familiar layered scene remains; the outcomes use neutral text rather than semantic event colors. Later sections retain their existing explanations and visual treatments.
 
 The reusable lesson is to review the relationships a first-time reader must infer, not merely count technical nouns. An opening example should make its central promise inspectable before introducing the mechanisms that enable it. The selected treatment and reviewer findings do not establish owner acceptance or measured comprehension. Full critique and verification: `.impeccable/reviews/homepage-hero-2026-11-16.md`.
 
@@ -57,7 +69,7 @@ OWN-WORLD: The accepted violet workshop, with Sansation, Manrope, one Pixelify e
 
 STORY: Understand the language promise, see how to review an agent's work, share one specification, and grow the app while preserving deployed behavior. Follow with recovery and safeguards, included infrastructure, and documentation to learn and build.
 
-FIRST VIEWPORT: Left-aligned two-line promise with an AI-first language description and documentation action. A large application cutaway on the right connects web and agents to pure business rules, recorded history and infrastructure. The visual IDE benefit follows the hero, then specification and code freezing, before the existing wide history panel.
+FIRST VIEWPORT: The original promise at substantial scale, with an AI-first programming-language description and the existing actions. The original logo and offset contours occupy the right side on desktop; phones center the copy above the artwork. The visual IDE benefit follows the hero, then code freezing and the existing wide history panel. The specification remains immediately before the included capabilities.
 
 FORM: Continue the accepted workshop identity with an agency-led panel overlapping an authentic IDE view on desktop, one asymmetric source section, and a compact two-lane caller/contract diagram. Existing and updated checkouts connect independently to their contracts. The rejected ice/star execution below is historical evidence. The supplied references and explicit instruction to implement supersede the former comp layout and extra direction approval. Wide history scene, unequal benefit panels, compact capability field, agent workflow and large documentation close create the scroll rhythm.
 

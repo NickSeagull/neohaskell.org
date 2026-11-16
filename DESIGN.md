@@ -312,13 +312,13 @@ The system is spacious and direct. Large headings establish intent; Manrope carr
 
 - Original NeoHaskell logo, violet and cyan palette, and established type families.
 - Open display typography with a focused pixel accent.
-- Layered application outlines, permanent event slips, and distinct business boundaries.
+- Original logo contours, permanent event records, and distinct business boundaries.
 - Flat tonal fields, readable themes, and complete static illustrations.
 - Continuous documentation reading with native navigation, inline examples, and comparison tables.
 
-Source authority is `src/styles/home.css`, `src/pages/index.astro`, `src/components/HomepageVisual.astro`, `src/components/HomepageHighlights.astro`, `src/components/FeatureIcon.astro`, `src/styles/docs.css`, `src/styles/diagram-colors.css`, the articles in `src/content/docs/`, and `astro.config.mjs`. The documentation contract remains at `.impeccable/surfaces/src-components-learn-guidedlesson-astro.md`; its stable filename targets the MDX article. Homepage composition belongs to `.impeccable/surfaces/src-pages-index-astro.md`.
+Source authority is `src/styles/home.css`, `src/pages/index.astro`, `src/components/Home.astro`, `src/components/HeroArtwork.astro`, `src/components/HomepageVisual.astro`, `src/components/HomepageHighlights.astro`, `src/components/FeatureIcon.astro`, `src/styles/docs.css`, `src/styles/diagram-colors.css`, the articles in `src/content/docs/`, and `astro.config.mjs`. The documentation contract remains at `.impeccable/surfaces/src-components-learn-guidedlesson-astro.md`; its stable filename targets the MDX article. Homepage composition belongs to `.impeccable/surfaces/src-pages-index-astro.md`.
 
-The owner's full homepage redesign on 11 November 2026 supersedes the old active full-width event model, homepage source examples, and single opening animation. The current page leads with benefits and retains its static HTML and SVG diagrams. The owner's 16 November extension adds the authentic visual IDE screenshot, a compact command/event/query source excerpt, and a native diagram connecting existing and updated checkouts independently to their command contracts. These scoped additions supersede the source-free homepage restriction and permit the product screenshot. The rejected ice/star artwork is historical, not an active design requirement. Historical decisions after the canonical sections below remain a record of earlier states. They do not override the current homepage contract or change documentation design.
+The owner's full homepage redesign on 11 November 2026 supersedes the old active full-width event model, homepage source examples, and single opening animation. The current page leads with benefits and retains its static HTML and SVG diagrams below the hero. The 16 November hero replacement uses the original logo at substantial scale and one coordinated entrance; its completed state remains available without motion or JavaScript. The owner's 16 November extension adds the authentic visual IDE screenshot, a compact command/event/query source excerpt, and a native diagram connecting existing and updated checkouts independently to their command contracts. These scoped additions supersede the source-free homepage restriction and permit the product screenshot. The rejected ice/star artwork is historical, not an active design requirement. Historical decisions after the canonical sections below remain a record of earlier states. They do not override the current homepage contract or change documentation design.
 
 ## Colors
 
@@ -334,7 +334,7 @@ Use **Pixel violet** for the selected display word, feature icons, and pure-deci
 
 ### Neutral
 
-Use **Page ink**, **Supporting ink**, **Construction line**, and **Control hover** on page ground. **Section field** (`--field`) groups the history and closing panels and the agent's intent. **Illustration scene** (`--scene`) fills the layered application and pure boundary. These paired surfaces add depth within the existing palette. Page rules mix the construction line at 48% opacity; meaningful illustration boundaries retain the full line color.
+Use **Page ink**, **Supporting ink**, **Construction line**, and **Control hover** on page ground. **Section field** (`--field`) groups the history and closing panels and the agent's intent. **Illustration scene** (`--scene`) fills the pure boundary. These paired surfaces add depth within the existing palette. Page rules mix the construction line at 48% opacity; meaningful illustration boundaries retain the full line color.
 
 Documentation has its own paired reading grounds and gray ramp. Dark articles use violet ground with cyan links; light articles use a near-white ground with violet links. The docs surface fills table headings, and the docs line supplies table and pagination separators. Starlight's `white` and `black` names remain semantic aliases that reverse visually in light mode.
 
@@ -352,19 +352,19 @@ All three authored families are self-hosted WOFF2 files with `font-display: swap
 
 | Role | Use and responsive behavior |
 | --- | --- |
-| Display | Two-line hero promise. At 1200px and below it is 64px; below 1000px it uses the compact role; below 760px it uses the mobile role; at 390px and below it is 48px. |
+| Display | The hero alone uses `clamp(64px, 7.5vw, 112px)` with 1.02 line height. From 761px through 1100px it uses `clamp(56px, 7.4vw, 80px)`; at 760px and below it uses `clamp(44px, 13.8vw, 88px)`. This intentional hero-only exception does not replace the shared display tokens or sidecar specimens. |
 | Headline | Main section headings use the default role. History, paired benefits, and closing panels have their own documented scales. Benefits become 34px at 1000px and 36px on phones. History and closing become 42px on phones; closing becomes 36px at 390px. |
 | Title / body / lead | Capability and workflow headings use 21px at weight 600. Main prose stays 18px. The hero lead becomes 18px below 1000px. Capability and workflow prose use 17px; capability line height is 1.7 and workflow inherits 1.65. |
-| Labels and application names | Illustration labels stay at least 16px. The application name reduces from 32px to 28px below 1000px. Transport names use 24px. The masthead brand steps through 29, 26, 23, and 21px. |
+| Labels and application names | Illustration labels stay at least 16px. Transport names use 24px. The masthead brand steps through 29, 26, 23, and 21px. |
 | Query value | The current stock uses tabular figures at 60px, 48px below 1000px, and 52px on phones. Event amounts also use tabular figures. |
 
-The hero explanation has a 43ch maximum, becoming 46ch on phones. Benefit paragraphs use 47ch; framework and agent introductions use 44ch and 43ch. Documentation uses the `docs-title`, `docs-heading`, `docs-subheading`, `docs-body`, and `docs-lead` roles. Prose and list text use 18px type with 1.8 line height; code and tables use 16px. The native code font remains Starlight/Expressive Code’s monospace font. Below 49.99rem, page titles become 2rem, second-level headings 1.5rem, and lead copy 1.125rem. Topic links use 16px text; the local contents outline uses .9375rem. Keep essential article and example text readable rather than reducing it to fit.
+The hero explanation has a 41ch maximum, becoming 34ch from 761px through 1100px and 40ch at 760px and below. Benefit paragraphs use 47ch; framework and agent introductions use 44ch and 43ch. Documentation uses the `docs-title`, `docs-heading`, `docs-subheading`, `docs-body`, and `docs-lead` roles. Prose and list text use 18px type with 1.8 line height; code and tables use 16px. The native code font remains Starlight/Expressive Code’s monospace font. Below 49.99rem, page titles become 2rem, second-level headings 1.5rem, and lead copy 1.125rem. Topic links use 16px text; the local contents outline uses .9375rem. Keep essential article and example text readable rather than reducing it to fit.
 
 **The Geometric Voice Rule.** Use Sansation for expansive homepage headings, Manrope for explanations and diagram labels, and Pixelify for the single selected display accent. Keep source typography in documentation and the explicitly requested homepage DSL excerpt and contract field names.
 
 ## Layout
 
-The homepage's centered shell stops at 1536px and uses the fluid gutter token. The ruled masthead has an 88px minimum height, reducing to 72px on phones. The split hero uses a 1:1.08 grid with a 64px gap and 80px top / 96px bottom padding. The copy is vertically centered beside an application scene capped at 640px. The scene reserves 24px on the right for its layered outlines. The action group follows the explanation with 32px of space.
+The homepage's centered shell stops at 1536px and uses the fluid gutter token. The ruled masthead has an 88px minimum height, reducing to 72px on phones. The split hero uses a 1.2:1 grid, a 720px minimum height, and 88px top / 104px bottom padding. Copy is vertically centered beside the original logo and its offset contours. The action group follows the explanation with 32px of space. From 761px through 1100px, the hero has a 640px minimum height and 80px vertical padding. At 760px and below it becomes a centered single column with a 32px gap, 56px top / 40px bottom padding, and no minimum height; the artwork follows the actions at 72% width, capped at 320px. These measurements are local to the hero.
 
 The wide history panel uses a 1:1.05 grid, 80px gap, and 64px padding. The pure-boundary and transport benefits follow in a 1.08:1 pair, separated by a quiet rule with 64px of space on either side. Their illustrations sit below the prose, aligned by the flex layout. The framework section uses a split heading row above six compact capabilities in three columns; capabilities have no individual card surfaces. The agent section pairs its introduction with a three-step vertical workflow in a 1:1.1 grid and 112px gap. A broad closing field contains the heading, repeated documentation action, and original logo.
 
@@ -372,11 +372,11 @@ The main sections use 80px opening and 96px closing intervals. Mobile groups use
 
 | Breakpoint | Implemented adaptation |
 | --- | --- |
-| At most 1200px | Hero gap becomes 40px; history padding and gap become 48px; benefit insets become 40px; agent gap becomes 64px. |
-| At most 1000px | Resources leaves the masthead. Hero and history gaps become 32px; history padding becomes 40px. The benefit divider disappears, and capabilities form two columns. |
-| At most 760px | Hero and major sections stack. Gutters become 24px; the application and benefit scenes cap at 440px. History and closing fields extend 8px into the gutter. GitHub leaves the masthead, Docs remains, and the closing logo is hidden. |
+| At most 1200px | History padding and gap become 48px; benefit insets become 40px; agent gap becomes 64px. |
+| At most 1000px | Resources leaves the masthead. History gap becomes 32px; history padding becomes 40px. The benefit divider disappears, and capabilities form two columns. |
+| At most 760px | Hero and major sections stack. Gutters become 24px; benefit scenes cap at 440px. The hero follows its own composition above. History and closing fields extend 8px into the gutter. GitHub leaves the masthead, Docs remains, and the closing logo is hidden. |
 | At most 480px | Capabilities become one column with icons beside titles. Pure-decision geometry becomes 120px square, and the history answer loses its long connector. |
-| At most 390px | Gutters become 20px. Application and history padding tighten, the decision becomes 104px square, and effects stack icon above label. Controls retain their hit areas. |
+| At most 390px | Gutters become 20px. History padding tightens, the decision becomes 104px square, and effects stack icon above label. Controls retain their hit areas. |
 
 Documentation uses Starlight’s native topic sidebar, page title, article, and right-hand local contents outline. The topic rail is 18rem, the header 4.5rem, and the article width 48rem; at 100rem viewport width, the article expands to 50rem. Content gutters use the recorded fluid docs token. The title starts with 3rem top padding, reducing to 1.75rem below 49.99rem. Article headings use content-driven spacing rather than full-screen sections.
 
@@ -385,7 +385,7 @@ The two routes use ordinary browser scrolling. There is no snapping, persistent 
 
 ## Elevation & Depth
 
-The homepage uses tonal depth without shadows. The application has two offset outlines, displaced by 12px and 24px, behind the primary scene. Its event slips stagger horizontally by 12px. The history and closing sections use a stronger field; the pure boundary uses the quieter scene. Page and illustration borders are 1px; line icons and route strokes use 1.5 SVG units. These are complete static compositions.
+The homepage uses tonal depth without shadows. The hero repeats the original logo paths as fine contours, offset by (66, -42) and (132, -84) in its 1080-unit SVG view box. The complete artwork rotates by -8 degrees; the logo asset itself remains unchanged. These contours add depth using the existing construction-line color. The history and closing sections use a stronger field; the pure boundary uses the quieter scene. Page and illustration borders are 1px; line icons and route strokes use 1.5 SVG units. The lower diagrams are complete static compositions; the hero settles into a complete composition after its single entrance.
 
 **The Flat Field Rule.** Use tonal contrast, offset outlines, and fine strokes for homepage depth. Do not add shadows, glows, or raster decoration to these native illustrations. The authentic IDE screenshot is product evidence; the freezing diagram uses the existing semantic command surfaces and fine connectors.
 
@@ -394,7 +394,7 @@ Documentation uses subtle tonal table headings, fine separators, and restrained 
 
 ## Shapes
 
-The form language uses rounded rectangles for application layers and wide panels, tighter rectangles for rules and event rows, and a diamond for pure decisions. The documented panel, boundary, control, and record-slip radii keep these scales distinct. The agent's quotation has one square corner and three boundary-radius corners. Small circles mark history and workflow position; the build step uses a square and the final step uses a check.
+The form language uses the original logo geometry for the hero, rounded rectangles for wide panels, tighter rectangles for contracts and event rows, and a diamond for pure decisions. The documented panel, boundary, control, and record-slip radii keep these scales distinct. The agent's quotation has one square corner and three boundary-radius corners. Small circles mark history and workflow position; the build step uses a square and the final step uses a check.
 
 The active HTTP transport has a solid border and continuous route. The alternate MCP transport has a dashed border and route. This expresses an interchangeable choice without implying a live switch. The original logo retains its outline and geometry.
 
@@ -409,15 +409,17 @@ Primary actions are solid links with a 52px minimum height, the action radius, a
 
 The theme control is transparent at rest, 44px square, and uses the control radius. Hover reveals the hover field and page ink. Its icon and accessible label announce the target theme. The homepage and Starlight share the saved `starlight-theme` preference.
 
-Homepage keyboard focus is a 3px accent outline with 6px offset; documentation uses a 2px Starlight-accent outline with 4px offset. The homepage skip link becomes visible on focus. Reduced motion removes smooth scrolling and transitions. All homepage illustrations are already complete without animation or JavaScript.
+Homepage keyboard focus is a 3px accent outline with 6px offset; documentation uses a 2px Starlight-accent outline with 4px offset. The homepage skip link becomes visible on focus. Reduced motion removes smooth scrolling, transitions, and the hero entrance. All homepage illustrations have a complete state without animation or JavaScript.
 
 ### Navigation
 
 The masthead pairs the original logo and name with Documentation, Resources, GitHub, and the theme control. Desktop destinations use 16px text and 32px gaps; GitHub has an external-link SVG. The footer names Documentation, Resources, GitHub, and Discord with 44px-tall links. Mobile navigation keeps Docs and theme access; all destinations remain available through the footer or native documentation navigation. Documentation retains Starlight's topic links, selected accent-low field, contents outline, search, mobile navigation, and pagination.
 
-### Application and history illustrations
+### Hero artwork and history illustrations
 
-`HomepageVisual` renders four semantic figures using HTML text and authored SVG. The hero application figure shows one familiar shipping rule and two contrasting outcomes: paid orders can ship and unpaid orders cannot. The established layered scene remains, with native text and aligned rows. Its neutral permission outcomes do not use event or query colors. Runtime entrances, infrastructure endpoints and recorded-history slips belong to later explanations, rather than the opening. This scoped simplification responds to the owner's concern about introducing too many concepts in the hero; final owner acceptance remains pending.
+`HeroArtwork` uses the unchanged `public/logo.svg` with two native SVG contour copies of its paths. The decorative composition is hidden from assistive technology. It carries brand identity beside the original promise, plain programming-language description, and existing actions; it is not a teaching diagram. One coordinated CSS entrance moves the emblem into place over 900ms and brings in the contours over 1100ms, using `cubic-bezier(.16, 1, .3, 1)`. It runs only when reduced motion is not requested, with no loop, controls, or JavaScript dependency. The enlarged type and artwork are implemented hero choices, pending owner acceptance.
+
+`HomepageVisual` now renders the three lower semantic figures: history, pure decisions, and transport choice. The former application and shipping-rule hero figures are superseded. These lower figures retain their HTML text, authored SVG, accessible descriptions, and existing composition.
 
 The history figure keeps all three events visible: stock added (+12), order placed (-1), and order cancelled (+1). The corrected record remains in the ledger and the resulting 12 mugs sit outside it. The figure's accessible name explains the sequence. These are illustrative product benefits, not interactive controls or an execution trace.
 

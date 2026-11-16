@@ -74,24 +74,13 @@ p { color: var(--muted); }
 .text-link:hover { text-decoration: underline; }
 .feature-icon { flex-shrink: 0; }
 
-/* One familiar rule makes developer control concrete before architecture is introduced. */
-.opening { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); align-items: center; gap: 64px; padding: 80px 0 96px; }
-h1 { font-size: clamp(56px, 5.55vw, 80px); line-height: 1.06; hyphens: none; }
+/* The opening is a brand statement; the sections below explain the product. */
+.opening { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center; min-height: 720px; padding: 88px 0 104px; }
+.hero-copy { position: relative; z-index: 1; }
+h1 { font-size: clamp(64px, 7.5vw, 112px); line-height: 1.02; hyphens: none; }
 .pixel-word { display: inline-block; max-width: 100%; font-family: Pixelify, monospace; color: var(--violet); letter-spacing: -.035em; hyphens: none; }
-.hero-description { max-width: 43ch; margin-top: 28px; font-size: 20px; line-height: 1.65; }
+.hero-description { max-width: 41ch; margin-top: 32px; font-size: 20px; line-height: 1.65; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 32px; }
-.application-scene { padding: 0 24px 24px 0; max-width: 640px; width: 100%; justify-self: end; }
-.application-core { position: relative; isolation: isolate; border: 1px solid var(--line); border-radius: 16px; padding: 40px; background: var(--scene); }
-.application-core::before, .application-core::after { content: ""; position: absolute; border: 1px solid var(--line); border-radius: 16px; background: var(--scene); pointer-events: none; z-index: -1; }
-.application-core::before { inset: 12px -12px -12px 12px; }
-.application-core::after { inset: 24px -24px -24px 24px; z-index: -2; }
-.app-rule-title { font-size: 20px; font-weight: 500; color: var(--muted); }
-.app-rule-statement { margin-top: 20px; font-family: Sansation, sans-serif; font-size: 36px; line-height: 1.25; color: var(--ink); max-width: 20ch; }
-.app-rule-outcomes { margin-top: 32px; }
-.app-rule-outcomes > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 16px; padding-block: 20px; border-top: 1px solid var(--rule); font-size: 18px; }
-.app-rule-outcomes dt { color: var(--muted); }
-.app-rule-outcomes dd { display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin: 0; color: var(--ink); }
-.app-rule-outcomes .feature-icon { color: var(--accent); width: 20px; height: 20px; }
 
 /* History is a complete scene, with its current answer outside the ledger. */
 .history-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 80px; align-items: center; padding: 64px; background: var(--field); border-radius: 16px; }
@@ -134,7 +123,7 @@ h1 { font-size: clamp(56px, 5.55vw, 80px); line-height: 1.06; hyphens: none; }
 .pure-decision > .feature-icon { color: var(--accent); width: 20px; height: 20px; }
 .effect-ports { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-top: 24px; }
 .effect-ports > span { display: flex; justify-content: center; align-items: center; gap: 8px; color: var(--muted); font-size: 16px; }
-.app-services [data-diagram-role], .effect-ports [data-diagram-role] { color: var(--diagram-ink); }
+.effect-ports [data-diagram-role] { color: var(--diagram-ink); }
 .effect-ports .feature-icon { width: 20px; height: 20px; }
 .transport-core { display: flex; align-items: center; justify-content: center; gap: 12px; width: fit-content; max-width: 100%; margin: auto; padding: 16px 32px; background: var(--field); border: 1px solid var(--line); border-radius: 8px; font-size: 18px; }
 .transport-routes { display: block; width: 100%; height: 52px; color: var(--accent); }
@@ -181,9 +170,6 @@ h1 { font-size: clamp(56px, 5.55vw, 80px); line-height: 1.06; hyphens: none; }
 .footer-brand { color: var(--ink); font-size: 20px; }
 
 @media (max-width: 1200px) {
-  .opening { gap: 40px; padding-block: 64px 80px; }
-  h1 { font-size: 64px; }
-  .application-scene { padding-right: 24px; }
   .history-section { padding: 48px; gap: 48px; }
   .purity-benefit { padding-right: 40px; }
   .transport-benefit { padding-left: 40px; }
@@ -197,11 +183,7 @@ h1 { font-size: clamp(56px, 5.55vw, 80px); line-height: 1.06; hyphens: none; }
   .brand { font-size: 26px; }
   .brand img { width: 36px; height: 36px; }
   .main-nav { gap: 24px; }
-  .opening { gap: 32px; }
-  h1 { font-size: clamp(48px, 6vw, 60px); }
   .hero-description { font-size: 18px; }
-  .application-core { padding: 24px; }
-  .app-rule-statement { font-size: 30px; }
   .history-section { padding: 40px; gap: 32px; }
   .history-entry { gap: 12px; font-size: 16px; }
   .history-result { gap: 12px; }
@@ -226,12 +208,8 @@ h1 { font-size: clamp(56px, 5.55vw, 80px); line-height: 1.06; hyphens: none; }
   .main-nav a { min-width: 44px; justify-content: center; }
   .github-link, .nav-label-full { display: none !important; }
   .nav-label-short { display: inline; }
-  .opening { grid-template-columns: 1fr; gap: 48px; padding: 48px 0 64px; }
-  h1 { font-size: clamp(48px, 11.8vw, 72px); }
   .hero-description { margin-top: 24px; max-width: 46ch; }
   .hero-actions { margin-top: 24px; gap: 12px 24px; }
-  .application-scene { max-width: 440px; justify-self: center; }
-  .application-core { padding: 24px; }
   .history-section { grid-template-columns: 1fr; padding: 32px 24px; gap: 40px; margin-inline: -8px; }
   .history-copy h2 { font-size: 42px; }
   .history-copy p { margin-top: 20px; }
@@ -297,11 +275,7 @@ h1 { font-size: clamp(56px, 5.55vw, 80px); line-height: 1.06; hyphens: none; }
   .site-header { gap: 8px; }
   .brand { font-size: 21px; }
   .brand img { width: 28px; height: 28px; }
-  h1 { font-size: 48px; }
   .hero-actions { gap: 12px; }
-  .application-core { padding: 24px 20px; }
-  .app-rule-statement { font-size: 28px; }
-  .app-rule-outcomes > div { font-size: 16px; gap: 12px; }
   .history-section { padding-inline: 20px; }
   .history-entry { gap: 8px; padding: 12px; }
   .history-ledger::before { left: 19px; }
@@ -317,3 +291,16 @@ h1 { font-size: clamp(56px, 5.55vw, 80px); line-height: 1.06; hyphens: none; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 :lang(zh) h1, :lang(ja) h1 { font-size: clamp(36px, 4.5vw, 64px); }
+
+/* The hero re-composes on small screens instead of squeezing the desktop artwork. */
+@media (max-width: 1100px) and (min-width: 761px) {
+  .opening { min-height: 640px; padding-block: 80px; }
+  .opening h1 { font-size: clamp(56px, 7.4vw, 80px); }
+  .hero-description { max-width: 34ch; }
+}
+@media (max-width: 760px) {
+  .opening { grid-template-columns: 1fr; gap: 32px; min-height: 0; padding: 56px 0 40px; text-align: center; }
+  .opening h1 { font-size: clamp(44px, 13.8vw, 88px); }
+  .hero-description { margin: 24px auto 0; max-width: 40ch; font-size: 18px; }
+  .hero-actions { justify-content: center; margin-top: 24px; }
+}
