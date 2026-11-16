@@ -1,0 +1,9 @@
+/* Deliberate montage-parody layers stay separate from product evidence. */
+.mlg-overlay{position:absolute;inset:0;pointer-events:none;z-index:30;overflow:hidden}
+.mlg-stamp{position:absolute;margin:0;font:900 104px/.9 var(--font-display);color:#fff;letter-spacing:-.015em;-webkit-text-stroke:10px #08050c;paint-order:stroke fill;text-shadow:8px 8px 0 #08050c;white-space:nowrap;opacity:0}
+.mlg-yellow{color:#fff33b}.mlg-cyan{color:#7df9ff}.mlg-pink{color:#f199e7}
+.mlg-hit{position:absolute;width:150px;height:150px;opacity:0;overflow:visible;stroke:#fff;stroke-width:15;fill:none;filter:drop-shadow(0 0 3px #08050c)}
+.mlg-hit path{stroke-linecap:square}.mlg-scope{position:absolute;width:600px;height:600px;fill:none;stroke:#fff;stroke-width:4;opacity:0;overflow:visible;filter:drop-shadow(0 0 3px #08050c)}
+.mlg-video-wrap{position:absolute;overflow:visible;pointer-events:none}.mlg-video-wrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.mlg-feed{position:absolute;background:#08050ce8;color:#fff33b;border-left:8px solid #fff33b;padding:14px 24px;font:900 52px/.95 var(--font-display);white-space:nowrap;opacity:0}
+.mlg-shades{position:absolute;fill:#08050c;stroke:#fff;stroke-width:2;shape-rendering:crispEdges;opacity:0}

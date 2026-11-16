@@ -1,0 +1,83 @@
+[
+  {
+    "name": "airhorn",
+    "file": "assets/memes/airhorn.mp3",
+    "source": "https://www.myinstants.com/media/sounds/mlg-airhorn.mp3",
+    "duration": 3.004082,
+    "rights": "User-requested meme excerpt. Source site does not establish a reuse license.",
+    "sourcePage": "https://www.myinstants.com/en/instant/mlg-air-horn/",
+    "sha256": "95beb8827452fab91d38535bbfd359b5e59547e2f98a937cb01032d3dced930c"
+  },
+  {
+    "name": "crowd-oh",
+    "file": "assets/memes/crowd-oh.mp3",
+    "source": "https://www.myinstants.com/media/sounds/ohhh-mlg.mp3",
+    "duration": 8.620408,
+    "rights": "User-requested meme excerpt. Source site does not establish a reuse license.",
+    "sourcePage": "https://www.myinstants.com/en/instant/ohhh-mlg-80467/",
+    "sha256": "32f060ab34515d60c8cc3a4a1c00d4d8c157e773ba97be8b754c04e0be75e52b"
+  },
+  {
+    "name": "hitmarker",
+    "file": "assets/memes/hitmarker.mp3",
+    "source": "https://www.myinstants.com/media/sounds/mlg-hitmarker-sound.mp3",
+    "duration": 0.408,
+    "rights": "User-requested meme excerpt. Source site does not establish a reuse license.",
+    "sourcePage": "https://www.myinstants.com/en/instant/mlg-hitmarker-sound-99357/",
+    "sha256": "28bda9947b61540a4b715eee8b48eb73f8aa12712070615f14b57f09ba6bbd63"
+  },
+  {
+    "name": "mom-camera",
+    "file": "assets/memes/mom-camera.mp3",
+    "source": "https://www.myinstants.com/media/sounds/mom-get-the-camera.mp3",
+    "duration": 3.004082,
+    "rights": "User-requested meme excerpt. Source site does not establish a reuse license.",
+    "sourcePage": "https://www.myinstants.com/en/instant/mom-get-the-camera/",
+    "sha256": "5d1c947a13be14b7bad2eeac339a032382a2c0cccf0c898e37a83602d49dd810"
+  },
+  {
+    "name": "sniper",
+    "file": "assets/memes/sniper.mp3",
+    "source": "https://www.myinstants.com/media/sounds/mlg-sniper.mp3",
+    "duration": 2.298776,
+    "rights": "User-requested meme excerpt. Source site does not establish a reuse license.",
+    "sourcePage": "https://www.myinstants.com/en/instant/b2q-mlg-sniper-36508/",
+    "sha256": "e54d719607f6d3b89e6f66e6b56dd414ef8ae88d399b69fb4dfb839ac090e830"
+  },
+  {
+    "name": "triple",
+    "file": "assets/memes/triple.mp3",
+    "source": "https://www.myinstants.com/media/sounds/oh-baby-a-triple.mp3",
+    "duration": 4.989388,
+    "rights": "User-requested meme excerpt. Source site does not establish a reuse license.",
+    "sourcePage": "https://www.myinstants.com/en/instant/oh-baby-a-triple/",
+    "sha256": "5ed9c3169405f34cc748a0bdfdaf826a617c9510b8171b3c5e41faf0475ecb4a"
+  },
+  {
+    "name": "frank-clock",
+    "file": "assets/memes/frank-clock.webm",
+    "source": "https://media.tenor.com/EYuYVKICxeEAAAPo/its-time-to-stop-green-screen.mp4",
+    "sourcePage": "https://tenor.com/view/its-time-to-stop-green-screen-time-filthy-frank-gif-15637535",
+    "edits": "Source3.0-4.8seconds; green chromakey 0x35fe00 similarity0.25 blend0.08; VP9 alpha WebM.",
+    "rights": "No reuse license verified.",
+    "sha256": "6d04c89f232a68a2a6e5c1e92e59e91fc430344c9f5bf09cd52f44340fe3d297"
+  },
+  {
+    "name": "quickscope",
+    "file": "assets/memes/quickscope.webm",
+    "source": "https://media.tenor.com/-VJ9mMb8HwYAAAPo/lol-quickscope.mp4",
+    "sourcePage": "https://tenor.com/view/lol-quickscope-load-lockedandloaded-bullet-gif-5359345",
+    "edits": "Source0.45-1.60seconds; white colorkey similarity0.20 blend0.05; VP9 alpha WebM.",
+    "rights": "No reuse license verified.",
+    "sha256": "adb334172ebddc1dce06251ea618c7fa3e954dc81163aaca12a37d0bdbbfce03"
+  },
+  {
+    "name": "crowd",
+    "file": "assets/memes/crowd.mp4",
+    "source": "https://media.tenor.com/mYbI09S93U8AAAPo/supa-hot-fire-ooooh.mp4",
+    "sourcePage": "https://tenor.com/view/supa-hot-fire-ooooh-rap-battle-jump-crowd-surf-gif-4557024",
+    "edits": "Source0-2.5seconds; H264 video-only at original568x320.",
+    "rights": "No reuse license verified.",
+    "sha256": "88ec3cbd7e5ef4e0409294417584f2e1cc80ef2a53be9e6b4fe9f2a5230a078e"
+  }
+]

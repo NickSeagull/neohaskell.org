@@ -1,0 +1,11 @@
+{
+  "sourceDirectory": "brag-output-2026-11-16-125227",
+  "sourceCommit": "286fd6b700544ca6b434436958d78b94c1258aa5",
+  "checkpoint": "ade95ef308d191737363746cece5a6e9bfdcff62",
+  "sha256": {
+    "brag.mp4": "f82f1a0f4592341db2edffbc75dfadf2a4eb6df4308ccc6fb6c55651a8fe6506",
+    "brag-approved.mp4": "f82f1a0f4592341db2edffbc75dfadf2a4eb6df4308ccc6fb6c55651a8fe6506",
+    "brag.jpg": "f089e0a491599023104e42456c8bf631df1d5a5505e1c209cd7cf58260faba89",
+    "brag-approved.jpg": "f089e0a491599023104e42456c8bf631df1d5a5505e1c209cd7cf58260faba89"
+  }
+}
