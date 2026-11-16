@@ -1,6 +1,6 @@
-# MLG third-cut verification
+# MLG current-cut verification
 
-The 24-second, 1920x1080, 30 fps experiment replaces the loud WHERE YOU AT ending with the original Michael Rosen tongue-click Nice greenscreen performance. Both the previous voice cue and caption are absent from the active composition. The full source clip is cropped, keyed to alpha and played at original speed; the complete original audio is synchronized at 21.57 seconds with gain 0.35. Music ducks to 0.12 beneath this quieter final reaction. All other accepted reaction tails and feature timings remain.
+The 24-second, 1920x1080, 30 fps experiment replaces the loud WHERE YOU AT ending with the original Michael Rosen tongue-click Nice greenscreen performance. Both the previous voice cue and caption are absent from the active composition. The full source clip is cropped, keyed to alpha and played at original speed; the complete original audio is synchronized at 21.57 seconds with unity gain (1.0), restored at the owner's request. Music ducks to 0.12 beneath the final reaction. All other accepted reaction tails and feature timings remain.
 
 The built-in feature scene replaces the coins with 320 detailed authored paper bills: 280 in dense side cascades and 40 larger tumblers. Bills pour from both upper corners with finite, deterministic transforms, adapted from the installed confetti mechanism. The typography stays above the money, with a narrow cyan outline preserving every feature label. Raw frames at 9.6, 10.0, 10.6, 11.5, 12.2 and 12.6 seconds were visually inspected.
 
@@ -8,7 +8,7 @@ The history scene now uses an editable redrawn UAV graphic instead of the gamepl
 
 The final HyperFrames gate passes with zero errors and zero runtime, layout, contrast or audio warnings. All 18 sampled contrast checks pass. Four lint warnings identify intentionally local nonzero media start times. The existing craft warning concerns reading the entire supporting DSL excerpt in its brief 1.70-second evidence shot; the feature headline remains the reading target. Final decoded frames at 12.2, 17.8 and 22.8 seconds confirm the money, UAV and transparent Nice performance survive the delivery render.
 
-The export contains 720 H.264 frames at 1920x1080 and 30 fps, with 24.000 seconds of AAC audio. The final mix measures -13.42 LUFS integrated, -1.24 dBTP and 17.80 LU range, retaining the quieter finale. The poster is the settled identity and smiling reaction at 23.3 seconds. Only the first video frame is replaced; stream metadata, duration and encoded audio packet hashes match before and after insertion. Detailed logs and generated exports are excluded from Git.
+The export contains 720 H.264 frames at 1920x1080 and 30 fps, with 24.000 seconds of AAC audio. The final mix measures -13.56 LUFS integrated, -1.21 dBTP and 13.50 LU range after the full-volume correction. The poster is the settled identity and smiling reaction at 23.3 seconds. Only the first video frame is replaced; stream metadata, duration and encoded audio packet hashes match before and after insertion. Detailed logs and generated exports are excluded from Git.
 
 Full 24-second Chromium playback passed with 720 decoded frames, zero dropped frames, successful audio decoding and no page errors. Both the current and preserved V2 video URLs returned HTTP 200.
 
@@ -21,3 +21,5 @@ Render again from composition/ with the maintained launcher:
 ```sh
 PATH=/private/tmp/neohaskell-brag-tools/bin:$PATH node /Users/nick/.agents/skills/hyperframes/scripts/plugin-cli.mjs render --quality delivery --fps 30 --output ../brag.mp4
 ```
+
+The final volume-only rerender passes the HyperFrames browser/audio gate. The Nice cue changes from 0.35 to 1.0 while the shared limiter remains. Final-ending browser playback passes with audio decoding and zero dropped frames. The output remains 24 seconds and 720 frames; poster insertion preserves the encoded audio. v4-prefixed verification artifacts record these checks.

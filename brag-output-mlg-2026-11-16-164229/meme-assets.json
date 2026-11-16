@@ -133,7 +133,7 @@
     "file": "assets/memes/nice.wav",
     "source": "https://www.youtube.com/watch?v=1JfsPv_zaH4",
     "sourcePage": "https://www.youtube.com/watch?v=1JfsPv_zaH4",
-    "edits": "Full original audio decoded to PCM, no truncation. Gain0.35 at21.57 seconds.",
+    "edits": "Full original audio decoded to PCM, no truncation. Unity gain at 21.57 seconds.",
     "rights": "User-requested meme excerpt. No reuse license verified.",
     "sha256": "d7a216efb430e2c6fc99abf88e602f24ca204664837bb1131ae66ff6e71f3ce7"
   }

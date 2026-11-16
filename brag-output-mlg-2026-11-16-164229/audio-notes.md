@@ -13,3 +13,7 @@ The owner additionally requested the actual Damn Son tag and explicitly permitte
 ## V3 finale replacement
 
 The owner found WHERE YOU AT too loud and explicitly replaced it with the Michael Rosen tongue-click Nice performance. Both the old audio cue and caption are removed. The complete original Nice audio plays from 21.57 to 23.7435 seconds at gain 0.35, synchronized with the keyed video at original speed. Music ducks to 0.12 beneath it. All other reaction tails remain unchanged.
+
+## Nice volume correction
+
+The owner requested regular volume after hearing V3. The Nice cue now uses unity gain (1.0), replacing 0.35, an increase of 9.12 dB before the existing shared effects limiter. Timing, source audio, music and all visuals are unchanged.
