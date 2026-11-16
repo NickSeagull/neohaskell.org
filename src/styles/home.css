@@ -262,7 +262,7 @@ h1 { font-size: clamp(72px, 7.3vw, 112px); line-height: 1.02; hyphens: none; }
 .pure-decision { flex-shrink: 0; }
 .pure-decision > span { max-width: 80%; line-height: 1.2; overflow-wrap: anywhere; hyphens: auto; }
 .effect-ports > span, .transport-ports span { min-width: 0; text-align: center; overflow-wrap: anywhere; hyphens: auto; }
-:lang(zh) .pixel-word, :lang(ja) .pixel-word, :lang(hy) .pixel-word { font-family: Sansation, Manrope, sans-serif; }
+:lang(zh) .pixel-word, :lang(ja) .pixel-word, :lang(hy) .pixel-word, :lang(ru) .pixel-word { font-family: Sansation, Manrope, sans-serif; }
 @media (max-width: 480px) {
   .pure-boundary { flex-direction: column; gap: 16px; padding: 24px 16px; }
   .pure-input, .pure-output { width: 100%; flex: none; flex-direction: column; gap: 8px; text-align: center; }
@@ -310,3 +310,23 @@ h1 { font-size: clamp(72px, 7.3vw, 112px); line-height: 1.02; hyphens: none; }
   .opening h1 { font-size: clamp(56px, 6.8vw, 96px); }
 }
 @media (max-width: 390px) { .opening { --hero-gutter: 20px; } }
+
+/* Longer translated promises keep whole words and leave the artwork clear of the copy. */
+.opening:lang(es) h1 { font-size: clamp(44px, 6vw, 88px); }
+.opening:lang(de) h1, .opening:lang(fr) h1, .opening:lang(ru) h1,
+.opening:lang(pt) h1 { font-size: clamp(36px, 5vw, 72px); }
+.opening:lang(hy) h1 { font-size: clamp(32px, 4vw, 56px); line-height: 1.15; }
+.opening:not(:lang(en)) .pixel-word { display: inline; overflow-wrap: normal; }
+.opening:lang(de) .hero-actions, .opening:lang(fr) .hero-actions,
+.opening:lang(ru) .hero-actions, .opening:lang(hy) .hero-actions,
+.opening:lang(es) .hero-actions, .opening:lang(pt) .hero-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
+@media (min-width: 1101px) {
+  .opening:not(:lang(en)) { padding-bottom: 160px; }
+}
+@media (max-width: 760px) {
+  .opening:lang(es) h1 { font-size: clamp(40px, 11vw, 64px); }
+  .opening:lang(de) h1, .opening:lang(fr) h1, .opening:lang(ru) h1,
+  .opening:lang(pt) h1 { font-size: clamp(32px, 9vw, 56px); line-height: 1.12; }
+  .opening:lang(hy) h1 { font-size: clamp(28px, 8vw, 48px); }
+  .opening:lang(zh) h1, .opening:lang(ja) h1 { font-size: clamp(32px, 10vw, 64px); line-height: 1.2; }
+}

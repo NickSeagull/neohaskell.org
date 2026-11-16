@@ -25,6 +25,10 @@ Desktop uses a full-width 760px minimum-height field with 72px top / 96px bottom
 
 One 1100ms settling entrance moves the image from a 12px vertical offset and 1.015 scale to its completed position. Reduced motion shows the still immediately. The initial rendered review requested the shorter laptop treatment and the closer 208px phone crop; both are now implemented. The owner subsequently called the composition better but rejected its contrast and image quality. That feedback supersedes the earlier review verdict for those qualities. Artwork object-fit: fill above 480px preserves the complete angled silhouette and the open text area at wide sizes; the tablet stack prevents artwork from crossing actions. A smooth source edit and lossless encoding replace the grainy lossy artwork. The source remains 1672px wide, not native 4K. The quality review is in `.impeccable/reviews/homepage-hero-quality-2026-11-16/`. Research and review evidence are retained in `.impeccable/reviews/homepage-cinematic-hero-2026-11-16/`.
 
+## Localized hero verification, 16 November 2026
+
+The owner accepted the contrast and image-quality repair, then requested that every language look good in the hero. At checkpoint `ade95ef308d191737363746cece5a6e9bfdcff62`, English sizing caused excessive wrapping in German, Russian, and Armenian; long translated actions crossed the artwork, and Russian accent glyphs fell back to a serif face. Scoped heading scales, inline phrase wrapping, a sans fallback for Russian, stacked longer actions, and desktop bottom clearance address these layout defects. Existing translated text remains intact. All nine locales were checked at seven widths from 320px to 2560px in both themes. See `.impeccable/reviews/homepage-hero-locales-2026-11-16/` for evidence and limits.
+
 ## Historical oversized-logo hero, 16 November 2026
 
 The owner rejected this treatment. The material relief replacement above supersedes its composition, measurements, artwork, and review verdict.
