@@ -20,6 +20,8 @@ Before delivery, inspect the rendered page for auxiliary text and remove anythin
 
 # Unslop quality standard
 
+For NeoHaskell visual direction, compositions, diagrams, typography, motion, or recurring design inconsistencies across the homepage and documentation, use the repository-local [neohaskell-visual-language](.agents/skills/neohaskell-visual-language/SKILL.md). It separates accepted identity, current implementation, and experiments while the visual language develops.
+
 Apply `$unslop` to every task in this repository. Read `.agents/skills/unslop/SKILL.md` at the start of each task, reusing it when already loaded, and check the result against its relevant guidance before delivery. Use its visual workflow for interface work and its clarity, restraint, and consistency principles for code, documentation, copy, and responses.
 
 Explicit user direction and the accepted NeoHaskell product and design records take precedence over generic style prescriptions. Continue already-authorized work through the workflow below; Unslop's direction step does not require another approval when the user has authorized implementation.
