@@ -11,7 +11,7 @@
         <span class="kw">entity</span> @Order <span class="kw">do</span>
           <span class="kw">command</span> @<span class="cmd">CancelOrder</span> <span class="kw">do</span>
             <span class="kw">produces</span> @<span class="event">OrderCancelled</span></pre></div><div class="rules-source" id="rules-rule"><div class="rule-proof" id="rules-given"><span>GIVEN</span><strong class="proof-event">OrderPlaced</strong></div><div class="rule-proof" id="rules-when"><span>WHEN</span><strong class="proof-command">CancelOrder</strong></div><div class="rule-proof" id="rules-then"><span>THEN</span><strong class="proof-event">OrderCancelled</strong></div></div></div><h2 class="title" id="rules-head1"><span>YOUR</span><span>SPEC</span><span>IS</span><span class="accent big">CODE.</span></h2><h2 class="title" id="rules-head2"><span>RULES</span><span>YOU</span><span>CAN</span><span class="accent big">RUN.</span></h2><div id="rules-scan" aria-hidden="true"></div><div id="rules-sweep" class="nh-sweep" aria-hidden="true"></div><div id="rules-wave" class="nh-shockwave" aria-hidden="true"></div></div></div></div><script>const tl=gsap.timeline({paused:true});
-// beat-locked: 13.714286s and 15.428571s. Opposite camera travel through the two source surfaces.
+// beat-locked: 12.857143s and 14.571429s. Opposite camera travel through the two source surfaces.
 tl.fromTo('#rules-model',{rotationY:45,z:600,x:-900},{rotationY:-5,z:0,x:0,duration:.3,ease:'expo.out'},0);
 tl.to('#rules-model',{rotationY:3,x:12,duration:1.2,ease:'none'},.3);
 tl.fromTo('#rules-head1',{y:120,opacity:0},{y:0,opacity:1,duration:.18,ease:'expo.out'},.03);
