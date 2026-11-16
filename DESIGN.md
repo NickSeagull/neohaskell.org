@@ -330,7 +330,7 @@ Use **Action accent** for the light primary action, onward links, keyboard focus
 
 ### Secondary
 
-Use **Pixel violet** for the selected display word, feature icons, and pure-decision boundary. **Recorded event** violet, white ink, and cyan detail identify the highlighted lasting fact in both themes. The history answer and active transport use the theme's action accent. The alternate transport uses a muted dashed route and frame, so its distinction does not depend on color alone.
+Use **Pixel violet** for the selected display word, feature icons, and pure-decision boundary. Domain diagrams use the roles in `src/styles/diagram-colors.css`: commands blue, recorded events orange, query answers cyan-leaning green, and integrations neutral. The history answer uses the query role; active transport uses the theme's action accent. The alternate transport uses a muted dashed route and frame, so its distinction does not depend on color alone.
 
 ### Neutral
 
@@ -338,7 +338,7 @@ Use **Page ink**, **Supporting ink**, **Construction line**, and **Control hover
 
 Documentation has its own paired reading grounds and gray ramp. Dark articles use violet ground with cyan links; light articles use a near-white ground with violet links. The docs surface fills table headings, and the docs line supplies table and pagination separators. Starlight's `white` and `black` names remain semantic aliases that reverse visually in light mode.
 
-**The Theme Pair Rule.** Apply each theme's page, field, scene, and action roles together. Recorded facts retain their violet surface, white text, and cyan detail in both themes.
+**The Theme Pair Rule.** Apply each theme's page, field, scene, and action roles together. Domain figures use each semantic role's paired ink, surface, and line tokens in both themes. The older `record` swatches and recorded-event specimen describe the earlier brand treatment; they are not the authority for current event colors.
 
 The sidecar's eight-step tonal ramps are generated swatch previews. They are not additional implementation colors; the frontmatter records the actual source values.
 
@@ -378,7 +378,7 @@ The main sections use 80px opening and 96px closing intervals. Mobile groups use
 | At most 480px | Capabilities become one column with icons beside titles. Pure-decision geometry becomes 120px square, and the history answer loses its long connector. |
 | At most 390px | Gutters become 20px. Application and history padding tighten, the decision becomes 104px square, and effects stack icon above label. Controls retain their hit areas. |
 
-Documentation uses Starlight’s native topic sidebar, page title, article, and right-hand local contents outline. The topic rail is 16rem, the header 4.5rem, and the article width 48rem; at 100rem viewport width, the article expands to 50rem. Content gutters use the recorded fluid docs token. The title starts with 3rem top padding, reducing to 1.75rem below 49.99rem. Article headings use content-driven spacing rather than full-screen sections.
+Documentation uses Starlight’s native topic sidebar, page title, article, and right-hand local contents outline. The topic rail is 18rem, the header 4.5rem, and the article width 48rem; at 100rem viewport width, the article expands to 50rem. Content gutters use the recorded fluid docs token. The title starts with 3rem top padding, reducing to 1.75rem below 49.99rem. Article headings use content-driven spacing rather than full-screen sections.
 
 The two routes use ordinary browser scrolling. There is no snapping, persistent teaching widget, section-height reservation, or scroll-driven example state. On phones, native Starlight navigation and contents controls frame a full-width article. Tables scroll horizontally within their own content when needed. The installer and example task wrap visually while preserving the exact copied text. Print removes panel padding and uses black article text.
 
@@ -417,7 +417,7 @@ The masthead pairs the original logo and name with Documentation, Resources, Git
 
 ### Application and history illustrations
 
-`HomepageVisual` renders four semantic figures using HTML text and authored SVG. The application figure connects web/mobile and AI-agent entrances to one NeoHaskell application, business rules, recorded changes, and database/file/API services. Layered outlines and staggered event slips provide depth. Its newest visible event uses the record palette.
+`HomepageVisual` renders four semantic figures using HTML text and authored SVG. The application figure connects web/mobile and AI-agent entrances to one NeoHaskell application, business rules, recorded changes, and database/file/API services. Layered outlines and staggered event slips provide depth. Its newest visible event uses the semantic event palette.
 
 The history figure keeps all three events visible: stock added (+12), order placed (-1), and order cancelled (+1). The corrected record remains in the ledger and the resulting 12 mugs sit outside it. The figure's accessible name explains the sequence. These are illustrative product benefits, not interactive controls or an execution trace.
 
@@ -445,7 +445,17 @@ Comparison tables use the recorded table type, full article width, tonal heading
 
 Inline code has a small rounded background and may wrap long identifiers. Fenced examples use Expressive Code’s native titled frame and Copy action, with 16px text, 1.7 line height, and the recorded frame radius. On narrow screens and devices without hover, Copy is visible before interaction. Narrow code lines reserve 3.5rem of end padding to keep text clear of the action. Wrapped install-command presentation preserves the exact clipboard string.
 
-The documentation relies on native links, search, contents navigation, and copying. It adds no simulation controls, editable task field, code-inspection hotspots, or instructional animation. Reduced motion uses immediate browser scrolling.
+The documentation relies on native links, search, contents navigation, and copying. The history lesson adds a focused replay animation with a complete static result under reduced motion or unavailable scripting. It adds no simulation controls, editable task field, or code-inspection hotspots. Reduced motion uses immediate browser scrolling.
+
+### History visual grammar, 16 November 2026
+
+The first local visual-language calibration compares the homepage history benefit, documentation replay, and connected shop model. Keep retained events in an ordered group of labeled records, with the current answer visibly separate and numerically emphasized. Their position, labels and grouping must distinguish them without hue; semantic orange and cyan-leaning green reinforce those roles. This is a reviewed pattern for these history explanations, not a universal requirement that every event or query use the same card or large number.
+
+Adapt composition to the task. The homepage keeps the completed history and result visible together. The lesson keeps all records in place while the cursor identifies the event being applied and the answer responds at impact. The connected model uses explicit links between named events and queries. Replaying changes the derived answer, not the retained record set. Preserve the accepted static fallback and offscreen suspension.
+
+At 320px, longer existing translations exceeded the replay's 6rem event rows. At viewport widths through 360px, rows use 8rem while retaining 16px labels and the same cursor calculation. The existing Armenian 8rem treatment remains. The width-specific rule addresses this component's content; it does not establish a language-wide row height. No translated wording changes are implied.
+
+Checkpoint `fcc229521fd0490d36867fe0f4cb2e8b87f55bd5` preserves the starting state. The calibration keeps the homepage composition and records a bounded documentation correction. Current evidence and review scope are recorded in `.impeccable/reviews/visual-language-history-2026-11-16/review.md`. Reviewer findings are separate from owner acceptance and do not establish measured learning outcomes.
 
 
 ## Do's and Don'ts

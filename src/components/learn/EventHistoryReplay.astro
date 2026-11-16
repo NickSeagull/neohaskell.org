@@ -157,5 +157,6 @@ const events = [
   [data-phase='1'] .history-cursor { transition: none; }
   .history-stock { display: grid; justify-items: center; gap: .5rem; text-align: center; font-variant-numeric: tabular-nums; color: var(--diagram-ink); }
   .history-stock output { font-size: clamp(2.5rem, 7vw, 4rem); line-height: 1.2; font-weight: 650; }
+  @media (max-width: 360px) { event-history-replay { --history-row-height: 8rem; } }
   @media (prefers-reduced-motion: reduce) { .history-cursor { transition: none; } }
 </style>

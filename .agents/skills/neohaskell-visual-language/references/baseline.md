@@ -45,3 +45,5 @@ Answer through representative rendered examples before prescribing universal rad
 At checkpoint `6fb2befd4de27cee53a322225ebcd92d3fff3259`, `DESIGN.md`'s canonical color prose still describes violet recorded events. The homepage surface record's 13 November semantic-color correction and current `src/styles/diagram-colors.css` use orange events. Follow the later semantic decision. The current documentation surface record also specifies an 18rem sidebar, while older design prose describes 16rem. Inspect the current styles and applicable owner decision before changing that layout.
 
 These are record discrepancies found through source inspection, not a rendered audit. This initial skill does not certify the current pages or declare the unresolved visual questions settled.
+
+The subsequent history calibration reconciles the canonical color and sidebar prose in `DESIGN.md` and records the first scoped history pattern there. Older swatches and specimens remain historical. Consult the current design section and `.impeccable/reviews/visual-language-history-2026-11-16/review.md` for the tested scope; the initial inspection above is provenance.
