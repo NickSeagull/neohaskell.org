@@ -47,9 +47,11 @@ For conceptual lessons, load `$neohaskell-progressive-explanations`. It owns pag
 
 # Translation
 
-For translation requests, follow the page-based workflow in README.md. Resolve the requested pages and languages from the current task; ask one scope question if they are unclear. Edit the translated MDX directly, preserving human corrections. Page plans are excluded unless explicitly requested. Update shared catalog keys only when their text is in scope.
+Translate only when the user explicitly requests translation, and only for the requested pages and languages. English authoring, glossary edits, shared-component changes, publication requests, and failed CI checks do not authorize translation work. Preserve existing translations during those tasks and report missing files without generating translations or English placeholders to make CI pass.
 
-Use native Starlight fallback for missing translations. Preserve relative links and explicit heading anchors. English edits and glossary changes do not trigger whole-site regeneration or block publication. Review changed passages, code, links, and affected rendering; do not turn ordinary translation edits into a review of every language. Translation does not authorize deployment.
+For translation requests, follow the page-based workflow in README.md. Ask one scope question if the requested pages or languages are unclear. Edit the translated MDX directly, preserving human corrections. Page plans are excluded unless explicitly requested. Update shared catalog keys only when their text is in scope. Preserve relative links and explicit heading anchors. Review changed passages, code, links, and affected rendering within the requested scope. Translation does not authorize deployment.
+
+CI must fail when any configured language is missing a translated documentation file or required catalog file. Use `npm run check:translations` to report the missing paths. Native Starlight fallback remains available for local authoring, but does not satisfy the deployment check. Existing translations may lag behind English edits; file presence is required, freshness is not.
 
 # Diagram colors and terminology
 

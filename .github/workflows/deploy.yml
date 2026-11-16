@@ -20,6 +20,8 @@ jobs:
           node-version: '24'
           cache: npm
       - run: npm ci
+      - name: Require translation files
+        run: npm run check:translations
       - run: npm test
       - run: npm run build
         env:

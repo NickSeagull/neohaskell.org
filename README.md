@@ -48,9 +48,9 @@ Author English content in `src/content/docs/`. Reading styles live in `src/style
 
 ## Translation workflow
 
-Use Starlight's native language folders. English lives in `src/content/docs/`; a Spanish translation of `introduction/history/index.mdx` lives in `src/content/docs/es/introduction/history/index.mdx`. The configured languages are listed in `src/i18n/locales.mjs`. Missing pages use [Starlight's English fallback](https://starlight.astro.build/guides/i18n/#fallback-content).
+Use Starlight's native language folders. English lives in `src/content/docs/`; a Spanish translation of `introduction/history/index.mdx` lives in `src/content/docs/es/introduction/history/index.mdx`. The configured languages are listed in `src/i18n/locales.mjs`. Missing pages use Starlight's English fallback during local authoring, but block deployment.
 
-Ask an agent to update named pages in named languages, for example: “Update the Spanish and French translations of Events and history using the latest English changes.” There is no bulk translation command, manifest, or freshness gate.
+Translation happens only on explicit request, for example: “Update the Spanish and French translations of Events and history using the latest English changes.” English edits, glossary changes, shared-component work, publication requests, and CI failures leave translations untouched. Report missing files instead of automatically translating or copying English into them. There is no bulk translation command, manifest, or freshness gate.
 
 1. Read the English page, its relevant Git diff, `GLOSSARY.md`, and the existing translations. Limit the work to the requested pages and languages. Page plans are outside the default translation scope. A glossary edit is guidance for relevant passages, not an instruction to regenerate every language.
 2. Edit each translated file directly. Preserve human corrections and translate only the changed passages, with the full page as context. Keep executable code, imports, component props, URL destinations, and stable anchors intact. Translate prose, headings, titles, descriptions, and sidebar labels naturally; grammar and emphasis need not follow English node order. Update only the affected keys in shared catalogs when the request includes diagram or interface text.
@@ -66,11 +66,13 @@ The small `remark-stable-headings.mjs` plugin moves that marker's ID onto the he
 
 Homepage and diagram strings remain in `src/i18n/<locale>/site.json`; custom documentation controls live in `src/content/i18n/<lang>.json`. Missing site-catalog keys fall back to English. Reuse existing keys and the `@components/` imports. Keep literal IDE labels and code identifiers when describing the actual English screenshot or code.
 
-English changes do not block publication. Existing translations remain editable and available while their updates are reviewed. Git diffs and editorial review track that work; there is no automatic stale-translation detection. If an outdated translation is misleading, deliberately remove that page from published content to use the English fallback. Existing translated page plans are retained, but are not automatically refreshed.
+Run `npm run check:translations` to check file coverage. Every English `.md` or `.mdx` documentation file, including page plans, requires the same relative file in every configured target-language folder. Each target language also requires `src/i18n/<code>/site.json` and `src/content/i18n/<lang>.json`, using the configured code and language tag respectively. The check reports missing paths and exits unsuccessfully; it never writes translations. Local development and `npm run build` remain available while files are missing.
+
+Existing translations may lag behind English changes. Git diffs and editorial review track updates; the coverage check does not assess freshness, catalog keys, or linguistic accuracy. Removing a translated page blocks deployment until its replacement is explicitly requested and supplied. Existing translated page plans are retained, but are not automatically refreshed.
 
 ## Deployment
 
-`.github/workflows/deploy.yml` runs tests and the normal build on every push to `main` or manual dispatch, then publishes to the GitHub Pages project URL. CI does not translate content or require all languages to be synchronized. Push only when the owner explicitly requests publication. The preview build uses `/neohaskell.org/` as its base path and omits the production `CNAME` and `robots.txt` files from the artifact. Local builds still use `https://neohaskell.org` without a base path. To reproduce the preview build locally, run `GITHUB_PAGES_PREVIEW=true npm run build`.
+`.github/workflows/deploy.yml` checks translation file coverage, runs tests and the normal build on every push to `main` or manual dispatch, then publishes to the GitHub Pages project URL. Missing translated documentation or catalog files fail CI before deployment. CI does not translate content or require existing translations to match the latest English revision. Push only when the owner explicitly requests publication. The preview build uses `/neohaskell.org/` as its base path and omits the production `CNAME` and `robots.txt` files from the artifact. Local builds still use `https://neohaskell.org` without a base path. To reproduce the preview build locally, run `GITHUB_PAGES_PREVIEW=true npm run build`.
 
 Framework references: [Starlight custom pages](https://starlight.astro.build/guides/pages/) and [Astro on GitHub Pages](https://docs.astro.build/en/guides/deploy/github/).
 
