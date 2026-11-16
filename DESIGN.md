@@ -417,7 +417,7 @@ The masthead pairs the original logo and name with Documentation, Resources, Git
 
 ### Application and history illustrations
 
-`HomepageVisual` renders four semantic figures using HTML text and authored SVG. The application figure connects web/mobile and AI-agent entrances to one NeoHaskell application, business rules, recorded changes, and database/file/API services. Layered outlines and staggered event slips provide depth. Its newest visible event uses the semantic event palette.
+`HomepageVisual` renders four semantic figures using HTML text and authored SVG. The hero application figure shows one familiar shipping rule and two contrasting outcomes: paid orders can ship and unpaid orders cannot. The established layered scene remains, with native text and aligned rows. Its neutral permission outcomes do not use event or query colors. Runtime entrances, infrastructure endpoints and recorded-history slips belong to later explanations, rather than the opening. This scoped simplification responds to the owner's concern about introducing too many concepts in the hero; final owner acceptance remains pending.
 
 The history figure keeps all three events visible: stock added (+12), order placed (-1), and order cancelled (+1). The corrected record remains in the ledger and the resulting 12 mugs sit outside it. The figure's accessible name explains the sequence. These are illustrative product benefits, not interactive controls or an execution trace.
 

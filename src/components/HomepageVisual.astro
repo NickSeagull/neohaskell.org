@@ -6,16 +6,15 @@ const { kind, locale = 'en' } = Astro.props;
 const t = messages(locale);
 ---
 {kind === 'application' && (
-  <figure class="application-scene" aria-label={t("visual.web-applications-and-ai-agents-share-the-same-neohaskel")}>
-    <div class="app-entrances"><span><FeatureIcon name="web" />{t("visual.web-mobile")}</span><span><FeatureIcon name="agent" />{t("visual.ai-agents")}</span></div>
-    <div class="app-inlets" aria-hidden="true"><i></i><i></i></div>
+  <figure class="application-scene" lang="en" aria-label={t('visual.shipping-rule-example')}>
     <div class="application-core">
-      <div class="app-brand"><img src={`${import.meta.env.BASE_URL}logo.svg`} alt="" width="44" height="44" /><span>NeoHaskell</span></div>
-      <div class="app-rule"><span>{t("visual.your-business-rules")}</span><FeatureIcon name="shield" /></div>
-      <div class="app-records"><span>{t("visual.every-change-recorded")}</span><div class="record-slips" data-diagram-role="event"><div>{t("visual.order-placed")}</div><div>{t("visual.payment-received")}</div><div>{t("visual.order-shipped")}<FeatureIcon name="check" /></div></div></div>
+      <h3 class="app-rule-title">{t('visual.shipping-an-order')}</h3>
+      <p class="app-rule-statement">{t('visual.orders-ship-only-after-payment')}</p>
+      <dl class="app-rule-outcomes">
+        <div><dt>{t('visual.paid-order')}</dt><dd><FeatureIcon name="check" />{t('visual.can-ship')}</dd></div>
+        <div><dt>{t('visual.unpaid-order')}</dt><dd>{t('visual.cannot-ship')}</dd></div>
+      </dl>
     </div>
-    <div class="app-outlets" aria-hidden="true"><i></i><i></i><i></i></div>
-    <div class="app-services"><span><FeatureIcon name="database" />{t("visual.database")}</span><span><FeatureIcon name="upload" />{t("visual.files")}</span><span data-diagram-role="integration"><FeatureIcon name="branch" />APIs</span></div>
   </figure>
 )}
 {kind === 'history' && (

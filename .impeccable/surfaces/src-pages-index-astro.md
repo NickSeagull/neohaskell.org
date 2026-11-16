@@ -13,6 +13,14 @@ Owner accepted this homepage and its general pitch on 11 November 2026, at imple
 
 The owner's 11 November 2026 request replaces the former code-led homepage with a benefits-led sales page for NeoHaskell as an AI-first language with integrated application capabilities. Preserve the existing palette, type and logo. The supplied Ruby, Phoenix and Laravel screenshots govern the requested craft, visual variety and feature coverage. Documentation remains unchanged. That redesign supersedes earlier homepage composition and source-example requirements below. The scoped 16 November extension and correction are recorded next and take precedence for the new highlights.
 
+## Hero prerequisite review, 16 November 2026
+
+Checkpoint: `2ec039501adb030817af17c469b90c4003208db9`. The owner asked for a fresh subagent critique because the hero appeared to introduce too many concepts. The independent review found competing explanations rather than a typography problem: purity, retained history, included services and runtime entry points all required inference, while "AI agents" changed meaning from creation assistance in the headline to runtime callers in the illustration.
+
+The selected implementation preserves "Build with AI. Keep control.", the programming-language category, both actions and the established identity. Supporting copy now leads with applications the developer can understand, review and change. One shipping rule and its paid/unpaid outcomes replace the architecture inventory. The familiar layered scene remains; the outcomes use neutral text rather than semantic event colors. Later sections retain their existing explanations and visual treatments.
+
+The reusable lesson is to review the relationships a first-time reader must infer, not merely count technical nouns. An opening example should make its central promise inspectable before introducing the mechanisms that enable it. The selected treatment and reviewer findings do not establish owner acceptance or measured comprehension. Full critique and verification: `.impeccable/reviews/homepage-hero-2026-11-16.md`.
+
 ## Specification document and ordering refinement, 16 November 2026
 
 Checkpoint: `f9cd95997f54a03238ead4c70ea0f82bd46621bc`. The owner requested moving "The specification is code" immediately before "A language with the essentials built in", and said the snippet felt empty and needed a treatment that felt like a specification. This supersedes the earlier placement among the opening highlights and the bare leading-rule source treatment below.
