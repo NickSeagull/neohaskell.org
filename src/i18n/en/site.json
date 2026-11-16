@@ -153,5 +153,13 @@
   "lesson.stable-contracts": "Stable contracts",
   "lesson.behaviors-added": "Behaviors added",
   "lesson.open-the-full-size-neohaskell-ide-screenshot": "Open the full-size NeoHaskell IDE screenshot",
-  "lesson.neohaskell-ide-showing-the-orders-feature-place-order-and-cancel-order-chapters-four-slice": "NeoHaskell IDE showing the Orders feature, Place order and Cancel order chapters, four slice columns, and the connected command, event, and query declarations."
+  "lesson.neohaskell-ide-showing-the-orders-feature-place-order-and-cancel-order-chapters-four-slice": "NeoHaskell IDE showing the Orders feature, Place order and Cancel order chapters, four slice columns, and the connected command, event, and query declarations.",
+  "home.ide-preview-label": "Order process in the NeoHaskell visual IDE",
+  "home.ide-preview-alt": "The order and cancellation process shown as connected parts in NeoHaskell's visual IDE.",
+  "home.freeze-example-label": "The existing checkout keeps using the frozen Place order contract. An updated checkout uses a separate Place order with contact contract, adding email without changing the original.",
+  "home.existing-checkout": "Existing checkout",
+  "home.updated-checkout": "Updated checkout",
+  "home.place-order-contract": "Place order",
+  "home.place-order-contact-contract": "Place order with contact",
+  "home.frozen-contract-label": "Frozen contract"
 }

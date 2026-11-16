@@ -10,7 +10,7 @@ const modelPage = sitePath(locale, '/introduction/event-modeling/');
 const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/mug-shop-ide.png`;
 ---
 
-<div class="homepage-highlights" id="highlights" lang="en">
+<div class="homepage-highlights" id="highlights">
   <section class="ide-highlight" aria-labelledby="ide-title">
     <div class="ide-stage">
       <div class="ide-intro">
@@ -20,9 +20,9 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
           <a class="text-link" href={modelPage}>{t('home.visual-ide-action')}<Arrow /></a>
         </div>
       </div>
-      <div class="homepage-ide-preview" tabindex="0" role="region" aria-label="Order process in the NeoHaskell visual IDE">
+      <div class="homepage-ide-preview" tabindex="0" role="region" aria-label={t('home.ide-preview-label')}>
         <a class="homepage-ide-image" href={screenshot} aria-label={t('lesson.open-the-full-size-neohaskell-ide-screenshot')}>
-          <img src={screenshot} width="2880" height="1700" loading="lazy" alt="The order and cancellation process shown as connected parts in NeoHaskell's visual IDE." />
+          <img src={screenshot} width="2880" height="1700" loading="lazy" alt={t('home.ide-preview-alt')} />
         </a>
       </div>
     </div>
@@ -34,21 +34,21 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
       <p>{t('home.freeze-code-description')}</p>
       <a class="text-link" href={`${modelPage}#freeze-the-contract-when-it-is-deployed`}>{t('home.freeze-code-action')}<Arrow /></a>
     </div>
-    <figure class="freeze-scene" aria-label="The existing checkout keeps using the frozen Place order contract. An updated checkout uses a separate Place order with contact contract, adding email without changing the original.">
+    <figure class="freeze-scene" aria-label={t('home.freeze-example-label')}>
       <div class="contract-lane">
-        <div class="checkout"><FeatureIcon name="web" /><span>Existing<br />checkout</span></div>
+        <div class="checkout"><FeatureIcon name="web" /><span>{t('home.existing-checkout')}</span></div>
         <svg class="contract-route" viewBox="0 0 64 24" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M0 12h60m-7-7 7 7-7 7" /></svg>
         <div class="contract" data-diagram-role="command">
-          <div class="contract-name"><strong>Place order</strong><svg class="contract-lock" width="20" height="24" viewBox="0 0 20 24" fill="none" aria-label="Frozen contract" role="img"><path d="M5 10V6a5 5 0 0 1 10 0v4M2 10h16v12H2zM10 15v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
-          <div class="contract-fields"><span>product</span><span>quantity</span></div>
+          <div class="contract-name"><strong>{t('home.place-order-contract')}</strong><svg class="contract-lock" width="20" height="24" viewBox="0 0 20 24" fill="none" aria-label={t('home.frozen-contract-label')} role="img"><path d="M5 10V6a5 5 0 0 1 10 0v4M2 10h16v12H2zM10 15v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
+          <div class="contract-fields" lang="en"><span>product</span><span>quantity</span></div>
         </div>
       </div>
       <div class="contract-lane">
-        <div class="checkout"><FeatureIcon name="web" /><span>Updated<br />checkout</span></div>
+        <div class="checkout"><FeatureIcon name="web" /><span>{t('home.updated-checkout')}</span></div>
         <svg class="contract-route" viewBox="0 0 64 24" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M0 12h60m-7-7 7 7-7 7" /></svg>
         <div class="contract" data-diagram-role="command">
-          <div class="contract-name"><strong>Place order<br />with contact</strong></div>
-          <div class="contract-fields"><span>product</span><span>quantity</span><span class="added-field">+ email</span></div>
+          <div class="contract-name"><strong>{t('home.place-order-contact-contract')}</strong></div>
+          <div class="contract-fields" lang="en"><span>product</span><span>quantity</span><span class="added-field">+ email</span></div>
         </div>
       </div>
     </figure>
@@ -73,6 +73,7 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
   .freeze-highlight h2 { max-width: 12ch; }
   .freeze-scene { display: grid; gap: 24px; width: 100%; max-width: 600px; justify-self: end; padding-block: 16px; }
   .contract-lane { display: grid; grid-template-columns: 104px 48px minmax(0, 1fr); align-items: center; }
+  .freeze-scene:not(:lang(en)) .contract-lane { grid-template-columns: 128px 40px minmax(0, 1fr); }
   .checkout { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; color: var(--muted); font-size: 16px; line-height: 1.5; }
   .checkout :global(svg) { width: 32px; height: 32px; color: var(--ink); }
   .contract-route { width: 100%; height: 24px; color: var(--muted); }
@@ -115,5 +116,8 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
     .contract-name { gap: 8px; }
     .contract-name strong { font-size: 18px; }
     .contract-fields { grid-template-columns: 1fr; grid-template-rows: repeat(3, 24px); gap: 4px; margin-top: 12px; }
+    .freeze-scene:not(:lang(en)) .contract-lane { display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
+    .freeze-scene:not(:lang(en)) .checkout { flex-direction: row; align-items: center; }
+    .freeze-scene:not(:lang(en)) .contract-route { width: 32px; height: 32px; transform: rotate(90deg); }
   }
 </style>

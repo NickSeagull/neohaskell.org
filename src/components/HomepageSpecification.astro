@@ -13,12 +13,12 @@ const modelPage = sitePath(locale, '/introduction/event-modeling/');
     <h2 id="spec-title">{t('home.app-spec-title')}</h2>
     <p>{t('home.app-spec-description')}</p>
   </div>
-  <div class="spec-document" lang="en">
+  <div class="spec-document">
     <div class="spec-requirement">
       <h3>{t('home.app-spec-example-title')}</h3>
       <p>{t('home.app-spec-example-requirement')}</p>
     </div>
-    <pre class="homepage-spec" tabindex="0" aria-label={t('home.app-spec-code-label')}><code><span class="spec-keyword">feature</span> <span class="spec-string">"Orders"</span> <span class="spec-keyword">do</span>{'\n'}  <span class="spec-keyword">chapter</span> <span class="spec-string">"Place order"</span> <span class="spec-keyword">do</span>{'\n'}    <span class="spec-keyword">slice</span> <span class="spec-string">"Accept order"</span> <span class="spec-keyword">do</span>{'\n'}      <span class="spec-keyword">entity</span> @Order <span class="spec-keyword">do</span>{'\n'}        <span class="spec-keyword">command</span> @PlaceOrder <span class="spec-keyword">do</span>{'\n'}          <span class="spec-keyword">produces</span> @OrderPlaced{'\n\n'}    <span class="spec-keyword">slice</span> <span class="spec-string">"Show stock"</span> <span class="spec-keyword">do</span>{'\n'}      <span class="spec-keyword">query</span> @AvailableMugs <span class="spec-keyword">do</span>{'\n'}        <span class="spec-keyword">readsFrom</span> @Order <span class="spec-keyword">do</span>{'\n'}          <span class="spec-keyword">onEvent</span> @OrderPlaced</code></pre>
+    <pre class="homepage-spec" tabindex="0" aria-label={t('home.app-spec-code-label')}><code lang="en"><span class="spec-keyword">feature</span> <span class="spec-string">"Orders"</span> <span class="spec-keyword">do</span>{'\n'}  <span class="spec-keyword">chapter</span> <span class="spec-string">"Place order"</span> <span class="spec-keyword">do</span>{'\n'}    <span class="spec-keyword">slice</span> <span class="spec-string">"Accept order"</span> <span class="spec-keyword">do</span>{'\n'}      <span class="spec-keyword">entity</span> @Order <span class="spec-keyword">do</span>{'\n'}        <span class="spec-keyword">command</span> @PlaceOrder <span class="spec-keyword">do</span>{'\n'}          <span class="spec-keyword">produces</span> @OrderPlaced{'\n\n'}    <span class="spec-keyword">slice</span> <span class="spec-string">"Show stock"</span> <span class="spec-keyword">do</span>{'\n'}      <span class="spec-keyword">query</span> @AvailableMugs <span class="spec-keyword">do</span>{'\n'}        <span class="spec-keyword">readsFrom</span> @Order <span class="spec-keyword">do</span>{'\n'}          <span class="spec-keyword">onEvent</span> @OrderPlaced</code></pre>
   </div>
   <a class="text-link" href={modelPage}>{t('home.app-spec-action')}<Arrow /></a>
 </section>
