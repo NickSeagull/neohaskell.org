@@ -1,3 +1,3 @@
 Build with AI. Keep control. NeoHaskell brings frozen contracts, executable rules, a visual IDE, and the essentials built in.
 
-Music: Wraghstep [v2] by Of Far Different Nature (https://fardifferent.carrd.co/), CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), excerpt edited and mastered from https://opengameart.org/content/huge-loop-box-2-heavy-bass-music-for-action-racing-fighting-rpg-adventure-and-cutscenes
+Music: Dark Horizons - Cinematic Trap Music by AurosonMusic, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), edited from https://freemusicarchive.org/music/aurosonmusic/single/dark-horizons-cinematic-trap-music/

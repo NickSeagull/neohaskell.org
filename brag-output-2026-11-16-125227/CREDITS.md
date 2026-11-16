@@ -1,10 +1,12 @@
 # Credits
 
-Music: "Wraghstep [v2]" by [Of Far Different Nature](https://fardifferent.carrd.co/), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [Original artist upload](https://opengameart.org/content/huge-loop-box-2-heavy-bass-music-for-action-racing-fighting-rpg-adventure-and-cutscenes). Edited to 24 seconds, gain reduced, and ending faded. Retain this attribution in the published description or adjacent persistent credits.
+Music: "Dark Horizons - Cinematic Trap Music" by AurosonMusic, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [Original artist upload](https://freemusicarchive.org/music/aurosonmusic/single/dark-horizons-cinematic-trap-music/). Edited into a 24-second introduction and beat-drop arrangement, with the opening level reduced and short fades. Retain this attribution in the published description or adjacent persistent credits.
 
 NeoHaskell logo and IDE screenshot: existing project assets, reused unchanged. The screenshot shows the real frontend with an illustrative model, not a live connected deployment. Provenance: .impeccable/reviews/model-evolution-2026-11-13/source-evidence.md.
 
-Fonts: Sansation, Manrope, and Pixelify Sans. Existing font licenses accompany the composition assets. GSAP retains its upstream copyright and license notice.
+Fonts: [Barlow and Barlow Condensed](https://tribby.com/fonts/barlow/) by Jeremy Tribby and [IBM Plex Mono](https://www.ibm.com/design/language/typography/typeface/). Their SIL Open Font Licenses accompany the composition assets. GSAP retains its upstream copyright and license notice.
+
+Impact motion adapts the editable HyperFrames headline-slam, rgb-glitch-text, and logo-sting components. Effects are authored as deterministic local timelines; no stock video or external runtime media is embedded.
 
 Reference: [Microsoft's Windows Terminal launch film](https://www.youtube.com/watch?v=8gw0rXPMMPE), used for visual analysis only. No reference footage, audio, or Microsoft assets are included.
 
