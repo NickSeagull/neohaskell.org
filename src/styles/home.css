@@ -294,7 +294,7 @@ h1 { font-size: clamp(72px, 7.3vw, 112px); line-height: 1.02; hyphens: none; }
 
 /* Phones retain a deliberate crop of the material below the immediately readable copy. */
 @media (max-width: 1100px) and (min-width: 761px) {
-  .opening { min-height: 680px; padding-block: 56px 80px; }
+  .opening { min-height: 0; padding-block: 56px 0; }
   .opening h1 { font-size: clamp(56px, 7.4vw, 80px); }
   .hero-description { max-width: 34ch; }
 }
@@ -305,7 +305,7 @@ h1 { font-size: clamp(72px, 7.3vw, 112px); line-height: 1.02; hyphens: none; }
   .hero-description { margin-top: 24px; max-width: 40ch; font-size: 18px; }
   .hero-actions { margin-top: 24px; }
 }
-@media (min-width: 761px) and (max-height: 820px) {
+@media (min-width: 1101px) and (max-height: 820px) {
   .opening { min-height: 620px; padding-block: 40px 72px; }
   .opening h1 { font-size: clamp(56px, 6.8vw, 96px); }
 }
