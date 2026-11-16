@@ -1,5 +1,6 @@
 ---
 import HomepageVisual from './HomepageVisual.astro';
+import HomepageHighlights from './HomepageHighlights.astro';
 import FeatureIcon from './FeatureIcon.astro';
 import Arrow from './Arrow.astro';
 import VisitorContext from './VisitorContext.astro';
@@ -78,6 +79,8 @@ const capabilities = [
           </div>
           <HomepageVisual locale={locale} kind="application" />
         </section>
+
+        <HomepageHighlights locale={locale} />
 
         <section class="history-section" aria-labelledby="history-title">
           <div class="history-copy">
