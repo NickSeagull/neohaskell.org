@@ -12,17 +12,19 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
 
 <div class="homepage-highlights" id="highlights" lang="en">
   <section class="ide-highlight" aria-labelledby="ide-title">
-    <div class="ide-intro">
-      <h2 id="ide-title">{t('home.visual-ide-title')}</h2>
-      <div class="highlight-copy">
-        <p>{t('home.visual-ide-description')}</p>
-        <a class="text-link" href={`${modelPage}#use-the-model-to-understand-the-code`}>{t('home.visual-ide-action')}<Arrow /></a>
+    <div class="ide-stage">
+      <div class="ide-intro">
+        <h2 id="ide-title">{t('home.visual-ide-title')}</h2>
+        <div class="highlight-copy">
+          <p>{t('home.visual-ide-description')}</p>
+          <a class="text-link" href={`${modelPage}#use-the-model-to-understand-the-code`}>{t('home.visual-ide-action')}<Arrow /></a>
+        </div>
       </div>
-    </div>
-    <div class="homepage-ide-preview" tabindex="0" role="region" aria-label="Order process in the NeoHaskell visual IDE">
-      <a class="homepage-ide-image" href={screenshot} aria-label={t('lesson.open-the-full-size-neohaskell-ide-screenshot')}>
-        <img src={screenshot} width="2880" height="1700" loading="lazy" alt="The visual IDE connects PlaceOrder and CancelOrder to their recorded events and AvailableMugs queries." />
-      </a>
+      <div class="homepage-ide-preview" tabindex="0" role="region" aria-label="Order process in the NeoHaskell visual IDE">
+        <a class="homepage-ide-image" href={screenshot} aria-label={t('lesson.open-the-full-size-neohaskell-ide-screenshot')}>
+          <img src={screenshot} width="2880" height="1700" loading="lazy" alt="The visual IDE connects PlaceOrder and CancelOrder to their recorded events and AvailableMugs queries." />
+        </a>
+      </div>
     </div>
   </section>
 
@@ -67,12 +69,13 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
 <style>
   .homepage-highlights { padding-bottom: 96px; }
   .ide-highlight { padding: 64px 0 80px; border-top: 1px solid var(--rule); }
-  .ide-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 64px; margin-bottom: 40px; }
-  .ide-intro h2 { max-width: 16ch; }
+  .ide-stage { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: center; }
+  .ide-intro { position: relative; z-index: 1; grid-column: 1 / 6; grid-row: 1; padding: 40px; border-radius: 16px; background: var(--field); }
+  .ide-intro h2 { max-width: 12ch; }
   .highlight-copy p { margin-top: 24px; max-width: 48ch; }
-  .ide-intro p { margin-top: 0; }
+  .ide-intro p { margin-top: 24px; }
   .highlight-copy .text-link { margin-top: 24px; }
-  .homepage-ide-preview { display: block; position: relative; min-width: 0; aspect-ratio: 2.12; border-radius: 12px; overflow: hidden; cursor: zoom-in; }
+  .homepage-ide-preview { display: block; position: relative; grid-column: 3 / -1; grid-row: 1; min-width: 0; aspect-ratio: 1.72; border-radius: 12px; overflow: hidden; cursor: zoom-in; }
   .homepage-ide-image { display: block; }
   .homepage-ide-preview img { display: block; width: 100%; height: auto; }
   .spec-freeze-pair { border-top: 1px solid var(--rule); }
@@ -99,7 +102,12 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
   .contract-fields { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 16px; font-size: 16px; line-height: 1.5; }
   .added-field { flex-basis: 100%; font-weight: 600; }
   @media (max-width: 1100px) {
-    .ide-intro, .spec-highlight, .freeze-highlight { gap: 32px; }
+    .spec-highlight, .freeze-highlight { gap: 32px; }
+    .ide-stage { display: block; }
+    .ide-intro { padding: 32px; border-radius: 16px 16px 0 0; }
+    .ide-intro h2 { max-width: none; }
+    .ide-intro p { max-width: 62ch; }
+    .homepage-ide-preview { aspect-ratio: 2.12; border-radius: 0 0 12px 12px; }
     .freeze-scene { padding-left: 0; }
     .contract-lane { grid-template-columns: 88px 40px minmax(0, 1fr); }
     .contract { padding: 20px 16px; }
@@ -109,14 +117,14 @@ const screenshot = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/docs/m
   @media (max-width: 760px) {
     .homepage-highlights { padding-bottom: 64px; }
     .ide-highlight { padding: 48px 0; }
-    .ide-intro { grid-template-columns: 1fr; gap: 24px; margin-bottom: 32px; }
-    .ide-intro h2 { max-width: 18ch; }
+    .ide-intro { padding: 32px 24px; }
+    .ide-intro h2 { max-width: 12ch; }
     .spec-highlight, .freeze-highlight { grid-template-columns: 1fr; gap: 32px; }
     .spec-highlight { padding: 48px 0; }
     .spec-highlight .homepage-spec { grid-column: auto; grid-row: auto; }
     .spec-highlight > .text-link { grid-row: 3; }
     .highlight-copy p { margin-top: 20px; }
-    .ide-intro p { margin-top: 0; }
+    .ide-intro p { margin-top: 24px; }
     .homepage-spec { padding: 24px 16px; }
     .freeze-highlight { padding-top: 48px; }
     .freeze-scene { width: 100%; max-width: 520px; margin-inline: auto; padding: 0; gap: 24px; }

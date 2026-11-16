@@ -1,5 +1,13 @@
 # Homepage feature highlights
 
+## Copy and image refinement
+
+Checkpoint: `9fe17a0a1fb0da0e2a372b117f55825fc0e8e460`. The owner requested a direct outdated-spec run-prevention promise, a positive stone metaphor, and motivating IDE copy composed with the screenshot. The new copy leads with "Your app. Your call." and "Set in stone. Free to grow." The spec opens "Your app won't run with an outdated spec." PRODUCT.md records that as owner-authorized target behavior, not newly executed runtime enforcement.
+
+The desktop IDE pitch sits on an opaque existing field-color panel over the screenshot navigation area, leaving the domain nodes visible. At 1100px and below, the panel stacks above the image. Native phone inspection and the full-image link remain. Both source slices, the independent contract diagram, and older sections are unchanged.
+
+The build passes with 586 pages and zero Astro check diagnostics. Eight responsive/theme cases, four links, the changed copy and phone keyboard scrolling pass; detector output is empty. Evidence is `overlay-*.png`, `overlay-checks.json`, and the [fresh review](overlay-reviewer.md). No publication is requested.
+
 ## Current implementation: native continuity diagram
 
 Checkpoint: `457f618c5661545e2f23313754c6d626eadde678`. The owner instructed the agent to implement and present the reassessed direction. The new homepage uses a wide authentic IDE view, the complete two-slice source example, and a compact native diagram showing existing and updated checkouts connected independently to their command contracts. The phone IDE view supports native horizontal scrolling and keyboard inspection of the connected query. Existing sections from history onward retain their source and styling. The ice/star images and sidecars are removed from shipping assets.
