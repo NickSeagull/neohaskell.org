@@ -63,15 +63,15 @@
     },
     {
       "t": 21.44,
-      "v": 0.15
+      "v": 0.12
     },
     {
-      "t": 23.87,
-      "v": 0.15
+      "t": 23.76,
+      "v": 0.12
     },
     {
-      "t": 23.95,
-      "v": 0.3
+      "t": 23.91,
+      "v": 0.26
     },
     {
       "t": 24,
@@ -257,20 +257,20 @@
       "gain": 0.3
     },
     {
-      "id": "mlg-where-you-at",
-      "asset": "assets/memes/where-you-at.mp3",
-      "start": 21.44,
-      "duration": 2.424,
-      "offset": 0,
-      "gain": 0.43
-    },
-    {
       "id": "mlg-damn-son",
       "asset": "assets/memes/damn-son.mp3",
       "start": 1.72,
       "duration": 2.35102,
       "offset": 0,
       "gain": 0.65
+    },
+    {
+      "id": "mlg-nice",
+      "asset": "assets/memes/nice.wav",
+      "start": 21.57,
+      "duration": 2.1735,
+      "offset": 0,
+      "gain": 0.35
     }
   ]
 }

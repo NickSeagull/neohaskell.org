@@ -31,3 +31,5 @@ Frank voice: [actual time-to-stop sample](https://www.myinstants.com/en/instant/
 UAV notification: actual Modern Warfare 2 (2009) HUD from [IGN Flagrunner footage at 46 seconds](https://www.youtube.com/watch?v=eVc47QangEk&t=46s), cropped from the original frame. The game wording is "3 Kill Streak! Press [D-pad] for UAV."
 
 Opening tag: [Damn son, where did you find this](https://www.myinstants.com/en/instant/damn-son-whered-you-find-this/), complete 2.351-second source sample.
+
+V3 finale: [Michael Rosen tongue-click Nice greenscreen](https://www.youtube.com/watch?v=1JfsPv_zaH4), original video and synchronized sound. Cropped and keyed locally; source audio is complete. This replaces WHERE YOU AT. The UAV notification and paper bills are now authored vector graphics at the owner's explicit request. Earlier source credits remain for the preserved versions.

@@ -21,3 +21,7 @@ The owner additionally requests that the text become as dank and edgy as possibl
 | 21.429-24 | NeoHaskell. AI-first language. neohaskell.org | Clear product identity, pixel sunglasses slam onto logo, one final horn. |
 
 The killfeed and +100-style counters are obvious gameplay jokes, not product performance metrics. Keep each headline in a readable zone while the inserts and symbols behave absurdly. Maximize recognizable MLG grammar, not fullscreen strobe flashes. All voice samples are requested meme sound effects. See mlg-research.md for the actual references and source intervals.
+
+## Nice finale, vector UAV and money deluge refinement
+
+The owner accepted the second MLG cut, then replaced three specific choices. Remove the loud WHERE YOU AT audio and caption entirely. Use the actual Michael Rosen tongue-click and Nice greenscreen performance on the end card, with its original sound at a moderate level. Rebuild the three-kill UAV graphic in editable vector/type graphics, superseding the earlier actual-pixels requirement. Replace the built-in scene coins with an extremely exaggerated torrent of dollar bills pouring down from both upper corners, with dense side cascades and tumbling foreground bills. Preserve the product lettering through a mostly open central reading zone. All other accepted audio, copy, timings and effects remain. The previous export is preserved as brag-mlg-v2.mp4 at checkpoint 85475fc904308d5b4318a79514a89beebd53c51f.

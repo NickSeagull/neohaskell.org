@@ -9,3 +9,7 @@ Airhorn, both sniper shots and every hitmarker retain their full source duration
 These are actual user-requested meme samples, not generated voices. Source pages, derivatives and hashes are recorded in meme-assets.json; mlg-research.md records the source and waveform research. Flat screen-color keying remains an FFmpeg fallback because the maintained media cutout command does not expose explicit known-color keying. Source clipping and distortion already present in the meme recordings are preserved.
 
 The owner additionally requested the actual Damn Son tag and explicitly permitted overlaps. Its full 2.351-second upload plays from 1.72 to 4.071 seconds over the horn, quickscope and hitmarker. Music ducks for the phrase. The existing Frank, camera, triple, crowd and closing commentary cues retain their timings and tails.
+
+## V3 finale replacement
+
+The owner found WHERE YOU AT too loud and explicitly replaced it with the Michael Rosen tongue-click Nice performance. Both the old audio cue and caption are removed. The complete original Nice audio plays from 21.57 to 23.7435 seconds at gain 0.35, synchronized with the keyed video at original speed. Music ducks to 0.12 beneath it. All other reaction tails remain unchanged.

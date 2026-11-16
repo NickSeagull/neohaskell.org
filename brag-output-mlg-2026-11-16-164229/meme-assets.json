@@ -96,7 +96,8 @@
     "sourcePage": "https://www.myinstants.com/en/instant/where-you-at/",
     "duration": 2.424,
     "rights": "User-requested meme excerpt. No reuse license verified.",
-    "sha256": "7f92e2543f325899687e887bfdfc9120c9401fd56a209c42ec5d992adde51307"
+    "sha256": "7f92e2543f325899687e887bfdfc9120c9401fd56a209c42ec5d992adde51307",
+    "status": "Preserved V2 asset; replaced in V3 and no longer mounted."
   },
   {
     "name": "uav-killstreak",
@@ -105,7 +106,8 @@
     "sourcePage": "https://www.youtube.com/watch?v=eVc47QangEk&t=46s",
     "edits": "Original MW2 Flagrunner trailer frame at 46.0 seconds, cropped x486 y60 width308 height170 from 1280x720. Original game background, icon, typography and pixels retained. No recreation.",
     "rights": "User-requested game HUD excerpt. No reuse license verified.",
-    "sha256": "e73f8ab84a584f2c0f743459b0642f1558c023dd2c820e0f47e033d897fa6d86"
+    "sha256": "e73f8ab84a584f2c0f743459b0642f1558c023dd2c820e0f47e033d897fa6d86",
+    "status": "Preserved V2 asset; replaced in V3 and no longer mounted."
   },
   {
     "name": "damn-son",
@@ -116,5 +118,23 @@
     "edits": "Entire source retained; placed at 1.72 seconds over the quickscope section.",
     "rights": "User-requested meme excerpt. No reuse license verified.",
     "sha256": "2c6c3d3f795824b3a92e9e7f95f4a8d5c2f956b241349bc79bbc63c4074a44d1"
+  },
+  {
+    "name": "nice-video",
+    "file": "assets/memes/nice.webm",
+    "source": "https://www.youtube.com/watch?v=1JfsPv_zaH4",
+    "sourcePage": "https://www.youtube.com/watch?v=1JfsPv_zaH4",
+    "edits": "Full source, crop x600 y0 w1320 h1080, chromakey 0x00ff00 similarity0.22 blend0.06, scale660x540, VP9 alpha. Original speed.",
+    "rights": "User-requested meme excerpt. No reuse license verified.",
+    "sha256": "0ffbb37a3b4fd9fe69d0edfcca51fe18181c368068221a06bf6a8807c2b4c0f0"
+  },
+  {
+    "name": "nice-audio",
+    "file": "assets/memes/nice.wav",
+    "source": "https://www.youtube.com/watch?v=1JfsPv_zaH4",
+    "sourcePage": "https://www.youtube.com/watch?v=1JfsPv_zaH4",
+    "edits": "Full original audio decoded to PCM, no truncation. Gain0.35 at21.57 seconds.",
+    "rights": "User-requested meme excerpt. No reuse license verified.",
+    "sha256": "d7a216efb430e2c6fc99abf88e602f24ca204664837bb1131ae66ff6e71f3ce7"
   }
 ]
