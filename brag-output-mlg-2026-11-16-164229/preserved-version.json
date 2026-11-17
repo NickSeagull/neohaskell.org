@@ -22,5 +22,10 @@
     "commit": "372581513f3f9b5703759aa104837564a1393468",
     "video": "brag-mlg-24s.mp4",
     "sha256": "51bd95d91a6c7092e3fc16a6318736b989488df92a4adba2a19bcbe1bfc0e354"
+  },
+  "mlgV5": {
+    "commit": "92ddc60c1957cb53f49b424c69f7791af7a2924f",
+    "video": "brag-mlg-v5.mp4",
+    "sha256": "7b9248997b3717eecdf3b87019b2655e8d630f1a31a47224df03f7fa98e591c7"
   }
 }
