@@ -1,3 +1,5 @@
+Historical detector analysis of the original 24-second excerpt. The current longer master uses cinematic-beat-grid.json and cinematic-beat-energy-30fps.json.
+
 # Music Cues: cinematic-beat-master
 
 - Track: `cinematic-beat-master.wav`

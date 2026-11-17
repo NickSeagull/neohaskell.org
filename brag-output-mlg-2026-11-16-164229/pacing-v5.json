@@ -1,0 +1,60 @@
+{
+  "duration": 42.857142857,
+  "bpm": 140,
+  "scenes": [
+    {
+      "id": "impact",
+      "start": 0,
+      "duration": 2.571428571,
+      "beats": 6
+    },
+    {
+      "id": "contracts",
+      "start": 2.571428571,
+      "duration": 4.285714286,
+      "beats": 10
+    },
+    {
+      "id": "frozen",
+      "start": 6.857142857,
+      "duration": 5.142857143,
+      "beats": 12
+    },
+    {
+      "id": "ide",
+      "start": 12.0,
+      "duration": 4.285714286,
+      "beats": 10
+    },
+    {
+      "id": "included",
+      "start": 16.285714286,
+      "duration": 6.857142857,
+      "beats": 16
+    },
+    {
+      "id": "rules",
+      "start": 23.142857143,
+      "duration": 7.714285714,
+      "beats": 18
+    },
+    {
+      "id": "history",
+      "start": 30.857142857,
+      "duration": 4.285714286,
+      "beats": 10
+    },
+    {
+      "id": "payoff",
+      "start": 35.142857143,
+      "duration": 4.285714286,
+      "beats": 10
+    },
+    {
+      "id": "brand",
+      "start": 39.428571429,
+      "duration": 3.428571429,
+      "beats": 8
+    }
+  ]
+}

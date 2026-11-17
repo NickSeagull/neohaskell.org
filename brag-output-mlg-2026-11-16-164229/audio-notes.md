@@ -17,3 +17,7 @@ The owner found WHERE YOU AT too loud and explicitly replaced it with the Michae
 ## Nice volume correction
 
 The owner requested regular volume after hearing V3. The Nice cue now uses unity gain (1.0), replacing 0.35, an increase of 9.12 dB before the existing shared effects limiter. Timing, source audio, music and all visuals are unchanged.
+
+## Longer clean-language cut
+
+The user requested a longer video and removal of swearing. The current cut is 42.857 seconds. The Damn Son sample is removed completely. Remaining reaction clips keep their original pitch and complete selected tails. Frank starts at 6.9, camera at 13.0, triple at 18.05, crowd at 34.286 and Nice at 40.414 seconds. The Nice cue remains at unity gain. The original Dark Horizons excerpt is extended from source 30.857 to 73.714 seconds at 140 BPM, with no looping or time stretching. The full beat and energy analysis is refreshed. The archived detector analysis describes the earlier 24-second excerpt only.

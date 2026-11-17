@@ -1344,5 +1344,6 @@
       },
       "kind": "strong_beat"
     }
-  ]
+  ],
+  "status": "Archived detector analysis of the original 24-second master. Current duration and rhythm are in cinematic-beat-grid.json and energy-30fps.json."
 }

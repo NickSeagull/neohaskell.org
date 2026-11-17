@@ -117,7 +117,8 @@
     "duration": 2.35102,
     "edits": "Entire source retained; placed at 1.72 seconds over the quickscope section.",
     "rights": "User-requested meme excerpt. No reuse license verified.",
-    "sha256": "2c6c3d3f795824b3a92e9e7f95f4a8d5c2f956b241349bc79bbc63c4074a44d1"
+    "sha256": "2c6c3d3f795824b3a92e9e7f95f4a8d5c2f956b241349bc79bbc63c4074a44d1",
+    "status": "Preserved older-cut asset. Removed from the clean-language cut at the owner's request."
   },
   {
     "name": "nice-video",
@@ -133,7 +134,7 @@
     "file": "assets/memes/nice.wav",
     "source": "https://www.youtube.com/watch?v=1JfsPv_zaH4",
     "sourcePage": "https://www.youtube.com/watch?v=1JfsPv_zaH4",
-    "edits": "Full original audio decoded to PCM, no truncation. Unity gain at 21.57 seconds.",
+    "edits": "Full original audio decoded to PCM, no truncation. Unity gain at 40.414285714 seconds in the longer cut.",
     "rights": "User-requested meme excerpt. No reuse license verified.",
     "sha256": "d7a216efb430e2c6fc99abf88e602f24ca204664837bb1131ae66ff6e71f3ce7"
   }

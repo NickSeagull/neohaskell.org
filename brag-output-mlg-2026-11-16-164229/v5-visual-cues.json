@@ -1,0 +1,64 @@
+{
+  "duration": 42.857142857,
+  "basis": "global seconds; authored holds, original-speed reaction sources",
+  "openingImpact": 0,
+  "quickscopeVideo": {
+    "start": 3.571428571,
+    "duration": 1.15
+  },
+  "sniper": 4.121428571,
+  "contractHit": 4.191428571,
+  "contractReaction": 4.6,
+  "freeze": 6.857142857,
+  "frankVideo": {
+    "start": 6.9,
+    "duration": 2.3,
+    "playbackRate": 0.75
+  },
+  "frankVoice": 6.9,
+  "newContract": 9.428571429,
+  "ideHit": 13.285714286,
+  "camera": 13.0,
+  "builtinHits": [
+    16.285714286,
+    17.142857143,
+    18.0,
+    18.857142857,
+    19.714285714,
+    20.571428571
+  ],
+  "triple": 18.05,
+  "codeShot": 23.442857143,
+  "ruleHits": [
+    28.492857143,
+    28.992857143,
+    29.492857143
+  ],
+  "historyHits": [
+    31.714285714,
+    32.571428571,
+    33.428571428
+  ],
+  "uav": 33.428571428,
+  "crowdVideo": {
+    "start": 36.0,
+    "duration": 2.5
+  },
+  "crowdCopyVideo": {
+    "start": 36.642857143,
+    "duration": 1.4
+  },
+  "payoffWholeApp": 36.0,
+  "brandImpact": 39.428571428,
+  "brandGlasses": 40.0,
+  "niceVideo": {
+    "start": 40.414285714,
+    "duration": 2.2022
+  },
+  "niceAudio": 40.414285714,
+  "rulesReadableHold": {
+    "start": 23.292857143,
+    "end": 28.492857143,
+    "duration": 5.2
+  }
+}

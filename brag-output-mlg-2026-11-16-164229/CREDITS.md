@@ -1,6 +1,6 @@
 # Credits
 
-Music: "Dark Horizons - Cinematic Trap Music" by AurosonMusic, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [Original artist upload](https://freemusicarchive.org/music/aurosonmusic/single/dark-horizons-cinematic-trap-music/). Excerpted to 24 seconds from the main beat, with a 2 ms anti-click fade and 200 ms ending fade. Retain this attribution in the published description or adjacent persistent credits.
+Music: "Dark Horizons - Cinematic Trap Music" by AurosonMusic, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [Original artist upload](https://freemusicarchive.org/music/aurosonmusic/single/dark-horizons-cinematic-trap-music/). Excerpted to 42.857 seconds from the main beat, with a 2 ms anti-click fade and 200 ms ending fade. Retain this attribution in the published description or adjacent persistent credits.
 
 NeoHaskell logo and IDE screenshot: existing project assets, reused unchanged. The screenshot shows the real frontend with an illustrative model, not a live connected deployment. Provenance: .impeccable/reviews/model-evolution-2026-11-13/source-evidence.md.
 
