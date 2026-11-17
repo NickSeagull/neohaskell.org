@@ -43,3 +43,15 @@ The owner accepted the longer clean-language cut and asked for a subagent to ret
 Replace the two schema cards with two independent caller-to-behavior paths. Collection checkout connects to locked PlaceOrder with No email required. The lock encloses its identity and behavior, labeled Inputs + logic frozen. Delivery checkout appears at local 2.571 seconds and connects to a separate PlaceOrderWithContact with Email required. A request traverses the old connection before and after the new path appears; the new path receives its own request. The original text and route remain unchanged. No connector links the two commands. Remove the field lists and skip an attempted-edit detour so the scene teaches one relationship. Reserve the upper-right area for Frank, keeping both paths readable. Reuse existing impact effects, with a readable final hold. Preserve the headline, scene boundaries, total duration and all audio.
 
 These are approved target-product semantics, not a new claim of verified compiler implementation. The scene does not claim that old entry points can never retire or that callers migrate automatically. Product-specific geometry is authored directly; existing registry-derived effects remain reused.
+
+## Friday deployment revision: 17 November 2026
+
+The owner approved a surgical revision after brainstorming a stronger reliability pitch. This supersedes SHIP YOUR IDEA and ONE DEV / THE WHOLE APP for this video only. The goal is sustained shipping without breaking existing behavior, delivered as an exaggerated MLG victory.
+
+Checkpoint: 9133b1a5b2b4efc1ab02f2951a6f53227dd4d9a0. The accepted v6 export and poster are preserved as brag-mlg-v6.mp4 and brag-mlg-v6.jpg; hashes are recorded in preserved-version.json.
+
+Only impact, frozen and payoff scene content changes. Impact now says DEPLOY ON / FRIDAY with the original SEND IT stamp. Frozen retains Frank and both independent checkout paths. At 9.43 seconds the heading becomes NEW FEATURE / OLD FEATURES STILL WORK; the two requests and success marks are unchanged. At 12 seconds a separate four-beat reaction shows Tony Stark and WEIRD FLEX BUT OK with a Vine boom. Payoff retains the purple field, crowd, confetti and timing: ABSOLUTE / CINEMA with Scorsese, then GO / OFFLINE at 39.43 seconds. Brand and full-volume Nice stay unchanged locally.
+
+Root duration: 44.571428571 seconds, 104 beats at 140 BPM. Frozen grows from 12 to 16 beats. Every later scene and audio cue moves forward 1.714285714 seconds; all other local durations and reading holds stay intact. Music is the same approved source, extended continuously through 75.428571429 seconds, without looping or stretching. The music grid, energy, automation, pacing and cue records are synchronized. The extra SFX is ducked independently after Frank and before the camera reaction.
+
+The new imagery is original meme media, with no AI face substitution. No extra narration or swear samples are added. The old code and diagram semantics remain unchanged. The inserted reaction follows the visible result.

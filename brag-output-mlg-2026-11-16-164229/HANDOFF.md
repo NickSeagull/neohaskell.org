@@ -1,6 +1,24 @@
 # NeoHaskell launch video handoff
 
-Updated 2026-11-17. The user accepted the latest video with "great" and requested this file for the next agent. There is no unfinished video revision, pending render, or active approval. Continue from the next user request. This handoff records the video state at commit `d33426a`; its own documentation commit comes afterward.
+Current source: owner-authorized v7 Friday deployment revision, 17 November 2026. The original accepted v6 export is preserved. User acceptance of v7 is pending. Sections after the v7 revision below retain historical v6 details and commands; v7 overrides timing and the three changed scenes.
+
+## Friday deployment revision: 17 November 2026
+
+The owner approved a surgical revision after brainstorming a stronger reliability pitch. This supersedes SHIP YOUR IDEA and ONE DEV / THE WHOLE APP for this video only. The goal is sustained shipping without breaking existing behavior, delivered as an exaggerated MLG victory.
+
+Checkpoint: 9133b1a5b2b4efc1ab02f2951a6f53227dd4d9a0. The accepted v6 export and poster are preserved as brag-mlg-v6.mp4 and brag-mlg-v6.jpg; hashes are recorded in preserved-version.json.
+
+Only impact, frozen and payoff scene content changes. Impact now says DEPLOY ON / FRIDAY with the original SEND IT stamp. Frozen retains Frank and both independent checkout paths. At 9.43 seconds the heading becomes NEW FEATURE / OLD FEATURES STILL WORK; the two requests and success marks are unchanged. At 12 seconds a separate four-beat reaction shows Tony Stark and WEIRD FLEX BUT OK with a Vine boom. Payoff retains the purple field, crowd, confetti and timing: ABSOLUTE / CINEMA with Scorsese, then GO / OFFLINE at 39.43 seconds. Brand and full-volume Nice stay unchanged locally.
+
+Root duration: 44.571428571 seconds, 104 beats at 140 BPM. Frozen grows from 12 to 16 beats. Every later scene and audio cue moves forward 1.714285714 seconds; all other local durations and reading holds stay intact. Music is the same approved source, extended continuously through 75.428571429 seconds, without looping or stretching. The music grid, energy, automation, pacing and cue records are synchronized. The extra SFX is ducked independently after Frank and before the camera reaction.
+
+The new imagery is original meme media, with no AI face substitution. No extra narration or swear samples are added. The old code and diagram semantics remain unchanged. The inserted reaction follows the visible result.
+
+## V7 delivery result
+
+Current export: [44.6-second Friday cut](http://127.0.0.1:4323/@fs/Users/nick/Work/neohaskell.org/brag-output-mlg-2026-11-16-164229/brag.mp4?v=7). Source duration 44.571428571; MP4 duration 44.608; 1338 frames. Preview server is running at 127.0.0.1:4323; verify its current PID before operating it. Final source check, build, copy check, visual review and complete browser playback pass. Six nested-media timing lint warnings are intentional. See verification.md and v7-visual-review.md. The poster is extracted at 43.6 seconds and replaces frame zero without modifying encoded audio. Nothing was pushed.
+
+Historical v6 details follow.
 
 ## Start here
 
@@ -117,11 +135,11 @@ Use the installed skill launcher rather than inventing another renderer. Read th
 
 | Skill | Location |
 | --- | --- |
-| Brag and HyperFrames | `/Users/nick/.agents/skills/brag/SKILL.md`, `/Users/nick/.agents/skills/hyperframes/SKILL.md` |
+| Brag and HyperFrames | `/Users/nick/egregoreOS/.agents/skills/brag/SKILL.md`, `/Users/nick/egregoreOS/.agents/skills/hyperframes/SKILL.md` |
 | CLI, registry, media | Sibling `hyperframes-cli/SKILL.md`, `hyperframes-registry/SKILL.md`, `media-use/SKILL.md` |
 | Project quality | Repository `.agents/skills/unslop/SKILL.md`; use relevant positioning and terminology skills under `/Users/nick/.codex/skills/`. |
 | Materially changed teaching example | `/Users/nick/.codex/skills/learning-example-review/SKILL.md` and `minimal-teaching-visuals/SKILL.md`; fresh visual reviewer required. |
-| Waiting | `/Users/nick/.agents/skills/await-work/SKILL.md`; exponential backoff with retained job identity. |
+| Waiting | `/Users/nick/.local/state/egregoreOS-backups/shared-pi-ixo38hu7/global-skills/await-work/SKILL.md`; exponential backoff with retained job identity. |
 
 Brag is the workflow owner: its plan and brief replace generic HyperFrames storyline and SPEC work. Skip generic usage/history/feedback/REVIEW.md steps under that workflow. Local check and visual inspection are the render gates. Prior optional account-linked telemetry was rejected by automatic approval review; it was not needed for the video. Do not retry optional telemetry or publish anything as part of a local revision.
 
@@ -129,10 +147,10 @@ Run these from the active `composition/` directory. The FFmpeg path is a local c
 
 ```sh
 export PATH=/private/tmp/neohaskell-brag-tools/bin:$PATH
-node /Users/nick/.agents/skills/hyperframes/scripts/plugin-cli.mjs lint --json
-node /Users/nick/.agents/skills/hyperframes/scripts/plugin-cli.mjs snapshot --at 7.3,8.4,9.6,10.8,11.65 --no-end --output ../verification/next-freezing --json
-node /Users/nick/.agents/skills/hyperframes/scripts/plugin-cli.mjs check --at 7.3,8.4,9.6,10.8,11.65 --json
-node /Users/nick/.agents/skills/hyperframes/scripts/plugin-cli.mjs render --quality delivery --fps 30 --output ../brag.mp4
+node /Users/nick/egregoreOS/.agents/skills/hyperframes/scripts/plugin-cli.mjs lint --json
+node /Users/nick/egregoreOS/.agents/skills/hyperframes/scripts/plugin-cli.mjs snapshot --at 7.3,8.4,9.6,10.8,11.65 --no-end --output ../verification/next-freezing --json
+node /Users/nick/egregoreOS/.agents/skills/hyperframes/scripts/plugin-cli.mjs check --at 7.3,8.4,9.6,10.8,11.65 --json
+node /Users/nick/egregoreOS/.agents/skills/hyperframes/scripts/plugin-cli.mjs render --quality delivery --fps 30 --output ../brag.mp4
 ```
 
 Use lint during structural iteration, then the full check as the final gate. Redirect verbose stdout and stderr to verification files; print bounded summaries. Inspect actual full-resolution captures and decoded export frames. A successful command alone does not establish visual clarity.
@@ -151,7 +169,7 @@ Before replacing `brag.mp4` with `brag.poster.mp4`, compare ffprobe stream dimen
 For audio-energy extraction, the maintained media helper worked through uv with NumPy available:
 
 ```sh
-PATH=/private/tmp/neohaskell-brag-tools/bin:$PATH /Users/nick/.local/bin/uv run --with numpy python /Users/nick/.agents/skills/media-use/audio/scripts/extract-audio-data.py assets/audio/cinematic-beat-master.wav --fps 30 --bands 16 -o assets/audio/cinematic-beat-energy-30fps.json
+PATH=/private/tmp/neohaskell-brag-tools/bin:$PATH /Users/nick/.local/bin/uv run --with numpy python /Users/nick/egregoreOS/.agents/skills/media-use/audio/scripts/extract-audio-data.py assets/audio/cinematic-beat-master.wav --fps 30 --bands 16 -o assets/audio/cinematic-beat-energy-30fps.json
 ```
 
 ## Local preview and repository rules

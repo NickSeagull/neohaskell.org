@@ -27,12 +27,21 @@
 .route-success{position:absolute;right:32px;bottom:32px;width:48px;height:48px;color:#fcf9ff;opacity:0}
 #mlg-frank-wrap{left:1190px;top:4px;width:650px;height:366px;z-index:32}
 #frozen-wave{position:absolute;left:1150px;top:670px;width:480px;height:480px;color:#94bfff;z-index:0}
+
+#frozen-result{position:absolute;left:110px;top:72px;font-size:112px;line-height:1.02;opacity:0}
+#frozen-result span{display:block}
+#frozen-reaction{position:absolute;inset:0;background:#100719;z-index:40;opacity:0}
+#frozen-flex{position:absolute;left:100px;top:235px;font-size:186px;line-height:1.05;color:#fff33b}
+#frozen-flex span{display:block}
+#tony-wrap{position:absolute;left:960px;top:220px;width:860px;height:502px;border:8px solid #fcf9ff;box-shadow:14px 14px 0 #c989e7;overflow:hidden}
+#tony-wrap video{width:100%;height:100%;object-fit:cover}
 </style>
-<div id="root" data-composition-id="frozen" data-duration="5.142857143" data-width="1920" data-height="1080">
+<div id="root" data-composition-id="frozen" data-duration="6.857142857" data-width="1920" data-height="1080">
  <div class="scene">
   <div id="frozen-shake">
    <div id="frozen-world">
     <h2 id="frozen-head" class="title"><span>IT'S TIME TO STOP</span><span class="accent">BREAKING APIs.</span></h2>
+    <h2 id="frozen-result" class="title"><span>NEW FEATURE.</span><span class="accent">OLD FEATURES STILL WORK.</span></h2>
     <div id="collection-path" class="checkout-path">
      <p class="checkout-caller title"><span>COLLECTION</span><span>CHECKOUT</span></p>
      <div class="checkout-wire" aria-hidden="true"></div><i id="old-request" class="request-pulse" aria-hidden="true"></i>
@@ -58,10 +67,11 @@
  <div class="mlg-overlay">
   <div id="mlg-frank-wrap" class="mlg-video-wrap" data-layout-ignore><video id="mlg-frank" class="clip" data-start="0.042857143" data-duration="2.3" data-playback-rate="0.75" data-track-index="2" src="assets/memes/frank-clock.webm" muted playsinline></video></div>
  </div>
+ <div id="frozen-reaction"><p id="frozen-flex" class="title"><span>WEIRD FLEX</span><span>BUT OK.</span></p><div id="tony-wrap"><video id="tony-turn" class="clip" src="assets/memes/tony-head-turn.mp4" data-start="5.142857143" data-duration="1.714285714" data-track-index="3" muted playsinline></video></div></div>
 </div>
 <script>
 const tl=gsap.timeline({paused:true});
-const B=3/7,D=12*B;
+const B=3/7,D=16*B;
 // A deployed identity and its behavior remain intact while a separate path is added.
 tl.fromTo('#frozen-head',{y:-100,opacity:0},{y:0,opacity:1,duration:.16,ease:'expo.out'},0);
 tl.fromTo('#collection-path',{x:-160,opacity:0},{x:0,opacity:1,duration:.16,ease:'expo.out'},0);
@@ -86,7 +96,15 @@ request('#new-request','#new-success',8*B);
 // Frank keeps the requested reaction and sound timing without covering either path.
 tl.fromTo('#mlg-frank-wrap',{x:500,rotation:12,scale:1.2,opacity:0},{x:0,rotation:-4,scale:1,opacity:1,duration:.12,ease:'expo.out'},.042857143);
 tl.to('#mlg-frank-wrap',{x:700,rotation:35,opacity:0,duration:.12,ease:'power3.in'},2.222857143);
-tl.to('#frozen-world',{scale:1.18,x:-180,opacity:0,duration:.19,ease:'power3.in'},D-.19);
+tl.to('#frozen-head',{opacity:0,duration:.08},6*B);
+tl.fromTo('#frozen-result',{y:-24,opacity:0},{y:0,opacity:1,duration:.12,ease:'expo.out'},6*B+.08);
+// Reaction starts only after both original and new paths have visibly succeeded.
+tl.set('#frozen-world',{visibility:'hidden'},12*B);
+tl.set('#frozen-reaction',{opacity:1},12*B);
+tl.fromTo('#tony-wrap',{scale:1.18,rotation:5},{scale:1,rotation:-2,duration:.12,ease:'expo.out',immediateRender:false},12*B);
+tl.fromTo('#frozen-flex',{scale:1.2,x:-80},{scale:1,x:0,duration:.12,ease:'expo.out',immediateRender:false},12*B);
+tl.to('#frozen-reaction',{x:-1920,duration:.12,ease:'power3.in'},D-.12);
+
 window.__timelines=window.__timelines||{};window.__timelines['frozen']=tl;
 </script>
 </template>

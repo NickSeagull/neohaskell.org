@@ -22,63 +22,79 @@
       "v": 0.6
     },
     {
-      "t": 12.88,
+      "t": 11.9,
       "v": 0.6
     },
     {
-      "t": 13,
-      "v": 0.19
-    },
-    {
-      "t": 16.044082,
-      "v": 0.19
-    },
-    {
-      "t": 16.184082,
-      "v": 0.6
-    },
-    {
-      "t": 17.93,
-      "v": 0.6
-    },
-    {
-      "t": 18.05,
-      "v": 0.2
-    },
-    {
-      "t": 23.079388,
-      "v": 0.2
-    },
-    {
-      "t": 23.219388,
-      "v": 0.6
-    },
-    {
-      "t": 34.165714286,
-      "v": 0.6
-    },
-    {
-      "t": 34.285714286,
+      "t": 12,
       "v": 0.24
     },
     {
-      "t": 40.294285714,
+      "t": 13.1,
       "v": 0.24
     },
     {
-      "t": 40.414285714,
+      "t": 13.24,
+      "v": 0.6
+    },
+    {
+      "t": 14.594285714,
+      "v": 0.6
+    },
+    {
+      "t": 14.714285714,
+      "v": 0.19
+    },
+    {
+      "t": 17.758367714,
+      "v": 0.19
+    },
+    {
+      "t": 17.898367714,
+      "v": 0.6
+    },
+    {
+      "t": 19.644285714,
+      "v": 0.6
+    },
+    {
+      "t": 19.764285714,
+      "v": 0.2
+    },
+    {
+      "t": 24.793673714,
+      "v": 0.2
+    },
+    {
+      "t": 24.933673714,
+      "v": 0.6
+    },
+    {
+      "t": 35.88,
+      "v": 0.6
+    },
+    {
+      "t": 36.0,
+      "v": 0.24
+    },
+    {
+      "t": 42.008571428,
+      "v": 0.24
+    },
+    {
+      "t": 42.128571428,
       "v": 0.12
     },
     {
-      "t": 42.627785714,
+      "t": 44.342071428,
       "v": 0.12
     },
     {
-      "t": 42.75,
+      "t": 44.464285714,
       "v": 0.26
     },
     {
-      "t": 42.857142857,
+      "t": 44.571428571,
       "v": 0
     }
   ],
@@ -127,7 +143,7 @@
     {
       "id": "mlg-mom-camera",
       "asset": "assets/memes/mom-camera.mp3",
-      "start": 13,
+      "start": 14.714285714,
       "duration": 3.004082,
       "gain": 0.4,
       "offset": 0
@@ -135,7 +151,7 @@
     {
       "id": "mlg-ide-hit",
       "asset": "assets/memes/hitmarker.mp3",
-      "start": 13.285714286,
+      "start": 15.0,
       "duration": 0.408,
       "gain": 0.38,
       "offset": 0
@@ -143,7 +159,7 @@
     {
       "id": "mlg-built-in-1",
       "asset": "assets/memes/hitmarker.mp3",
-      "start": 16.285714286,
+      "start": 18.0,
       "duration": 0.408,
       "gain": 0.42,
       "offset": 0
@@ -151,7 +167,7 @@
     {
       "id": "mlg-built-in-2",
       "asset": "assets/memes/hitmarker.mp3",
-      "start": 17.142857143,
+      "start": 18.857142857,
       "duration": 0.408,
       "gain": 0.42,
       "offset": 0
@@ -159,7 +175,7 @@
     {
       "id": "mlg-built-in-3",
       "asset": "assets/memes/hitmarker.mp3",
-      "start": 18.0,
+      "start": 19.714285714,
       "duration": 0.408,
       "gain": 0.42,
       "offset": 0
@@ -167,7 +183,7 @@
     {
       "id": "mlg-triple",
       "asset": "assets/memes/triple.mp3",
-      "start": 18.05,
+      "start": 19.764285714,
       "duration": 4.989388,
       "gain": 0.64,
       "offset": 0
@@ -175,7 +191,7 @@
     {
       "id": "mlg-built-in-4",
       "asset": "assets/memes/hitmarker.mp3",
-      "start": 18.857142857,
+      "start": 20.571428571,
       "duration": 0.408,
       "gain": 0.42,
       "offset": 0
@@ -183,7 +199,7 @@
     {
       "id": "mlg-built-in-5",
       "asset": "assets/memes/hitmarker.mp3",
-      "start": 19.714285715,
+      "start": 21.428571429,
       "duration": 0.408,
       "gain": 0.42,
       "offset": 0
@@ -191,7 +207,7 @@
     {
       "id": "mlg-built-in-6",
       "asset": "assets/memes/hitmarker.mp3",
-      "start": 20.571428572,
+      "start": 22.285714286,
       "duration": 0.408,
       "gain": 0.42,
       "offset": 0
@@ -199,7 +215,7 @@
     {
       "id": "mlg-code-shot",
       "asset": "assets/memes/sniper.mp3",
-      "start": 23.442857143,
+      "start": 25.157142857,
       "duration": 2.298776,
       "gain": 0.2,
       "offset": 0
@@ -207,7 +223,7 @@
     {
       "id": "mlg-rule-0",
       "asset": "assets/memes/hitmarker.mp3",
-      "start": 28.492857143,
+      "start": 30.207142857,
       "duration": 0.408,
       "gain": 0.32,
       "offset": 0
@@ -215,7 +231,7 @@
     {
       "id": "mlg-rule-1",
       "asset": "assets/memes/hitmarker.mp3",
-      "start": 28.992857143,
+      "start": 30.707142857,
       "duration": 0.408,
       "gain": 0.32,
       "offset": 0
@@ -223,7 +239,7 @@
     {
       "id": "mlg-rule-2",
       "asset": "assets/memes/hitmarker.mp3",
-      "start": 29.492857143,
+      "start": 31.207142857,
       "duration": 0.408,
       "gain": 0.32,
       "offset": 0
@@ -231,7 +247,7 @@
     {
       "id": "mlg-replay-0",
       "asset": "assets/memes/hitmarker.mp3",
-      "start": 31.714285714,
+      "start": 33.428571428,
       "duration": 0.408,
       "gain": 0.28,
       "offset": 0
@@ -239,7 +255,7 @@
     {
       "id": "mlg-replay-1",
       "asset": "assets/memes/hitmarker.mp3",
-      "start": 32.571428571,
+      "start": 34.285714285,
       "duration": 0.408,
       "gain": 0.28,
       "offset": 0
@@ -247,7 +263,7 @@
     {
       "id": "mlg-replay-2",
       "asset": "assets/memes/hitmarker.mp3",
-      "start": 33.428571428,
+      "start": 35.142857142,
       "duration": 0.408,
       "gain": 0.28,
       "offset": 0
@@ -255,7 +271,7 @@
     {
       "id": "mlg-crowd-tail",
       "asset": "assets/memes/crowd-oh.mp3",
-      "start": 34.285714286,
+      "start": 36.0,
       "duration": 6.080408,
       "offset": 2.54,
       "gain": 0.3
@@ -263,10 +279,18 @@
     {
       "id": "mlg-nice",
       "asset": "assets/memes/nice.wav",
-      "start": 40.414285714,
+      "start": 42.128571428,
       "duration": 2.1735,
       "offset": 0,
       "gain": 1
+    },
+    {
+      "id": "mlg-suspicious-boom",
+      "asset": "assets/memes/vine-boom.mp3",
+      "start": 12,
+      "duration": 1.25,
+      "gain": 0.6,
+      "offset": 0
     }
   ]
 }

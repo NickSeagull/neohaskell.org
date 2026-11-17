@@ -21,3 +21,15 @@ The owner requested regular volume after hearing V3. The Nice cue now uses unity
 ## Longer clean-language cut
 
 The user requested a longer video and removal of swearing. The current cut is 42.857 seconds. The Damn Son sample is removed completely. Remaining reaction clips keep their original pitch and complete selected tails. Frank starts at 6.9, camera at 13.0, triple at 18.05, crowd at 34.286 and Nice at 40.414 seconds. The Nice cue remains at unity gain. The original Dark Horizons excerpt is extended from source 30.857 to 73.714 seconds at 140 BPM, with no looping or time stretching. The full beat and energy analysis is refreshed. The archived detector analysis describes the earlier 24-second excerpt only.
+
+## Friday deployment revision: 17 November 2026
+
+The owner approved a surgical revision after brainstorming a stronger reliability pitch. This supersedes SHIP YOUR IDEA and ONE DEV / THE WHOLE APP for this video only. The goal is sustained shipping without breaking existing behavior, delivered as an exaggerated MLG victory.
+
+Checkpoint: 9133b1a5b2b4efc1ab02f2951a6f53227dd4d9a0. The accepted v6 export and poster are preserved as brag-mlg-v6.mp4 and brag-mlg-v6.jpg; hashes are recorded in preserved-version.json.
+
+Only impact, frozen and payoff scene content changes. Impact now says DEPLOY ON / FRIDAY with the original SEND IT stamp. Frozen retains Frank and both independent checkout paths. At 9.43 seconds the heading becomes NEW FEATURE / OLD FEATURES STILL WORK; the two requests and success marks are unchanged. At 12 seconds a separate four-beat reaction shows Tony Stark and WEIRD FLEX BUT OK with a Vine boom. Payoff retains the purple field, crowd, confetti and timing: ABSOLUTE / CINEMA with Scorsese, then GO / OFFLINE at 39.43 seconds. Brand and full-volume Nice stay unchanged locally.
+
+Root duration: 44.571428571 seconds, 104 beats at 140 BPM. Frozen grows from 12 to 16 beats. Every later scene and audio cue moves forward 1.714285714 seconds; all other local durations and reading holds stay intact. Music is the same approved source, extended continuously through 75.428571429 seconds, without looping or stretching. The music grid, energy, automation, pacing and cue records are synchronized. The extra SFX is ducked independently after Frank and before the camera reaction.
+
+The new imagery is original meme media, with no AI face substitution. No extra narration or swear samples are added. The old code and diagram semantics remain unchanged. The inserted reaction follows the visible result.

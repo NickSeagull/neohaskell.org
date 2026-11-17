@@ -1,5 +1,1 @@
-NeoHaskell. One dev. The whole app.
-
-Stop breaking APIs. See the app you are building. Keep your history.
-
-Music: Dark Horizons - Cinematic Trap Music by AurosonMusic, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), excerpted from https://freemusicarchive.org/music/aurosonmusic/single/dark-horizons-cinematic-trap-music/
+Deploy on Friday. Go offline. NeoHaskell is an AI-first language built to keep you shipping. New feature. Old features still work. Weird flex but ok. neohaskell.org

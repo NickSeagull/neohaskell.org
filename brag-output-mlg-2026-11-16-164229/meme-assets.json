@@ -137,5 +137,32 @@
     "edits": "Full original audio decoded to PCM, no truncation. Unity gain at 40.414285714 seconds in the longer cut.",
     "rights": "User-requested meme excerpt. No reuse license verified.",
     "sha256": "d7a216efb430e2c6fc99abf88e602f24ca204664837bb1131ae66ff6e71f3ce7"
+  },
+  {
+    "name": "tony-head-turn",
+    "file": "assets/memes/tony-head-turn.mp4",
+    "source": "https://media.tenor.com/9MuzJyg8HbIAAAPo/robert-downey-jr-huh.mp4",
+    "sourcePage": "https://tenor.com/search/tony-stark-looking-gifs",
+    "processing": "Original head turn, then hold final frame to 1.8 seconds; silent; separate Vine boom.",
+    "rights": "User-requested meme excerpt. Source site does not establish a reuse license.",
+    "sha256": "2da6412c408f843ace146d2ff38dc12fe266c3aaa3b093da64d00a09b1cf5818"
+  },
+  {
+    "name": "absolute-cinema",
+    "file": "assets/memes/absolute-cinema.png",
+    "source": "https://media.tenor.com/v7hWdJCstiYAAAP1/scorsese.mp4",
+    "sourcePage": "https://tenor.com/view/scorsese-gif-13814886915602429478",
+    "processing": "First frame extracted from static Scorsese meme. Image contains original meme caption.",
+    "rights": "User-requested meme excerpt. Source site does not establish a reuse license.",
+    "sha256": "ee2288857bea0636d07e56c465fc2494245b235628c76360b7b64a6ebebc02e5"
+  },
+  {
+    "name": "vine-boom",
+    "file": "assets/memes/vine-boom.mp3",
+    "source": "https://www.myinstants.com/media/sounds/vine-boom.mp3",
+    "sourcePage": "https://www.myinstants.com/en/instant/vine-boom-sound-70972/",
+    "processing": "1.25-second excerpt at gain 0.6 through existing SFX limiter.",
+    "rights": "User-requested meme excerpt. Source site does not establish a reuse license.",
+    "sha256": "c4dadbc0b9cd21b1313ec11845a00d9401bc208ae0f59f54a0282b8cb89d56c2"
   }
 ]

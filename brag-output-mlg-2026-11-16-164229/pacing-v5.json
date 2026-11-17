@@ -1,5 +1,5 @@
 {
-  "duration": 42.857142857,
+  "duration": 44.571428571,
   "bpm": 140,
   "scenes": [
     {
@@ -17,42 +17,42 @@
     {
       "id": "frozen",
       "start": 6.857142857,
-      "duration": 5.142857143,
-      "beats": 12
+      "duration": 6.857142857,
+      "beats": 16
     },
     {
       "id": "ide",
-      "start": 12.0,
+      "start": 13.714285714,
       "duration": 4.285714286,
       "beats": 10
     },
     {
       "id": "included",
-      "start": 16.285714286,
+      "start": 18.0,
       "duration": 6.857142857,
       "beats": 16
     },
     {
       "id": "rules",
-      "start": 23.142857143,
+      "start": 24.857142857,
       "duration": 7.714285714,
       "beats": 18
     },
     {
       "id": "history",
-      "start": 30.857142857,
+      "start": 32.571428571,
       "duration": 4.285714286,
       "beats": 10
     },
     {
       "id": "payoff",
-      "start": 35.142857143,
+      "start": 36.857142857,
       "duration": 4.285714286,
       "beats": 10
     },
     {
       "id": "brand",
-      "start": 39.428571429,
+      "start": 41.142857143,
       "duration": 3.428571429,
       "beats": 8
     }

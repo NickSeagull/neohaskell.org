@@ -1,5 +1,5 @@
 {
-  "status": "Approved track extended for the longer clean-language cut",
+  "status": "Friday deployment revision: same source extended by one bar",
   "title": "Dark Horizons - Cinematic Trap Music",
   "artist": "AurosonMusic",
   "sourceUrl": "https://freemusicarchive.org/music/aurosonmusic/single/dark-horizons-cinematic-trap-music/",
@@ -7,19 +7,19 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
   "masterFile": "cinematic-beat-master.wav",
-  "durationSeconds": 42.857142857142854,
+  "durationSeconds": 44.57142857142857,
   "sourceStartSeconds": 30.857142857142858,
-  "sourceEndSeconds": 73.71428571414285,
+  "sourceEndSeconds": 75.42857142857143,
   "tempoBpm": 140,
   "halfTimeBpm": 70,
-  "bars": 25,
+  "bars": 26,
   "gainDb": 0,
-  "integratedLufs": -12.33,
+  "integratedLufs": -12.29,
   "truePeakDbtp": -1.54,
   "loudnessRangeLu": 2.0,
   "processing": "No gain, tempo or compression change. 2 ms anti-click fade at start; 200 ms ending fade.",
   "sourceSha256": "a67a88f0364bddb7074c1f3c53302eba5d31bf7380942e12442143381f484a71",
-  "masterSha256": "727a1935809cf5f171267834c9ef21ef5716c3bb27eeeb6cdca2e302810736a3",
-  "attribution": "Music: \"Dark Horizons - Cinematic Trap Music\" by AurosonMusic. Source: https://freemusicarchive.org/music/aurosonmusic/single/dark-horizons-cinematic-trap-music/ . Licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/ . Excerpted to 42.857 seconds from the main beat, with a 2 ms anti-click fade and 200 ms ending fade.",
-  "review": "Same approved source and main-beat start. Extended excerpt at original tempo; master duration, beat grid and levels verified programmatically."
+  "masterSha256": "f8a86f2f1ddcfb18cb3988c60d65b631cee29b17785b6b51dd5019cf9bcd7403",
+  "attribution": "Music: \"Dark Horizons - Cinematic Trap Music\" by AurosonMusic. Source: https://freemusicarchive.org/music/aurosonmusic/single/dark-horizons-cinematic-trap-music/ . Licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/ . Excerpted to 44.571 seconds from the main beat, with a 2 ms anti-click fade and 200 ms ending fade.",
+  "review": "Original approved track and source start. Extended one bar at original tempo. Measured master: -12.29 LUFS, -1.54 dBTP."
 }

@@ -1,6 +1,6 @@
 # Credits
 
-Music: "Dark Horizons - Cinematic Trap Music" by AurosonMusic, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [Original artist upload](https://freemusicarchive.org/music/aurosonmusic/single/dark-horizons-cinematic-trap-music/). Excerpted to 42.857 seconds from the main beat, with a 2 ms anti-click fade and 200 ms ending fade. Retain this attribution in the published description or adjacent persistent credits.
+Music: "Dark Horizons - Cinematic Trap Music" by AurosonMusic, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [Original artist upload](https://freemusicarchive.org/music/aurosonmusic/single/dark-horizons-cinematic-trap-music/). Excerpted to 44.571 seconds from the main beat, with a 2 ms anti-click fade and 200 ms ending fade. Retain this attribution in the published description or adjacent persistent credits.
 
 NeoHaskell logo and IDE screenshot: existing project assets, reused unchanged. The screenshot shows the real frontend with an illustrative model, not a live connected deployment. Provenance: .impeccable/reviews/model-evolution-2026-11-13/source-evidence.md.
 
@@ -33,3 +33,11 @@ UAV notification: actual Modern Warfare 2 (2009) HUD from [IGN Flagrunner footag
 Opening tag: [Damn son, where did you find this](https://www.myinstants.com/en/instant/damn-son-whered-you-find-this/), complete 2.351-second source sample.
 
 V3 finale: [Michael Rosen tongue-click Nice greenscreen](https://www.youtube.com/watch?v=1JfsPv_zaH4), original video and synchronized sound. Cropped and keyed locally; source audio is complete. This replaces WHERE YOU AT. The UAV notification and paper bills are now authored vector graphics at the owner's explicit request. Earlier source credits remain for the preserved versions.
+
+## Friday revision meme inserts
+
+Tony Stark head turn: Robert Downey Jr. in Avengers: Endgame, sourced from [Tenor](https://tenor.com/search/tony-stark-looking-gifs). Silent excerpt with its last frame held.
+
+Absolute Cinema: Martin Scorsese reaction image, sourced from [Tenor](https://tenor.com/view/scorsese-gif-13814886915602429478). Still extracted from the supplied meme.
+
+Vine boom: [Myinstants source](https://www.myinstants.com/en/instant/vine-boom-sound-70972/). The public asset pages do not establish a reuse license. Source URLs, processing and hashes are in meme-assets.json.

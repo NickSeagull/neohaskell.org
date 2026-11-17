@@ -27,5 +27,12 @@
     "commit": "92ddc60c1957cb53f49b424c69f7791af7a2924f",
     "video": "brag-mlg-v5.mp4",
     "sha256": "7b9248997b3717eecdf3b87019b2655e8d630f1a31a47224df03f7fa98e591c7"
+  },
+  "acceptedV6": {
+    "sourceCommit": "9133b1a5b2b4efc1ab02f2951a6f53227dd4d9a0",
+    "sha256": {
+      "brag-mlg-v6.mp4": "7dada6b42f61247692ecca53a971cb679306a8bd28c16cd7b0f6b5912b35bde3",
+      "brag-mlg-v6.jpg": "b8b4a0a15a4b05ab1ed3d6e6e5170e4ff5fdde3f7389614632b24ddb9a03580d"
+    }
   }
 }
